@@ -2,7 +2,6 @@ import React from "react"
 import "./style.scss"
 
 import Carousel from "react-elastic-carousel"
-import { Link } from "react-location"
 
 import president from "../../Assets/president.jpg"
 import vicePresident from "../../Assets/vicePresident.jpg"

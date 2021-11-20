@@ -1,7 +1,7 @@
-import React from "react";
-import "./style.scss";
+import React from "react"
+import "./style.scss"
 
-import { Link } from "react-location";
+import { Link } from "react-location"
 
 export default function Footer() {
   return (
@@ -10,15 +10,15 @@ export default function Footer() {
         <h3>Sitemap</h3>
         <Link to="/">Home</Link>
         <Link to="/">Work</Link>
-        <Link to="/">About Us</Link>
+        <Link to="/about">About Us</Link>
         <Link to="/">Our Volunteer</Link>
         <Link to="/">Contact</Link>
       </div>
       <div className="social">
         <h3>Social Links</h3>
-        <Link to="/">Instagram</Link>
-        <Link to="/">Facebook</Link>
-        <Link to="/">Twitter</Link>
+        <a href="https://www.instagram.com/haminepal_/">Instagram</a>
+        <a href="https://www.facebook.com/HamiNepalNPO">Facebook</a>
+        <a to="https://twitter.com/Haminepal_">Twitter</a>
         <Link to="/">LinkedIn</Link>
       </div>
       <div className="newsletter">
@@ -29,5 +29,5 @@ export default function Footer() {
         </div>
       </div>
     </div>
-  );
+  )
 }

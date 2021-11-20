@@ -1,39 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import './style.scss';
+import React, { useEffect, useState } from "react"
+import "./style.scss"
 
-import Logo from '../../Assets/logo.png';
-import BannerVideo from '../../Assets/banner.mp4';
-import BannerVideoWebm from '../../Assets/banner.webm';
-import BannerVideoOgm from '../../Assets/banner.ogm';
-import BannerPoster from '../../Assets/poster-banner.png';
+import Logo from "../../Assets/logo.png"
+import BannerVideo from "../../Assets/banner.mp4"
+import BannerVideoWebm from "../../Assets/banner.webm"
+import BannerVideoOgm from "../../Assets/banner.ogm"
+import BannerPoster from "../../Assets/poster-banner.png"
 
-import { Link } from 'react-location';
-import { Helmet } from 'react-helmet';
+import { Link } from "react-location"
+import { Helmet } from "react-helmet"
 
-import Partners from '../../Mocks/OurPartners.json';
+import Partners from "../../Mocks/OurPartners.json"
 
-import KindnessCard from '../../Components/Act of Kindness/KindnessCard';
-import BoardMembersCarousel from '../../Components/BoardMembers/BoardMembersCarousel';
-import Footer from '../../Components/Footer/Footer';
-import Donate from '../../Components/Donate/Donate';
+import KindnessCard from "../../Components/Act of Kindness/KindnessCard"
+import BoardMembersCarousel from "../../Components/BoardMembers/BoardMembersCarousel"
+import Footer from "../../Components/Footer/Footer"
+import Donate from "../../Components/Donate/Donate"
 
 export default function Home() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
-  const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
-  const [topDonors, setTopDonors] = useState([]);
-  const [kindness, setKindness] = useState([]);
+  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
+  const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false)
+  const [topDonors, setTopDonors] = useState([])
+  const [kindness, setKindness] = useState([])
 
   useEffect(() => {
     fetch(
-      'https://api.haminepal.org/api/v1/donations?sort=-donation_amount&limit=5'
+      "https://api.haminepal.org/api/v1/donations?sort=-donation_amount&limit=5"
     )
       .then((data) => data.json())
-      .then(({ data }) => setTopDonors(data));
+      .then(({ data }) => setTopDonors(data))
 
-    fetch('https://api.haminepal.org/api/v1/kindness/featured')
+    fetch("https://api.haminepal.org/api/v1/kindness/featured")
       .then((data) => data.json())
-      .then(({ featured }) => setKindness(featured));
-  }, []);
+      .then(({ featured }) => setKindness(featured))
+  }, [])
 
   return (
     <div className="home__container">
@@ -81,14 +81,17 @@ export default function Home() {
             </Link>
           </div>
 
-          <Link className="home__container__landing__footer__ourWork" to="/our-work">
+          <Link
+            className="home__container__landing__footer__ourWork"
+            to="/our-work"
+          >
             Our Work
           </Link>
         </div>
 
         {/** @dev this is dismissiable donation form */}
         <div
-          style={{ display: isDonationFormOpen ? 'block' : 'none' }}
+          style={{ display: isDonationFormOpen ? "block" : "none" }}
           className="home__container__landing__donationForm"
         >
           <Donate setIsDonationFormOpen={setIsDonationFormOpen} />
@@ -97,7 +100,7 @@ export default function Home() {
         <div
           className="home__container__landing__hiddenMenu"
           style={{
-            display: isActiveMenu ? 'flex' : 'none',
+            display: isActiveMenu ? "flex" : "none",
           }}
         >
           <div className="home__container__landing__hiddenMenu__topbar">
@@ -183,7 +186,7 @@ export default function Home() {
           {topDonors.map((user, index) => (
             <div
               className={`home__container__transparency__topDonors__donor ${
-                index !== 0 && 'border'
+                index !== 0 && "border"
               }`}
               key={user._id}
             >
@@ -223,7 +226,7 @@ export default function Home() {
             donating their time and effort, which motivates our team to work and
             achieve more for the people.
           </p>
-          <Link to="/">See More</Link>
+          <Link to="/about">See More</Link>
         </div>
       </div>
 
@@ -283,10 +286,10 @@ export default function Home() {
       <div className="home__container__copyrightInfo">
         <div>&copy; Hami Nepal. All Rights Reserved</div>
         <div>
-          {' '}
+          {" "}
           Made with ❤️ by <Link to="/">Hash Technologies</Link>
         </div>
       </div>
     </div>
-  );
+  )
 }
