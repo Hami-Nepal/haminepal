@@ -21,13 +21,18 @@ export default function Home() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
   const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
   const [topDonors, setTopDonors] = useState([]);
+  const [kindness, setKindness] = useState([]);
 
   useEffect(() => {
     fetch(
-      'http://api.haminepal.org/api/v1/donations?sort=-donation_amount&limit=5'
+      'https://api.haminepal.org/api/v1/donations?sort=-donation_amount&limit=5'
     )
       .then((data) => data.json())
       .then(({ data }) => setTopDonors(data));
+
+    fetch('https://api.haminepal.org/api/v1/kindness/featured')
+      .then((data) => data.json())
+      .then(({ featured }) => setKindness(featured));
   }, []);
 
   return (
@@ -203,8 +208,8 @@ export default function Home() {
         </h1>
 
         <div className="home__container__actOfKindness__items">
-          {[0, 1, 2, 3, 4, 5, 6, 7].map((item, index) => (
-            <KindnessCard item={item} key={index} />
+          {kindness.map((card) => (
+            <KindnessCard {...card} key={card._id} />
           ))}
         </div>
       </div>
