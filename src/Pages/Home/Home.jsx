@@ -63,7 +63,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <Link className="home__container__landing__footer__ourWork" to="/">
+          <Link className="home__container__landing__footer__ourWork" to="/our-work">
             Our Work
           </Link>
         </div>
@@ -104,28 +104,28 @@ export default function Home() {
               <Link to="/">Civil Rights Movements</Link>
             </li>
             <li>
-              <Link to="/">Contact Us</Link>
+              <Link to="/contact">Contact Us</Link>
             </li>
             <div className="divider"></div>
             <li>
-              <Link to="/">Login/</Link> <Link to="/">Signup</Link>
+              <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
             </li>
           </ul>
           <ul className="home__container__landing__hiddenMenu__items right">
             <li>
-              <Link to="/">About Us</Link>
+              <Link to="/about">About Us</Link>
             </li>
             <li>
-              <Link to="/">Cause</Link>
+              <Link to="/causes">Cause</Link>
             </li>
             <li>
-              <Link to="/">Events</Link>
+              <Link to="/events">Events</Link>
             </li>
             <li>
               <Link to="/">Transparency</Link>
             </li>
             <li>
-              <Link to="/">Volunteers</Link>
+              <Link to="/volunteer">Volunteers</Link>
             </li>
           </ul>
         </div>
