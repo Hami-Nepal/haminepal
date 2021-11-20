@@ -22,13 +22,13 @@ export default function Home() {
   const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
   const [topDonors, setTopDonors] = useState([]);
 
-  useEffect(async () => {
+  useEffect(() => {
     fetch(
       'http://api.haminepal.org/api/v1/donations?sort=-donation_amount&limit=5'
     )
       .then((data) => data.json())
       .then(({ data }) => setTopDonors(data));
-  });
+  }, []);
 
   return (
     <div className="home__container">
