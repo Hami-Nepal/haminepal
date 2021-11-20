@@ -7,7 +7,7 @@ import { Link } from "react-location";
 export default function BoardMembersCarousel() {
   const members = [
     {
-      name: "Deekshya Shahi",
+      name: "Board Member",
       position: "President",
       message:
         "I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.",
@@ -21,7 +21,7 @@ export default function BoardMembersCarousel() {
       },
     },
     {
-      name: "Deekshya Shahi",
+      name: "Board Member",
       position: "President",
       message:
         "I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.",
@@ -35,7 +35,7 @@ export default function BoardMembersCarousel() {
       },
     },
     {
-      name: "Deekshya Shahi",
+      name: "Board Member",
       position: "President",
       message:
         "I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.",
