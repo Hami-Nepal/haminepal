@@ -83,8 +83,16 @@
     align-items: center;
 
     .item {
+      margin-top: 10px;
       width: 22vw;
       text-align: center;
+      img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 10px;
+      }
 
       @media (max-width: 992px) {
         width: 39vw;
@@ -98,10 +106,11 @@
         border-radius: 50%;
       }
 
-      p{
-          margin-bottom: 50px;
-          margin-top: 20px;
-          line-height: 1.7;
+      p {
+        margin-bottom: 50px;
+        margin-top: 20px;
+        line-height: 1.7;
+        text-align: justify;
       }
     }
   }
