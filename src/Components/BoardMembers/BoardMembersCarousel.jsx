@@ -67,7 +67,7 @@ export default function BoardMembersCarousel() {
             <div className="boardMembersCarousel__container__socialLinks">
               <ul>
                 <li>
-                  <Link to={member.socialLinks.instagram}>
+                  <Link to={member.socialLinks.instagram} target='_blank'>
                     {" "}
                     <i className="ri-instagram-line"></i>
                   </Link>
