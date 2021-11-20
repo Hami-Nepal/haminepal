@@ -1,25 +1,39 @@
-import React from "react";
-import "./style.scss";
+import React, { useEffect, useState } from 'react';
+import './style.scss';
 
-import Logo from "../../Assets/logo.png";
-import BannerVideo from "../../Assets/banner.mp4";
-import BannerVideoWebm from "../../Assets/banner.webm";
-import BannerVideoOgm from "../../Assets/banner.ogm";
-import BannerPoster from "../../Assets/poster-banner.png";
+import Logo from '../../Assets/logo.png';
+import BannerVideo from '../../Assets/banner.mp4';
+import BannerVideoWebm from '../../Assets/banner.webm';
+import BannerVideoOgm from '../../Assets/banner.ogm';
+import BannerPoster from '../../Assets/poster-banner.png';
 
-import { Link } from "react-location";
-import { Helmet } from "react-helmet";
+import { Link } from 'react-location';
+import { Helmet } from 'react-helmet';
 
-import Partners from "../../Mocks/OurPartners.json";
+import Partners from '../../Mocks/OurPartners.json';
 
-import KindnessCard from "../../Components/Act of Kindness/KindnessCard";
-import BoardMembersCarousel from "../../Components/BoardMembers/BoardMembersCarousel";
-import Footer from "../../Components/Footer/Footer";
-import Donate from "../../Components/Donate/Donate";
+import KindnessCard from '../../Components/Act of Kindness/KindnessCard';
+import BoardMembersCarousel from '../../Components/BoardMembers/BoardMembersCarousel';
+import Footer from '../../Components/Footer/Footer';
+import Donate from '../../Components/Donate/Donate';
 
 export default function Home() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
   const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
+  const [topDonors, setTopDonors] = useState([]);
+  const [kindness, setKindness] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      'https://api.haminepal.org/api/v1/donations?sort=-donation_amount&limit=5'
+    )
+      .then((data) => data.json())
+      .then(({ data }) => setTopDonors(data));
+
+    fetch('https://api.haminepal.org/api/v1/kindness/featured')
+      .then((data) => data.json())
+      .then(({ featured }) => setKindness(featured));
+  }, []);
 
   return (
     <div className="home__container">
@@ -58,7 +72,11 @@ export default function Home() {
         <div className="home__container__landing__footer">
           <div>
             <h1>For the people by the people.</h1>
-            <Link onClick={() => setIsDonationFormOpen(true)} className="home__container__landing__footer__donate" to="/">
+            <Link
+              onClick={() => setIsDonationFormOpen(true)}
+              className="home__container__landing__footer__donate"
+              to="/"
+            >
               Donate
             </Link>
           </div>
@@ -69,14 +87,17 @@ export default function Home() {
         </div>
 
         {/** @dev this is dismissiable donation form */}
-        <div style={{display: isDonationFormOpen ? "block": 'none'}} className="home__container__landing__donationForm">
-          <Donate setIsDonationFormOpen={setIsDonationFormOpen}/>
+        <div
+          style={{ display: isDonationFormOpen ? 'block' : 'none' }}
+          className="home__container__landing__donationForm"
+        >
+          <Donate setIsDonationFormOpen={setIsDonationFormOpen} />
         </div>
 
         <div
           className="home__container__landing__hiddenMenu"
           style={{
-            display: isActiveMenu ? "flex" : "none",
+            display: isActiveMenu ? 'flex' : 'none',
           }}
         >
           <div className="home__container__landing__hiddenMenu__topbar">
@@ -159,21 +180,20 @@ export default function Home() {
         <div className="home__container__transparency__topDonors">
           <h2>Top Donors</h2>
 
-          {[0, 1, 2, 3].map((item, index) => (
+          {topDonors.map((user, index) => (
             <div
               className={`home__container__transparency__topDonors__donor ${
-                index !== 0 && "border"
+                index !== 0 && 'border'
               }`}
-              key={item}
+              key={user._id}
             >
               <div>
-                <img
-                  src="https://avatars.githubusercontent.com/u/93716126?s=400&u=307389b7f99a2d54d03046c9faf4d1f985239763&v=4"
-                  alt="donor icon"
-                />
-                <p>Deekshya Shahi</p>
+                <img src={Logo} alt="donor icon" />
+                <p>
+                  {user.first_name} {user.last_name}
+                </p>
               </div>
-              <b>Rs 2,34,500</b>
+              <b>Rs. {user.donation_amount}</b>
             </div>
           ))}
 
@@ -188,8 +208,8 @@ export default function Home() {
         </h1>
 
         <div className="home__container__actOfKindness__items">
-          {[0, 1, 2, 3, 4, 5, 6, 7].map((item, index) => (
-            <KindnessCard item={item} key={index} />
+          {kindness.map((card) => (
+            <KindnessCard {...card} key={card._id} />
           ))}
         </div>
       </div>
@@ -263,7 +283,7 @@ export default function Home() {
       <div className="home__container__copyrightInfo">
         <div>&copy; Hami Nepal. All Rights Reserved</div>
         <div>
-          {" "}
+          {' '}
           Made with ❤️ by <Link to="/">Hash Technologies</Link>
         </div>
       </div>
