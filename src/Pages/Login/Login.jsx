@@ -77,7 +77,7 @@ export default function Login() {
             <Link to="/">Transparency</Link>
           </li>
           <li>
-            <Link to="/volunteer">Volunteers</Link>
+            <Link to="/volunteer">Volunteer</Link>
           </li>
         </ul>
       </div>
