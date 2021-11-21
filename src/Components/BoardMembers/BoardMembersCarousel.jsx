@@ -10,7 +10,7 @@ export default function BoardMembersCarousel() {
     async function fetchData() {
       await fetch("https://api.haminepal.org/api/v1/boardmembers")
       .then(response => response.json())
-      .then(data => setMembers(data))
+      .then(data => setMembers(data.data))
     }
     fetchData();
   },[])
