@@ -1,15 +1,24 @@
-import React from "react";
-import "./style.scss";
+import React, { useEffect, useState } from "react"
+import "./style.scss"
 
-import Logo from "../../Assets/logo.png";
+import Logo from "../../Assets/logo.png"
 
-import { Link } from "react-location";
+import { Link } from "react-location"
 
-import CausesTabs from "../../Components/CausesTabs/CausesTabs";
-import Footer from "../../Components/Footer/Footer";
+import CausesTabs from "../../Components/CausesTabs/CausesTabs"
+import Footer from "../../Components/Footer/Footer"
 
 export default function Causes() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
+  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
+  const [causes, setCauses] = useState([])
+
+  console.log(causes)
+
+  useEffect(() => {
+    fetch("https://api.haminepal.org/api/v1/volunteers")
+      .then((data) => data.json())
+      .then(({ data }) => setCauses(data))
+  }, [])
 
   return (
     <div className="causes__container">
@@ -96,9 +105,9 @@ export default function Causes() {
         <Link to="/new-volunteer">Create a cause</Link>
       </div>
 
-      <CausesTabs/>
+      <CausesTabs />
 
-      <Footer/>
+      <Footer />
     </div>
-  );
+  )
 }

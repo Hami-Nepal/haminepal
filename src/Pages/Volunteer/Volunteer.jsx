@@ -1,15 +1,24 @@
-import React from "react";
-import "./style.scss";
+import React, { useEffect, useState } from "react"
+import "./style.scss"
 
-import Logo from "../../Assets/logo.png";
+import Logo from "../../Assets/logo.png"
 
-import { Link } from "react-location";
+import { Link } from "react-location"
 
-import VolunteerCard from "../../Components/VolunteerCard/VolunteerCard";
-import Footer from "../../Components/Footer/Footer";
+import VolunteerCard from "../../Components/VolunteerCard/VolunteerCard"
+import Footer from "../../Components/Footer/Footer"
 
 export default function Volunteer() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
+  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
+  const [volunteer, setVolunteer] = useState([])
+
+  console.log(volunteer)
+
+  useEffect(() => {
+    fetch("https://api.haminepal.org/api/v1/volunteers")
+      .then((data) => data.json())
+      .then((volunteer) => setVolunteer(volunteer.data))
+  }, [])
 
   return (
     <div className="volunteer__container">
@@ -111,8 +120,8 @@ export default function Volunteer() {
 
       {/* @section => cards */}
       <div className="volunteer__container__cards">
-        {[0, 1, 2, 3, 4, 5].map((item) => (
-          <VolunteerCard key={item} />
+        {volunteer.map((item) => (
+          <VolunteerCard key={item.id} item={item} />
         ))}
       </div>
 
@@ -122,5 +131,5 @@ export default function Volunteer() {
         Made with ❤️ in <Link>Hash Technologies</Link>
       </h4>
     </div>
-  );
+  )
 }
