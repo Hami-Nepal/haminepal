@@ -61,9 +61,9 @@ export default function Home() {
           src={BannerVideo}
           preload="metadata"
           autoPlay={true}
-          muted="true"
+          muted={true}
           loop="loop"
-          playsInline="true"
+          playsInline={true}
           poster={BannerPoster}
         >
           <source src={BannerVideo} type="video/mp4" />
