@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './style.scss';
 
 import Logo from '../../Assets/logo.png';
@@ -8,8 +8,17 @@ import { Link } from 'react-location';
 import VolunteerCard from '../../Components/VolunteerCard/VolunteerCard';
 import Footer from '../../Components/Footer/Footer';
 
+import baseURL from '../../api/baseURL';
+
 export default function Volunteer() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
+  const [volunteers, setVolunteers] = React.useState([]);
+
+  useEffect(() => {
+    fetch(baseURL + '/volunteers')
+      .then((data) => data.json())
+      .then(({ data }) => setVolunteers(data));
+  }, []);
 
   return (
     <div className="volunteer__container">
@@ -111,8 +120,8 @@ export default function Volunteer() {
 
       {/* @section => cards */}
       <div className="volunteer__container__cards">
-        {[0, 1, 2, 3, 4, 5].map((item) => (
-          <VolunteerCard key={item} />
+        {volunteers.map((volunteer) => (
+          <VolunteerCard {...volunteer} key={volunteer._id} />
         ))}
       </div>
 
