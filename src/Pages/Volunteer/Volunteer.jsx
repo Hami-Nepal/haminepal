@@ -17,7 +17,8 @@ export default function Volunteer() {
   useEffect(() => {
     fetch(baseURL + '/volunteers')
       .then((data) => data.json())
-      .then(({ data }) => setVolunteers(data));
+      .then(({ data }) => setVolunteers(data))
+      .catch((err) => console.log(err, '\n', err.response));
   }, []);
 
   return (
