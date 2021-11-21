@@ -17,22 +17,36 @@ import BoardMembersCarousel from '../../Components/BoardMembers/BoardMembersCaro
 import Footer from '../../Components/Footer/Footer';
 import Donate from '../../Components/Donate/Donate';
 
+import baseURL from '../../api/baseURL';
+
 export default function Home() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
   const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
   const [topDonors, setTopDonors] = useState([]);
   const [kindness, setKindness] = useState([]);
+  const [totalDonations, setTotalDonations] = useState(0);
+  const [totalExpenses, setTotalExpenses] = useState(0);
 
   useEffect(() => {
-    fetch(
-      'https://api.haminepal.org/api/v1/donations?sort=-donation_amount&limit=5'
-    )
+    fetch(baseURL + '/donations?sort=-donation_amount&limit=5')
       .then((data) => data.json())
       .then(({ data }) => setTopDonors(data));
 
-    fetch('https://api.haminepal.org/api/v1/kindness/featured')
+    fetch(baseURL + '/kindness/featured')
       .then((data) => data.json())
       .then(({ featured }) => setKindness(featured));
+
+    fetch(baseURL + '/find/totalDonations')
+      .then((data) => data.json())
+      .then(({ data }) =>
+        setTotalDonations(data.length ? data[0].total_donations : 0)
+      );
+
+    fetch(baseURL + '/find/totalExpenses')
+      .then((data) => data.json())
+      .then(({ data }) =>
+        setTotalExpenses(data.length ? data[0].total_expenses : 0)
+      );
   }, []);
 
   return (
@@ -161,19 +175,19 @@ export default function Home() {
           <h1>Transparency</h1>
 
           <div className="home__container__transparency__info__item">
-            <h2>Rs 12345</h2>
+            <h2>Rs {totalDonations}</h2>
             <div className="home__container__transparency__info__item__title">
               Donation Received
             </div>
           </div>
           <div className="home__container__transparency__info__item center">
-            <h2>Rs 12345</h2>
+            <h2>Rs {totalExpenses}</h2>
             <div className="home__container__transparency__info__item__title">
               Expenditure
             </div>
           </div>
           <div className="home__container__transparency__info__item">
-            <h2>Rs 12345</h2>
+            <h2>Rs {totalDonations - totalExpenses}</h2>
             <div className="home__container__transparency__info__item__title">
               Remaining Donation
             </div>
