@@ -58,7 +58,7 @@ export default function BoardMembersCarousel() {
     },
     {
       name: "Garima Shrestha",
-      position: "Health Advisior",
+      position: "Health Advisor",
       message: `Dr Garima Shrestha, is doing her MD Residency in Army Hospital Chhauni , completed her MBBS from Manipal College of Medical Sciences, Pokhara . 
 
       She is the Founder of SHE Nepal , working for women health and empowerment  .

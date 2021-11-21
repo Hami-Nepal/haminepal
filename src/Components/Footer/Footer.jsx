@@ -18,8 +18,8 @@ export default function Footer() {
         <h3>Social Links</h3>
         <a href="https://www.instagram.com/haminepal_/">Instagram</a>
         <a href="https://www.facebook.com/HamiNepalNPO">Facebook</a>
-        <a to="https://twitter.com/Haminepal_">Twitter</a>
-        <Link to="/">LinkedIn</Link>
+        <a href="https://twitter.com/Haminepal_">Twitter</a>
+        <a href="/">LinkedIn</a>
       </div>
       <div className="newsletter">
         <h3>Newsletter</h3>

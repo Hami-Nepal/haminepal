@@ -1,21 +1,23 @@
-import * as React from "react";
-import "./style.scss";
-import president from "../../Assets/president.jpg";
-import banner1 from "../../Assets/banner1.jpg";
-import banner2 from "../../Assets/banner2.jpg";
-import banner3 from "../../Assets/banner3.jpg";
-import vicePresident from "../../Assets/vicePresident.jpg";
-import treasurer from "../../Assets/treasurer.jpg";
-import healthAdvisior from "../../Assets/healthAdvisior.jpg";
-import generalSecurity from "../../Assets/generalSecurity.jpg";
-import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import * as React from "react"
+import "./style.scss"
+import president from "../../Assets/president.jpg"
+import banner1 from "../../Assets/banner1.jpg"
+import banner2 from "../../Assets/banner2.jpg"
+import banner3 from "../../Assets/banner3.jpg"
+import vicePresident from "../../Assets/vicePresident.jpg"
+import treasurer from "../../Assets/treasurer.jpg"
+import healthAdvisior from "../../Assets/healthAdvisior.jpg"
+import generalSecurity from "../../Assets/generalSecurity.jpg"
+import PropTypes from "prop-types"
+import Tabs from "@mui/material/Tabs"
+import Tab from "@mui/material/Tab"
+import Typography from "@mui/material/Typography"
+import Box from "@mui/material/Box"
+import Card from "@mui/material/Card"
+import CardMedia from "@mui/material/CardMedia"
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props
 
   return (
     <div
@@ -31,28 +33,28 @@ function TabPanel(props) {
         </Box>
       )}
     </div>
-  );
+  )
 }
 
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
-};
+}
 
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
     "aria-controls": `simple-tabpanel-${index}`,
-  };
+  }
 }
 
 export default function AboutUsTabs() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(0)
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
 
   return (
     <div className="aboutUsTabs__container">
@@ -76,10 +78,7 @@ export default function AboutUsTabs() {
           value={value}
           index={0}
         >
-          <img
-            src={banner1}
-            alt="banner"
-          />
+          <img src={banner1} alt="banner" />
           <h1>INTRODUCTION</h1>
           <p>
             Hami Nepal Youth Organisation is a non-profit organisation,
@@ -92,7 +91,8 @@ export default function AboutUsTabs() {
             establish effective helping. All of our volunteers, mobilised for
             the authentication of the problem, logistics and delivery, cover
             their own expenses in order to save the administrative expense.
-          </p><br/>
+          </p>
+          <br />
           <h1>HISTORY OF THE ORGANISATION</h1>
           <p>
             On 25 April, 2015 an earthquake with a magnitude of 7.8 Richter
@@ -100,7 +100,8 @@ export default function AboutUsTabs() {
             throughout the nation at the intervals of 15-20 minutes. The
             earthquake affected a huge population of the nation with about 9,000
             fatalities and nearly 22,000 injured people.
-          </p><br/>
+          </p>
+          <br />
 
           <p>
             All of the hospitals in Kathmandu were in chaos and unmanaged with
@@ -109,7 +110,8 @@ export default function AboutUsTabs() {
             organization founder, Mr. Sudan Gurung, who was not even from the
             social-work background, saw the miserable condition of the hospital
             and decided to help however he could.
-          </p><br/>
+          </p>
+          <br />
           <p>
             Nonetheless, the situation was much worse and one single person
             couldn’t make a whole hospital operational so he called out
@@ -117,7 +119,7 @@ export default function AboutUsTabs() {
             volunteers showed up for help. The number grew from 200 to 300
             reaching 1600 total.
           </p>
-          <br/>
+          <br />
           <p>
             Together, the young army of volunteers first volunteered in order to
             help the hospital to run properly and then expanded out of Kathmandu
@@ -131,10 +133,7 @@ export default function AboutUsTabs() {
           value={value}
           index={1}
         >
-          <img
-            src={banner2}
-            alt="banner"
-          />
+          <img src={banner2} alt="banner" />
 
           <h2>What We Do?</h2>
           <p>
@@ -152,10 +151,7 @@ export default function AboutUsTabs() {
           value={value}
           index={2}
         >
-          <img
-            src={banner3}
-            alt="banner"
-          />
+          <img src={banner3} alt="banner" />
           <p>
             Given our limited resources, we must ensure that resources are
             delivered to the appropriate location and people.
@@ -198,79 +194,71 @@ export default function AboutUsTabs() {
             <br />
           </p>
           <div className="item">
-            <img src={president} alt="" />
-
-            <h4>SUDAN GURUNG</h4>
-            <div className="position">President</div>
-
-            <p>
-              On 25 April, 2015 an earthquake with a magnitudeof 7.8 Richter
-              scale struck Nepal along with continued aftershocks occurring
-              throughout the nation at the intervals of 15–20 minutes. The
-              earthquake affected a huge population of the nation with about
-              9,000 fatalities and nearly 22,000 injured people.
-            </p>
+            <Card sx={{ maxWidth: 400 }}>
+              <CardMedia
+                component="img"
+                height="500"
+                image={president}
+                alt="president"
+              />
+              <h4>SUDAN GURUNG</h4>
+              <div className="position">President</div>
+            </Card>
           </div>
           <div className="item">
-            <img src={vicePresident} alt="" />
+            <Card>
+              <CardMedia
+                component="img"
+                height="500"
+                image={vicePresident}
+                alt="vice-president"
+              />
 
-            <h4>RUPAK GHIMIRE</h4>
-            <div className="position">Vice President</div>
-
-            <p>
-              Dr. Rupak B. K. Ghimire is our young and enthusiastic
-              dermatologist and hair transplant surgeon. He is popularly known
-              as Ayushman Ghimire as he has been a winner of Mr Nepal 2011, lead
-              actor in a movie and appeared in many tv commercials and
-              advertisements.
-            </p>
+              <h4>RUPAK GHIMIRE</h4>
+              <div className="position">Vice President</div>
+            </Card>
           </div>
           <div className="item">
-            <img src={healthAdvisior} alt="" />
+            <Card>
+              <CardMedia
+                component="img"
+                height="500"
+                image={healthAdvisior}
+                alt="health-advisor"
+              />
 
-            <h4>GARIMA SHRESTHA</h4>
-            <div className="position">Health Advisior</div>
-
-            <p>
-              Dr Garima Shrestha, is doing her MD Residency in Army Hospital
-              Chhauni , completed her MBBS from Manipal College of Medical
-              Sciences, Pokhara . She is the Founder of SHE Nepal , working for
-              women health and empowerment . She is also the Managing Director
-              of Mount Glory Boarding High School , Dhapasi .
-            </p>
+              <h4>GARIMA SHRESTHA</h4>
+              <div className="position">Health Advisor</div>
+            </Card>
           </div>
           <div className="item">
-            <img src={generalSecurity} alt="" />
+            <Card>
+              <CardMedia
+                component="img"
+                height="500"
+                image={generalSecurity}
+                alt="general-security"
+              />
 
-            <h4>PRAGYA BAJRACHARYA</h4>
-            <div className="position">General Security</div>
-
-            <p>
-              Pragya Bajracharya, unemployed, left a well paying job in a Danish
-              Company to dedicate her time in Hami Nepal during the second
-              lockdown. She states ‘Every minute is a chance to change the
-              world. If you believe in your dreams, you have to advocate it
-              everywhere, regardless of how unpleasant some outcomes might be.’
-            </p>
+              <h4>PRAGYA BAJRACHARYA</h4>
+              <div className="position">General Security</div>
+            </Card>
           </div>
           <div className="item">
-            <img src={treasurer} alt="" />
+            <Card>
+              <CardMedia
+                component="img"
+                height="500"
+                image={treasurer}
+                alt="treasurer"
+              />
 
-            <h4>YOGENDRA SHRESTHA</h4>
-            <div className="position">Treasurer</div>
-
-            <p>
-              My name is Yogendra Shrestha, and I've been volunteering at Hami
-              Nepal as the treasurer. I've also been a member of a couple of
-              social groups, including the Jagaruk Maru Yuba Club and the
-              Maruhiti toll sudhar samiti. The major reason I volunteered at
-              Hami Nepal is because I am passionate about working in the field
-              of social work. I enjoy serving the people of my country and hope
-              to set an example for others.
-            </p>
+              <h4>YOGENDRA SHRESTHA</h4>
+              <div className="position">Treasurer</div>
+            </Card>
           </div>
         </TabPanel>
       </Box>
     </div>
-  );
+  )
 }
