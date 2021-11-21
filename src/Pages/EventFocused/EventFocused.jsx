@@ -1,26 +1,26 @@
-import React from "react";
-import "./style.scss";
+import React from 'react';
+import './style.scss';
 
-import Logo from "../../Assets/logo.png";
+import Logo from '../../Assets/logo.png';
 
-import { Link } from "react-location";
+import { Link } from 'react-location';
 
-import { styled } from "@mui/material/styles";
+import { styled } from '@mui/material/styles';
 import LinearProgress, {
   linearProgressClasses,
-} from "@mui/material/LinearProgress";
-import Footer from "../../Components/Footer/Footer";
+} from '@mui/material/LinearProgress';
+import Footer from '../../Components/Footer/Footer';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 10,
   borderRadius: 5,
   [`&.${linearProgressClasses.colorPrimary}`]: {
     backgroundColor:
-      theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
+      theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 5,
-    backgroundColor: theme.palette.mode === "light" ? "#23CE34" : "#308fe8",
+    backgroundColor: theme.palette.mode === 'light' ? '#23CE34' : '#308fe8',
   },
 }));
 
@@ -45,7 +45,7 @@ export default function EventFocused() {
       <div
         className="eventFocused__container__landing__hiddenMenu"
         style={{
-          display: isActiveMenu ? "flex" : "none",
+          display: isActiveMenu ? 'flex' : 'none',
         }}
       >
         <div className="eventFocused__container__landing__hiddenMenu__topbar">
@@ -73,28 +73,28 @@ export default function EventFocused() {
             <Link to="/">Civil Rights Movements</Link>
           </li>
           <li>
-            <Link to="/">Contact Us</Link>
+            <Link to="/contact">Contact Us</Link>
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="/">Login/</Link> <Link to="/">Signup</Link>
+            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
           </li>
         </ul>
         <ul className="eventFocused__container__landing__hiddenMenu__items right">
           <li>
-            <Link to="/">About Us</Link>
+            <Link to="/about">About Us</Link>
           </li>
           <li>
-            <Link to="/">event</Link>
+            <Link to="/causes">Causes</Link>
           </li>
           <li>
-            <Link to="/">Events</Link>
+            <Link to="/events">Events</Link>
           </li>
           <li>
-            <Link to="/">Transparency</Link>
+            <Link to="/transparency">Transparency</Link>
           </li>
           <li>
-            <Link to="/">eventFocuseds</Link>
+            <Link to="/volunteer">Volunteer</Link>
           </li>
         </ul>
       </div>
@@ -207,7 +207,7 @@ export default function EventFocused() {
         ))}
       </div>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 }

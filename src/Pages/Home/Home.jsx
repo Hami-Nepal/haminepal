@@ -81,7 +81,10 @@ export default function Home() {
             </Link>
           </div>
 
-          <Link className="home__container__landing__footer__ourWork" to="/our-work">
+          <Link
+            className="home__container__landing__footer__ourWork"
+            to="/our-work"
+          >
             Our Work
           </Link>
         </div>
@@ -143,7 +146,7 @@ export default function Home() {
               <Link to="/events">Events</Link>
             </li>
             <li>
-              <Link to="/">Transparency</Link>
+              <Link to="/transparency">Transparency</Link>
             </li>
             <li>
               <Link to="/volunteer">Volunteers</Link>
