@@ -1,12 +1,12 @@
-import React from "react";
-import "./style.scss";
+import React from 'react';
+import './style.scss';
 
-import Logo from "../../Assets/logo.png";
+import Logo from '../../Assets/logo.png';
 
-import { Link } from "react-location";
-import AboutUsTabs from "../../Components/AboutUsTabs/AboutUsTabs";
+import { Link } from 'react-location';
+import AboutUsTabs from '../../Components/AboutUsTabs/AboutUsTabs';
 
-import Footer from "../../Components/Footer/Footer";
+import Footer from '../../Components/Footer/Footer';
 
 export default function AboutUs() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
@@ -30,7 +30,7 @@ export default function AboutUs() {
       <div
         className="aboutUs__container__landing__hiddenMenu"
         style={{
-          display: isActiveMenu ? "flex" : "none",
+          display: isActiveMenu ? 'flex' : 'none',
         }}
       >
         <div className="aboutUs__container__landing__hiddenMenu__topbar">
@@ -58,28 +58,28 @@ export default function AboutUs() {
             <Link to="/">Civil Rights Movements</Link>
           </li>
           <li>
-            <Link to="/">Contact Us</Link>
+            <Link to="/contact">Contact Us</Link>
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="/">Login/</Link> <Link to="/">Signup</Link>
+            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
           </li>
         </ul>
         <ul className="aboutUs__container__landing__hiddenMenu__items right">
           <li>
-            <Link to="/">About Us</Link>
+            <Link to="/about">About Us</Link>
           </li>
           <li>
-            <Link to="/">Cause</Link>
+            <Link to="/causes">Cause</Link>
           </li>
           <li>
-            <Link to="/">Events</Link>
+            <Link to="/events">Events</Link>
           </li>
           <li>
             <Link to="/">Transparency</Link>
           </li>
           <li>
-            <Link to="/">aboutUss</Link>
+            <Link to="/volunteer">Volunteer</Link>
           </li>
         </ul>
       </div>

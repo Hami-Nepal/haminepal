@@ -1,12 +1,12 @@
-import React from "react";
-import "./style.scss";
+import React from 'react';
+import './style.scss';
 
-import Logo from "../../Assets/logo.png";
+import Logo from '../../Assets/logo.png';
 
-import { Link } from "react-location";
+import { Link } from 'react-location';
 
-import CausesTabs from "../../Components/CausesTabs/CausesTabs";
-import Footer from "../../Components/Footer/Footer";
+import CausesTabs from '../../Components/CausesTabs/CausesTabs';
+import Footer from '../../Components/Footer/Footer';
 
 export default function Causes() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
@@ -30,7 +30,7 @@ export default function Causes() {
       <div
         className="causes__container__landing__hiddenMenu"
         style={{
-          display: isActiveMenu ? "flex" : "none",
+          display: isActiveMenu ? 'flex' : 'none',
         }}
       >
         <div className="causes__container__landing__hiddenMenu__topbar">
@@ -58,28 +58,28 @@ export default function Causes() {
             <Link to="/">Civil Rights Movements</Link>
           </li>
           <li>
-            <Link to="/">Contact Us</Link>
+            <Link to="/contact">Contact Us</Link>
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="/">Login/</Link> <Link to="/">Signup</Link>
+            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
           </li>
         </ul>
         <ul className="causes__container__landing__hiddenMenu__items right">
           <li>
-            <Link to="/">About Us</Link>
+            <Link to="/about">About Us</Link>
           </li>
           <li>
-            <Link to="/">Cause</Link>
+            <Link to="/causes">Cause</Link>
           </li>
           <li>
-            <Link to="/">Events</Link>
+            <Link to="/events">Events</Link>
           </li>
           <li>
-            <Link to="/">Transparency</Link>
+            <Link to="/transparency">Transparency</Link>
           </li>
           <li>
-            <Link to="/">causess</Link>
+            <Link to="/volunteer">Volunteer</Link>
           </li>
         </ul>
       </div>
@@ -96,9 +96,9 @@ export default function Causes() {
         <Link to="/new-volunteer">Create a cause</Link>
       </div>
 
-      <CausesTabs/>
+      <CausesTabs />
 
-      <Footer/>
+      <Footer />
     </div>
   );
 }

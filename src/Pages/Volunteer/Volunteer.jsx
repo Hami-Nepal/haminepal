@@ -1,15 +1,24 @@
-import React from "react";
-import "./style.scss";
+import React, { useEffect } from 'react';
+import './style.scss';
 
-import Logo from "../../Assets/logo.png";
+import Logo from '../../Assets/logo.png';
 
-import { Link } from "react-location";
+import { Link } from 'react-location';
 
-import VolunteerCard from "../../Components/VolunteerCard/VolunteerCard";
-import Footer from "../../Components/Footer/Footer";
+import VolunteerCard from '../../Components/VolunteerCard/VolunteerCard';
+import Footer from '../../Components/Footer/Footer';
+
+import baseURL from '../../api/baseURL';
 
 export default function Volunteer() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
+  const [volunteers, setVolunteers] = React.useState([]);
+
+  useEffect(() => {
+    fetch(baseURL + '/volunteers')
+      .then((data) => data.json())
+      .then(({ data }) => setVolunteers(data));
+  }, []);
 
   return (
     <div className="volunteer__container">
@@ -30,7 +39,7 @@ export default function Volunteer() {
       <div
         className="volunteer__container__landing__hiddenMenu"
         style={{
-          display: isActiveMenu ? "flex" : "none",
+          display: isActiveMenu ? 'flex' : 'none',
         }}
       >
         <div className="volunteer__container__landing__hiddenMenu__topbar">
@@ -58,28 +67,28 @@ export default function Volunteer() {
             <Link to="/">Civil Rights Movements</Link>
           </li>
           <li>
-            <Link to="/">Contact Us</Link>
+            <Link to="/contact">Contact Us</Link>
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="/">Login/</Link> <Link to="/">Signup</Link>
+            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
           </li>
         </ul>
         <ul className="volunteer__container__landing__hiddenMenu__items right">
           <li>
-            <Link to="/">About Us</Link>
+            <Link to="/about">About Us</Link>
           </li>
           <li>
-            <Link to="/">Cause</Link>
+            <Link to="/causes">Cause</Link>
           </li>
           <li>
-            <Link to="/">Events</Link>
+            <Link to="/events">Events</Link>
           </li>
           <li>
-            <Link to="/">Transparency</Link>
+            <Link to="/transparency">Transparency</Link>
           </li>
           <li>
-            <Link to="/">Volunteers</Link>
+            <Link to="/volunteer">Volunteers</Link>
           </li>
         </ul>
       </div>
@@ -111,8 +120,8 @@ export default function Volunteer() {
 
       {/* @section => cards */}
       <div className="volunteer__container__cards">
-        {[0, 1, 2, 3, 4, 5].map((item) => (
-          <VolunteerCard key={item} />
+        {volunteers.map((volunteer) => (
+          <VolunteerCard {...volunteer} key={volunteer._id} />
         ))}
       </div>
 

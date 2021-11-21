@@ -1,19 +1,16 @@
-import { Button } from "@mui/material";
-import React from "react";
-import "./style.scss";
+import { Button } from '@mui/material';
+import React from 'react';
+import './style.scss';
 
-export default function VolunteerCard() {
+export default function VolunteerCard(props) {
   return (
     <div className="volunteerCard__container">
-      <img src="https://avatars.githubusercontent.com/u/93444253?s=400&u=389a238cf991d86adcc03166270d30241e94a95b&v=4" alt="donor" />
-      <div className="volunteerCard__container__name">Deekshya Shahi</div>
-      <div className="volunteerCard__container__email">
-        deekshyashahi@gmail.com
+      <img src={props.photo} alt="donor" />
+      <div className="volunteerCard__container__name">
+        {props.first_name} {props.last_name}
       </div>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime quis
-        autem, corporis excepturi
-      </p>
+      <div className="volunteerCard__container__email">{props.email} </div>
+      <p>{props.bio}</p>
       <Button>Donate</Button>
     </div>
   );
