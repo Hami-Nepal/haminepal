@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
 import './style.scss';
 
 import Logo from '../../Assets/logo.png';
@@ -6,9 +7,18 @@ import Logo from '../../Assets/logo.png';
 import { Link } from 'react-location';
 import Footer from '../../Components/Footer/Footer';
 import { Button } from '@mui/material';
+import baseURL from '../../api/baseURL';
 
-export default function VolunteerProfile() {
+export default function VolunteerProfile(props) {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
+  const [volunteer, setVolunteer] = useState({});
+
+  useEffect(() => {
+    fetch(baseURL + '/volunteers/' + window.location.pathname.split('/').pop())
+      .then((data) => data.json())
+      .then(({ data }) => setVolunteer(data.volunteer))
+      .catch(({ response }) => console.log(response));
+  }, []);
 
   return (
     <div className="volunteerProfile__container">
@@ -88,49 +98,48 @@ export default function VolunteerProfile() {
       {/* @section => main content */}
       <div className="volunteerProfile__container__main">
         <div className="volunteerProfile__container__main__userimage">
-          <img
-            src="https://avatars.githubusercontent.com/u/93444253?s=400&u=389a238cf991d86adcc03166270d30241e94a95b&v=4"
-            alt=""
-          />
-          <div className="name">Deekshya Shahi</div>
-          <div className="position">Moto Vlogger</div>
+          <img src={volunteer.photo} alt="" />
+          <div className="name">
+            {volunteer.first_name} {volunteer.last_name}
+          </div>
+          <div className="position">{volunteer.field_of_expertise}</div>
         </div>
         <div className="volunteerProfile__container__main__userinfo">
           <div>
             <h4>Phone Number</h4>
-            <p>9849092326</p>
+            <p>{volunteer.phone}</p>
 
             <h4>Email Address</h4>
-            <p>deekshyashahi@gmail.com</p>
+            <p>{volunteer.email}</p>
 
             <h4>City</h4>
-            <p>Surkhet</p>
+            <p>{volunteer.city}</p>
 
             <h4>Street Address</h4>
-            <p>Birendra Nagar</p>
+            <p>{volunteer.street_address}</p>
 
             <h4>Age</h4>
-            <p>18</p>
+            <p>{volunteer.age}</p>
 
             <h4>Country</h4>
-            <p>Nepal</p>
+            <p>{volunteer.country}</p>
           </div>
 
           <div>
+            <h4>Blood group</h4>
+            <p>{volunteer.bloodGroup}</p>
+
             <h4>Motivation</h4>
-            <p>Want to help hami nepal</p>
+            <p>{volunteer.motivation}</p>
 
             <h4>Bio</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
-              repudiandae expedita explicabo, distinctio voluptatum accusantium
-              voluptate. Omnis, vel corrupti blanditiis cupiditate quaerat,
-              obcaecati exercitationem ad sequi atque voluptatem mollitia
-              facere!
-            </p>
+            <p>{volunteer.bio}</p>
 
             <h4>Number of Projects Involved</h4>
-            <p>10</p>
+            <p>
+              {volunteer.event_involvement?.length +
+                volunteer.cause_involvement?.length}
+            </p>
           </div>
         </div>
       </div>
