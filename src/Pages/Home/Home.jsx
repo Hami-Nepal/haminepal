@@ -26,6 +26,7 @@ export default function Home() {
   const [kindness, setKindness] = useState([]);
   const [totalDonations, setTotalDonations] = useState(0);
   const [totalExpenses, setTotalExpenses] = useState(0);
+  const [homeHero, setHomeHero] = useState({});
 
   useEffect(() => {
     fetch(baseURL + '/donations?sort=-donation_amount&limit=5')
@@ -47,6 +48,10 @@ export default function Home() {
       .then(({ data }) =>
         setTotalExpenses(data.length ? data[0].total_expenses : 0)
       );
+
+    fetch(baseURL + '/homepage')
+      .then((data) => data.json())
+      .then(({ data }) => setHomeHero(data[0]));
   }, []);
 
   return (
@@ -58,7 +63,7 @@ export default function Home() {
       <div className="home__container__landing">
         <video
           className="Home__video"
-          src={BannerVideo}
+          src={homeHero.videoUrl}
           preload="metadata"
           autoPlay={true}
           muted={true}
@@ -85,7 +90,9 @@ export default function Home() {
 
         <div className="home__container__landing__footer">
           <div>
-            <h1>For the people by the people.</h1>
+            <h1 style={{ color: homeHero.color || 'white' }}>
+              {homeHero.content}
+            </h1>
             <Link
               onClick={() => setIsDonationFormOpen(true)}
               className="home__container__landing__footer__donate"
