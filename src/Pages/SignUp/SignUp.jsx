@@ -7,6 +7,7 @@ import { Link } from "react-location";
 import { Button } from "@mui/material";
 import Footer from "../../Components/Footer/Footer";
 import axios from "axios";
+import { isEmail } from "validator";
 
 export default function SignUp() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
@@ -31,28 +32,23 @@ export default function SignUp() {
     // formData.append("email", email);
     // formData.append("password", password);
 
-    axios({
-      method: "POST",
-      url: "https://api.hminepal.org/api/v1/users/signup",
-      data: {
+    axios
+      .post("http://localhost:5000/api/v1/users/signup", {
         firstname: firstName,
         lastname: lastName,
         email: email,
         password: password,
-      },
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then(function (response) {
+      })
+      .then((response) => {
         //handle success
         alert("Registered successfully");
         setSending(false);
         setSuccessful(true);
       })
-      .catch(function (response) {
+      .catch((err) => {
         //handle error
-        setError(response.message);
+        // console.log(err.response);
+        setError(err.response.data.msg);
         setSending(false);
       });
   };
@@ -144,6 +140,7 @@ export default function SignUp() {
                   type='text'
                   placeholder='First Name'
                   value={firstName}
+                  autoFocus
                   onChange={(e) => {
                     setFirstName(e.target.value);
                   }}
@@ -152,6 +149,7 @@ export default function SignUp() {
                   type='text'
                   placeholder='Last Name'
                   value={lastName}
+                  autoFocus
                   onChange={(e) => {
                     setLastName(e.target.value);
                   }}
@@ -164,8 +162,14 @@ export default function SignUp() {
                   type='email'
                   placeholder='Email Address'
                   value={email}
+                  autoFocus
                   onChange={(e) => {
                     setEmail(e.target.value);
+                    if (!isEmail(email)) {
+                      setError("Please enter valid email");
+                    } else {
+                      setError("");
+                    }
                   }}
                 />
               </div>
@@ -176,6 +180,7 @@ export default function SignUp() {
                   type='password'
                   placeholder='Password'
                   value={password}
+                  autoFocus
                   onChange={(e) => {
                     setPassword(e.target.value);
                   }}
@@ -185,6 +190,7 @@ export default function SignUp() {
                   type='password'
                   placeholder='Confirm Password'
                   value={confrimPassword}
+                  autoFocus
                   onChange={(e) => {
                     setConfrimPassword(e.target.value);
                   }}

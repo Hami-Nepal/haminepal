@@ -7,6 +7,7 @@ import { Link } from "react-location";
 import { Button } from "@mui/material";
 import Footer from "../../Components/Footer/Footer";
 import axios from "axios";
+import { isEmail } from "validator";
 
 export default function Login() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
@@ -36,13 +37,17 @@ export default function Login() {
     })
       .then(function (response) {
         //handle success
+        if (response.data.accessToken) {
+          localStorage.setItem("user", JSON.stringify(response.data));
+        }
         alert("loggged In");
         setSending(false);
         setSuccessful(true);
+        return response.data;
       })
-      .catch(function (response) {
+      .catch(function (err) {
         //handle error
-        setError(response.message);
+        setError(err.response.data.msg);
         setSending(false);
       });
   };
@@ -135,6 +140,11 @@ export default function Login() {
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
+                  if (!isEmail(email)) {
+                    setError("Please enter valid email");
+                  } else {
+                    setError("");
+                  }
                 }}
               />
               <input
