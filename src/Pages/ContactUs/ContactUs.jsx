@@ -1,18 +1,54 @@
-import React from "react";
-import "./style.scss";
+import React from "react"
+import "./style.scss"
 
-import Logo from "../../Assets/logo.png";
+import Logo from "../../Assets/logo.png"
 
-import { Link } from "react-location";
-import Iframe from "react-iframe";
-import { Button } from "@mui/material";
-import Footer from "../../Components/Footer/Footer";
+import { Link } from "react-location"
+import Iframe from "react-iframe"
+import { Button } from "@mui/material"
+import Footer from "../../Components/Footer/Footer"
+
+import emailjs from "emailjs-com"
+import { useForm } from "react-hook-form"
 
 /**
  * @dev add messanger chat bot
  */
 export default function ContactUs() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
+  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
+  const [sucessMessage, setSucessMessage] = React.useState("")
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  const serviceID = "service_csaylw9"
+  const templatedID = "template_ylwv55j"
+  const userID = "user_rvYNwEQQRyZaCjPfjPCkG"
+
+  const onSubmit = (data, r) => {
+    sendEmail(
+      serviceID,
+      templatedID,
+      {
+        name: data.name,
+        email: data.email,
+        description: data.description,
+      },
+      userID
+    )
+    r.target.reset()
+  }
+
+  const sendEmail = (serviceID, templatedID, variables, userID) => {
+    emailjs
+      .send(serviceID, templatedID, variables, userID)
+      .then(() => {
+        setSucessMessage("Thank your for contacting us..")
+      })
+      .catch((err) => console.error(`Something Went Wrong ${err}`))
+  }
 
   return (
     <div className="contactUs__container">
@@ -61,52 +97,96 @@ export default function ContactUs() {
             <Link to="/">Civil Rights Movements</Link>
           </li>
           <li>
-            <Link to="/">Contact Us</Link>
+            <Link to="/contact">Contact Us</Link>
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="/">Login/</Link> <Link to="/">Signup</Link>
+            <Link to="/login">Login/</Link> <Link to="/Signup">Signup</Link>
           </li>
         </ul>
         <ul className="contactUs__container__landing__hiddenMenu__items right">
           <li>
-            <Link to="/">About Us</Link>
+            <Link to="/about">About Us</Link>
           </li>
           <li>
-            <Link to="/">Cause</Link>
+            <Link to="/causes">Cause</Link>
           </li>
           <li>
-            <Link to="/">Events</Link>
+            <Link to="/events">Events</Link>
           </li>
           <li>
-            <Link to="/">Transparency</Link>
+            <Link to="/transparency">Transparency</Link>
           </li>
           <li>
-            <Link to="/">contactUss</Link>
+            <Link to="/volunteer">Volunteer</Link>
           </li>
         </ul>
       </div>
 
       {/* @section => form */}
+      <span className="sucess-message">{sucessMessage}</span>
       <div className="contactUs__container__form">
         <h1>Contact Us</h1>
         <div className="divider"></div>
 
         {/* @section => form container */}
         <div className="contactUs__container__form__inputs">
-          <div className="contactUs__container__form__inputs__input left">
-            <input type="text" placeholder="Full Name" />
-            <input type="email" placeholder="Email Address" />
-            <textarea
-              name=""
-              placeholder="Message"
-              id=""
-              cols="30"
-              rows="10"
-            ></textarea>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="contactUs__container__form__inputs__input left">
+              <input
+                autoFocus
+                placeholder="Full Name"
+                id="name"
+                type="text"
+                name="name"
+                aria-invalid={errors.name ? "true" : "false"}
+                {...register("name", {
+                  required: "Please enter your name",
+                  maxLength: {
+                    value: 50,
+                    message:
+                      "Please enter a name with fewer than 50 characters",
+                  },
+                })}
+              />
+              <span className="error-message">
+                {errors.name && errors.name.message}
+              </span>
+              <input
+                type="email"
+                id="email"
+                placeholder="Email Address"
+                name="email"
+                aria-invalid={errors.email ? "true" : "false"}
+                {...register("email", {
+                  required: "Please enter your email",
+                  pattern: {
+                    value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i,
+                    message: "invalid Email",
+                  },
+                })}
+              />
+              <span className="error-message">
+                {errors.email && errors.email.message}
+              </span>
+              <textarea
+                name="description"
+                placeholder="Message"
+                id="description"
+                cols="30"
+                rows="10"
+                aria-invalid={errors.description ? "true" : "false"}
+                {...register("description", {
+                  required: "Write some message",
+                })}
+              ></textarea>
+              <span className="error-message">
+                {errors.description && errors.description.message}
+              </span>
 
-            <Button>Submit</Button>
-          </div>
+              <button className="btn-submit">Submit</button>
+            </div>
+          </form>
 
           <div className="contactUs__container__form__inputs__input right">
             <Iframe
@@ -121,7 +201,7 @@ export default function ContactUs() {
         </div>
       </div>
 
-      <Footer/>
+      <Footer />
     </div>
-  );
+  )
 }
