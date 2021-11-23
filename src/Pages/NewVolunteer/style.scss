@@ -72,7 +72,7 @@
         padding-top: 15vh;
 
         a {
-          font-family: "Playfair Display", serif;
+          font-family: 'Playfair Display', serif;
           font-size: 50px;
           font-weight: 700;
 
@@ -94,7 +94,7 @@
     h1 {
       font-size: 50px;
       font-weight: 700;
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
     }
 
     .divider {
@@ -104,7 +104,7 @@
       margin: 20px 0 30px 0;
     }
 
-    input[type="file"] {
+    input[type='file'] {
       display: none;
     }
 
@@ -133,7 +133,8 @@
         &.left {
           flex: 3;
 
-          input {
+          input,
+          select {
             width: 45%;
             margin-bottom: 20px;
             border: 0.3px solid #7a7a7a;
@@ -148,7 +149,7 @@
             }
           }
 
-          input[type="checkbox"]{
+          input[type='checkbox'] {
             width: 20px;
             height: 20px;
             margin-right: 15px;
@@ -167,12 +168,12 @@
       }
     }
 
-    .MuiButton-root{
-        display: block;
-        background: #9F1718;
-        color: #fff;
-        padding: 10px 35px;
-        margin-top: 10px;
+    .MuiButton-root {
+      display: block;
+      background: #9f1718;
+      color: #fff;
+      padding: 10px 35px;
+      margin-top: 10px;
     }
   }
 }
