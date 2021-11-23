@@ -18,14 +18,11 @@ export default function ContactUs() {
   const [sucessMessage, setSucessMessage] = React.useState("")
   const[sending,setSending]=React.useState(false)
 
-  
-
-
-  const {
+    const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm()
+  } = useForm("")
 
   const serviceID = "service_csaylw9"
   const templatedID = "template_ylwv55j"
@@ -33,6 +30,10 @@ export default function ContactUs() {
 
   const onSubmit = (data, r) => {
     setSending(true)
+    setSucessMessage("")
+
+  
+
     sendEmail(
       serviceID,
       templatedID,
@@ -44,15 +45,18 @@ export default function ContactUs() {
       userID
     )
     r.target.reset()
+  
   }
 
   const sendEmail = (serviceID, templatedID, variables, userID) => {
+    console.log(variables)
     emailjs
       .send(serviceID, templatedID, variables, userID)
       .then(() => {
-        
+       
         setSucessMessage("Thank your for contacting us..")
         setSending(false)
+        window.location.reload(false)
       })
       .catch((err) => alert(`Something Went Wrong`))
   }
