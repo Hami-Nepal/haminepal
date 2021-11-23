@@ -255,9 +255,7 @@ export default function NewVolunteer() {
                 onChange={onFieldChange('state')}
                 required
               >
-                <option disabled selected>
-                  State
-                </option>
+                <option hidden>State</option>
                 {[
                   'Province 1',
                   'Province 2',
@@ -286,9 +284,7 @@ export default function NewVolunteer() {
                 required
                 onChange={onFieldChange('bloodGroup')}
               >
-                <option disabled selected>
-                  Blood group
-                </option>
+                <option hidden>Blood group</option>
                 {[
                   'A +ve',
                   'B +ve',
