@@ -5,7 +5,6 @@ import Logo from "../../Assets/logo.png"
 
 import { Link } from "react-location"
 import Iframe from "react-iframe"
-import { Button } from "@mui/material"
 import Footer from "../../Components/Footer/Footer"
 
 import emailjs from "emailjs-com"
@@ -17,6 +16,11 @@ import { useForm } from "react-hook-form"
 export default function ContactUs() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false)
   const [sucessMessage, setSucessMessage] = React.useState("")
+  const[sending,setSending]=React.useState(false)
+
+  
+
+
   const {
     register,
     handleSubmit,
@@ -28,6 +32,7 @@ export default function ContactUs() {
   const userID = "user_rvYNwEQQRyZaCjPfjPCkG"
 
   const onSubmit = (data, r) => {
+    setSending(true)
     sendEmail(
       serviceID,
       templatedID,
@@ -45,9 +50,11 @@ export default function ContactUs() {
     emailjs
       .send(serviceID, templatedID, variables, userID)
       .then(() => {
+        
         setSucessMessage("Thank your for contacting us..")
+        setSending(false)
       })
-      .catch((err) => console.error(`Something Went Wrong ${err}`))
+      .catch((err) => alert(`Something Went Wrong`))
   }
 
   return (
@@ -124,6 +131,7 @@ export default function ContactUs() {
       </div>
 
       {/* @section => form */}
+      {/* Mail send Sucess Message */}
       <span className="sucess-message">{sucessMessage}</span>
       <div className="contactUs__container__form">
         <h1>Contact Us</h1>
@@ -184,7 +192,7 @@ export default function ContactUs() {
                 {errors.description && errors.description.message}
               </span>
 
-              <button className="btn-submit">Submit</button>
+              <button className="btn-submit" >{sending?"sending...":"Submit"}</button>
             </div>
           </form>
 

@@ -1,14 +1,16 @@
-import * as React from "react";
-import "./style.scss";
+import * as React from "react"
+import "./style.scss"
 
-import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import PropTypes from "prop-types"
+import Tabs from "@mui/material/Tabs"
+import Tab from "@mui/material/Tab"
+import Typography from "@mui/material/Typography"
+import Box from "@mui/material/Box"
+
+import { useEffect } from "react"
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props
 
   return (
     <div
@@ -24,28 +26,45 @@ function TabPanel(props) {
         </Box>
       )}
     </div>
-  );
+  )
 }
 
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
-};
+}
 
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
     "aria-controls": `simple-tabpanel-${index}`,
-  };
+  }
 }
 
 export default function OurWorkTabs() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(0)
+  const [events, setEvents] = React.useState([])
+  const [causes, setCauses] = React.useState([])
+  console.log(events, "cause", causes)
+
+  useEffect(() => {
+    fetch("https://api.haminepal.org/api/v1/events")
+      .then((data) => data.json())
+      .then((events) => setEvents(events.data))
+      .catch(({ response }) => console.log(response))
+  }, [])
+
+  useEffect(() => {
+    fetch("https://api.haminepal.org/api/v1/causes")
+      .then((data) => data.json())
+      .then((causes) => setCauses(causes.data))
+      .catch(({ response }) => console.log(response))
+  }, [])
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
 
   return (
     <div className="ourWorkTabs__container">
@@ -58,264 +77,71 @@ export default function OurWorkTabs() {
             onChange={handleChange}
             aria-label="basic tabs example"
           >
-            <Tab label="Natural Calamities" {...a11yProps(0)} />
-            <Tab label="Animal Welfare" {...a11yProps(1)} />
-            <Tab label="Shelter" {...a11yProps(2)} />
-            <Tab label="Child Education" {...a11yProps(3)} />
-            <Tab label="Pregnant Woman Rescue" {...a11yProps(4)} />
+            {events.map((data) => (
+              <Tab label={data.name} />
+            ))}
+            {causes.map((data) => (
+              <Tab label={data.name} />
+            ))}
           </Tabs>
         </Box>
-        <TabPanel
-          className="ourWorkTabs__container__items"
-          value={value}
-          index={0}
-        >
-          <div className="images">
-            <div className="column">
-              <img
-                src="https://images.unsplash.com/photo-1633114128814-11fac33f707b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1637270868031-b28f517e152e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1636886519725-6a048800b5b4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=928&q=80"
-                alt=""
-              />
+        {events.map((data) => (
+          <TabPanel
+            className="ourWorkTabs__container__items"
+            value={value}
+            index={0}
+          >
+            <div className="images">
+              <div className="column">
+                <img src={data.photos} alt="" />
+                <p>{data.name}</p>
+              </div>
             </div>
-            <div className="column">
-              <img
-                src="https://images.unsplash.com/photo-1637140548016-882a3f9a819b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1637139500424-2bd66d5edd23?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1633114128814-11fac33f707b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
+          </TabPanel>
+        ))}
+        {events.map((data) => (
+          <TabPanel
+            className="ourWorkTabs__container__items"
+            value={value}
+            index={1}
+          >
+            <div className="images">
+              <div className="column">
+                <img src={data.photos} alt="" />
+                <p>{data.name}</p>
+              </div>
             </div>
-            <div className="column">
-              <img
-                src="https://images.unsplash.com/photo-1637285051313-5316119f852e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1574307469860-7ad5a52e2686?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1637275769153-b5fb9e5647f1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
+          </TabPanel>
+        ))}
+        {causes.map((data) => (
+          <TabPanel
+            className="ourWorkTabs__container__items"
+            value={value}
+            index={2}
+          >
+            <div className="images">
+              <div className="column">
+                <img src={data.photos} alt="" />
+                <p>{data.name}</p>
+              </div>
             </div>
-          </div>
-        </TabPanel>
-        <TabPanel
-          className="ourWorkTabs__container__items"
-          value={value}
-          index={1}
-        >
-          <div className="images">
-            <div className="column">
-              <img
-                src="https://images.unsplash.com/photo-1633114128814-11fac33f707b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1637270868031-b28f517e152e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1636886519725-6a048800b5b4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=928&q=80"
-                alt=""
-              />
+          </TabPanel>
+        ))}
+        {causes.map((data) => (
+          <TabPanel
+            className="ourWorkTabs__container__items"
+            value={value}
+            index={3}
+          >
+            <div className="images">
+              <div className="column">
+                <img src={data.photos} alt="" />
+                <p>{data.name}</p>
+              </div>
             </div>
-            <div className="column">
-              <img
-                src="https://images.unsplash.com/photo-1637140548016-882a3f9a819b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1637139500424-2bd66d5edd23?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1633114128814-11fac33f707b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-            </div>
-            <div className="column">
-              <img
-                src="https://images.unsplash.com/photo-1637285051313-5316119f852e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1574307469860-7ad5a52e2686?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1637275769153-b5fb9e5647f1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-            </div>
-          </div>
-        </TabPanel>
-        <TabPanel
-          className="ourWorkTabs__container__items"
-          value={value}
-          index={2}
-        >
-          <div className="images">
-            <div className="column">
-              <img
-                src="https://images.unsplash.com/photo-1633114128814-11fac33f707b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1637270868031-b28f517e152e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1636886519725-6a048800b5b4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=928&q=80"
-                alt=""
-              />
-            </div>
-            <div className="column">
-              <img
-                src="https://images.unsplash.com/photo-1637140548016-882a3f9a819b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1637139500424-2bd66d5edd23?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1633114128814-11fac33f707b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-            </div>
-            <div className="column">
-              <img
-                src="https://images.unsplash.com/photo-1637285051313-5316119f852e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1574307469860-7ad5a52e2686?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1637275769153-b5fb9e5647f1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-            </div>
-          </div>
-        </TabPanel>
-        <TabPanel
-          className="ourWorkTabs__container__items"
-          value={value}
-          index={3}
-        >
-          <div className="images">
-            <div className="column">
-              <img
-                src="https://images.unsplash.com/photo-1633114128814-11fac33f707b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1637270868031-b28f517e152e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1636886519725-6a048800b5b4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=928&q=80"
-                alt=""
-              />
-            </div>
-            <div className="column">
-              <img
-                src="https://images.unsplash.com/photo-1637140548016-882a3f9a819b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1637139500424-2bd66d5edd23?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1633114128814-11fac33f707b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-            </div>
-            <div className="column">
-              <img
-                src="https://images.unsplash.com/photo-1637285051313-5316119f852e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1574307469860-7ad5a52e2686?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1637275769153-b5fb9e5647f1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-            </div>
-          </div>
-        </TabPanel>
-        <TabPanel
-          className="ourWorkTabs__container__items"
-          value={value}
-          index={4}
-        >
-          <div className="images">
-            <div className="column">
-              <img
-                src="https://images.unsplash.com/photo-1633114128814-11fac33f707b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1637270868031-b28f517e152e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1636886519725-6a048800b5b4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=928&q=80"
-                alt=""
-              />
-            </div>
-            <div className="column">
-              <img
-                src="https://images.unsplash.com/photo-1637140548016-882a3f9a819b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1637139500424-2bd66d5edd23?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1633114128814-11fac33f707b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-            </div>
-            <div className="column">
-              <img
-                src="https://images.unsplash.com/photo-1637285051313-5316119f852e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=774&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1574307469860-7ad5a52e2686?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1637275769153-b5fb9e5647f1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-            </div>
-          </div>
-        </TabPanel>
+          </TabPanel>
+        ))}
       </Box>
     </div>
-  );
+  )
 }
