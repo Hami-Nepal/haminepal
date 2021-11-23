@@ -187,3 +187,17 @@
     }
   }
 }
+
+.volunteer {
+  margin: 1rem 0 1.5rem;
+  line-height: 1.8rem;
+  font-weight: 600;
+}
+
+.volunteer__success {
+  color: rgb(35, 131, 35);
+}
+
+.volunteer__failed {
+  color: rgb(179, 24, 24);
+}
