@@ -97,6 +97,10 @@ export default function Home() {
               onClick={() => setIsDonationFormOpen(true)}
               className="home__container__landing__footer__donate"
               to="/"
+              style={{
+                color: homeHero.color || 'white',
+                borderColor: homeHero.color || 'white',
+              }}
             >
               Donate
             </Link>
@@ -105,6 +109,10 @@ export default function Home() {
           <Link
             className="home__container__landing__footer__ourWork"
             to="/our-work"
+            style={{
+              color: homeHero.color || 'white',
+              borderColor: homeHero.color || 'white',
+            }}
           >
             Our Work
           </Link>
