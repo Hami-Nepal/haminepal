@@ -111,12 +111,22 @@
     .custom-file-upload {
       display: flex;
       align-items: center;
+      gap: 1rem;
       border: 0.5px solid #000;
-      width: 180px;
-      padding: 10px;
+      padding: 15px;
       border-radius: 5px;
       justify-content: space-around;
       margin-bottom: 30px;
+      width: max-content;
+      cursor: pointer;
+
+      img {
+        @media (max-width: 768px) {
+          width: 130px;
+        }
+
+        width: 250px;
+      }
     }
 
     .newVolunteer__container__form__inputs {

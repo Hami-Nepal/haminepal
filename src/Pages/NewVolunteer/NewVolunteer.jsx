@@ -9,8 +9,21 @@ import { Avatar, Button } from '@mui/material';
 
 import Footer from '../../Components/Footer/Footer';
 
+const fileReader = new FileReader();
+
 export default function NewVolunteer() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
+  const [volunteerImg, setVolunteerImg] = React.useState(null);
+  const [volunteerImgUrl, setVolunteerImgUrl] = React.useState('');
+
+  const onSelectImage = (event) => {
+    setVolunteerImg(event.target.files[0]);
+
+    if (event.target.files[0]) fileReader.readAsDataURL(event.target.files[0]);
+    fileReader.onload = (e) => {
+      setVolunteerImgUrl(e.target.result);
+    };
+  };
 
   return (
     <div className="newVolunteer__container">
@@ -94,9 +107,10 @@ export default function NewVolunteer() {
         <div className="uploadImage">
           <label for="file-upload" className="custom-file-upload">
             {/* on image upload preview here */}
-            <Avatar /> <div>Upload Image</div>
+            {volunteerImg ? <img src={volunteerImgUrl} alt="" /> : <Avatar />}
+            <div>Upload Image</div>
           </label>
-          <input id="file-upload" type="file" />
+          <input id="file-upload" type="file" onChange={onSelectImage} />
         </div>
 
         {/* @section => form container */}
@@ -121,7 +135,46 @@ export default function NewVolunteer() {
               <input type="text" placeholder="Country" />
             </div>
             <div>
+              <select>
+                <option selected disabled>
+                  State
+                </option>
+                {[
+                  'Province 1',
+                  'Province 2',
+                  'Bagmati',
+                  'Gandaki',
+                  'Lumbini',
+                  'Karnali',
+                  'Sudurpashchim',
+                ].map((group) => (
+                  <option value={group} key={group}>
+                    {group}
+                  </option>
+                ))}
+              </select>
               <input type="text" placeholder="Age" />
+            </div>
+            <div>
+              <select>
+                <option selected disabled>
+                  Blood group
+                </option>
+                {[
+                  'A +ve',
+                  'B +ve',
+                  'A -ve',
+                  'AB +ve',
+                  'AB -ve',
+                  'B -ve',
+                  'O +ve',
+                  'O -ve',
+                ].map((group) => (
+                  <option value={group} key={group}>
+                    {group}
+                  </option>
+                ))}
+              </select>
               <input type="text" placeholder="Motivation" />
             </div>
 
