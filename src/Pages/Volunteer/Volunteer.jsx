@@ -15,7 +15,7 @@ export default function Volunteer() {
   const [volunteers, setVolunteers] = React.useState([]);
 
   useEffect(() => {
-    fetch(baseURL + '/volunteers')
+    fetch(baseURL + '/volunteers?isVerified=true')
       .then((data) => data.json())
       .then(({ data }) => setVolunteers(data))
       .catch((err) => console.log(err, '\n', err.response));
