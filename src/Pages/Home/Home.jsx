@@ -40,7 +40,7 @@ export default function Home() {
     fetch(baseURL + '/find/totalDonations')
       .then((data) => data.json())
       .then(({ data }) =>
-        setTotalDonations(data.length ? data[0].total_donations : 0)
+        setTotalDonations(data.length ? data[0].donation : 0)
       );
 
     fetch(baseURL + '/find/totalExpenses')
