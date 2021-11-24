@@ -16,6 +16,8 @@ import Box from "@mui/material/Box"
 import Card from "@mui/material/Card"
 import CardMedia from "@mui/material/CardMedia"
 
+import baseURL from "../../api/baseURL"
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props
 
@@ -51,6 +53,14 @@ function a11yProps(index) {
 
 export default function AboutUsTabs() {
   const [value, setValue] = React.useState(0)
+  const [boardMembers, setBoardMembers] = React.useState([])
+  console.log(boardMembers)
+
+  React.useEffect(() => {
+    fetch(baseURL + "/boardmembers")
+      .then((data) => data.json())
+      .then(({ data }) => setBoardMembers(data))
+  }, [])
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
@@ -193,70 +203,20 @@ export default function AboutUsTabs() {
             <br />
             <br />
           </p>
-          <div className="item">
-            <Card sx={{ maxWidth: 400 }}>
-              <CardMedia
-                component="img"
-                height="500"
-                image={president}
-                alt="president"
-              />
-              <h4>SUDAN GURUNG</h4>
-              <div className="position">President</div>
-            </Card>
-          </div>
-          <div className="item">
-            <Card>
-              <CardMedia
-                component="img"
-                height="500"
-                image={vicePresident}
-                alt="vice-president"
-              />
-
-              <h4>RUPAK GHIMIRE</h4>
-              <div className="position">Vice President</div>
-            </Card>
-          </div>
-          <div className="item">
-            <Card>
-              <CardMedia
-                component="img"
-                height="500"
-                image={healthAdvisior}
-                alt="health-advisor"
-              />
-
-              <h4>GARIMA SHRESTHA</h4>
-              <div className="position">Health Advisor</div>
-            </Card>
-          </div>
-          <div className="item">
-            <Card>
-              <CardMedia
-                component="img"
-                height="500"
-                image={generalSecurity}
-                alt="general-security"
-              />
-
-              <h4>PRAGYA BAJRACHARYA</h4>
-              <div className="position">General Security</div>
-            </Card>
-          </div>
-          <div className="item">
-            <Card>
-              <CardMedia
-                component="img"
-                height="500"
-                image={treasurer}
-                alt="treasurer"
-              />
-
-              <h4>YOGENDRA SHRESTHA</h4>
-              <div className="position">Treasurer</div>
-            </Card>
-          </div>
+          {boardMembers.map((data) => (
+            <div className="item">
+              <Card sx={{ maxWidth: 400 }}>
+                <CardMedia
+                  component="img"
+                  height="500"
+                  image={data.photo}
+                  alt={data.designation}
+                />
+                <h4>{data.name}</h4>
+                <div className="position">{data.designation}</div>
+              </Card>
+            </div>
+          ))}
         </TabPanel>
       </Box>
     </div>
