@@ -54,7 +54,7 @@ export default function News() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/">News</Link>
+            <Link to="/news">News</Link>
           </li>
           <li>
             <Link to="/">Act of Kindness</Link>
@@ -63,7 +63,7 @@ export default function News() {
             <Link to="/">Civil Rights Movements</Link>
           </li>
           <li>
-            <Link to="/">Contact Us</Link>
+            <Link to="/contact">Contact Us</Link>
           </li>
           <div className="divider"></div>
           <li>
@@ -72,19 +72,19 @@ export default function News() {
         </ul>
         <ul className="news__landing__hiddenMenu__items right">
           <li>
-            <Link to="/">About Us</Link>
+            <Link to="/about">About Us</Link>
           </li>
           <li>
-            <Link to="/">Cause</Link>
+            <Link to="/causes">Cause</Link>
           </li>
           <li>
-            <Link to="/">Events</Link>
+            <Link to="/events">Events</Link>
           </li>
           <li>
             <Link to="/">Transparency</Link>
           </li>
           <li>
-            <Link to="/">ourWorks</Link>
+            <Link to="/ourwork">ourWorks</Link>
           </li>
         </ul>
       </div>
