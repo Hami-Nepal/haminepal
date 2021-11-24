@@ -1,6 +1,6 @@
 import React from "react"
 import "./style.scss"
-
+import { useEffect } from "react"
 import Logo from "../../Assets/logo.png"
 
 import { Link } from "react-location"
@@ -10,15 +10,20 @@ import Footer from "../../Components/Footer/Footer"
 import emailjs from "emailjs-com"
 import { useForm } from "react-hook-form"
 
-/**
- * @dev add messanger chat bot
- */
+// /**
+//  * @dev add messanger chat bot
+//  */
 export default function ContactUs() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false)
   const [sucessMessage, setSucessMessage] = React.useState("")
   const[sending,setSending]=React.useState(false)
 
-  
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setSucessMessage("");
+    }, 3000);
+    return () => clearTimeout(timeout);
+  }, [sucessMessage]);
 
 
   const {
@@ -51,8 +56,9 @@ export default function ContactUs() {
       .send(serviceID, templatedID, variables, userID)
       .then(() => {
         
-        setSucessMessage("Thank your for contacting us..")
+        setSucessMessage("Thank your for contacting us!!")
         setSending(false)
+        window.setTimeout(function(){location.reload()},4000)
       })
       .catch((err) => alert(`Something Went Wrong`))
   }
@@ -131,8 +137,6 @@ export default function ContactUs() {
       </div>
 
       {/* @section => form */}
-      {/* Mail send Sucess Message */}
-      <span className="sucess-message">{sucessMessage}</span>
       <div className="contactUs__container__form">
         <h1>Contact Us</h1>
         <div className="divider"></div>
@@ -157,9 +161,9 @@ export default function ContactUs() {
                   },
                 })}
               />
-              <span className="error-message">
+              <div className="error-message">
                 {errors.name && errors.name.message}
-              </span>
+              </div>
               <input
                 type="email"
                 id="email"
@@ -174,9 +178,9 @@ export default function ContactUs() {
                   },
                 })}
               />
-              <span className="error-message">
+              <div className="error-message">
                 {errors.email && errors.email.message}
-              </span>
+              </div>
               <textarea
                 name="description"
                 placeholder="Message"
@@ -188,9 +192,9 @@ export default function ContactUs() {
                   required: "Write some message",
                 })}
               ></textarea>
-              <span className="error-message">
+              <div className="error-message">
                 {errors.description && errors.description.message}
-              </span>
+              </div>
 
               <button className="btn-submit" >{sending?"sending...":"Submit"}</button>
             </div>
@@ -208,7 +212,8 @@ export default function ContactUs() {
           </div>
         </div>
       </div>
-
+            {/* Mail send Sucess Message */}
+            <div className="sucess-message">{sucessMessage}</div>
       <Footer />
     </div>
   )

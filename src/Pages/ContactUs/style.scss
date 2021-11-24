@@ -121,6 +121,8 @@
             height: 50px;
             width: 100px;
             background-color: #9f1718;
+            cursor: pointer;
+            margin-top: 10px;
             color: white;
             font-size: 1rem;
             border: transparent;
@@ -128,7 +130,9 @@
 
           input,
           textarea {
+            outline-style: none;
             width: 90%;
+            margin-top: 10px;
             margin-bottom: 20px;
             border: 0.3px solid #7a7a7a;
             border-radius: 5px;
@@ -169,5 +173,28 @@
       padding: 10px 35px;
       margin-top: 10px;
     }
+  }
+}
+.error-message{
+color: #9f1718;
+margin-bottom: 10px;
+position: absolute;
+margin-top: -15px;
+margin-left: 10px;
+}
+.sucess-message{
+  position: absolute;
+  top: 107%;
+  left: 25%;
+  font-size: 20px;
+  color: green;
+}
+@media only  screen and (max-width:480px) {
+  .sucess-message{
+    position: absolute;
+    top: 96%;
+    left: 35%;
+    font-size: 18px;
+    color: green;
   }
 }
