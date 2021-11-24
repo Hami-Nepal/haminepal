@@ -57,9 +57,9 @@ export default function CausesTabs() {
   const [activeCauseStatus, setActiveCauseStatus] = useState('ongoing');
   const [causeCards, setCauseCards] = useState([]);
 
-  console.log('active cause type', value);
-  console.log('cause types', causeTypes);
-  console.log('active cause status', activeCauseStatus);
+  // console.log('active cause type', value);
+  // console.log('cause types', causeTypes);
+  // console.log('active cause status', activeCauseStatus);
   console.log('cause cards', causeCards);
 
   useEffect(() => {
@@ -79,6 +79,10 @@ export default function CausesTabs() {
       .then((data) => data.json())
       .then(({ data }) => setCauseCards(data));
   }, [value, activeCauseStatus, causeTypes]);
+
+  const onDonate = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <div className="causesTabs__container">
@@ -101,24 +105,19 @@ export default function CausesTabs() {
           </Tabs>
         </Box>
         <TabPanel className="causes__container__items" value={value} index={0}>
-          {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-            <Link className="item" to="/cause-focused/?id=1234" key={item}>
-              <img
-                src="https://images.unsplash.com/photo-1617817546276-80b86dd60151?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                className="item__image"
-                alt="project"
-              />
-              <div className="item__info">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptate itaque dignissimos provident earum porro eius nesciunt
-                dolores quo laudantium! Facere quod consectetur debitis hic
-                dignissimos molestiae accusamus quos ipsa magni.
-              </div>
-              <Button>Donate</Button>
+          {causeCards.map((card) => (
+            <Link
+              className="item"
+              to={'/cause-focused/' + card._id}
+              key={card._id}
+            >
+              <img src={card.photos[0]} className="item__image" alt="project" />
+              <div className="item__info">{card.description}</div>
+              <Button onClick={onDonate}>Donate</Button>
             </Link>
           ))}
         </TabPanel>
-        <TabPanel className="causes__container__items" value={value} index={1}>
+        {/* <TabPanel className="causes__container__items" value={value} index={1}>
           {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
             <Link className="item" to="/cause-focused/?id=1234" key={item}>
               <img
@@ -189,7 +188,7 @@ export default function CausesTabs() {
               <Button>Donate</Button>
             </Link>
           ))}
-        </TabPanel>
+        </TabPanel> */}
       </Box>
     </div>
   );

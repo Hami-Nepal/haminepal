@@ -52,7 +52,7 @@ export default function App() {
             element: <Causes />,
           },
           {
-            path: '/cause-focused',
+            path: '/cause-focused/:id',
             element: <CauseFocused />,
           },
           {
