@@ -182,19 +182,23 @@ position: absolute;
 margin-top: -15px;
 margin-left: 10px;
 }
-.sucess-message{
-  position: absolute;
-  top: 107%;
-  left: 25%;
-  font-size: 20px;
-  color: green;
-}
-@media only  screen and (max-width:480px) {
+.ErrorMsg_BTN{
+display: flex;
+gap:2rem;
+align-items: center;
   .sucess-message{
-    position: absolute;
-    top: 96%;
-    left: 35%;
-    font-size: 18px;
+    font-size: 20px;
     color: green;
   }
+}
+@media only  screen and (max-width:480px) {
+  .ErrorMsg_BTN{
+    display: flex;
+    gap:1rem;
+    align-items: center;
+      .sucess-message{
+        font-size: 18px;
+        color: green;
+      }
+    }
 }

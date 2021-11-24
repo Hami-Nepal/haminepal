@@ -18,14 +18,6 @@ export default function ContactUs() {
   const [sucessMessage, setSucessMessage] = React.useState("")
   const[sending,setSending]=React.useState(false)
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setSucessMessage("");
-    }, 3000);
-    return () => clearTimeout(timeout);
-  }, [sucessMessage]);
-
-
   const {
     register,
     handleSubmit,
@@ -195,8 +187,10 @@ export default function ContactUs() {
               <div className="error-message">
                 {errors.description && errors.description.message}
               </div>
-
+              <div className="ErrorMsg_BTN">
               <button className="btn-submit" >{sending?"sending...":"Submit"}</button>
+              <div className="sucess-message">{sucessMessage}</div>
+            </div>
             </div>
           </form>
 
@@ -213,7 +207,6 @@ export default function ContactUs() {
         </div>
       </div>
             {/* Mail send Sucess Message */}
-            <div className="sucess-message">{sucessMessage}</div>
       <Footer />
     </div>
   )
