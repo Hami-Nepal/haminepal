@@ -16,9 +16,9 @@ import { useForm } from "react-hook-form"
 export default function ContactUs() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false)
   const [sucessMessage, setSucessMessage] = React.useState("")
-  const[sending,setSending]=React.useState(false)
+  const [sending, setSending] = React.useState(false)
 
-    const {
+  const {
     register,
     handleSubmit,
     formState: { errors },
@@ -32,8 +32,6 @@ export default function ContactUs() {
     setSending(true)
     setSucessMessage("")
 
-  
-
     sendEmail(
       serviceID,
       templatedID,
@@ -45,7 +43,6 @@ export default function ContactUs() {
       userID
     )
     r.target.reset()
-  
   }
 
   const sendEmail = (serviceID, templatedID, variables, userID) => {
@@ -53,7 +50,6 @@ export default function ContactUs() {
     emailjs
       .send(serviceID, templatedID, variables, userID)
       .then(() => {
-       
         setSucessMessage("Thank your for contacting us..")
         setSending(false)
         window.location.reload(false)
@@ -136,8 +132,10 @@ export default function ContactUs() {
 
       {/* @section => form */}
       {/* Mail send Sucess Message */}
-      <span className="sucess-message">{sucessMessage}</span>
       <div className="contactUs__container__form">
+        <div className="sucess-message">
+          <h2>{sucessMessage}</h2>
+        </div>
         <h1>Contact Us</h1>
         <div className="divider"></div>
 
@@ -161,9 +159,9 @@ export default function ContactUs() {
                   },
                 })}
               />
-              <span className="error-message">
+              <div className="error-message">
                 {errors.name && errors.name.message}
-              </span>
+              </div>
               <input
                 type="email"
                 id="email"
@@ -178,9 +176,9 @@ export default function ContactUs() {
                   },
                 })}
               />
-              <span className="error-message">
+              <div className="error-message">
                 {errors.email && errors.email.message}
-              </span>
+              </div>
               <textarea
                 name="description"
                 placeholder="Message"
@@ -192,11 +190,13 @@ export default function ContactUs() {
                   required: "Write some message",
                 })}
               ></textarea>
-              <span className="error-message">
+              <div className="error-message">
                 {errors.description && errors.description.message}
-              </span>
+              </div>
 
-              <button className="btn-submit" >{sending?"sending...":"Submit"}</button>
+              <button className="btn-submit">
+                {sending ? "sending..." : "Submit"}
+              </button>
             </div>
           </form>
 

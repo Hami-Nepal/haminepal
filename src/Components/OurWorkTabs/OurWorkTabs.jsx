@@ -56,7 +56,7 @@ export default function OurWorkTabs() {
   }, [])
 
   useEffect(() => {
-    fetch("https://api.haminepal.org/api/v1/causes")
+    fetch("https://api.haminepal.org/api/v1/cause_type")
       .then((data) => data.json())
       .then((causes) => setCauses(causes.data))
       .catch(({ response }) => console.log(response))
@@ -78,7 +78,7 @@ export default function OurWorkTabs() {
             aria-label="basic tabs example"
           >
             {events.map((data) => (
-              <Tab label={data.name} />
+              <Tab label={data.status} />
             ))}
             {causes.map((data) => (
               <Tab label={data.name} />
@@ -93,7 +93,7 @@ export default function OurWorkTabs() {
           >
             <div className="images">
               <div className="column">
-                <img src={data.photos} alt="" />
+                <img src={data.photos.photos} alt="" />
                 <p>{data.name}</p>
               </div>
             </div>
