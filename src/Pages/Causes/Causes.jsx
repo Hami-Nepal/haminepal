@@ -92,8 +92,6 @@ export default function Causes() {
           Life's Most Persistent And Urgent Question Is, What Are You Doing For
           Others?
         </p>
-
-        <Link to="/new-volunteer">Create a cause</Link>
       </div>
 
       <CausesTabs />
