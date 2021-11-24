@@ -128,7 +128,11 @@ export default function CausesTabs() {
             </FormControl>
           </Box>
         </div>
-        <TabPanel className="causes__container__items" value={value} index={0}>
+        <TabPanel
+          className="causes__container__items"
+          value={value}
+          index={value}
+        >
           {causeCards.map((card) => (
             <Link
               className="item"
