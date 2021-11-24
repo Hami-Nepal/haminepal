@@ -66,6 +66,9 @@ export default function CausesTabs() {
     fetch(baseURL + '/cause_type')
       .then((data) => data.json())
       .then(({ data }) => setCauseTypes(data));
+
+    // tettikai rakheko
+    setActiveCauseStatus('ongoing');
   }, []);
 
   useEffect(() => {
