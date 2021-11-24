@@ -32,10 +32,11 @@ export default function NewsTabs(props) {
           >
             {props.news.title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body1" color="text.primary">
             {props.news.summary}
-            <br />
-            {props.news.createdAt}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Uploaded on:{props.news.createdAt}
           </Typography>
         </CardContent>
         <CardActions>

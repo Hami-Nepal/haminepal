@@ -4,6 +4,7 @@ import "./style.scss"
 import Logo from "../../Assets/logo.png"
 
 import { Link } from "react-location"
+import baseURL from "../../api/baseURL"
 
 import Footer from "../../Components/Footer/Footer"
 import NewsTabs from "../../Components/NewsTab/NewsTabs"
@@ -13,7 +14,7 @@ export default function News() {
   console.log(news)
 
   React.useEffect(() => {
-    fetch("https://api.haminepal.org/api/v1/news")
+    fetch(baseURL + "/news")
       .then((data) => data.json())
       .then((data) => setNews(data.data))
       .catch((err) => console.log(err, "\n", err.response))

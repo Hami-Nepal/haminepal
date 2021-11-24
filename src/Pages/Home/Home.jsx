@@ -6,6 +6,7 @@ import BannerVideo from "../../Assets/banner.mp4"
 import BannerVideoWebm from "../../Assets/banner.webm"
 import BannerVideoOgm from "../../Assets/banner.ogm"
 import BannerPoster from "../../Assets/poster-banner.png"
+import MapVideo from "../../Assets/nepalMap.mp4"
 
 import { Link } from "react-location"
 import { Helmet } from "react-helmet"
@@ -202,6 +203,20 @@ export default function Home() {
 
           <Link to="/">Learn more about transparency</Link>
         </div>
+      </div>
+
+      {/* @section HamiNepalMap */}
+      <div className="home_container_mapVideo">
+        <video
+          className="Map__video"
+          src={MapVideo}
+          preload="metadata"
+          autoPlay={true}
+          muted="true"
+          loop="loop"
+          playsInline="true"
+          poster={BannerPoster}
+        />
       </div>
 
       {/** @section => act of kindness */}

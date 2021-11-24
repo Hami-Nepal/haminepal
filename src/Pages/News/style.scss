@@ -123,9 +123,9 @@
   .news_container_cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
-    margin: 0 5vw;
+    // margin: 0 5vw;
     margin-bottom: 60px;
   }
 }
