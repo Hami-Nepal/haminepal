@@ -119,7 +119,7 @@ export default function Home() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/">News</Link>
+              <Link to="/news">News</Link>
             </li>
             <li>
               <Link to="/">Act of Kindness</Link>
