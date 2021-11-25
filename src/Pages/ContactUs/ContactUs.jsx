@@ -3,6 +3,8 @@ import "./style.scss"
 
 import Logo from "../../Assets/logo.png"
 
+import Alert from "@mui/material/Alert"
+
 import { Link } from "react-location"
 import Iframe from "react-iframe"
 import Footer from "../../Components/Footer/Footer"
@@ -50,7 +52,11 @@ export default function ContactUs() {
     emailjs
       .send(serviceID, templatedID, variables, userID)
       .then(() => {
-        setSucessMessage("Thank your for contacting us..")
+        setSucessMessage(
+          <Alert severity="success" varient="filled" sx={{ fontSize: 18 }}>
+            Thank you for contacting us...
+          </Alert>
+        )
         setSending(false)
         window.location.reload(false)
       })
@@ -204,7 +210,7 @@ export default function ContactUs() {
             <Iframe
               url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56504.95209466454!2d85.29435527910155!3d27.730883699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19e402e28da1%3A0xa5f874e6acdd4479!2sHami%20Nepal!5e0!3m2!1sen!2snp!4v1637297091696!5m2!1sen!2snp"
               width="100%"
-              height="450px"
+              height="400px"
               className="maps"
               display="initial"
               position="relative"
