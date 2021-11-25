@@ -31,27 +31,30 @@ export default function Home() {
   useEffect(() => {
     fetch(baseURL + '/donations?sort=-donation_amount&limit=5')
       .then((data) => data.json())
-      .then(({ data }) => setTopDonors(data));
+      .then(({ data }) => setTopDonors(data))
+      .catch(({ response }) => console.log(response));
 
     fetch(baseURL + '/kindness/featured')
       .then((data) => data.json())
-      .then(({ featured }) => setKindness(featured));
+      .then(({ featured }) => setKindness(featured))
+      .catch(({ response }) => console.log(response));
 
     fetch(baseURL + '/find/totalDonations')
       .then((data) => data.json())
-      .then(({ data }) =>
-        setTotalDonations(data.length ? data[0].donation : 0)
-      );
+      .then(({ data }) => setTotalDonations(data.length ? data[0].donation : 0))
+      .catch(({ response }) => console.log(response));
 
     fetch(baseURL + '/find/totalExpenses')
       .then((data) => data.json())
       .then(({ data }) =>
         setTotalExpenses(data.length ? data[0].total_expenses : 0)
-      );
+      )
+      .catch(({ response }) => console.log(response));
 
     fetch(baseURL + '/homepage')
       .then((data) => data.json())
-      .then(({ data }) => setHomeHero(data[0]));
+      .then(({ data }) => setHomeHero(data[0]))
+      .catch(({ response }) => console.log(response));
   }, []);
 
   return (
