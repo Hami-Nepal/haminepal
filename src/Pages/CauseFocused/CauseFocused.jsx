@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.scss';
 
 import Logo from '../../Assets/logo.png';
@@ -10,6 +10,7 @@ import LinearProgress, {
   linearProgressClasses,
 } from '@mui/material/LinearProgress';
 import Footer from '../../Components/Footer/Footer';
+import baseURL from '../../api/baseURL';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 10,
@@ -25,6 +26,22 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 }));
 
 export default function CauseFocused() {
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    fetch(baseURL + '/causes/' + window.location.pathname.split('/').pop())
+      .then((data) => data.json())
+      .then(({ data }) => setData(data.cause))
+      .catch(({ response }) => console.log(response));
+
+    // specific cause or events ko ako total amount herna ko lagi jugad
+    fetch(baseURL + '/donations/?slug=vernon-mckee')
+      .then((data) => data.json())
+      .then((data) => console.log(data));
+  }, []);
+
+  console.log(data);
+
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
   return (
     <div className="causeFocused__container">
@@ -102,19 +119,14 @@ export default function CauseFocused() {
       {/* @section => landing */}
       <div className="causeFocused__container__landing">
         <div className="causeFocused__container__landing__info">
-          <h1>Major Entitity</h1>
+          <h1>{data.name}</h1>
           <div className="divider"></div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-            harum repellendus exercitationem maiores, dolorem vitae? Est quis ea
-            aperiam, soluta inventore consequuntur. Maiores, magni natus omnis
-            ratione quisquam quos rem.
-          </p>
+          <p>{data.summary}</p>
 
           <BorderLinearProgress variant="determinate" value={50} />
 
           <div>
-            <span>$ 75,000</span> of $ 1,00,000
+            <span>Rs. 75,000</span> of Rs.{data.balance}
           </div>
 
           <Link to="/">Donate</Link>
