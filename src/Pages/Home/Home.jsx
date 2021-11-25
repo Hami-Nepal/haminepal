@@ -217,6 +217,28 @@ export default function Home() {
           playsInline="true"
           poster={BannerPoster}
         />
+        <div className="home_container_mapVideo_right">
+          <h1>Our Locations</h1>
+          <ul>
+            <li>kathmandu</li>
+            <li>Pokhara</li>
+            <li>Hetauda</li>
+            <li>Birgunj</li>
+            <li>Manang</li>
+            <li>Besisahar</li>
+            <li>Bhaktpur</li>
+            <li>Helambu</li>
+            <li>Ramechap</li>
+            <li>Bhojpur</li>
+            <li>Bheri</li>
+            <li>Doti</li>
+            <li>Dhangadi</li>
+            <li>Mugu</li>
+            <li>Karnali</li>
+            <li>Rukum</li>
+            <li>Bardiya</li>
+          </ul>
+        </div>
       </div>
 
       {/** @section => act of kindness */}
