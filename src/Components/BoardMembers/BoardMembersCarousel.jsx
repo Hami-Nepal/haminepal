@@ -10,7 +10,8 @@ export default function BoardMembersCarousel() {
     async function fetchData() {
       await fetch(baseURL + '/boardmembers')
         .then((response) => response.json())
-        .then((data) => setMembers(data.data));
+        .then((data) => setMembers(data.data))
+        .catch(({ response }) => console.log(response));
     }
     fetchData();
   }, []);
