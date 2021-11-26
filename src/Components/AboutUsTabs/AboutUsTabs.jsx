@@ -1,13 +1,9 @@
 import * as React from "react"
 import "./style.scss"
-import president from "../../Assets/president.jpg"
 import banner1 from "../../Assets/banner1.jpg"
 import banner2 from "../../Assets/banner2.jpg"
 import banner3 from "../../Assets/banner3.jpg"
-import vicePresident from "../../Assets/vicePresident.jpg"
-import treasurer from "../../Assets/treasurer.jpg"
-import healthAdvisior from "../../Assets/healthAdvisior.jpg"
-import generalSecurity from "../../Assets/generalSecurity.jpg"
+
 import PropTypes from "prop-types"
 import Tabs from "@mui/material/Tabs"
 import Tab from "@mui/material/Tab"
@@ -204,7 +200,7 @@ export default function AboutUsTabs() {
             <br />
           </p>
           {boardMembers.map((data) => (
-            <div className="item">
+            <div className="item" key={data._id}>
               <Card sx={{ maxWidth: 400 }}>
                 <CardMedia
                   component="img"
