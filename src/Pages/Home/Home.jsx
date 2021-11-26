@@ -18,22 +18,44 @@ import BoardMembersCarousel from "../../Components/BoardMembers/BoardMembersCaro
 import Footer from "../../Components/Footer/Footer"
 import Donate from "../../Components/Donate/Donate"
 
+import baseURL from "../../api/baseURL"
+
 export default function Home() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false)
   const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false)
   const [topDonors, setTopDonors] = useState([])
   const [kindness, setKindness] = useState([])
+  const [totalDonations, setTotalDonations] = useState(0)
+  const [totalExpenses, setTotalExpenses] = useState(0)
+  const [homeHero, setHomeHero] = useState({})
 
   useEffect(() => {
-    fetch(
-      "https://api.haminepal.org/api/v1/donations?sort=-donation_amount&limit=5"
-    )
+    fetch(baseURL + "/donations?sort=-donation_amount&limit=5")
       .then((data) => data.json())
       .then(({ data }) => setTopDonors(data))
+      .catch(({ response }) => console.log(response))
 
-    fetch("https://api.haminepal.org/api/v1/kindness/featured")
+    fetch(baseURL + "/kindness/featured")
       .then((data) => data.json())
       .then(({ featured }) => setKindness(featured))
+      .catch(({ response }) => console.log(response))
+
+    fetch(baseURL + "/find/totalDonations")
+      .then((data) => data.json())
+      .then(({ data }) => setTotalDonations(data.length ? data[0].donation : 0))
+      .catch(({ response }) => console.log(response))
+
+    fetch(baseURL + "/find/totalExpenses")
+      .then((data) => data.json())
+      .then(({ data }) =>
+        setTotalExpenses(data.length ? data[0].total_expenses : 0)
+      )
+      .catch(({ response }) => console.log(response))
+
+    fetch(baseURL + "/homepage")
+      .then((data) => data.json())
+      .then(({ data }) => setHomeHero(data[0]))
+      .catch(({ response }) => console.log(response))
   }, [])
 
   return (
@@ -45,12 +67,12 @@ export default function Home() {
       <div className="home__container__landing">
         <video
           className="Home__video"
-          src={BannerVideo}
+          src={homeHero.videoUrl}
           preload="metadata"
           autoPlay={true}
-          muted="true"
+          muted={true}
           loop="loop"
-          playsInline="true"
+          playsInline={true}
           poster={BannerPoster}
         >
           <source src={BannerVideo} type="video/mp4" />
@@ -72,11 +94,17 @@ export default function Home() {
 
         <div className="home__container__landing__footer">
           <div>
-            <h1>For the people by the people.</h1>
+            <h1 style={{ color: homeHero.color || "white" }}>
+              {homeHero.content}
+            </h1>
             <Link
               onClick={() => setIsDonationFormOpen(true)}
               className="home__container__landing__footer__donate"
               to="/"
+              style={{
+                color: homeHero.color || "white",
+                borderColor: homeHero.color || "white",
+              }}
             >
               Donate
             </Link>
@@ -85,6 +113,10 @@ export default function Home() {
           <Link
             className="home__container__landing__footer__ourWork"
             to="/our-work"
+            style={{
+              color: homeHero.color || "white",
+              borderColor: homeHero.color || "white",
+            }}
           >
             Our Work
           </Link>
@@ -147,7 +179,7 @@ export default function Home() {
               <Link to="/events">Events</Link>
             </li>
             <li>
-              <Link to="/">Transparency</Link>
+              <Link to="/transparency">Transparency</Link>
             </li>
             <li>
               <Link to="/volunteer">Volunteers</Link>
@@ -162,19 +194,19 @@ export default function Home() {
           <h1>Transparency</h1>
 
           <div className="home__container__transparency__info__item">
-            <h2>Rs 12345</h2>
+            <h2>Rs {totalDonations}</h2>
             <div className="home__container__transparency__info__item__title">
               Donation Received
             </div>
           </div>
           <div className="home__container__transparency__info__item center">
-            <h2>Rs 12345</h2>
+            <h2>Rs {totalExpenses}</h2>
             <div className="home__container__transparency__info__item__title">
               Expenditure
             </div>
           </div>
           <div className="home__container__transparency__info__item">
-            <h2>Rs 12345</h2>
+            <h2>Rs {totalDonations - totalExpenses}</h2>
             <div className="home__container__transparency__info__item__title">
               Remaining Donation
             </div>

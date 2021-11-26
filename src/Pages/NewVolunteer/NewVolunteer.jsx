@@ -1,16 +1,83 @@
-import React from "react";
-import "./style.scss";
+import React from 'react';
+import isEmail from 'validator/lib/isEmail';
+import './style.scss';
 
-import Logo from "../../Assets/logo.png";
+import Logo from '../../Assets/logo.png';
 
-import { Link } from "react-location";
-import Iframe from "react-iframe";
-import { Avatar, Button } from "@mui/material";
+import { Link } from 'react-location';
+import Iframe from 'react-iframe';
+import { Avatar, Button } from '@mui/material';
 
-import Footer from "../../Components/Footer/Footer";
+import Footer from '../../Components/Footer/Footer';
+
+import baseURL from '../../api/baseURL';
+
+const fileReader = new FileReader();
 
 export default function NewVolunteer() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
+  const [volunteerImg, setVolunteerImg] = React.useState(null);
+  const [volunteerImgUrl, setVolunteerImgUrl] = React.useState('');
+  const [fields, setFields] = React.useState({
+    first_name: '',
+    last_name: '',
+    phone: '',
+    email: '',
+    age: '',
+    bloodGroup: '',
+    field_of_expertise: '',
+    bio: '',
+    motivation: '',
+    country: '',
+    state: '',
+    city: '',
+    street_address: '',
+  });
+  const emailInput = React.useRef();
+  const [requestState, setRequestState] = React.useState(null);
+  const [errorMsg, setErrorMsg] = React.useState('');
+
+  const onFieldChange = (field) => (event) =>
+    setFields((prev) => ({ ...prev, [field]: event.target.value }));
+
+  const onSelectImage = (event) => {
+    setVolunteerImg(event.target.files[0]);
+
+    if (event.target.files[0]) fileReader.readAsDataURL(event.target.files[0]);
+    fileReader.onload = (e) => {
+      setVolunteerImgUrl(e.target.result);
+    };
+  };
+
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+
+    if (requestState === 'loading') return;
+
+    setRequestState('loading');
+
+    const formData = new FormData();
+
+    for (let field in fields) {
+      formData.append(field, fields[field]);
+    }
+    formData.append('photo', volunteerImg);
+
+    fetch(baseURL + '/volunteers', {
+      method: 'post',
+      body: formData,
+    })
+      .then((data) => data.json())
+      .then((data) => {
+        setRequestState('success');
+      })
+      .catch(({ response }) => {
+        setRequestState('failed');
+        setErrorMsg(response?.message || '');
+      });
+  };
+
+  console.log(fields);
 
   return (
     <div className="newVolunteer__container">
@@ -31,7 +98,7 @@ export default function NewVolunteer() {
       <div
         className="newVolunteer__container__landing__hiddenMenu"
         style={{
-          display: isActiveMenu ? "flex" : "none",
+          display: isActiveMenu ? 'flex' : 'none',
         }}
       >
         <div className="newVolunteer__container__landing__hiddenMenu__topbar">
@@ -59,28 +126,28 @@ export default function NewVolunteer() {
             <Link to="/">Civil Rights Movements</Link>
           </li>
           <li>
-            <Link to="/">Contact Us</Link>
+            <Link to="/contact">Contact Us</Link>
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="/">Login/</Link> <Link to="/">Signup</Link>
+            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
           </li>
         </ul>
         <ul className="newVolunteer__container__landing__hiddenMenu__items right">
           <li>
-            <Link to="/">About Us</Link>
+            <Link to="/about">About Us</Link>
           </li>
           <li>
-            <Link to="/">Cause</Link>
+            <Link to="/causes">Cause</Link>
           </li>
           <li>
-            <Link to="/">Events</Link>
+            <Link to="/events">Events</Link>
           </li>
           <li>
-            <Link to="/">Transparency</Link>
+            <Link to="/transparency">Transparency</Link>
           </li>
           <li>
-            <Link to="/">Volunteers</Link>
+            <Link to="/volunteer">Volunteers</Link>
           </li>
         </ul>
       </div>
@@ -94,49 +161,181 @@ export default function NewVolunteer() {
         <div className="uploadImage">
           <label for="file-upload" className="custom-file-upload">
             {/* on image upload preview here */}
-            <Avatar /> <div>Upload Image</div>
+            {volunteerImg ? <img src={volunteerImgUrl} alt="" /> : <Avatar />}
+            <div>Upload Image</div>
           </label>
-          <input id="file-upload" type="file" />
+          <input id="file-upload" type="file" onChange={onSelectImage} />
         </div>
 
         {/* @section => form container */}
         <div className="newVolunteer__container__form__inputs">
-          <div className="newVolunteer__container__form__inputs__input left">
+          <form
+            onSubmit={onFormSubmit}
+            className="newVolunteer__container__form__inputs__input left"
+          >
             <div>
-              <input type="text" placeholder="First Name" />
-              <input type="text" placeholder="Last Name" />
+              <input
+                type="text"
+                placeholder="First Name"
+                value={fields.first_name}
+                onChange={onFieldChange('first_name')}
+                required
+              />
+              <input
+                type="text"
+                placeholder="Last Name"
+                value={fields.last_name}
+                onChange={onFieldChange('last_name')}
+                required
+              />
             </div>
 
             <div>
-              <input type="email" placeholder="Email Address" />
-              <input type="text" placeholder="Phone Number" />
+              <input
+                type="email"
+                placeholder="Email Address"
+                required
+                value={fields.email}
+                ref={emailInput}
+                onChange={onFieldChange('email')}
+                onBlur={(e) => {
+                  if (!isEmail(e.target.value)) {
+                    emailInput.current.style.borderColor = 'red';
+                    emailInput.current.style.borderWidth = '2px';
+                  } else {
+                    emailInput.current.style.borderColor = 'black';
+                    emailInput.current.style.borderWidth = '1px';
+                  }
+                }}
+              />
+              <input
+                type="number"
+                placeholder="Phone Number"
+                required
+                value={fields.phone}
+                onChange={onFieldChange('phone')}
+              />
             </div>
 
             <div>
-              <input type="text" placeholder="Street Address" />
-              <input type="text" placeholder="Zip Code" />
+              <input
+                type="text"
+                placeholder="Street Address"
+                required
+                value={fields.street_address}
+                onChange={onFieldChange('street_address')}
+              />
+              <input
+                type="text"
+                placeholder="City"
+                required
+                value={fields.city}
+                onChange={onFieldChange('city')}
+              />
             </div>
             <div>
-              <input type="text" placeholder="Temporary Address" />
-              <input type="text" placeholder="Country" />
+              <input
+                type="number"
+                placeholder="Age"
+                required
+                value={fields.age}
+                onChange={onFieldChange('age')}
+              />
+              <input
+                type="text"
+                placeholder="Country"
+                required
+                value={fields.country}
+                onChange={onFieldChange('country')}
+              />
             </div>
             <div>
-              <input type="text" placeholder="Age" />
-              <input type="text" placeholder="Motivation" />
+              <select
+                value={fields.state}
+                onChange={onFieldChange('state')}
+                required
+              >
+                <option hidden>State</option>
+                {[
+                  'Province 1',
+                  'Province 2',
+                  'Bagmati',
+                  'Gandaki',
+                  'Lumbini',
+                  'Karnali',
+                  'Sudurpashchim',
+                ].map((group) => (
+                  <option value={group} key={group}>
+                    {group}
+                  </option>
+                ))}
+              </select>
+              <input
+                type="text"
+                placeholder="Bio"
+                required
+                value={fields.bio}
+                onChange={onFieldChange('bio')}
+              />
+            </div>
+            <div>
+              <select
+                value={fields.bloodGroup}
+                required
+                onChange={onFieldChange('bloodGroup')}
+              >
+                <option hidden>Blood group</option>
+                {[
+                  'A +ve',
+                  'B +ve',
+                  'A -ve',
+                  'AB +ve',
+                  'AB -ve',
+                  'B -ve',
+                  'O +ve',
+                  'O -ve',
+                ].map((group) => (
+                  <option value={group} key={group}>
+                    {group}
+                  </option>
+                ))}
+              </select>
+              <input
+                type="text"
+                placeholder="Motivation"
+                value={fields.motivation}
+                required
+                onChange={onFieldChange('motivation')}
+              />
             </div>
 
             <div>
-              <input type="text" placeholder="Field of Expertise" />
-              <input type="text" placeholder="Bio" />
+              <input
+                type="text"
+                placeholder="Field of Expertise"
+                required
+                value={fields.field_of_expertise}
+                onChange={onFieldChange('field_of_expertise')}
+              />
             </div>
 
-            <div>
-              <input type="checkbox" />
-              <label>Has Vehicle</label>
-            </div>
+            {requestState === 'success' ? (
+              <p className={'volunteer volunteer__' + requestState}>
+                Request sent successfully! Please wait while admins verify's
+                your data.
+              </p>
+            ) : requestState === 'failed' ? (
+              <p className={'volunteer volunteer__' + requestState}>
+                Something went wrong! {errorMsg}
+              </p>
+            ) : (
+              ''
+            )}
 
-            <Button>Register</Button>
-          </div>
+            <Button type="submit">
+              {requestState === 'loading' ? 'Loading...' : 'Register'}
+            </Button>
+          </form>
 
           <div className="newVolunteer__container__form__inputs__input right">
             <Iframe

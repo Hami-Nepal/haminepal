@@ -45,7 +45,7 @@ export default function App() {
             element: <NewVolunteer />,
           },
           {
-            path: "/volunteer-profile",
+            path: "/volunteer-profile/:id",
             element: <VolunteerProfile />,
           },
           {
@@ -53,7 +53,7 @@ export default function App() {
             element: <Causes />,
           },
           {
-            path: "/cause-focused",
+            path: "/cause-focused/:id",
             element: <CauseFocused />,
           },
           {

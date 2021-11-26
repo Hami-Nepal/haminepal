@@ -62,7 +62,7 @@ export default function AboutUs() {
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="/">Login/</Link> <Link to="/">Signup</Link>
+            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
           </li>
         </ul>
         <ul className="aboutUs__container__landing__hiddenMenu__items right">
@@ -79,7 +79,7 @@ export default function AboutUs() {
             <Link to="/">Transparency</Link>
           </li>
           <li>
-            <Link to="/about">aboutUss</Link>
+            <Link to="/volunteer">Volunteer</Link>
           </li>
         </ul>
       </div>

@@ -3,14 +3,10 @@ import "./style.scss"
 
 import Logo from "../../Assets/logo.png"
 
-import Alert from "@mui/material/Alert"
-
 import { Link } from "react-location"
 import Iframe from "react-iframe"
+import { Button } from "@mui/material"
 import Footer from "../../Components/Footer/Footer"
-
-import emailjs from "emailjs-com"
-import { useForm } from "react-hook-form"
 
 /**
  * @dev add messanger chat bot
