@@ -259,3 +259,14 @@
     }
   }
 }
+
+.causeFocused__container__landing__info button {
+  background-color: #a11a1c;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 2rem;
+
+  &:hover {
+    background-color: #bb2124;
+  }
+}

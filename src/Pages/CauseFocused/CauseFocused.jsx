@@ -9,6 +9,7 @@ import { styled } from '@mui/material/styles';
 import LinearProgress, {
   linearProgressClasses,
 } from '@mui/material/LinearProgress';
+import { Button } from '@mui/material';
 import Footer from '../../Components/Footer/Footer';
 import baseURL from '../../api/baseURL';
 
@@ -37,7 +38,8 @@ export default function CauseFocused() {
     // specific cause or events ko ako total amount herna ko lagi jugad
     fetch(baseURL + '/donations/?slug=vernon-mckee')
       .then((data) => data.json())
-      .then((data) => console.log(data));
+      .then((data) => console.log(data))
+      .catch(({ response }) => console.log(response));
   }, []);
 
   console.log(data);
@@ -129,48 +131,27 @@ export default function CauseFocused() {
             <span>Rs. 75,000</span> of Rs.{data.balance}
           </div>
 
-          <Link to="/">Donate</Link>
+          <Button>Donate</Button>
         </div>
 
-        <img
-          src="https://images.unsplash.com/photo-1591189596309-8dcec8cb0493?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
-          alt="cause"
-        />
+        {/* <img src={data?.photos[0]} alt="cause" /> */}
       </div>
 
       {/* @section => details */}
       <div className="causeFocused__container__details">
-        <h1>Details</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-          perferendis dicta eligendi odit, explicabo quidem repellat voluptate
-          quam modi numquam officia assumenda quia. Tenetur ipsam delectus porro
-          pariatur numquam vero.
-        </p>
+        <h1>Description</h1>
+        <p>{data.description}</p>
       </div>
 
       {/* @section => challenges */}
       <div className="causeFocused__container__challenges">
         <h1>Challenges</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-          perferendis dicta eligendi odit, explicabo quidem repellat voluptate
-          quam modi numquam officia assumenda quia. Tenetur ipsam delectus porro
-          pariatur numquam vero. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Animi perferendis dicta eligendi odit, explicabo
-          quidem repellat voluptate quam modi numquam officia assumenda quia.
-          Tenetur ipsam delectus porro pariatur numquam vero.
-        </p>
+        <p>{data.challenges}</p>
       </div>
       {/* @section => difficulties */}
       <div className="causeFocused__container__difficulties">
         <h1>Difficulties</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-          perferendis dicta eligendi odit, explicabo quidem repellat voluptate
-          quam modi numquam officia assumenda quia. Tenetur ipsam delectus porro
-          pariatur numquam vero.
-        </p>
+        <p>{data.difficulties}</p>
       </div>
 
       {/* @section => volunteers */}
