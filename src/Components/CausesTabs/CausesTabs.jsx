@@ -138,8 +138,8 @@ export default function CausesTabs() {
               to={'/cause-focused/' + card._id}
               key={card._id}
             >
-              <h2 style={{ margin: '1rem' }}>{card.name}</h2>
               <img src={card.photos[0]} className="item__image" alt="project" />
+              <h2 style={{ margin: '1rem 1rem 0' }}>{card.name}</h2>
               <div className="item__info">{card.description}</div>
               <Button onClick={onDonate}>Donate</Button>
             </Link>
