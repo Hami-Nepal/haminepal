@@ -8,8 +8,6 @@ import BannerVideoOgm from "../../Assets/banner.ogm"
 import BannerPoster from "../../Assets/poster-banner.png"
 import MapVideo from "../../Assets/nepalMap.mp4"
 
-import baseURL from "../../api/baseURL"
-
 import { Link } from "react-location"
 import { Helmet } from "react-helmet"
 
@@ -19,6 +17,8 @@ import KindnessCard from "../../Components/Act of Kindness/KindnessCard"
 import BoardMembersCarousel from "../../Components/BoardMembers/BoardMembersCarousel"
 import Footer from "../../Components/Footer/Footer"
 import Donate from "../../Components/Donate/Donate"
+
+import baseURL from "../../api/baseURL"
 
 export default function Home() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false)
@@ -67,12 +67,12 @@ export default function Home() {
       <div className="home__container__landing">
         <video
           className="Home__video"
-          src={BannerVideo}
+          src={homeHero.videoUrl}
           preload="metadata"
           autoPlay={true}
-          muted="true"
+          muted={true}
           loop="loop"
-          playsInline="true"
+          playsInline={true}
           poster={BannerPoster}
         >
           <source src={BannerVideo} type="video/mp4" />
@@ -94,11 +94,17 @@ export default function Home() {
 
         <div className="home__container__landing__footer">
           <div>
-            <h1>For the people by the people.</h1>
+            <h1 style={{ color: homeHero.color || "white" }}>
+              {homeHero.content}
+            </h1>
             <Link
               onClick={() => setIsDonationFormOpen(true)}
               className="home__container__landing__footer__donate"
               to="/"
+              style={{
+                color: homeHero.color || "white",
+                borderColor: homeHero.color || "white",
+              }}
             >
               Donate
             </Link>
@@ -107,6 +113,10 @@ export default function Home() {
           <Link
             className="home__container__landing__footer__ourWork"
             to="/our-work"
+            style={{
+              color: homeHero.color || "white",
+              borderColor: homeHero.color || "white",
+            }}
           >
             Our Work
           </Link>
@@ -169,7 +179,7 @@ export default function Home() {
               <Link to="/events">Events</Link>
             </li>
             <li>
-              <Link to="/">Transparency</Link>
+              <Link to="/transparency">Transparency</Link>
             </li>
             <li>
               <Link to="/volunteer">Volunteers</Link>
@@ -184,19 +194,19 @@ export default function Home() {
           <h1>Transparency</h1>
 
           <div className="home__container__transparency__info__item">
-            <h2>Rs 12345</h2>
+            <h2>Rs {totalDonations}</h2>
             <div className="home__container__transparency__info__item__title">
               Donation Received
             </div>
           </div>
           <div className="home__container__transparency__info__item center">
-            <h2>Rs 12345</h2>
+            <h2>Rs {totalExpenses}</h2>
             <div className="home__container__transparency__info__item__title">
               Expenditure
             </div>
           </div>
           <div className="home__container__transparency__info__item">
-            <h2>Rs 12345</h2>
+            <h2>Rs {totalDonations - totalExpenses}</h2>
             <div className="home__container__transparency__info__item__title">
               Remaining Donation
             </div>
@@ -241,25 +251,11 @@ export default function Home() {
         />
         <div className="home_container_mapVideo_right">
           <h1>Our Locations</h1>
-          <ul>
-            <li>kathmandu</li>
-            <li>Pokhara</li>
-            <li>Hetauda</li>
-            <li>Birgunj</li>
-            <li>Manang</li>
-            <li>Besisahar</li>
-            <li>Bhaktpur</li>
-            <li>Helambu</li>
-            <li>Ramechap</li>
-            <li>Bhojpur</li>
-            <li>Bheri</li>
-            <li>Doti</li>
-            <li>Dhangadi</li>
-            <li>Mugu</li>
-            <li>Karnali</li>
-            <li>Rukum</li>
-            <li>Bardiya</li>
-          </ul>
+          <p>
+            Kathmandu, Pokhara, Hetauda, Birgung, Manang, Besisahar, Bhaktapur,
+            Helambu, Remachap, Bhojpur, Bheri, Doti, Dhangadi, Mugu, Karnali,
+            Rukum, Bardiya
+          </p>
         </div>
       </div>
 

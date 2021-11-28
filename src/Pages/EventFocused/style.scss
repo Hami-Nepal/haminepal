@@ -72,7 +72,7 @@
         padding-top: 15vh;
 
         a {
-          font-family: "Playfair Display", serif;
+          font-family: 'Playfair Display', serif;
           font-size: 50px;
           font-weight: 700;
 
@@ -106,7 +106,7 @@
       padding: 30px;
 
       h1 {
-        font-family: "Playfair Display", serif;
+        font-family: 'Playfair Display', serif;
         font-size: 50px;
         font-weight: 700;
         margin-bottom: 30px;
@@ -133,6 +133,17 @@
         line-height: 5.5;
         text-decoration: none;
       }
+
+      button {
+        background-color: #a11a1c;
+        color: white;
+        padding: 10px 20px;
+        margin-top: 2rem;
+
+        &:hover {
+          background-color: #bb2124;
+        }
+      }
     }
 
     img {
@@ -149,7 +160,7 @@
     padding: 0 8vw;
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       margin-bottom: 10px;
@@ -167,7 +178,7 @@
     margin-top: 60px;
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       margin-bottom: 10px;
@@ -258,4 +269,11 @@
       }
     }
   }
+}
+
+.eventDetails__hr {
+  margin: 1.5rem 0;
+  border: none;
+  height: 1px;
+  background-color: rgb(211, 211, 211);
 }

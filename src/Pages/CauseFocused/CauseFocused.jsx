@@ -1,30 +1,56 @@
-import React from "react";
-import "./style.scss";
+import React, { useState, useEffect } from 'react';
+import './style.scss';
 
-import Logo from "../../Assets/logo.png";
+import Logo from '../../Assets/logo.png';
 
-import { Link } from "react-location";
+import { Link } from 'react-location';
 
-import { styled } from "@mui/material/styles";
+import { styled } from '@mui/material/styles';
 import LinearProgress, {
   linearProgressClasses,
-} from "@mui/material/LinearProgress";
-import Footer from "../../Components/Footer/Footer";
+} from '@mui/material/LinearProgress';
+import { Button } from '@mui/material';
+import Footer from '../../Components/Footer/Footer';
+import baseURL from '../../api/baseURL';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 10,
   borderRadius: 5,
   [`&.${linearProgressClasses.colorPrimary}`]: {
     backgroundColor:
-      theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
+      theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 5,
-    backgroundColor: theme.palette.mode === "light" ? "#23CE34" : "#308fe8",
+    backgroundColor: theme.palette.mode === 'light' ? '#23CE34' : '#308fe8',
   },
 }));
 
 export default function CauseFocused() {
+  const [data, setData] = useState({});
+  const [totalDonationAmount, setTotalDonationAmount] = useState(0);
+
+  useEffect(() => {
+    fetch(baseURL + '/causes/' + window.location.pathname.split('/').pop())
+      .then((data) => data.json())
+      .then(({ data }) => setData(data.cause))
+      .catch(({ response }) => console.log(response));
+  }, []);
+
+  useEffect(() => {
+    // specific cause or events ko ako total amount herna ko lagi jugad
+    fetch(baseURL + '/donations/?slug=' + data.slug)
+      .then((data) => data.json())
+      .then(({ data }) =>
+        setTotalDonationAmount(
+          data.reduce((acc, val) => acc + val.donation_amount, 0)
+        )
+      )
+      .catch(({ response }) => console.log(response));
+  }, [data]);
+
+  console.log(data, 'ma data check gardai xu');
+
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
   return (
     <div className="causeFocused__container">
@@ -45,7 +71,7 @@ export default function CauseFocused() {
       <div
         className="causeFocused__container__landing__hiddenMenu"
         style={{
-          display: isActiveMenu ? "flex" : "none",
+          display: isActiveMenu ? 'flex' : 'none',
         }}
       >
         <div className="causeFocused__container__landing__hiddenMenu__topbar">
@@ -73,28 +99,28 @@ export default function CauseFocused() {
             <Link to="/">Civil Rights Movements</Link>
           </li>
           <li>
-            <Link to="/">Contact Us</Link>
+            <Link to="/contact">Contact Us</Link>
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="/">Login/</Link> <Link to="/">Signup</Link>
+            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
           </li>
         </ul>
         <ul className="causeFocused__container__landing__hiddenMenu__items right">
           <li>
-            <Link to="/">About Us</Link>
+            <Link to="/about">About Us</Link>
           </li>
           <li>
-            <Link to="/">Cause</Link>
+            <Link to="/causes">Cause</Link>
           </li>
           <li>
-            <Link to="/">Events</Link>
+            <Link to="/events">Events</Link>
           </li>
           <li>
-            <Link to="/">Transparency</Link>
+            <Link to="/transparency">Transparency</Link>
           </li>
           <li>
-            <Link to="/">causeFocuseds</Link>
+            <Link to="/volunteer">Volunteer</Link>
           </li>
         </ul>
       </div>
@@ -102,63 +128,47 @@ export default function CauseFocused() {
       {/* @section => landing */}
       <div className="causeFocused__container__landing">
         <div className="causeFocused__container__landing__info">
-          <h1>Major Entitity</h1>
+          <h1>{data.name}</h1>
           <div className="divider"></div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-            harum repellendus exercitationem maiores, dolorem vitae? Est quis ea
-            aperiam, soluta inventore consequuntur. Maiores, magni natus omnis
-            ratione quisquam quos rem.
+            Cause type: <span>{data.cause_type}</span>
           </p>
+          <p>
+            Status: <span>{data.status}</span>
+          </p>
+          <hr className="causeDetails__hr" />
+          <p>{data.summary}</p>
 
           <BorderLinearProgress variant="determinate" value={50} />
 
           <div>
-            <span>$ 75,000</span> of $ 1,00,000
+            <span>Rs. {totalDonationAmount}</span> of Rs.{data.balance}
           </div>
 
-          <Link to="/">Donate</Link>
+          <Button>Donate</Button>
         </div>
 
         <img
-          src="https://images.unsplash.com/photo-1591189596309-8dcec8cb0493?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
-          alt="cause"
+          src={data?.photos?.length ? data.photos[0] : ''}
+          alt="cause cover"
         />
       </div>
 
       {/* @section => details */}
       <div className="causeFocused__container__details">
-        <h1>Details</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-          perferendis dicta eligendi odit, explicabo quidem repellat voluptate
-          quam modi numquam officia assumenda quia. Tenetur ipsam delectus porro
-          pariatur numquam vero.
-        </p>
+        <h1>Description</h1>
+        <p>{data.description}</p>
       </div>
 
       {/* @section => challenges */}
       <div className="causeFocused__container__challenges">
         <h1>Challenges</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-          perferendis dicta eligendi odit, explicabo quidem repellat voluptate
-          quam modi numquam officia assumenda quia. Tenetur ipsam delectus porro
-          pariatur numquam vero. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Animi perferendis dicta eligendi odit, explicabo
-          quidem repellat voluptate quam modi numquam officia assumenda quia.
-          Tenetur ipsam delectus porro pariatur numquam vero.
-        </p>
+        <p>{data.challenges}</p>
       </div>
       {/* @section => difficulties */}
       <div className="causeFocused__container__difficulties">
         <h1>Difficulties</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-          perferendis dicta eligendi odit, explicabo quidem repellat voluptate
-          quam modi numquam officia assumenda quia. Tenetur ipsam delectus porro
-          pariatur numquam vero.
-        </p>
+        <p>{data.difficulties}</p>
       </div>
 
       {/* @section => volunteers */}
@@ -185,29 +195,14 @@ export default function CauseFocused() {
         </div>
       </div>
 
-      {/* @section => results */}
-      <div className="causeFocused__container__results">
-        <h1>Results</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-          perferendis dicta eligendi odit, explicabo quidem repellat voluptate
-          quam modi numquam officia assumenda quia. Tenetur ipsam delectus porro
-          pariatur numquam vero.
-        </p>
-      </div>
-
       {/* @section => gallery */}
       <div className="causeFocused__container__gallery">
-        {[0, 1, 2, 3, 4, 5].map((item) => (
-          <img
-            key={item}
-            src="https://images.unsplash.com/photo-1510743006598-4845616e044f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-            alt=""
-          />
+        {data.photos?.map((url) => (
+          <img key={url} src={url} alt="" />
         ))}
       </div>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 }

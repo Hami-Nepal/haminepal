@@ -17,7 +17,7 @@ export default function NewsTabs() {
   const [posts, setPosts] = React.useState([[]])
   const [loading, setLoading] = React.useState(false)
   const [currentPage, setCurrentPage] = React.useState(1)
-  const [postsPerPage, setPostsPerPage] = React.useState(8)
+  const [postsPerPage, setPostsPerPage] = React.useState(10)
 
   const paginate = (number) => {
     setCurrentPage(number)
@@ -38,7 +38,16 @@ export default function NewsTabs() {
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
 
   if (loading) {
-    return <h1>Loading....</h1>
+    return (
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: "4rem",
+        }}
+      >
+        <h1>Loading....</h1>
+      </div>
+    )
   }
   return (
     <>
