@@ -38,11 +38,11 @@ export default function CauseFocused() {
     // specific cause or events ko ako total amount herna ko lagi jugad
     fetch(baseURL + '/donations/?slug=vernon-mckee')
       .then((data) => data.json())
-      .then((data) => console.log(data))
+      .then((data) =>
+        console.log(data, 'donations ko array, reduce garnu parne')
+      )
       .catch(({ response }) => console.log(response));
   }, []);
-
-  console.log(data);
 
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
   return (
@@ -123,6 +123,13 @@ export default function CauseFocused() {
         <div className="causeFocused__container__landing__info">
           <h1>{data.name}</h1>
           <div className="divider"></div>
+          <p>
+            Cause type: <span>{data.cause_type}</span>
+          </p>
+          <p>
+            Status: <span>{data.status}</span>
+          </p>
+          <hr className="causeDetails__hr" />
           <p>{data.summary}</p>
 
           <BorderLinearProgress variant="determinate" value={50} />
@@ -134,7 +141,10 @@ export default function CauseFocused() {
           <Button>Donate</Button>
         </div>
 
-        {/* <img src={data?.photos[0]} alt="cause" /> */}
+        <img
+          src={data?.photos?.length ? data.photos[0] : ''}
+          alt="cause cover"
+        />
       </div>
 
       {/* @section => details */}
@@ -178,25 +188,10 @@ export default function CauseFocused() {
         </div>
       </div>
 
-      {/* @section => results */}
-      <div className="causeFocused__container__results">
-        <h1>Results</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-          perferendis dicta eligendi odit, explicabo quidem repellat voluptate
-          quam modi numquam officia assumenda quia. Tenetur ipsam delectus porro
-          pariatur numquam vero.
-        </p>
-      </div>
-
       {/* @section => gallery */}
       <div className="causeFocused__container__gallery">
-        {[0, 1, 2, 3, 4, 5].map((item) => (
-          <img
-            key={item}
-            src="https://images.unsplash.com/photo-1510743006598-4845616e044f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-            alt=""
-          />
+        {data.photos?.map((url) => (
+          <img key={url} src={url} alt="" />
         ))}
       </div>
 
