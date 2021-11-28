@@ -94,7 +94,9 @@ export default function App() {
           },
           {
             path: "/news",
-            element: <News />,
+            element: <News />
+          },
+          {
             path: "/transparency",
             element: <Transparency />,
           },
