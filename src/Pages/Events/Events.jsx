@@ -93,7 +93,7 @@ export default function Events() {
           Others?
         </p>
 
-        <Link to="/">Create a Event</Link>
+        <Link to="/new-event">Create a Event</Link>
       </div>
 
       <EventTabs />
