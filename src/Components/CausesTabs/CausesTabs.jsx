@@ -64,8 +64,6 @@ export default function CausesTabs() {
     setActiveCauseStatus(event.target.value);
   };
 
-  console.log('ma cause cards check gardai xu', causeCards);
-
   useEffect(() => {
     fetch(baseURL + '/cause_type')
       .then((data) => data.json())
