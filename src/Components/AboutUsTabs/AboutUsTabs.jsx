@@ -55,7 +55,7 @@ export default function AboutUsTabs() {
   React.useEffect(() => {
     fetch(baseURL + "/boardmembers")
       .then((data) => data.json())
-      .then(({ data }) => setBoardMembers(data))
+      .then(({ data }) => setBoardMembers(data)).catch(({ response }) => console.log(response))
   }, [])
 
   const handleChange = (event, newValue) => {
