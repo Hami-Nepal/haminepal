@@ -33,7 +33,7 @@ export default function SignUp() {
     // formData.append("password", password);
 
     axios
-      .post("http://localhost:5000/api/v1/users/signup", {
+      .post("https://api.haminepal.org/api/v1/users/signup", {
         firstname: firstName,
         lastname: lastName,
         email: email,

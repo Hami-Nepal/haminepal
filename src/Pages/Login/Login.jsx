@@ -26,7 +26,7 @@ export default function Login() {
 
     axios({
       method: "POST",
-      url: "https://api.hminepal.org/api/v1/users/login",
+      url: "https://api.haminepal.org/api/v1/users/login",
       data: {
         email: email,
         password: password,
