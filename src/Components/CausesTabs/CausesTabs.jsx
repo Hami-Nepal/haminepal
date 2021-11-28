@@ -91,6 +91,23 @@ export default function CausesTabs() {
   return (
     <div className="causesTabs__container">
       <Box sx={{ width: '100%' }}>
+        <Box sx={{ width: 120, margin: '1rem' }}>
+          <FormControl fullWidth>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={activeCauseStatus}
+              onChange={handleStatusChange}
+              inputProps={{ 'aria-label': 'Without label' }}
+              displayEmpty
+            >
+              <MenuItem value="ongoing" selected>
+                Ongoing
+              </MenuItem>
+              <MenuItem value="past">Past</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
         <div className="causesTabs__meroTabs">
           <Box sx={{ borderBottom: 2, borderColor: '#e74c3c' }}>
             <Tabs
@@ -108,24 +125,6 @@ export default function CausesTabs() {
                 />
               ))}
             </Tabs>
-          </Box>
-
-          <Box sx={{ minWidth: 120 }}>
-            <FormControl fullWidth>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={activeCauseStatus}
-                onChange={handleStatusChange}
-                inputProps={{ 'aria-label': 'Without label' }}
-                displayEmpty
-              >
-                <MenuItem value="ongoing" selected>
-                  Ongoing
-                </MenuItem>
-                <MenuItem value="past">Past</MenuItem>
-              </Select>
-            </FormControl>
           </Box>
         </div>
         <TabPanel
