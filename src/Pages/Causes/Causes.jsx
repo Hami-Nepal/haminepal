@@ -8,6 +8,8 @@ import { Link } from 'react-location';
 import CausesTabs from '../../Components/CausesTabs/CausesTabs';
 import Footer from '../../Components/Footer/Footer';
 
+import baseURL from '../../api/baseURL';
+
 export default function Causes() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
   const [causes, setCauses] = useState([]);
@@ -15,7 +17,7 @@ export default function Causes() {
   console.log(causes);
 
   useEffect(() => {
-    fetch('https://api.haminepal.org/api/v1/volunteers')
+    fetch(baseURL + '/volunteers')
       .then((data) => data.json())
       .then(({ data }) => setCauses(data))
       .catch(({ response }) => console.log(response));
