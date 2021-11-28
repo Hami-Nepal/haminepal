@@ -28,21 +28,28 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 
 export default function CauseFocused() {
   const [data, setData] = useState({});
+  const [totalDonationAmount, setTotalDonationAmount] = useState(0);
 
   useEffect(() => {
     fetch(baseURL + '/causes/' + window.location.pathname.split('/').pop())
       .then((data) => data.json())
       .then(({ data }) => setData(data.cause))
       .catch(({ response }) => console.log(response));
+  }, []);
 
+  useEffect(() => {
     // specific cause or events ko ako total amount herna ko lagi jugad
-    fetch(baseURL + '/donations/?slug=vernon-mckee')
+    fetch(baseURL + '/donations/?slug=' + data.slug)
       .then((data) => data.json())
-      .then((data) =>
-        console.log(data, 'donations ko array, reduce garnu parne')
+      .then(({ data }) =>
+        setTotalDonationAmount(
+          data.reduce((acc, val) => acc + val.donation_amount, 0)
+        )
       )
       .catch(({ response }) => console.log(response));
-  }, []);
+  }, [data]);
+
+  console.log(data, 'ma data check gardai xu');
 
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
   return (
@@ -135,7 +142,7 @@ export default function CauseFocused() {
           <BorderLinearProgress variant="determinate" value={50} />
 
           <div>
-            <span>Rs. 75,000</span> of Rs.{data.balance}
+            <span>Rs. {totalDonationAmount}</span> of Rs.{data.balance}
           </div>
 
           <Button>Donate</Button>
