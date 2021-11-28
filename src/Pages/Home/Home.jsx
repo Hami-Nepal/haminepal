@@ -6,6 +6,7 @@ import BannerVideo from "../../Assets/banner.mp4";
 import BannerVideoWebm from "../../Assets/banner.webm";
 import BannerVideoOgm from "../../Assets/banner.ogm";
 import BannerPoster from "../../Assets/poster-banner.png";
+import MapVideo from "../../Assets/nepalMap.mp4";
 
 import { Link } from "react-location";
 import { Helmet } from "react-helmet";
@@ -31,27 +32,30 @@ export default function Home() {
   useEffect(() => {
     fetch(baseURL + "/donations?sort=-donation_amount&limit=5")
       .then((data) => data.json())
-      .then(({ data }) => setTopDonors(data));
+      .then(({ data }) => setTopDonors(data))
+      .catch(({ response }) => console.log(response));
 
     fetch(baseURL + "/kindness/featured")
       .then((data) => data.json())
-      .then(({ featured }) => setKindness(featured));
+      .then(({ featured }) => setKindness(featured))
+      .catch(({ response }) => console.log(response));
 
     fetch(baseURL + "/find/totalDonations")
       .then((data) => data.json())
-      .then(({ data }) =>
-        setTotalDonations(data.length ? data[0].donation : 0)
-      );
+      .then(({ data }) => setTotalDonations(data.length ? data[0].donation : 0))
+      .catch(({ response }) => console.log(response));
 
     fetch(baseURL + "/find/totalExpenses")
       .then((data) => data.json())
       .then(({ data }) =>
         setTotalExpenses(data.length ? data[0].total_expenses : 0)
-      );
+      )
+      .catch(({ response }) => console.log(response));
 
     fetch(baseURL + "/homepage")
       .then((data) => data.json())
-      .then(({ data }) => setHomeHero(data[0]));
+      .then(({ data }) => setHomeHero(data[0]))
+      .catch(({ response }) => console.log(response));
   }, []);
 
   return (
@@ -148,7 +152,7 @@ export default function Home() {
               <Link to='/'>Home</Link>
             </li>
             <li>
-              <Link to='/'>News</Link>
+              <Link to='/news'>News</Link>
             </li>
             <li>
               <Link to='/'>Act of Kindness</Link>
@@ -233,6 +237,42 @@ export default function Home() {
         </div>
       </div>
 
+      {/* @section HamiNepalMap */}
+      <div className='home_container_mapVideo'>
+        <video
+          className='Map__video'
+          src={MapVideo}
+          preload='metadata'
+          autoPlay={true}
+          muted='true'
+          loop='loop'
+          playsInline='true'
+          poster={BannerPoster}
+        />
+        <div className='home_container_mapVideo_right'>
+          <h1>Our Locations</h1>
+          <ul>
+            <li>kathmandu</li>
+            <li>Pokhara</li>
+            <li>Hetauda</li>
+            <li>Birgunj</li>
+            <li>Manang</li>
+            <li>Besisahar</li>
+            <li>Bhaktpur</li>
+            <li>Helambu</li>
+            <li>Ramechap</li>
+            <li>Bhojpur</li>
+            <li>Bheri</li>
+            <li>Doti</li>
+            <li>Dhangadi</li>
+            <li>Mugu</li>
+            <li>Karnali</li>
+            <li>Rukum</li>
+            <li>Bardiya</li>
+          </ul>
+        </div>
+      </div>
+
       {/** @section => act of kindness */}
       <div className='home__container__actOfKindness'>
         <h1>
@@ -255,7 +295,7 @@ export default function Home() {
             donating their time and effort, which motivates our team to work and
             achieve more for the people.
           </p>
-          <Link to='/'>See More</Link>
+          <Link to='/about'>See More</Link>
         </div>
       </div>
 

@@ -22,6 +22,7 @@ import ContactUs from "./Pages/ContactUs/ContactUs";
 import SignUp from "./Pages/SignUp/SignUp";
 import Login from "./Pages/Login/Login";
 import AboutUs from "./Pages/AboutUs/AboutUs";
+import News from "./Pages/News/News";
 import Transparency from "./Pages/Transparency/Transparency";
 
 const location = new ReactLocation();
@@ -91,6 +92,10 @@ export default function App() {
           {
             path: "/transparency",
             element: <Transparency />,
+          },
+          {
+            path: "/news",
+            element: <News />,
           },
         ]}
       />

@@ -1,17 +1,17 @@
-import { Button } from '@mui/material';
-import { Link } from 'react-location';
-import React from 'react';
-import './style.scss';
+import { Button } from "@mui/material"
+import { Link } from "react-location"
+import React from "react"
+import "./style.scss"
 
 export default function VolunteerCard(props) {
   const onBtnClick = (event) => {
-    event.preventDefault();
-  };
+    event.preventDefault()
+  }
 
   return (
     <Link
-      to={'/volunteer-profile/' + props._id}
-      style={{ textDecoration: 'none', color: 'initial' }}
+      to={"/volunteer-profile/" + props._id}
+      style={{ textDecoration: "none", color: "initial" }}
     >
       <div className="volunteerCard__container">
         <img src={props.photo} alt="donor" />
@@ -23,5 +23,5 @@ export default function VolunteerCard(props) {
         <Button onClick={onBtnClick}>Donate</Button>
       </div>
     </Link>
-  );
+  )
 }

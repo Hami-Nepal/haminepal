@@ -2,18 +2,16 @@ import React, { useState, useEffect } from "react";
 import "./style.scss";
 
 import Carousel from "react-elastic-carousel";
-import { Link } from "react-location";
+import baseURL from "../../api/baseURL";
 
 export default function BoardMembersCarousel() {
   const [Members, setMembers] = useState([]);
   useEffect(() => {
     async function fetchData() {
-      await fetch("https://api.haminepal.org/api/v1/boardmembers")
+      await fetch(baseURL + "/boardmembers")
         .then((response) => response.json())
         .then((data) => setMembers(data.data))
-        .catch(({ response }) =>
-          console.log("ma error check gardai xu", response)
-        );
+        .catch(({ response }) => console.log(response));
     }
     fetchData();
   }, []);
@@ -36,28 +34,44 @@ export default function BoardMembersCarousel() {
               <div className='boardMembersCarousel__container__socialLinks'>
                 <ul>
                   <li>
-                    <Link to={member.instaLink || ""} target='_blank'>
+                    <a
+                      href={member.instaLink || ""}
+                      target='_blank'
+                      rel='noreferrer'
+                    >
                       {" "}
                       <i className='ri-instagram-line'></i>
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link to={member.facebookLink || ""}>
+                    <a
+                      href={member.facebookLink || ""}
+                      target='_blank'
+                      rel='noreferrer'
+                    >
                       {" "}
                       <i className='ri-facebook-circle-line'></i>
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link to={member.twitterLink || ""}>
+                    <a
+                      href={member.twitterLink || ""}
+                      target='_blank'
+                      rel='noreferrer'
+                    >
                       {" "}
                       <i className='ri-twitter-line'></i>
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link to={member.linkedLink || ""}>
+                    <a
+                      href={member.linkedLink || ""}
+                      target='_blank'
+                      rel='noreferrer'
+                    >
                       {" "}
                       <i className='ri-linkedin-box-line'></i>
-                    </Link>
+                    </a>
                   </li>
                 </ul>
               </div>

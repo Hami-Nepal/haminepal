@@ -1,25 +1,25 @@
-import React, { useEffect } from 'react';
-import './style.scss';
+import React, { useEffect } from "react"
+import "./style.scss"
 
-import Logo from '../../Assets/logo.png';
+import Logo from "../../Assets/logo.png"
 
-import { Link } from 'react-location';
+import { Link } from "react-location"
 
-import VolunteerCard from '../../Components/VolunteerCard/VolunteerCard';
-import Footer from '../../Components/Footer/Footer';
+import VolunteerCard from "../../Components/VolunteerCard/VolunteerCard"
+import Footer from "../../Components/Footer/Footer"
 
-import baseURL from '../../api/baseURL';
+import baseURL from "../../api/baseURL"
 
 export default function Volunteer() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
-  const [volunteers, setVolunteers] = React.useState([]);
+  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
+  const [volunteers, setVolunteers] = React.useState([])
 
   useEffect(() => {
-    fetch(baseURL + '/volunteers?isVerified=true')
+    fetch(baseURL + "/volunteers?isVerified=true")
       .then((data) => data.json())
       .then(({ data }) => setVolunteers(data))
-      .catch((err) => console.log(err, '\n', err.response));
-  }, []);
+      .catch((err) => console.log(err, "\n", err.response))
+  }, [])
 
   return (
     <div className="volunteer__container">
@@ -40,7 +40,7 @@ export default function Volunteer() {
       <div
         className="volunteer__container__landing__hiddenMenu"
         style={{
-          display: isActiveMenu ? 'flex' : 'none',
+          display: isActiveMenu ? "flex" : "none",
         }}
       >
         <div className="volunteer__container__landing__hiddenMenu__topbar">
@@ -132,5 +132,5 @@ export default function Volunteer() {
         Made with ❤️ in <Link>Hash Technologies</Link>
       </h4>
     </div>
-  );
+  )
 }

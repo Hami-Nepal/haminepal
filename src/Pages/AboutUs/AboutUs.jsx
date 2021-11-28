@@ -1,15 +1,15 @@
-import React from 'react';
-import './style.scss';
+import React from "react"
+import "./style.scss"
 
-import Logo from '../../Assets/logo.png';
+import Logo from "../../Assets/logo.png"
 
-import { Link } from 'react-location';
-import AboutUsTabs from '../../Components/AboutUsTabs/AboutUsTabs';
+import { Link } from "react-location"
+import AboutUsTabs from "../../Components/AboutUsTabs/AboutUsTabs"
 
-import Footer from '../../Components/Footer/Footer';
+import Footer from "../../Components/Footer/Footer"
 
 export default function AboutUs() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
+  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
 
   return (
     <div className="aboutUs__container">
@@ -30,7 +30,7 @@ export default function AboutUs() {
       <div
         className="aboutUs__container__landing__hiddenMenu"
         style={{
-          display: isActiveMenu ? 'flex' : 'none',
+          display: isActiveMenu ? "flex" : "none",
         }}
       >
         <div className="aboutUs__container__landing__hiddenMenu__topbar">
@@ -49,7 +49,7 @@ export default function AboutUs() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/">News</Link>
+            <Link to="/news">News</Link>
           </li>
           <li>
             <Link to="/">Act of Kindness</Link>
@@ -101,5 +101,5 @@ export default function AboutUs() {
 
       <Footer />
     </div>
-  );
+  )
 }

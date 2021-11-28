@@ -1,15 +1,15 @@
-import React from 'react';
-import './style.scss';
+import React from "react"
+import "./style.scss"
 
-import Logo from '../../Assets/logo.png';
+import Logo from "../../Assets/logo.png"
 
-import { Link } from 'react-location';
+import { Link } from "react-location"
 
-import Footer from '../../Components/Footer/Footer';
-import OurWorkTabs from '../../Components/OurWorkTabs/OurWorkTabs';
+import Footer from "../../Components/Footer/Footer"
+import OurWorkTabs from "../../Components/OurWorkTabs/OurWorkTabs"
 
 export default function OurWork() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
+  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
 
   return (
     <div className="ourWork__container">
@@ -30,7 +30,7 @@ export default function OurWork() {
       <div
         className="ourWork__container__landing__hiddenMenu"
         style={{
-          display: isActiveMenu ? 'flex' : 'none',
+          display: isActiveMenu ? "flex" : "none",
         }}
       >
         <div className="ourWork__container__landing__hiddenMenu__topbar">
@@ -87,12 +87,12 @@ export default function OurWork() {
       {/* @section => landing */}
       <div className="ourWork__container__landing">
         <h1>Our Works</h1>
-
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
-          voluptas doloremque et facilis expedita molestiae unde voluptatibus
-          accusantium aspernatur, repellendus ducimus odit deserunt, sit
-          nesciunt iusto! Hic quis non vero?
+          Pulling up the roots of poverty and planting the seeds of
+          change.Building relationships.Earning the right to be heard.Planning
+          and working alongside local leaders.Findind the solutions to change
+          the future of kids and the next generation. Here's just some of what
+          we accomplished together.
         </p>
       </div>
 
@@ -100,5 +100,5 @@ export default function OurWork() {
 
       <Footer />
     </div>
-  );
+  )
 }
