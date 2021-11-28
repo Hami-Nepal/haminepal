@@ -181,10 +181,30 @@
     }
   }
 }
-.error-message {
-  color: #9f1718;
-  margin-bottom: 10px;
-  position: absolute;
-  margin-top: -15px;
-  margin-left: 10px;
+.error-message{
+color: #9f1718;
+margin-bottom: 10px;
+position: absolute;
+margin-top: -15px;
+margin-left: 10px;
+}
+.ErrorMsg_BTN{
+display: flex;
+gap:2rem;
+align-items: center;
+  .sucess-message{
+    font-size: 20px;
+    color: green;
+  }
+}
+@media only  screen and (max-width:480px) {
+  .ErrorMsg_BTN{
+    display: flex;
+    gap:1rem;
+    align-items: center;
+      .sucess-message{
+        font-size: 18px;
+        color: green;
+      }
+    }
 }

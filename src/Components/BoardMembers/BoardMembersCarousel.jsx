@@ -16,7 +16,7 @@ export default function BoardMembersCarousel() {
     fetchData()
   }, [])
   return (
-    <div className="boardMembersCarousel__container">
+    <div className='boardMembersCarousel__container'>
       <Carousel>
         {Members &&
           Members.map((member, index) => (
