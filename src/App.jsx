@@ -8,21 +8,25 @@ import "antd/dist/antd.less"
 import "remixicon/fonts/remixicon.css"
 
 /** @pages */
-import Home from "./Pages/Home/Home"
-import Volunteer from "./Pages/Volunteer/Volunteer"
-import NewVolunteer from "./Pages/NewVolunteer/NewVolunteer"
-import VolunteerProfile from "./Pages/VolunteerProfile/VolunteerProfile"
-import Causes from "./Pages/Causes/Causes"
-import CauseFocused from "./Pages/CauseFocused/CauseFocused"
-import Events from "./Pages/Events/Events"
-import EventFocused from "./Pages/EventFocused/EventFocused"
-import CreateEvent from "./Pages/CreateEvent/CreateEvent"
-import OurWork from "./Pages/OurWork/OurWork"
-import ContactUs from "./Pages/ContactUs/ContactUs"
-import SignUp from "./Pages/SignUp/SignUp"
-import Login from "./Pages/Login/Login"
-import AboutUs from "./Pages/AboutUs/AboutUs"
+
+
+import Home from './Pages/Home/Home';
+import Volunteer from './Pages/Volunteer/Volunteer';
+import NewVolunteer from './Pages/NewVolunteer/NewVolunteer';
+import VolunteerProfile from './Pages/VolunteerProfile/VolunteerProfile';
+import Causes from './Pages/Causes/Causes';
+import CauseFocused from './Pages/CauseFocused/CauseFocused';
+import Events from './Pages/Events/Events';
+import EventFocused from './Pages/EventFocused/EventFocused';
+import CreateEvent from './Pages/CreateEvent/CreateEvent';
+import OurWork from './Pages/OurWork/OurWork';
+import ContactUs from './Pages/ContactUs/ContactUs';
+import SignUp from './Pages/SignUp/SignUp';
+import Login from './Pages/Login/Login';
+import AboutUs from './Pages/AboutUs/AboutUs';
 import News from "./Pages/News/News"
+import Transparency from './Pages/Transparency/Transparency';
+
 
 const location = new ReactLocation()
 
@@ -91,6 +95,8 @@ export default function App() {
           {
             path: "/news",
             element: <News />,
+            path: "/transparency",
+            element: <Transparency />,
           },
         ]}
       />
