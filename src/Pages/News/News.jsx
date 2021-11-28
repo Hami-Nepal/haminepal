@@ -57,7 +57,7 @@ export default function News() {
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="/">Login/</Link> <Link to="/">Signup</Link>
+            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
           </li>
         </ul>
         <ul className="news__landing__hiddenMenu__items right">
@@ -74,7 +74,7 @@ export default function News() {
             <Link to="/">Transparency</Link>
           </li>
           <li>
-            <Link to="/ourwork">ourWorks</Link>
+            <Link to="/our-work">ourWorks</Link>
           </li>
         </ul>
       </div>

@@ -1,5 +1,6 @@
 import * as React from "react"
 
+// import mui lib
 import Card from "@mui/material/Card"
 import CardMedia from "@mui/material/CardMedia"
 import CardContent from "@mui/material/CardContent"
@@ -7,22 +8,27 @@ import Typography from "@mui/material/Typography"
 import CardActions from "@mui/material/CardActions"
 import Button from "@mui/material/Button"
 
+// scss import
 import "./style.scss"
 
+// import important lib
 import axios from "axios"
 import baseURL from "../../api/baseURL"
 import Pagination from "../Pagination/Pagination"
 
+// main function component
 export default function NewsTabs() {
   const [posts, setPosts] = React.useState([[]])
   const [loading, setLoading] = React.useState(false)
   const [currentPage, setCurrentPage] = React.useState(1)
-  const [postsPerPage, setPostsPerPage] = React.useState(10)
+  const [postsPerPage, setPostsPerPage] = React.useState(8)
 
+  // Page Change
   const paginate = (number) => {
     setCurrentPage(number)
   }
 
+  // get data
   React.useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true)
@@ -33,10 +39,12 @@ export default function NewsTabs() {
     fetchPosts()
   }, [])
 
+  //Pagination variables
   const indexOfLastPost = currentPage * postsPerPage
   const indexOfFirstPost = indexOfLastPost - postsPerPage
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
 
+  // loading Screen
   if (loading) {
     return (
       <div
@@ -51,9 +59,11 @@ export default function NewsTabs() {
   }
   return (
     <>
+      {/* @section=>main-loaded */}
       <div className="news_container_cards">
         {currentPosts.map((news, _id) => (
-          <Card sx={{ maxWidth: 350 }} key={_id}>
+          // news_Card
+          <Card sx={{ maxWidth: 550 }} key={_id}>
             <CardMedia
               component="img"
               alt={news._id}
@@ -67,20 +77,29 @@ export default function NewsTabs() {
                 style={{
                   marginTop: "-42px",
                   color: "white",
+                  textAlign: "center",
                 }}
                 component="div"
               >
                 {news.title}
               </Typography>
-              <Typography variant="body1" color="text.primary">
+              <Typography
+                variant="body1"
+                color="text.primary"
+                textAlign="center"
+              >
                 {news.summary}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                textAlign="center"
+              >
                 Uploaded on:{news.createdAt}
               </Typography>
             </CardContent>
             <CardActions>
-              <Button href={news.link}> Learn More</Button>
+              <Button href={news.link}>Learn More</Button>
             </CardActions>
           </Card>
         ))}
@@ -92,6 +111,7 @@ export default function NewsTabs() {
           alignItems: "center",
         }}
       >
+        {/* @section pagination */}
         <Pagination
           postPerPage={postsPerPage}
           totalPosts={posts.length}
