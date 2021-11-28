@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './style.scss';
 
 import Logo from '../../Assets/logo.png';
@@ -8,20 +8,8 @@ import { Link } from 'react-location';
 import CausesTabs from '../../Components/CausesTabs/CausesTabs';
 import Footer from '../../Components/Footer/Footer';
 
-import baseURL from '../../api/baseURL';
-
 export default function Causes() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
-  const [causes, setCauses] = useState([]);
-
-  console.log(causes);
-
-  useEffect(() => {
-    fetch(baseURL + '/volunteers')
-      .then((data) => data.json())
-      .then(({ data }) => setCauses(data))
-      .catch(({ response }) => console.log(response));
-  }, []);
 
   return (
     <div className="causes__container">
