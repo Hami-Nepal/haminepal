@@ -1,62 +1,62 @@
-import React, { useEffect, useState } from "react"
-import "./style.scss"
+import React, { useEffect, useState } from 'react';
+import './style.scss';
 
-import Logo from "../../Assets/logo.png"
-import BannerVideo from "../../Assets/banner.mp4"
-import BannerVideoWebm from "../../Assets/banner.webm"
-import BannerVideoOgm from "../../Assets/banner.ogm"
-import BannerPoster from "../../Assets/poster-banner.png"
-import MapVideo from "../../Assets/nepalMap.mp4"
+import Logo from '../../Assets/logo.png';
+import BannerVideo from '../../Assets/banner.mp4';
+import BannerVideoWebm from '../../Assets/banner.webm';
+import BannerVideoOgm from '../../Assets/banner.ogm';
+import BannerPoster from '../../Assets/poster-banner.png';
+import MapVideo from '../../Assets/nepalMap.mp4';
 
-import { Link } from "react-location"
-import { Helmet } from "react-helmet"
+import { Link } from 'react-location';
+import { Helmet } from 'react-helmet';
 
-import Partners from "../../Mocks/OurPartners.json"
+import Partners from '../../Mocks/OurPartners.json';
 
-import KindnessCard from "../../Components/Act of Kindness/KindnessCard"
-import BoardMembersCarousel from "../../Components/BoardMembers/BoardMembersCarousel"
-import Footer from "../../Components/Footer/Footer"
-import Donate from "../../Components/Donate/Donate"
+import KindnessCard from '../../Components/Act of Kindness/KindnessCard';
+import BoardMembersCarousel from '../../Components/BoardMembers/BoardMembersCarousel';
+import Footer from '../../Components/Footer/Footer';
+import Donate from '../../Components/Donate/Donate';
 
-import baseURL from "../../api/baseURL"
+import baseURL from '../../api/baseURL';
 
 export default function Home() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
-  const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false)
-  const [topDonors, setTopDonors] = useState([])
-  const [kindness, setKindness] = useState([])
-  const [totalDonations, setTotalDonations] = useState(0)
-  const [totalExpenses, setTotalExpenses] = useState(0)
-  const [homeHero, setHomeHero] = useState({})
+  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
+  const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
+  const [topDonors, setTopDonors] = useState([]);
+  const [kindness, setKindness] = useState([]);
+  const [totalDonations, setTotalDonations] = useState(0);
+  const [totalExpenses, setTotalExpenses] = useState(0);
+  const [homeHero, setHomeHero] = useState({});
 
   useEffect(() => {
-    fetch(baseURL + "/donations?sort=-donation_amount&limit=5")
+    fetch(baseURL + '/donations?sort=-donation_amount&limit=5')
       .then((data) => data.json())
       .then(({ data }) => setTopDonors(data))
-      .catch(({ response }) => console.log(response))
+      .catch(({ response }) => console.log(response));
 
-    fetch(baseURL + "/kindness/featured")
+    fetch(baseURL + '/kindness/featured')
       .then((data) => data.json())
       .then(({ featured }) => setKindness(featured))
-      .catch(({ response }) => console.log(response))
+      .catch(({ response }) => console.log(response));
 
-    fetch(baseURL + "/find/totalDonations")
+    fetch(baseURL + '/find/totalDonations')
       .then((data) => data.json())
       .then(({ data }) => setTotalDonations(data.length ? data[0].donation : 0))
-      .catch(({ response }) => console.log(response))
+      .catch(({ response }) => console.log(response));
 
-    fetch(baseURL + "/find/totalExpenses")
+    fetch(baseURL + '/find/totalExpenses')
       .then((data) => data.json())
       .then(({ data }) =>
         setTotalExpenses(data.length ? data[0].total_expenses : 0)
       )
-      .catch(({ response }) => console.log(response))
+      .catch(({ response }) => console.log(response));
 
-    fetch(baseURL + "/homepage")
+    fetch(baseURL + '/homepage')
       .then((data) => data.json())
       .then(({ data }) => setHomeHero(data[0]))
-      .catch(({ response }) => console.log(response))
-  }, [])
+      .catch(({ response }) => console.log(response));
+  }, []);
 
   return (
     <div className="home__container">
@@ -94,7 +94,7 @@ export default function Home() {
 
         <div className="home__container__landing__footer">
           <div>
-            <h1 style={{ color: homeHero.color || "white" }}>
+            <h1 style={{ color: homeHero.color || 'white' }}>
               {homeHero.content}
             </h1>
             <Link
@@ -102,8 +102,8 @@ export default function Home() {
               className="home__container__landing__footer__donate"
               to="/"
               style={{
-                color: homeHero.color || "white",
-                borderColor: homeHero.color || "white",
+                color: homeHero.color || 'white',
+                borderColor: homeHero.color || 'white',
               }}
             >
               Donate
@@ -114,8 +114,8 @@ export default function Home() {
             className="home__container__landing__footer__ourWork"
             to="/our-work"
             style={{
-              color: homeHero.color || "white",
-              borderColor: homeHero.color || "white",
+              color: homeHero.color || 'white',
+              borderColor: homeHero.color || 'white',
             }}
           >
             Our Work
@@ -124,7 +124,7 @@ export default function Home() {
 
         {/** @dev this is dismissiable donation form */}
         <div
-          style={{ display: isDonationFormOpen ? "block" : "none" }}
+          style={{ display: isDonationFormOpen ? 'block' : 'none' }}
           className="home__container__landing__donationForm"
         >
           <Donate setIsDonationFormOpen={setIsDonationFormOpen} />
@@ -133,7 +133,7 @@ export default function Home() {
         <div
           className="home__container__landing__hiddenMenu"
           style={{
-            display: isActiveMenu ? "flex" : "none",
+            display: isActiveMenu ? 'flex' : 'none',
           }}
         >
           <div className="home__container__landing__hiddenMenu__topbar">
@@ -219,7 +219,7 @@ export default function Home() {
           {topDonors.map((user, index) => (
             <div
               className={`home__container__transparency__topDonors__donor ${
-                index !== 0 && "border"
+                index !== 0 && 'border'
               }`}
               key={user._id}
             >
@@ -251,25 +251,11 @@ export default function Home() {
         />
         <div className="home_container_mapVideo_right">
           <h1>Our Locations</h1>
-          <ul>
-            <li>kathmandu</li>
-            <li>Pokhara</li>
-            <li>Hetauda</li>
-            <li>Birgunj</li>
-            <li>Manang</li>
-            <li>Besisahar</li>
-            <li>Bhaktpur</li>
-            <li>Helambu</li>
-            <li>Ramechap</li>
-            <li>Bhojpur</li>
-            <li>Bheri</li>
-            <li>Doti</li>
-            <li>Dhangadi</li>
-            <li>Mugu</li>
-            <li>Karnali</li>
-            <li>Rukum</li>
-            <li>Bardiya</li>
-          </ul>
+          <p>
+            Kathmandu, Pokhara, Hetauda, Birgung, Manang, Besisahar, Bhaktapur,
+            Helambu, Remachap, Bhojpur, Bheri, Doti, Dhangadi, Mugu, Karnali,
+            Rukum, Bardiya
+          </p>
         </div>
       </div>
 
@@ -355,10 +341,10 @@ export default function Home() {
       <div className="home__container__copyrightInfo">
         <div>&copy; Hami Nepal. All Rights Reserved</div>
         <div>
-          {" "}
+          {' '}
           Made with ❤️ by <Link to="/">Hash Technologies</Link>
         </div>
       </div>
     </div>
-  )
+  );
 }
