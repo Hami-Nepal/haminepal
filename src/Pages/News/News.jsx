@@ -10,13 +10,6 @@ import NewsTabs from "../../Components/NewsTab/NewsTabs"
 export default function News() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false)
 
-  // React.useEffect(() => {
-  //   fetch(baseURL + "/news")
-  //     .then((data) => data.json())
-  //     .then((data) => setNews(data.data))
-  //     .catch((err) => console.log(err, "\n", err.response))
-  // }, [])
-
   return (
     <div className="news">
       {/* @sectoin => topbar */}

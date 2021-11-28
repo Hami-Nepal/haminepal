@@ -13,7 +13,7 @@ import axios from "axios"
 import baseURL from "../../api/baseURL"
 import Pagination from "../Pagination/Pagination"
 
-export default function NewsTabs(props) {
+export default function NewsTabs() {
   const [posts, setPosts] = React.useState([[]])
   const [loading, setLoading] = React.useState(false)
   const [currentPage, setCurrentPage] = React.useState(1)
@@ -43,8 +43,8 @@ export default function NewsTabs(props) {
   return (
     <>
       <div className="news_container_cards">
-        {currentPosts.map((news) => (
-          <Card sx={{ maxWidth: 350 }} key={news._id}>
+        {currentPosts.map((news, _id) => (
+          <Card sx={{ maxWidth: 350 }} key={_id}>
             <CardMedia
               component="img"
               alt={news._id}
