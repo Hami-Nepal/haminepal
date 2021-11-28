@@ -1,14 +1,13 @@
-import React from "react"
+import React from 'react';
 
 /**
  * @packages
  */
-import { ReactLocation, Router } from "react-location"
-import "antd/dist/antd.less"
-import "remixicon/fonts/remixicon.css"
+import { ReactLocation, Router } from 'react-location';
+import 'antd/dist/antd.less';
+import 'remixicon/fonts/remixicon.css';
 
 /** @pages */
-
 
 import Home from './Pages/Home/Home';
 import Volunteer from './Pages/Volunteer/Volunteer';
@@ -24,11 +23,10 @@ import ContactUs from './Pages/ContactUs/ContactUs';
 import SignUp from './Pages/SignUp/SignUp';
 import Login from './Pages/Login/Login';
 import AboutUs from './Pages/AboutUs/AboutUs';
-import News from "./Pages/News/News"
+import News from './Pages/News/News';
 import Transparency from './Pages/Transparency/Transparency';
 
-
-const location = new ReactLocation()
+const location = new ReactLocation();
 
 export default function App() {
   return (
@@ -37,71 +35,71 @@ export default function App() {
         location={location}
         routes={[
           {
-            path: "/",
+            path: '/',
             element: <Home />,
           },
           {
-            path: "/volunteer",
+            path: '/volunteer',
             element: <Volunteer />,
           },
           {
-            path: "/new-volunteer",
+            path: '/new-volunteer',
             element: <NewVolunteer />,
           },
           {
-            path: "/volunteer-profile/:id",
+            path: '/volunteer-profile/:id',
             element: <VolunteerProfile />,
           },
           {
-            path: "/causes",
+            path: '/causes',
             element: <Causes />,
           },
           {
-            path: "/cause-focused/:id",
+            path: '/cause-focused/:id',
             element: <CauseFocused />,
           },
           {
-            path: "/events",
+            path: '/events',
             element: <Events />,
           },
           {
-            path: "/event-focused",
+            path: '/event-focused/:id',
             element: <EventFocused />,
           },
           {
-            path: "/new-event",
+            path: '/new-event',
             element: <CreateEvent />,
           },
           {
-            path: "/our-work",
+            path: '/our-work',
             element: <OurWork />,
           },
           {
-            path: "/contact",
+            path: '/contact',
             element: <ContactUs />,
           },
           {
-            path: "/signup",
+            path: '/signup',
             element: <SignUp />,
           },
           {
-            path: "/login",
+            path: '/login',
             element: <Login />,
           },
           {
-            path: "/about",
+            path: '/about',
             element: <AboutUs />,
           },
           {
-            path: "/news",
-            element: <News />
+            path: '/news',
+            element: <News />,
           },
           {
-            path: "/transparency",
+            path: '/transparency',
             element: <Transparency />,
           },
         ]}
       />
     </>
-  )
+  );
 }
