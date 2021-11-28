@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from "react"
-import "./style.scss"
+import React, { useEffect, useState } from 'react';
+import './style.scss';
 
-import Logo from "../../Assets/logo.png"
+import Logo from '../../Assets/logo.png';
 
-import { Link } from "react-location"
+import { Link } from 'react-location';
 
-import CausesTabs from "../../Components/CausesTabs/CausesTabs"
-import Footer from "../../Components/Footer/Footer"
+import CausesTabs from '../../Components/CausesTabs/CausesTabs';
+import Footer from '../../Components/Footer/Footer';
 
 export default function Causes() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
-  const [causes, setCauses] = useState([])
+  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
+  const [causes, setCauses] = useState([]);
 
-  console.log(causes)
+  console.log(causes);
 
   useEffect(() => {
-    fetch("https://api.haminepal.org/api/v1/volunteers")
+    fetch('https://api.haminepal.org/api/v1/volunteers')
       .then((data) => data.json())
       .then(({ data }) => setCauses(data))
-  }, [])
+      .catch(({ response }) => console.log(response));
+  }, []);
 
   return (
     <div className="causes__container">
@@ -39,7 +40,7 @@ export default function Causes() {
       <div
         className="causes__container__landing__hiddenMenu"
         style={{
-          display: isActiveMenu ? "flex" : "none",
+          display: isActiveMenu ? 'flex' : 'none',
         }}
       >
         <div className="causes__container__landing__hiddenMenu__topbar">
@@ -107,5 +108,5 @@ export default function Causes() {
 
       <Footer />
     </div>
-  )
+  );
 }
