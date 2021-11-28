@@ -172,13 +172,13 @@ export default function EventFocused() {
               key={item}
             >
               <img
-                src="https://avatars.githubusercontent.com/u/93444253?s=400&u=389a238cf991d86adcc03166270d30241e94a95b&v=4"
+                src="https://avatars.githubusercontent.com/u/93448253?s=400&u=389a238cf991d86adcc03166270d30241e94a95b&v=4"
                 alt="volunteer"
               />
 
               <div className="userInfo">
-                <div className="name">Deekshya Shahi</div>
-                <div className="position">Moto Vlogger</div>
+                <div className="name">Volunter Name</div>
+                <div className="position">Some Info</div>
               </div>
             </div>
           ))}
