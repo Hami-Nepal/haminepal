@@ -1,9 +1,11 @@
 .civil_right_tab_container {
+  background-color: #e4e4e4;
+  padding: 3rem 1rem 1rem 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   grid-gap: 0 20px;
   grid-auto-rows: 20px;
-  margin: 0rem 3rem 5rem 3rem;
+  margin: 0rem 4rem 5rem 4rem;
   @media only screen and (max-width: 600px) {
     margin: 0;
   }

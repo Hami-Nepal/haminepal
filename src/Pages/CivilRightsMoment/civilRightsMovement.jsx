@@ -86,41 +86,11 @@ export default function CivilRightsMovement() {
 
       {/* @section => landing */}
       <div className="civil_container__landing">
-        {/* <h1>Civil Rights Moment</h1>
+        <h1>Civil Rights Moment</h1>
 
         <p>
           Life's Most Persistent And Urgent Question Is, What Are You Doing For
           Others?
-        </p> */}
-      </div>
-      <div
-        style={{
-          margin: "20px 1rem 50px 1rem",
-          textAlign: "center",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <h1 style={{ fontWeight: "bolder" }}>Civil Rights Movement</h1>
-        <p
-          style={{
-            fontSize: "1.3rem",
-            letterSpacing: "0.1rem",
-            marginTop: "10px",
-            color: "grey",
-            width: "60vw",
-          }}
-        >
-          The civil rights movement was a struggle for social justice that took
-          place mainly during the 1950s and 1960s for Black Americans to gain
-          equal rights under the law in the United States. The Civil War had
-          officially abolished slavery, but it didn’t end discrimination against
-          Black people—they continued to endure the devastating effects of
-          racism, especially in the South. By the mid-20th century, Black
-          Americans had had more than enough of prejudice and violence against
-          them. They, along with many white Americans, mobilized and began an
-          unprecedented fight for equality that spanned two decades.
         </p>
       </div>
 
