@@ -13,7 +13,6 @@ import "./style.scss"
 
 // import important lib
 import axios from "axios"
-import baseURL from "../../api/baseURL"
 import Pagination from "../Pagination/Pagination"
 
 // main function component
@@ -32,7 +31,7 @@ export default function NewsTabs() {
   React.useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true)
-      const res = await axios.get(baseURL + `/news`)
+      const res = await axios.get(`https://api.haminepal.org/api/v1/news`)
       setPosts(res.data.data)
       setLoading(false)
     }

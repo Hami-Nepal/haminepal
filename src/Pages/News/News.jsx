@@ -50,7 +50,7 @@ export default function News() {
             <Link to="/">Act of Kindness</Link>
           </li>
           <li>
-            <Link to="/">Civil Rights Movements</Link>
+            <Link to="/civil-rights-movement">Civil Rights Movements</Link>
           </li>
           <li>
             <Link to="/contact">Contact Us</Link>
@@ -84,6 +84,10 @@ export default function News() {
         <h1>News</h1>
         <p>Hami Nepal News</p>
       </div>
+      <h5 style={{ textAlign: "center", margin: "50px 0px 50px 0px" }}>
+        Get all of our latest global human rights news, blogs and analysis,
+        updated daily.
+      </h5>
 
       {/* @section=>news cards */}
       <NewsTabs />
