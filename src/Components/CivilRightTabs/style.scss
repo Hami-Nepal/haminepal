@@ -1,0 +1,17 @@
+.civil_right_tab_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 0 20px;
+  grid-auto-rows: 20px;
+  margin: 0rem 3rem 5rem 3rem;
+  padding: 4rem;
+  @media only screen and (max-width: 600px) {
+    margin: 0;
+  }
+
+  img {
+    height: 30vh;
+    width: 100%;
+    object-fit: cover;
+  }
+}

@@ -6,7 +6,7 @@ import Logo from "../../Assets/logo.png"
 import { Link } from "react-location"
 
 import Footer from "../../Components/Footer/Footer"
-// import CivilRightTabs from "../../Components/CivilRightTabs"
+import CivilRightTabs from "../../Components/CivilRightTabs"
 
 export default function CivilRightsMovement() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false)
@@ -95,16 +95,21 @@ export default function CivilRightsMovement() {
       </div>
       <div
         style={{
-          margin: "50px 1rem 50px 1rem",
+          margin: "20px 1rem 50px 1rem",
+          textAlign: "center",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         }}
       >
-        <h1>Civil Rights Moment</h1>
+        <h1 style={{ fontWeight: "bolder" }}>Civil Rights Movement</h1>
         <p
           style={{
-            textAlign: "justify",
             fontSize: "1.3rem",
             letterSpacing: "0.1rem",
             marginTop: "10px",
+            color: "grey",
+            width: "60vw",
           }}
         >
           The civil rights movement was a struggle for social justice that took
@@ -119,7 +124,7 @@ export default function CivilRightsMovement() {
         </p>
       </div>
 
-      {/* <CivilRightTabs /> */}
+      <CivilRightTabs />
 
       <Footer />
     </div>
