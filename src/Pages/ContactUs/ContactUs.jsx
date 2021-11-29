@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import React from "react";
 import "./style.scss";
 
 import Logo from "../../Assets/logo.png";
+=======
+import React from "react"
+import "./style.scss"
+import Logo from "../../Assets/logo.png"
+>>>>>>> 9e9f722a07822ba77aeedb981941db166c6a814f
 
 import Alert from "@mui/material/Alert";
 
@@ -12,13 +18,19 @@ import Footer from "../../Components/Footer/Footer";
 import emailjs from "emailjs-com";
 import { useForm } from "react-hook-form";
 
-/**
- * @dev add messanger chat bot
- */
+// /**
+//  * @dev add messanger chat bot
+//  */
 export default function ContactUs() {
+<<<<<<< HEAD
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
   const [sucessMessage, setSucessMessage] = React.useState("");
   const [sending, setSending] = React.useState(false);
+=======
+  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
+  const [sucessMessage, setSucessMessage] = React.useState("")
+  const[sending,setSending]=React.useState(false)
+>>>>>>> 9e9f722a07822ba77aeedb981941db166c6a814f
 
   const {
     register,
@@ -199,10 +211,17 @@ export default function ContactUs() {
               <div className='error-message'>
                 {errors.description && errors.description.message}
               </div>
+<<<<<<< HEAD
 
               <button className='btn-submit'>
                 {sending ? "sending..." : "Submit"}
               </button>
+=======
+              <div className="ErrorMsg_BTN">
+              <button className="btn-submit" >{sending?"sending...":"Submit"}</button>
+              <div className="sucess-message">{sucessMessage}</div>
+            </div>
+>>>>>>> 9e9f722a07822ba77aeedb981941db166c6a814f
             </div>
           </form>
 
@@ -218,7 +237,7 @@ export default function ContactUs() {
           </div>
         </div>
       </div>
-
+            {/* Mail send Sucess Message */}
       <Footer />
     </div>
   );

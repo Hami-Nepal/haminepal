@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import "./style.scss";
+=======
+import React, { useState } from 'react';
+import './style.scss';
+>>>>>>> 9e9f722a07822ba77aeedb981941db166c6a814f
 
 import Logo from "../../Assets/logo.png";
 
@@ -33,7 +38,11 @@ export default function SignUp() {
     // formData.append("password", password);
 
     axios
+<<<<<<< HEAD
       .post("http://localhost:5000/api/v1/users/signup", {
+=======
+      .post("https://api.haminepal.org/api/v1/users/signup", {
+>>>>>>> 9e9f722a07822ba77aeedb981941db166c6a814f
         firstname: firstName,
         lastname: lastName,
         email: email,

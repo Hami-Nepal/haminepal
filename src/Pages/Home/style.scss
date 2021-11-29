@@ -167,7 +167,7 @@
           padding-top: 23vh;
 
           a {
-            font-family: "Playfair Display", serif;
+            font-family: 'Playfair Display', serif;
             font-size: 50px;
             font-weight: 700;
 
@@ -190,7 +190,7 @@
     flex-wrap: wrap;
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       margin-bottom: 30px;
@@ -237,7 +237,7 @@
       }
 
       h2 {
-        font-family: "Playfair Display", serif;
+        font-family: 'Playfair Display', serif;
         font-weight: 700;
         font-size: 25px;
         margin-bottom: 20px;
@@ -285,23 +285,30 @@
 
   /**@section => nepal map video */
   .home_container_mapVideo {
-    max-height: 100vh;
-    height: 85vh;
+    min-height: 100vh;
     width: 100%;
     position: relative;
     margin-bottom: 50px;
     display: flex;
-    padding: 4rem;
+    padding: 2rem;
+    gap: 2rem;
+    flex-direction: column;
     justify-content: space-around;
     flex: 2;
+
+    @media (min-width: 756px) {
+      padding: 4rem;
+    }
     video {
       position: relative;
       top: 0;
       left: 0;
-      width: 70% !important;
+      width: 100% !important;
       height: 100%;
       object-fit: initial;
       z-index: 0;
+      margin: auto;
+      max-width: 800px;
     }
     .home_container_mapVideo_right {
       h1 {
@@ -326,7 +333,7 @@
     margin-top: 20px;
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
 
@@ -354,7 +361,7 @@
     flex-wrap: wrap;
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       flex: 2;
@@ -390,7 +397,7 @@
     background: rgb(245, 245, 245);
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       text-align: center;
@@ -427,7 +434,7 @@
 
     .home__container__comingSoon__contents {
       h1 {
-        font-family: "Playfair Display", serif;
+        font-family: 'Playfair Display', serif;
         font-weight: 700;
         font-size: 50px;
       }
@@ -460,7 +467,7 @@
     padding-top: 40px;
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       margin-bottom: 40px;

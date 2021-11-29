@@ -91,6 +91,23 @@ export default function CausesTabs() {
   return (
     <div className="causesTabs__container">
       <Box sx={{ width: '100%' }}>
+        <Box sx={{ width: 120, margin: '1rem' }}>
+          <FormControl fullWidth>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={activeCauseStatus}
+              onChange={handleStatusChange}
+              inputProps={{ 'aria-label': 'Without label' }}
+              displayEmpty
+            >
+              <MenuItem value="ongoing" selected>
+                Ongoing
+              </MenuItem>
+              <MenuItem value="past">Past</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
         <div className="causesTabs__meroTabs">
           <Box sx={{ borderBottom: 2, borderColor: '#e74c3c' }}>
             <Tabs
@@ -109,24 +126,6 @@ export default function CausesTabs() {
               ))}
             </Tabs>
           </Box>
-
-          <Box sx={{ minWidth: 120 }}>
-            <FormControl fullWidth>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={activeCauseStatus}
-                onChange={handleStatusChange}
-                inputProps={{ 'aria-label': 'Without label' }}
-                displayEmpty
-              >
-                <MenuItem value="ongoing" selected>
-                  Ongoing
-                </MenuItem>
-                <MenuItem value="past">Past</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
         </div>
         <TabPanel
           className="causes__container__items"
@@ -139,8 +138,8 @@ export default function CausesTabs() {
               to={'/cause-focused/' + card._id}
               key={card._id}
             >
-              <h2 style={{ margin: '1rem' }}>{card.name}</h2>
               <img src={card.photos[0]} className="item__image" alt="project" />
+              <h2 style={{ margin: '1rem 1rem 0' }}>{card.name}</h2>
               <div className="item__info">{card.description}</div>
               <Button onClick={onDonate}>Donate</Button>
             </Link>

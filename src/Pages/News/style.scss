@@ -88,8 +88,9 @@
   //   @section => landing
   .news__container_landing {
     z-index: 1;
-    height: 85vh;
+    height: 100vh;
     width: 100%;
+    margin-top: -120px;
     background-image: linear-gradient(
         285.24deg,
         #d81d1d38 -13.53%,
@@ -118,15 +119,5 @@
         width: 70vw;
       }
     }
-  }
-  /** @section => volunteer cards */
-  .news_container_cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 4rem;
-    margin: 0 5vw;
-    margin-bottom: 60px;
   }
 }

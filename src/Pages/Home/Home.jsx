@@ -251,25 +251,11 @@ export default function Home() {
         />
         <div className='home_container_mapVideo_right'>
           <h1>Our Locations</h1>
-          <ul>
-            <li>kathmandu</li>
-            <li>Pokhara</li>
-            <li>Hetauda</li>
-            <li>Birgunj</li>
-            <li>Manang</li>
-            <li>Besisahar</li>
-            <li>Bhaktpur</li>
-            <li>Helambu</li>
-            <li>Ramechap</li>
-            <li>Bhojpur</li>
-            <li>Bheri</li>
-            <li>Doti</li>
-            <li>Dhangadi</li>
-            <li>Mugu</li>
-            <li>Karnali</li>
-            <li>Rukum</li>
-            <li>Bardiya</li>
-          </ul>
+          <p>
+            Kathmandu, Pokhara, Hetauda, Birgung, Manang, Besisahar, Bhaktapur,
+            Helambu, Remachap, Bhojpur, Bheri, Doti, Dhangadi, Mugu, Karnali,
+            Rukum, Bardiya
+          </p>
         </div>
       </div>
 

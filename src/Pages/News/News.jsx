@@ -4,21 +4,11 @@ import "./style.scss"
 import Logo from "../../Assets/logo.png"
 
 import { Link } from "react-location"
-import baseURL from "../../api/baseURL"
 
 import Footer from "../../Components/Footer/Footer"
 import NewsTabs from "../../Components/NewsTab/NewsTabs"
 export default function News() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false)
-  const [news, setNews] = React.useState([])
-  console.log(news)
-
-  React.useEffect(() => {
-    fetch(baseURL + "/news")
-      .then((data) => data.json())
-      .then((data) => setNews(data.data))
-      .catch((err) => console.log(err, "\n", err.response))
-  }, [])
 
   return (
     <div className="news">
@@ -67,7 +57,7 @@ export default function News() {
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="/">Login/</Link> <Link to="/">Signup</Link>
+            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
           </li>
         </ul>
         <ul className="news__landing__hiddenMenu__items right">
@@ -84,7 +74,7 @@ export default function News() {
             <Link to="/">Transparency</Link>
           </li>
           <li>
-            <Link to="/ourwork">ourWorks</Link>
+            <Link to="/our-work">ourWorks</Link>
           </li>
         </ul>
       </div>
@@ -96,11 +86,7 @@ export default function News() {
       </div>
 
       {/* @section=>news cards */}
-      <div className="news_container_cards">
-        {news.map((news) => (
-          <NewsTabs news={news} key={news._id} />
-        ))}
-      </div>
+      <NewsTabs />
 
       <Footer />
     </div>
