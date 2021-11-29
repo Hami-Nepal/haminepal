@@ -8,6 +8,7 @@ import { Button } from "@mui/material";
 import Footer from "../../Components/Footer/Footer";
 import axios from "axios";
 import { isEmail } from "validator";
+import baseURL from "../../api/baseURL";
 
 export default function Login() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
@@ -26,7 +27,7 @@ export default function Login() {
 
     axios({
       method: "POST",
-      url: "https://api.hminepal.org/api/v1/users/login",
+      url: baseURL + "/users/login",
       data: {
         email: email,
         password: password,

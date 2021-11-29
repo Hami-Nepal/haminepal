@@ -8,6 +8,7 @@ import TransparencyCausesTabs from "../../Components/TransparencyCausesTabs/Tran
 import Footer from "../../Components/Footer/Footer";
 import { Helmet } from "react-helmet";
 import baseURL from "../../api/baseURL";
+import image from "../../Assets/transparency.jpg";
 
 export default function Transparency() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
@@ -69,7 +70,7 @@ export default function Transparency() {
             <Link to='/'>Home</Link>
           </li>
           <li>
-            <Link to='/'>News</Link>
+            <Link to='/news'>News</Link>
           </li>
           <li>
             <Link to='/'>Act of Kindness</Link>
@@ -78,28 +79,28 @@ export default function Transparency() {
             <Link to='/'>Civil Rights Movements</Link>
           </li>
           <li>
-            <Link to='/'>Contact Us</Link>
+            <Link to='/contact'>Contact Us</Link>
           </li>
           <div className='divider'></div>
           <li>
-            <Link to='/'>Login/</Link> <Link to='/'>Signup</Link>
+            <Link to='/login'>Login/</Link> <Link to='/'>Signup</Link>
           </li>
         </ul>
         <ul className='transparency__container__landing__hiddenMenu__items right'>
           <li>
-            <Link to='/'>About Us</Link>
+            <Link to='/about'>About Us</Link>
           </li>
           <li>
-            <Link to='/'>Cause</Link>
+            <Link to='/causes'>Cause</Link>
           </li>
           <li>
-            <Link to='/'>Events</Link>
+            <Link to='/events'>Events</Link>
           </li>
           <li>
-            <Link to='/'>Transparency</Link>
+            <Link to='/transparency'>Transparency</Link>
           </li>
           <li>
-            <Link to='/'>Volunteers</Link>
+            <Link to='/volunteer'>Volunteers</Link>
           </li>
         </ul>
       </div>
@@ -137,18 +138,11 @@ export default function Transparency() {
           <div className='divider'></div>
 
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi enim
-            numquam mollitia laboriosam, ratione sint, error molestiae dolorum
-            ea magnam excepturi maiores omnis! Eligendi minus, aperiam fuga
-            adipisci repellat nostrum. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Obcaecati, illum non necessitatibus harum
-            praesentium soluta.
+            Transparency, revealing the correct information about where your
+            donation is going.
           </p>
         </div>
-        <img
-          src='https://images.unsplash.com/photo-1605522469906-3fe226b356bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1772&q=80'
-          alt=''
-        />
+        <img src={image} alt='' />
       </div>
 
       {/* @section => event tabs */}
