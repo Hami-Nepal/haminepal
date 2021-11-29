@@ -1,7 +1,7 @@
 import React from "react"
 
 import image from "./image"
-import ImageCard from "./ImageCard"
+import ImageCard from "../ImageCard/ImageCard"
 
 import "./style.scss"
 
@@ -25,7 +25,6 @@ const CivilRightTabs = () => {
 
   return (
     <>
-      <Typography justifyContent="center">Page: {currentPage}</Typography>
       <div className="civil_right_tab_container">
         {currentPosts.map((data) => (
           <ImageCard image={data} key={data.id} />
