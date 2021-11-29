@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import './style.scss';
+import React, { useState } from "react";
+import "./style.scss";
 
-import Logo from '../../Assets/logo.png';
+import Logo from "../../Assets/logo.png";
 
 import { Link } from "react-location";
 import { Button } from "@mui/material";
 import Footer from "../../Components/Footer/Footer";
 import axios from "axios";
 import { isEmail } from "validator";
+import baseURL from "../../api/baseURL";
 
 export default function SignUp() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
@@ -33,7 +34,7 @@ export default function SignUp() {
     // formData.append("password", password);
 
     axios
-      .post("https://api.haminepal.org/api/v1/users/signup", {
+      .post(baseURL + "/users/signup", {
         firstname: firstName,
         lastname: lastName,
         email: email,
@@ -72,7 +73,7 @@ export default function SignUp() {
       <div
         className='signup__container__landing__hiddenMenu'
         style={{
-          display: isActiveMenu ? 'flex' : 'none',
+          display: isActiveMenu ? "flex" : "none",
         }}
       >
         <div className='signup__container__landing__hiddenMenu__topbar'>
@@ -100,28 +101,28 @@ export default function SignUp() {
             <Link to='/'>Civil Rights Movements</Link>
           </li>
           <li>
-            <Link to="/contact">Contact Us</Link>
+            <Link to='/'>Contact Us</Link>
           </li>
           <div className='divider'></div>
           <li>
-            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
+            <Link to='/'>Login/</Link> <Link to='/'>Signup</Link>
           </li>
         </ul>
         <ul className='signup__container__landing__hiddenMenu__items right'>
           <li>
-            <Link to="/about">About Us</Link>
+            <Link to='/'>About Us</Link>
           </li>
           <li>
-            <Link to="/causes">Cause</Link>
+            <Link to='/'>Cause</Link>
           </li>
           <li>
-            <Link to="/events">Events</Link>
+            <Link to='/'>Events</Link>
           </li>
           <li>
-            <Link to="/transparency">Transparency</Link>
+            <Link to='/'>Transparency</Link>
           </li>
           <li>
-            <Link to="/volunteer">Volunteers</Link>
+            <Link to='/'>Volunteers</Link>
           </li>
         </ul>
       </div>

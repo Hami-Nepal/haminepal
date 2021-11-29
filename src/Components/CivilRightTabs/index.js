@@ -34,8 +34,6 @@ const CivilRightTabs = () => {
         <Pagination
           count={result}
           page={currentPage}
-          size="large"
-          shape="rounded"
           variant="outlined"
           color="primary"
           onChange={handleChange}
