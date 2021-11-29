@@ -457,6 +457,15 @@
       }
     }
   }
+  .Mentor {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+
+    @media (min-width: 950px) {
+      flex-direction: row;
+    }
+  }
 
   /** @section => our partner */
   .home__container__ourPartner {

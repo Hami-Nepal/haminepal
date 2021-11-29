@@ -302,10 +302,7 @@ export default function Home() {
           <h1>Coming Soon</h1>
           <span>Hami Nepal App</span>
 
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-            asperiores cum minima. Maiores, harum.
-          </p>
+          <p>Hami Nepal app is coming soon! Stay tuned.</p>
 
           <div className='links'>
             <Link to='/'>
@@ -325,6 +322,45 @@ export default function Home() {
       </div>
 
       {/** @section => our partner */}
+      <div className='home__container__ourPartner'>
+        <h1>Our Mentor</h1>
+        <div className='Mentor'>
+          <img
+            style={{ width: 450, height: 450, borderRadius: "8%" }}
+            src='https://www.abc.net.au/cm/rimage/9966990-1x1-large.jpg?v=3'
+            alt='Sandukh Ruit'
+          />
+          <div className='Mentor__details'>
+            <h3>Dr. Sanduk Ruit</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
+              temporibus recusandae natus dolores nam dicta odit est commodi!
+              Quo odio error voluptatem? In, quae ullam nesciunt sint suscipit
+              voluptas porro omnis! Eaque vitae voluptatibus perferendis vero
+              rerum. Neque vitae ratione quo perferendis natus, aliquam nam quos
+              officiis dolor expedita! Porro expedita incidunt, nesciunt quis
+              sit harum deserunt corrupti laboriosam natus voluptate quae
+              mollitia asperiores?
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
+              doloribus dolorum enim minima sit dolores odit voluptas
+              reprehenderit doloremque quibusdam vitae soluta dolor repellendus
+              fugit et voluptates vero distinctio illum praesentium, iste ipsa
+              modi rerum reiciendis consequatur. Maxime nam dolore laudantium
+              eum tempore placeat ipsa corrupti! Ducimus voluptatum expedita
+              quaerat nisi dolorem esse autem fuga excepturi quam quis! Deleniti
+              veniam velit dolores assumenda. Culpa!
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
+              praesentium id corrupti sequi, eveniet architecto sed a, voluptate
+              earum nisi qui rerum et culpa facere consequatur quibusdam, non
+              quam quos?
+            </p>
+          </div>
+        </div>
+      </div>
       <div className='home__container__ourPartner'>
         <h1>Our Partner</h1>
         <ul>

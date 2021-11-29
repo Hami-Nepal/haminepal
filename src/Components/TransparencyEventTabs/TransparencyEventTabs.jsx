@@ -110,7 +110,7 @@ export default function TransparencyEventTabs() {
             </Tabs>
           </Box>
 
-          <Box sx={{ minWidth: 120 }}>
+          <Box sx={{ width: 110, margin: "1rem" }}>
             <FormControl fullWidth>
               <Select
                 labelId='demo-simple-select-label'

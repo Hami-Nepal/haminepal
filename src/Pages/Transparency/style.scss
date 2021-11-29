@@ -88,7 +88,7 @@
   // @section => landing
   .transparency__container__landing {
     z-index: 1;
-    height: 85vh;
+    min-height: 85vh;
     width: 100%;
     background-image: linear-gradient(
         to bottom,
@@ -143,6 +143,7 @@
       }
 
       p {
+        margin-bottom: 50px;
         font-size: 22px;
         color: #59d057;
         font-weight: 600;

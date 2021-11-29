@@ -1,56 +1,72 @@
-.volunteerCard__container{
-    width: 23vw;
-    margin-bottom: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.volunteerCard__container {
+  width: 23vw;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 30px;
+  border-radius: 14px;
+  box-shadow: 0 0 2px 0 rgba(145, 158, 171, 0.24),
+    0 16px 32px -4px rgba(145, 158, 171, 0.24);
+
+  @media (max-width: 992px) {
+    width: 40vw;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+
+  img {
+    width: 100px;
+    border-radius: 50%;
+  }
+
+  .volunteerCard__container__name {
+    margin-top: 15px;
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  .volunteerCard__container__email {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #7a7a7a;
+  }
+
+  p {
     text-align: center;
-    padding: 40px 30px;
-    border-radius: 14px;
-    box-shadow: 0 0 2px 0 rgba(145, 158, 171, 0.24), 0 16px 32px -4px rgba(145, 158, 171,0.24);
+    line-height: 1.5;
+    font-size: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
 
-    @media (max-width: 992px){
-        width: 40vw;
-    }
-    
-    @media (max-width: 768px){
-        width: 100%;
-    }
+  .MuiButton-root {
+    margin-top: 10px;
+    width: 100%;
+    background: #9f1718;
+    color: #fff;
+    padding: 12px 0;
 
-    img{
-        width: 100px;
-        border-radius: 50%;
+    &:hover {
+      background: #9f1717b7;
     }
+  }
+}
 
-    .volunteerCard__container__name{
-        margin-top: 15px;
-        font-weight: 500;
-        font-size: 18px;
-    }
+.volunteer-ko-image {
+  position: relative;
+}
 
-    .volunteerCard__container__email{
-        margin-top: 5px;
-        font-size: 14px;
-        color: #7a7a7a;
-    }
-
-    p{
-        text-align: center;
-        line-height: 1.5;
-        font-size: 15px;
-        margin-top: 15px;
-        margin-bottom: 15px;
-    }
-
-    .MuiButton-root{
-        margin-top: 10px;
-        width: 100%;
-        background: #9F1718;
-        color: #fff;
-        padding: 12px 0;
-
-        &:hover{
-            background: #9f1717b7;
-        }
-    }
+.status-dot {
+  position: absolute;
+  right: 0.45rem;
+  bottom: 0.45rem;
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 100rem;
+  border: 2px solid white;
 }
