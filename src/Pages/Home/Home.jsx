@@ -158,7 +158,7 @@ export default function Home() {
               <Link to="/">Act of Kindness</Link>
             </li>
             <li>
-              <Link to="/">Civil Rights Movements</Link>
+              <Link to="/civil-rights-movement">Civil Rights Movements</Link>
             </li>
             <li>
               <Link to="/contact">Contact Us</Link>
