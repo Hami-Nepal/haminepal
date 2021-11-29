@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
 import "./style.scss";
 
@@ -29,37 +28,6 @@ export default function Login() {
     axios({
       method: "POST",
       url: baseURL + "/users/login",
-=======
-import React, { useState } from "react"
-import "./style.scss"
-
-import Logo from "../../Assets/logo.png"
-
-import { Link } from "react-location"
-import { Button } from "@mui/material"
-import Footer from "../../Components/Footer/Footer"
-import axios from "axios"
-import { isEmail } from "validator"
-
-export default function Login() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
-
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-
-  const [successful, setSuccessful] = useState(false)
-  const [sending, setSending] = useState(false)
-  const [error, setError] = useState("")
-
-  const handleLogin = (e) => {
-    e.preventDefault()
-    setSending(true)
-    setSuccessful(false)
-
-    axios({
-      method: "POST",
-      url: "https://api.haminepal.org/api/v1/users/login",
->>>>>>> 9e9f722a07822ba77aeedb981941db166c6a814f
       data: {
         email: email,
         password: password,
@@ -71,7 +39,6 @@ export default function Login() {
       .then(function (response) {
         //handle success
         if (response.data.accessToken) {
-<<<<<<< HEAD
           localStorage.setItem("user", JSON.stringify(response.data));
         }
         alert("loggged In");
@@ -85,21 +52,6 @@ export default function Login() {
         setSending(false);
       });
   };
-=======
-          localStorage.setItem("user", JSON.stringify(response.data))
-        }
-        alert("loggged In")
-        setSending(false)
-        setSuccessful(true)
-        return response.data
-      })
-      .catch(function (err) {
-        //handle error
-        setError(err.response.data.msg)
-        setSending(false)
-      })
-  }
->>>>>>> 9e9f722a07822ba77aeedb981941db166c6a814f
 
   return (
     <div className='login__container'>
@@ -177,7 +129,6 @@ export default function Login() {
       {/* @section => form */}
       <div className='login__container__form'>
         {/* @section => form container */}
-<<<<<<< HEAD
         <div className='login__container__form__inputs'>
           {!successful && (
             <div className='login__container__form__inputs__input left'>
@@ -194,60 +145,26 @@ export default function Login() {
                     setError("Please enter valid email");
                   } else {
                     setError("");
-=======
-        <div className="login__container__form__inputs">
-          {!successful && (
-            <div className="login__container__form__inputs__input left">
-              <h1>Login</h1>
-              <div className="divider"></div>
-              <input
-                className="full"
-                type="email"
-                placeholder="Email Address"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value)
-                  if (!isEmail(email)) {
-                    setError("Please enter valid email")
-                  } else {
-                    setError("")
->>>>>>> 9e9f722a07822ba77aeedb981941db166c6a814f
                   }
                 }}
               />
               <input
-<<<<<<< HEAD
                 className='full'
                 type='password'
                 placeholder='Password'
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
-=======
-                className="full"
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value)
->>>>>>> 9e9f722a07822ba77aeedb981941db166c6a814f
                 }}
               />
               <Button onClick={handleLogin}>
                 {sending ? "Sending..." : "Login"}
               </Button>
               {error && (
-<<<<<<< HEAD
                 <div className='form-group'>
                   <div
                     className='alert alert-danger'
                     role='alert'
-=======
-                <div className="form-group">
-                  <div
-                    className="alert alert-danger"
-                    role="alert"
->>>>>>> 9e9f722a07822ba77aeedb981941db166c6a814f
                     style={{ color: "red", marginTop: "20px" }}
                   >
                     {error}
@@ -255,17 +172,10 @@ export default function Login() {
                 </div>
               )}
               {successful && (
-<<<<<<< HEAD
                 <div className='form-group'>
                   <div
                     className='alert alert-success'
                     role='alert'
-=======
-                <div className="form-group">
-                  <div
-                    className="alert alert-success"
-                    role="alert"
->>>>>>> 9e9f722a07822ba77aeedb981941db166c6a814f
                     style={{ color: "green" }}
                   >
                     <span>Successfully loggedIn</span>
@@ -286,5 +196,5 @@ export default function Login() {
 
       <Footer />
     </div>
-  )
+  );
 }
