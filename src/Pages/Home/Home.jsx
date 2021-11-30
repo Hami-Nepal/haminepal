@@ -239,6 +239,14 @@ export default function Home() {
 
       {/* @section HamiNepalMap */}
       <div className='home_container_mapVideo'>
+        <div className='home_container_mapVideo_right'>
+          <h1>Our Locations</h1>
+          <p>
+            Kathmandu, Pokhara, Hetauda, Birgung, Manang, Besisahar, Bhaktapur,
+            Helambu, Remachap, Bhojpur, Bheri, Doti, Dhangadi, Mugu, Karnali,
+            Rukum, Bardiya
+          </p>
+        </div>
         <video
           className='Map__video'
           src={MapVideo}
@@ -249,14 +257,6 @@ export default function Home() {
           playsInline='true'
           poster={BannerPoster}
         />
-        <div className='home_container_mapVideo_right'>
-          <h1>Our Locations</h1>
-          <p>
-            Kathmandu, Pokhara, Hetauda, Birgung, Manang, Besisahar, Bhaktapur,
-            Helambu, Remachap, Bhojpur, Bheri, Doti, Dhangadi, Mugu, Karnali,
-            Rukum, Bardiya
-          </p>
-        </div>
       </div>
 
       {/** @section => act of kindness */}

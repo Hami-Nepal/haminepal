@@ -1,33 +1,34 @@
-import React from "react"
+import React from "react";
 
 /**
  * @packages
  */
-import { ReactLocation, Router } from "react-location"
-import "antd/dist/antd.less"
-import "remixicon/fonts/remixicon.css"
+import { ReactLocation, Router } from "react-location";
+import "antd/dist/antd.less";
+import "remixicon/fonts/remixicon.css";
 
 /** @pages */
 
-import Home from "./Pages/Home/Home"
-import Volunteer from "./Pages/Volunteer/Volunteer"
-import NewVolunteer from "./Pages/NewVolunteer/NewVolunteer"
-import VolunteerProfile from "./Pages/VolunteerProfile/VolunteerProfile"
-import Causes from "./Pages/Causes/Causes"
-import CauseFocused from "./Pages/CauseFocused/CauseFocused"
-import Events from "./Pages/Events/Events"
-import EventFocused from "./Pages/EventFocused/EventFocused"
-import CreateEvent from "./Pages/CreateEvent/CreateEvent"
-import OurWork from "./Pages/OurWork/OurWork"
-import ContactUs from "./Pages/ContactUs/ContactUs"
-import SignUp from "./Pages/SignUp/SignUp"
-import Login from "./Pages/Login/Login"
-import AboutUs from "./Pages/AboutUs/AboutUs"
-import News from "./Pages/News/News"
-import Transparency from "./Pages/Transparency/Transparency"
-import CivilRightsMovement from "./Pages/CivilRightsMoment/civilRightsMovement"
+import Home from "./Pages/Home/Home";
+import Volunteer from "./Pages/Volunteer/Volunteer";
+import NewVolunteer from "./Pages/NewVolunteer/NewVolunteer";
+import VolunteerProfile from "./Pages/VolunteerProfile/VolunteerProfile";
+import Causes from "./Pages/Causes/Causes";
+import CauseFocused from "./Pages/CauseFocused/CauseFocused";
+import Events from "./Pages/Events/Events";
+import EventFocused from "./Pages/EventFocused/EventFocused";
+import CreateEvent from "./Pages/CreateEvent/CreateEvent";
+import OurWork from "./Pages/OurWork/OurWork";
+import ContactUs from "./Pages/ContactUs/ContactUs";
+import SignUp from "./Pages/SignUp/SignUp";
+import Login from "./Pages/Login/Login";
+import AboutUs from "./Pages/AboutUs/AboutUs";
+import News from "./Pages/News/News";
+import Transparency from "./Pages/Transparency/Transparency";
+import CivilRightsMovement from "./Pages/CivilRightsMoment/civilRightsMovement";
+import TransparencyEventFocused from "./Pages/Transparency/Transparency_Event_Focused";
 
-const location = new ReactLocation()
+const location = new ReactLocation();
 
 export default function App() {
   return (
@@ -100,11 +101,15 @@ export default function App() {
             element: <Transparency />,
           },
           {
+            path: "/transparency-event-focused/:id",
+            element: <TransparencyEventFocused />,
+          },
+          {
             path: "/civil-rights-movement",
             element: <CivilRightsMovement />,
           },
         ]}
       />
     </>
-  )
+  );
 }

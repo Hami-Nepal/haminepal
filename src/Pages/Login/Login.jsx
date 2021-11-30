@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./style.scss";
 
 import Logo from "../../Assets/logo.png";
-
+import Switch from "@mui/material/Switch";
 import { Link } from "react-location";
 import { Button } from "@mui/material";
 import Footer from "../../Components/Footer/Footer";
@@ -11,6 +11,7 @@ import { isEmail } from "validator";
 import baseURL from "../../api/baseURL";
 
 export default function Login() {
+  const emailInput = React.useRef();
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
 
   const [email, setEmail] = useState("");
@@ -19,6 +20,41 @@ export default function Login() {
   const [successful, setSuccessful] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
+  const [userLogin, setUserLogin] = React.useState(false);
+
+  const handleVLogin = (e) => {
+    e.preventDefault();
+
+    setSuccessful(false);
+
+    axios({
+      method: "POST",
+      url: baseURL + "/volunteers/volunteerlogin",
+      data: {
+        email: email,
+        password: password,
+      },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(function (response) {
+        //handle success
+        console.log(response);
+        if (response.data.token) {
+          localStorage.setItem("vinfo", JSON.stringify(response.data.token));
+        }
+        alert("loggged In");
+        setSending(false);
+        setSuccessful(true);
+      })
+      .catch(function (err) {
+        //handle error
+        setError(err.response.data.message);
+        setSending(false);
+        console.log(err);
+      });
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -132,34 +168,85 @@ export default function Login() {
         <div className='login__container__form__inputs'>
           {!successful && (
             <div className='login__container__form__inputs__input left'>
-              <h1>Login</h1>
-              <div className='divider'></div>
-              <input
-                className='full'
-                type='email'
-                placeholder='Email Address'
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  if (!isEmail(email)) {
-                    setError("Please enter valid email");
-                  } else {
-                    setError("");
-                  }
-                }}
-              />
-              <input
-                className='full'
-                type='password'
-                placeholder='Password'
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
-              <Button onClick={handleLogin}>
-                {sending ? "Sending..." : "Login"}
-              </Button>
+              <div
+                className='donate__container__form__switch'
+                style={{ fontSize: "20px" }}
+              >
+                <Switch
+                  checked={userLogin}
+                  onClick={() => setUserLogin(!userLogin)}
+                />{" "}
+                {!userLogin ? "User Login" : "Volunteer Login"}
+              </div>
+              {!userLogin ? (
+                <>
+                  <h1>Volunteer Login</h1>
+                  <div className='divider'></div>
+                  <input
+                    type='email'
+                    placeholder='Email Address'
+                    required
+                    value={email}
+                    ref={emailInput}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onBlur={(e) => {
+                      if (!isEmail(e.target.value)) {
+                        emailInput.current.style.borderColor = "red";
+                        emailInput.current.style.borderWidth = "2px";
+                      } else {
+                        emailInput.current.style.borderColor = "black";
+                        emailInput.current.style.borderWidth = "1px";
+                      }
+                    }}
+                  />
+                  <input
+                    className='full'
+                    type='password'
+                    placeholder='Password'
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                  />
+                  <Button onClick={handleVLogin}>
+                    {sending ? "Sending..." : "volunter Login"}
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <h1>User Login</h1>
+                  <div className='divider'></div>
+                  <input
+                    type='email'
+                    placeholder='Email Address'
+                    required
+                    value={email}
+                    ref={emailInput}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onBlur={(e) => {
+                      if (!isEmail(e.target.value)) {
+                        emailInput.current.style.borderColor = "red";
+                        emailInput.current.style.borderWidth = "2px";
+                      } else {
+                        emailInput.current.style.borderColor = "black";
+                        emailInput.current.style.borderWidth = "1px";
+                      }
+                    }}
+                  />
+                  <input
+                    className='full'
+                    type='password'
+                    placeholder='Password'
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                  />
+                  <Button onClick={handleLogin}>
+                    {sending ? "Sending..." : "User Login"}
+                  </Button>
+                </>
+              )}
               {error && (
                 <div className='form-group'>
                   <div

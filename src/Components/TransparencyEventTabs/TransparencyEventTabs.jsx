@@ -136,7 +136,7 @@ export default function TransparencyEventTabs() {
           {eventCards.map((card) => (
             <Link
               className='item'
-              to={"/transparency-focused/" + card._id}
+              to={"/transparency-event-focused/" + card._id}
               key={card._id}
             >
               <img src={card.photos[0]} className='item__image' alt='project' />
