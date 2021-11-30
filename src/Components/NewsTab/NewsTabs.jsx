@@ -44,13 +44,10 @@ export default function NewsTabs() {
   // loading Screen
   if (loading) {
     return (
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: "4rem",
-        }}
-      >
-        <h1>Loading....</h1>
+      <div class="text-center">
+        <div class="spinner-border text-danger" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
       </div>
     )
   }
@@ -59,50 +56,17 @@ export default function NewsTabs() {
       {/* @section=>main-loaded */}
       <div className="news_container_cards">
         <h3>{count} results</h3>
-        <div className="row">
-          {posts.map((news, _id) => (
-            <div class="col-sm-3  " key={_id} style={{ paddingBottom: "20px" }}>
-              <a href={news.link}>
-                <div style={{ backgroundColor: "white" }}>
-                  <div>
-                    <img
-                      src={news.photo}
-                      class="card-img-top"
-                      style={{
-                        maxHeight: "25vh",
-                        objectFit: "cover",
-                      }}
-                      alt="news._id"
-                    />
-                    <div
-                      style={{
-                        margin: "-25px 0 0 10px",
-                        textAlign: "center",
-                        position: "relative",
-                        color: "white",
-                        width: "3vw",
-                        backgroundColor: "red",
-                        fontWeight: "bolder",
-                      }}
-                    >
-                      News
-                    </div>
-                  </div>
 
-                  <div className="card-body">
-                    <p className="card-text">
-                      <small className="text-muted">{news.createdAt}</small>
-                    </p>
-                    <p
-                      className="card-text text-danger"
-                      style={{ fontSize: "1.2rem", fontWeight: "bolder" }}
-                    >
-                      {news.summary}
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
+        <div className="card-container">
+          {posts.map((news, _id) => (
+            <a href={news.link} className="news_card">
+              <img src={news.photo} />
+              <div className="news">News</div>
+              <p style={{ fontSize: "14px", color: "grey", margin: "18px" }}>
+                {news.createdAt.slice(0, 10)}
+              </p>
+              <p className="summary">{news.summary}</p>
+            </a>
           ))}
         </div>
       </div>
@@ -114,8 +78,9 @@ export default function NewsTabs() {
             count={page}
             page={currentPage}
             onChange={paginate}
-            variant="outlined"
-            color="secondary"
+            shape="rounded"
+            color="primary"
+            size="large"
           />
         </Stack>
       </div>
