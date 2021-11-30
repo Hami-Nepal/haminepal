@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-location';
 import './style.scss';
 
 import Logo from '../../Assets/logo.png';
@@ -11,6 +12,8 @@ import { isEmail } from 'validator';
 import baseURL from '../../api/baseURL';
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const emailInput = React.useRef();
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
 
@@ -21,6 +24,10 @@ export default function Login() {
   const [sending, setSending] = useState(false);
   const [error, setError] = useState('');
   const [userLogin, setUserLogin] = React.useState(false);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    !!(localStorage.getItem('user') || localStorage.getItem('vinfo'))
+  );
 
   const handleVLogin = (e) => {
     e.preventDefault();
@@ -43,17 +50,20 @@ export default function Login() {
     })
       .then(function (response) {
         //handle success
-        console.log(response);
         if (response.data.token) {
           if (userLogin) {
             localStorage.setItem('user', JSON.stringify(response.data.token));
           } else {
             localStorage.setItem('vinfo', JSON.stringify(response.data.token));
+            console.log(response.data);
+            const profileURL = '/volunteer-profile/' + response.data.id;
+            navigate({ to: profileURL });
           }
         }
         setSending(false);
         setSuccessful(true);
         setError('');
+        setIsLoggedIn(true);
       })
       .catch(function (err) {
         //handle error
@@ -102,37 +112,51 @@ export default function Login() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/">News</Link>
+            <Link to="/news">News</Link>
           </li>
           <li>
             <Link to="/">Act of Kindness</Link>
           </li>
           <li>
-            <Link to="/">Civil Rights Movements</Link>
+            <Link to="/civil-rights-movement">Civil Rights Movements</Link>
           </li>
           <li>
-            <Link to="/">Contact Us</Link>
+            <Link to="/contact">Contact Us</Link>
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="/">Login/</Link> <Link to="/">login</Link>
+            {isLoggedIn ? (
+              <Link
+                to="/"
+                onClick={() => {
+                  localStorage.clear();
+                }}
+              >
+                Logout
+              </Link>
+            ) : (
+              <>
+                <Link to="/signup">Signup /</Link>
+                <Link to="/login"> Login</Link>
+              </>
+            )}
           </li>
         </ul>
         <ul className="login__container__landing__hiddenMenu__items right">
           <li>
-            <Link to="/">About Us</Link>
+            <Link to="/about">About Us</Link>
           </li>
           <li>
-            <Link to="/">Cause</Link>
+            <Link to="/causes">Cause</Link>
           </li>
           <li>
-            <Link to="/">Events</Link>
+            <Link to="/events">Events</Link>
           </li>
           <li>
-            <Link to="/">Transparency</Link>
+            <Link to="/transparency">Transparency</Link>
           </li>
           <li>
-            <Link to="/">Volunteers</Link>
+            <Link to="/volunteer">Volunteers</Link>
           </li>
         </ul>
       </div>
