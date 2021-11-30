@@ -16,7 +16,6 @@ export default function NewsTabs() {
   const [posts, setPosts] = React.useState([[]])
   const [loading, setLoading] = React.useState(false)
   const [currentPage, setCurrentPage] = React.useState(1)
-  const [postsPerPage, setPostsPerPage] = React.useState(10)
   const [totalData, setTotalData] = React.useState(0)
   const [count, setCount] = React.useState(0)
 
@@ -39,7 +38,7 @@ export default function NewsTabs() {
   }, [currentPage])
 
   // number of Pages
-  const page = Math.ceil(totalData / postsPerPage)
+  const page = Math.ceil(totalData / 10)
 
   // loading Screen
   if (loading) {
@@ -113,8 +112,7 @@ export default function NewsTabs() {
           count={page}
           page={currentPage}
           onChange={paginate}
-          variant="outlined"
-          color="secondary"
+          color="primary"
         />
       </Stack>
     </>

@@ -9,6 +9,11 @@
     transition: 1s;
     :hover {
       cursor: zoom-in;
+      filter: grayscale(100%);
+
+      &::after {
+        background-color: rgba(rgb(240, 14, 14), 0.5);
+      }
     }
   }
 }

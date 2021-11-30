@@ -85,8 +85,7 @@ export default function News() {
         <p>Hami Nepal News</p>
       </div>
       <h5 style={{ textAlign: "center", margin: "50px 0px 50px 0px" }}>
-        Get all of our latest global human rights news, blogs and analysis,
-        updated daily.
+        Get all of our latest news, blogs and analysis, updated daily.
       </h5>
 
       {/* @section=>news cards */}
