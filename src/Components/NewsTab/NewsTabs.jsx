@@ -16,6 +16,7 @@ export default function NewsTabs() {
   const [posts, setPosts] = React.useState([[]])
   const [loading, setLoading] = React.useState(false)
   const [currentPage, setCurrentPage] = React.useState(1)
+  const [postsPerPage, setPostsPerPage] = React.useState(10)
   const [totalData, setTotalData] = React.useState(0)
   const [count, setCount] = React.useState(0)
 
@@ -38,7 +39,7 @@ export default function NewsTabs() {
   }, [currentPage])
 
   // number of Pages
-  const page = Math.ceil(totalData / 10)
+  const page = Math.ceil(totalData / postsPerPage)
 
   // loading Screen
   if (loading) {
@@ -60,7 +61,7 @@ export default function NewsTabs() {
         <h3>{count} results</h3>
         <div className="row">
           {posts.map((news, _id) => (
-            <div class="col-sm-3  " key={_id} style={{ paddingBottom: "20px" }}>
+            <div class="col-sm-3  " key={_id}>
               <a href={news.link}>
                 <div style={{ backgroundColor: "white" }}>
                   <div>
@@ -90,7 +91,9 @@ export default function NewsTabs() {
 
                   <div className="card-body">
                     <p className="card-text">
-                      <small className="text-muted">{news.createdAt}</small>
+                      <small className="text-muted">
+                        {news.createdAt.slice(0, 10)}
+                      </small>
                     </p>
                     <p
                       className="card-text"
@@ -107,18 +110,15 @@ export default function NewsTabs() {
       </div>
 
       {/* @sextion=>Pagination */}
-      <div style={{ marginBottom: "50px" }}>
-        <Stack justifyContent="center" alignItems="center">
-          <Pagination
-            count={page}
-            page={currentPage}
-            onChange={paginate}
-            shape="rounded"
-            color="primary"
-            size="large"
-          />
-        </Stack>
-      </div>
+      <Stack justifyContent="center" alignItems="center" spacing={2}>
+        <Pagination
+          count={page}
+          page={currentPage}
+          onChange={paginate}
+          variant="outlined"
+          color="secondary"
+        />
+      </Stack>
     </>
   )
 }
