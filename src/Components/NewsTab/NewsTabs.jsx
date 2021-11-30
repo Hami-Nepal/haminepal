@@ -61,7 +61,7 @@ export default function NewsTabs() {
         <h3>{count} results</h3>
         <div className="row">
           {posts.map((news, _id) => (
-            <div class="col-sm-3  " key={_id}>
+            <div class="col-sm-3  " key={_id} style={{ paddingBottom: "20px" }}>
               <a href={news.link}>
                 <div style={{ backgroundColor: "white" }}>
                   <div>
@@ -91,12 +91,10 @@ export default function NewsTabs() {
 
                   <div className="card-body">
                     <p className="card-text">
-                      <small className="text-muted">
-                        {news.createdAt.slice(0, 10)}
-                      </small>
+                      <small className="text-muted">{news.createdAt}</small>
                     </p>
                     <p
-                      className="card-text"
+                      className="card-text text-danger"
                       style={{ fontSize: "1.2rem", fontWeight: "bolder" }}
                     >
                       {news.summary}
@@ -110,15 +108,17 @@ export default function NewsTabs() {
       </div>
 
       {/* @sextion=>Pagination */}
-      <Stack justifyContent="center" alignItems="center" spacing={2}>
-        <Pagination
-          count={page}
-          page={currentPage}
-          onChange={paginate}
-          variant="outlined"
-          color="secondary"
-        />
-      </Stack>
+      <div style={{ marginBottom: "50px" }}>
+        <Stack justifyContent="center" alignItems="center" spacing={2}>
+          <Pagination
+            count={page}
+            page={currentPage}
+            onChange={paginate}
+            variant="outlined"
+            color="secondary"
+          />
+        </Stack>
+      </div>
     </>
   )
 }
