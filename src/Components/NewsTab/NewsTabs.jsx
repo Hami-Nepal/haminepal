@@ -60,7 +60,7 @@ export default function NewsTabs() {
         <h3>{count} results</h3>
         <div className="row">
           {posts.map((news, _id) => (
-            <div class="col-sm-3  " key={_id}>
+            <div class="col-sm-3  " key={_id} style={{ paddingBottom: "20px" }}>
               <a href={news.link}>
                 <div style={{ backgroundColor: "white" }}>
                   <div>
@@ -107,14 +107,18 @@ export default function NewsTabs() {
       </div>
 
       {/* @sextion=>Pagination */}
-      <Stack justifyContent="center" alignItems="center" spacing={2}>
-        <Pagination
-          count={page}
-          page={currentPage}
-          onChange={paginate}
-          color="primary"
-        />
-      </Stack>
+      <div style={{ marginBottom: "50px" }}>
+        <Stack justifyContent="center" alignItems="center">
+          <Pagination
+            count={page}
+            page={currentPage}
+            onChange={paginate}
+            shape="rounded"
+            color="primary"
+            size="large"
+          />
+        </Stack>
+      </div>
     </>
   )
 }
