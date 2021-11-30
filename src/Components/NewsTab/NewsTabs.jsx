@@ -1,29 +1,27 @@
 import * as React from "react"
 
 // import mui lib
-import Card from "@mui/material/Card"
-import CardMedia from "@mui/material/CardMedia"
-import CardContent from "@mui/material/CardContent"
-import Typography from "@mui/material/Typography"
-import CardActions from "@mui/material/CardActions"
-import Button from "@mui/material/Button"
+import Pagination from "@mui/material/Pagination"
+import Stack from "@mui/material/Stack"
 
 // scss import
 import "./style.scss"
 
 // import important lib
 import axios from "axios"
-import Pagination from "../Pagination/Pagination"
+import baseURL from "../../api/baseURL"
 
 // main function component
 export default function NewsTabs() {
   const [posts, setPosts] = React.useState([[]])
   const [loading, setLoading] = React.useState(false)
   const [currentPage, setCurrentPage] = React.useState(1)
-  const [postsPerPage, setPostsPerPage] = React.useState(8)
+  const [postsPerPage, setPostsPerPage] = React.useState(10)
+  const [totalData, setTotalData] = React.useState(0)
+  const [count, setCount] = React.useState(0)
 
   // Page Change
-  const paginate = (number) => {
+  const paginate = (e, number) => {
     setCurrentPage(number)
   }
 
@@ -31,17 +29,17 @@ export default function NewsTabs() {
   React.useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true)
-      const res = await axios.get(`https://api.haminepal.org/api/v1/news`)
+      const res = await axios.get(baseURL + `/news?page=${currentPage}`)
       setPosts(res.data.data)
+      setTotalData(res.data.total_data)
+      setCount(res.data.count)
       setLoading(false)
     }
     fetchPosts()
-  }, [])
+  }, [currentPage])
 
-  //Pagination variables
-  const indexOfLastPost = currentPage * postsPerPage
-  const indexOfFirstPost = indexOfLastPost - postsPerPage
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
+  // number of Pages
+  const page = Math.ceil(totalData / postsPerPage)
 
   // loading Screen
   if (loading) {
@@ -60,63 +58,65 @@ export default function NewsTabs() {
     <>
       {/* @section=>main-loaded */}
       <div className="news_container_cards">
-        {currentPosts.map((news, _id) => (
-          // news_Card
-          <Card sx={{ maxWidth: 550 }} key={_id}>
-            <CardMedia
-              component="img"
-              alt={news._id}
-              height="340"
-              image={news.photo}
-            />
-            <CardContent>
-              <Typography
-                gutterBottom
-                variant="h6"
-                style={{
-                  marginTop: "-42px",
-                  color: "white",
-                  textAlign: "center",
-                }}
-                component="div"
-              >
-                {news.title}
-              </Typography>
-              <Typography
-                variant="body1"
-                color="text.primary"
-                textAlign="center"
-              >
-                {news.summary}
-              </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                textAlign="center"
-              >
-                Uploaded on:{news.createdAt}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button href={news.link}>Learn More</Button>
-            </CardActions>
-          </Card>
-        ))}
+        <h3>{count} results</h3>
+        <div className="row">
+          {posts.map((news, _id) => (
+            <div class="col-sm-3  " key={_id}>
+              <a href={news.link}>
+                <div style={{ backgroundColor: "white" }}>
+                  <div>
+                    <img
+                      src={news.photo}
+                      class="card-img-top"
+                      style={{
+                        maxHeight: "25vh",
+                        objectFit: "cover",
+                      }}
+                      alt="news._id"
+                    />
+                    <div
+                      style={{
+                        margin: "-25px 0 0 10px",
+                        textAlign: "center",
+                        position: "relative",
+                        color: "white",
+                        width: "3vw",
+                        backgroundColor: "red",
+                        fontWeight: "bolder",
+                      }}
+                    >
+                      News
+                    </div>
+                  </div>
+
+                  <div className="card-body">
+                    <p className="card-text">
+                      <small className="text-muted">{news.createdAt}</small>
+                    </p>
+                    <p
+                      className="card-text"
+                      style={{ fontSize: "1.2rem", fontWeight: "bolder" }}
+                    >
+                      {news.summary}
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          ))}
+        </div>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {/* @section pagination */}
+
+      {/* @sextion=>Pagination */}
+      <Stack justifyContent="center" alignItems="center" spacing={2}>
         <Pagination
-          postPerPage={postsPerPage}
-          totalPosts={posts.length}
-          paginate={paginate}
+          count={page}
+          page={currentPage}
+          onChange={paginate}
+          variant="outlined"
+          color="secondary"
         />
-      </div>
+      </Stack>
     </>
   )
 }
