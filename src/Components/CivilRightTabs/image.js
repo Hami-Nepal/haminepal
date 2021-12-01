@@ -61,5 +61,38 @@ const image = [
     ],
     photos: ["", "", "", "", ""],
   },
+  {
+    id: "3",
+    image: pic2,
+    title: "Filed write against TU",
+    detail: `While Nepal was going through COVID crisis and infection rate was high, the oldest and the most reputed Tribhuvan University was compelling its students across the country to take the exams in a physical setting. Hami Nepal team were assisting students in their protest against the TU's decision to conduct physical exams during a difficult epidemic period. TU refused to accept that the exams had been run in an unmanaged manner, with congestion in the exam centers, resulting in a high virus transmission rate, endangering their own and their family members' lives.
+    On account of this, Hami Nepal officially filed a writ against Tribhuvan University (TU), Cabinet of Ministers and Education Ministry in Supreme Court on 13th August, 2021 for conducting physical exams during the pandemic without adhering to health standards, putting students, their families, and the entire community at risk, and maybe initiating the 3rd wave. Hami Nepal demanded to use alternative methods of conducting academic tests rather than canceling them, placing every student's life in jeopardy. 
+    When the students asked for assistance, Hami Nepal Team did everything they could to assist them. 
+    `,
+    challenges: `Hami Nepal had to go through a lot of legal procedures for the fliling of the case and had to collect evidences inorder to make the case strong. Additional to this, Hami Nepal also faced a lot of backlashes from students of other boards besides TU. The students from other board were having similar issues and had the concerns that their voice should also be heard. On the day of the protest, Team Hami Nepal was ready infront of the office of the controller of the examinations to simply look after the protestors and students. Volunteers and Students who were under the scorching sun had their temperature checked time and again for safety.`,
+    results: `However at final, the Writ filled6 in the court did not yield big difference in the system. After discussions with all authorities, the judge decided that the examination would be the same as the TU had done previously but under health and safety protocols.`,
+    volunteers: [
+      "Sudan Gurung",
+      "Bidhan Shrestha",
+      "Jyoti Sapkota",
+      " Sandeep Sharma",
+      "Shristi Shrestha ",
+      " Susham Bajracharya",
+      " Anjal Manandhar",
+      "Ronesh Pradhan",
+      "Shakhar Puri",
+      "Pragya Bajracharya",
+      " Rajav rai",
+      "Luniva Maharjan",
+    ],
+    news: [
+      "https://www.youtube.com/watch?v=cI7ZQcXZT20",
+
+      "   https://www.youtube.com/watch?v=p51Lk5kGEMI&t=3s",
+
+      "https://www.youtube.com/watch?v=o7rn2pNgqKg&t=6s",
+    ],
+    photos: ["", "", "", "", ""],
+  },
 ]
 export default image

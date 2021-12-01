@@ -1,18 +1,21 @@
-import React from 'react';
-import './style.scss';
+import React from "react"
+import "./style.scss"
 
-import { Link } from 'react-location';
+import { Link } from "react-location"
 
-export default function KindnessCard(props) {
+export default function KindnessCard(posts, key) {
+  console.log(posts)
   return (
-    <div className="kindnessCard__container">
+    <div className="kindnessCard__container" key={key}>
       <Link to="/">
-        <img alt="example" src={props.photos[0]} />
-        <div className="kindnessCard__container__title">{props.title}</div>
+        <img alt={key} src={posts.posts.photos[0]} />
+        <div className="kindnessCard__container__title">
+          {posts.posts.title}
+        </div>
         <div className="kindnessCard__container__description">
-          {props.summary}
+          {posts.posts.summary}
         </div>
       </Link>
     </div>
-  );
+  )
 }
