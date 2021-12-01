@@ -366,52 +366,12 @@ export default function Home() {
         <div>
           <h1 style={{ marginTop: "3rem" }}>Our Social Media Influencers</h1>
           <ul>
-            {Influencers.Influencers.map((person) => {
+            {Influencers.Influencers.map((person) => (
               <li>
                 <h5>{person.name}</h5>
                 <p>{person.details}</p>
-              </li>;
-            })}
-            {/* <li>
-              <h5>{Influencers.Influencers[1].name}</h5>
-              <p>{Influencers.Influencers[1].details}</p>
-            </li>
-            <li>
-              <h5>{Influencers.Influencers[2].name}</h5>
-              <p>{Influencers.Influencers[2].details}</p>
-            </li>
-            <li>
-              <h5>{Influencers.Influencers[3].name}</h5>
-              <p>{Influencers.Influencers[3].details}</p>
-            </li>
-            <li>
-              <h5>{Influencers.Influencers[4].name}</h5>
-              <p>{Influencers.Influencers[4].details}</p>
-            </li>
-            <li>
-              <h5>{Influencers.Influencers[5].name}</h5>
-              <p>{Influencers.Influencers[5].details}</p>
-            </li>
-            <li>
-              <h5>{Influencers.Influencers[6].name}</h5>
-              <p>{Influencers.Influencers[6].details}</p>
-            </li>
-            <li>
-              <h5>{Influencers.Influencers[7].name}</h5>
-              <p>{Influencers.Influencers[7].details}</p>
-            </li>
-            <li>
-              <h5>{Influencers.Influencers[8].name}</h5>
-              <p>{Influencers.Influencers[8].details}</p>
-            </li>
-            <li>
-              <h5>{Influencers.Influencers[9].name}</h5>
-              <p>{Influencers.Influencers[9].details}</p>
-            </li>
-            <li>
-              <h5>{Influencers.Influencers[10].name}</h5>
-              <p>{Influencers.Influencers[10].details}</p>
-            </li> */}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
