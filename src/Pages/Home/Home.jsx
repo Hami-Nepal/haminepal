@@ -363,7 +363,7 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        <div>
+        <div className='infuencer__heading'>
           <h1 style={{ marginTop: "3rem" }}>Our Social Media Influencers</h1>
           <InfluenerCarousel />
         </div>
