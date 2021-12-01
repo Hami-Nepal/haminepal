@@ -219,11 +219,16 @@
   .btn__fund {
     margin-right: 1rem;
     color: white;
-    background-color: #9f1718;
-  }
-  .btn__fund:focus {
-    background-color: royalblue;
-    color: black;
+    background-color: gray;
+
+    &:hover {
+      background-color: #9f1718;
+    }
+
+    &:focus {
+      background-color: #9f1718;
+      color: white;
+    }
   }
 }
 

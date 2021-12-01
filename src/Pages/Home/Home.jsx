@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./style.scss";
 
 import Logo from "../../Assets/logo.png";
+import mobile from "../../Assets/mobile.jpeg";
 import BannerVideo from "../../Assets/banner.mp4";
 import BannerVideoWebm from "../../Assets/banner.webm";
 import BannerVideoOgm from "../../Assets/banner.ogm";
@@ -292,7 +293,6 @@ export default function Home() {
         <h1>Our Board Members</h1>
         <BoardMembersCarousel />
       </div>
-
       {/** @section => coming soon */}
       <div className='home__container__comingSoon'>
         <img
@@ -322,8 +322,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/** @section => our partner */}
+      {/** @section => our mentor */}
       <div className='home__container__ourPartner'>
         <h1>Our Mentor</h1>
         <div className='Mentor'>
@@ -354,6 +353,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+
       <div className='home__container__ourPartner'>
         <h1>Our Partners</h1>
         <ul>
