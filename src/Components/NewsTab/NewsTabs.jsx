@@ -16,7 +16,6 @@ export default function NewsTabs() {
   const [posts, setPosts] = React.useState([[]]);
   const [loading, setLoading] = React.useState(false);
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [postsPerPage, setPostsPerPage] = React.useState(10);
   const [totalData, setTotalData] = React.useState(0);
   const [count, setCount] = React.useState(0);
 
@@ -39,7 +38,7 @@ export default function NewsTabs() {
   }, [currentPage]);
 
   // number of Pages
-  const page = Math.ceil(totalData / postsPerPage);
+  const page = Math.ceil(totalData / 10);
 
   // loading Screen
   if (loading) {
@@ -61,8 +60,8 @@ export default function NewsTabs() {
         <h3>{count} results</h3>
         <div className='row'>
           {posts.map((news, _id) => (
-            <div class='col-sm-3' key={_id}>
-              <a href={news.link} style={{ cursor: "pointer" }}>
+            <div class='col-sm-3  ' key={_id} style={{ paddingBottom: "20px" }}>
+              <a href={news.link}>
                 <div style={{ backgroundColor: "white" }}>
                   <div>
                     <img
@@ -108,15 +107,18 @@ export default function NewsTabs() {
       </div>
 
       {/* @sextion=>Pagination */}
-      <Stack justifyContent='center' alignItems='center' spacing={2}>
-        <Pagination
-          count={page}
-          page={currentPage}
-          onChange={paginate}
-          variant='outlined'
-          color='secondary'
-        />
-      </Stack>
+      <div style={{ marginBottom: "50px" }}>
+        <Stack justifyContent='center' alignItems='center'>
+          <Pagination
+            count={page}
+            page={currentPage}
+            onChange={paginate}
+            shape='rounded'
+            color='primary'
+            size='large'
+          />
+        </Stack>
+      </div>
     </>
   );
 }
