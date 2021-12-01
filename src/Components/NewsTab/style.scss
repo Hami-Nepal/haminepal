@@ -6,9 +6,7 @@
   margin: 20px 13rem 50px 14.2rem;
   padding: 30px 10px 10px 10px;
   background-color: #e4e4e4;
-  @media (max-width: 768px) {
-    margin: 0px;
-  }
+  //  add media queries
   p {
     font-family: "Poppins", sans-serif !important;
   }
@@ -32,6 +30,7 @@
       transition: 1s;
       color: rgb(20, 18, 18);
       box-shadow: 0px 2px 10px rgba(26, 23, 23, 0.2);
+      // add media queries
       :hover {
         cursor: pointer;
         filter: grayscale(100%);
@@ -49,6 +48,7 @@
         color: white;
         font-weight: 600;
         font-family: "Poppins", sans-serif !important;
+        // add media queries here
       }
       .summary {
         font-size: 18px;
@@ -63,6 +63,7 @@
         text-decoration-style: solid;
         word-spacing: 0.1rem;
       }
+      // add media queries here
     }
   }
 }

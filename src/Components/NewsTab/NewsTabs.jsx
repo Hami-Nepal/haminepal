@@ -69,7 +69,7 @@ export default function NewsTabs() {
                   margin: "10px 0px 0px 20px",
                 }}
               >
-                {news.createdAt}
+                {news.createdAt.slice(0, 10)}
               </p>
               <p className="summary">{news.summary}</p>
             </a>
