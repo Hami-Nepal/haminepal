@@ -27,6 +27,7 @@ import News from "./Pages/News/News";
 import Transparency from "./Pages/Transparency/Transparency";
 import CivilRightsMovement from "./Pages/CivilRightsMoment/civilRightsMovement";
 import TransparencyEventFocused from "./Pages/Transparency/Transparency_Event_Focused";
+import TransparencyCauseFocused from "./Pages/Transparency/Transparency_Cause_Focused";
 
 const location = new ReactLocation();
 
@@ -103,6 +104,10 @@ export default function App() {
           {
             path: "/transparency-event-focused/:id",
             element: <TransparencyEventFocused />,
+          },
+          {
+            path: "/transparency-cause-focused/:id",
+            element: <TransparencyCauseFocused />,
           },
           {
             path: "/civil-rights-movement",

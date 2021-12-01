@@ -24,7 +24,7 @@ export default function Login() {
 
   const handleVLogin = (e) => {
     e.preventDefault();
-
+    setSending(true);
     setSuccessful(false);
 
     axios({
@@ -49,7 +49,7 @@ export default function Login() {
         setSuccessful(true);
       })
       .catch(function (err) {
-        //handle error
+        // handle error
         setError(err.response.data.message);
         setSending(false);
         console.log(err);

@@ -89,9 +89,9 @@ export default function TransparencyCausesTabs() {
   };
 
   return (
-    <div className='causesTabs__container'>
+    <div className='transparencyCausesTabs__container'>
       <Box sx={{ width: "100%" }}>
-        <div className='causesTabs__meroTabs'>
+        <div className='events__container__items'>
           <Box sx={{ borderBottom: 2, borderColor: "#e74c3c" }}>
             <Tabs
               variant='scrollable'
@@ -136,7 +136,7 @@ export default function TransparencyCausesTabs() {
           {causeCards.map((card) => (
             <Link
               className='item'
-              to={"/transparency-focused/" + card._id}
+              to={"/transparency-cause-focused/" + card._id}
               key={card._id}
             >
               <h2 style={{ margin: "1rem" }}>{card.name}</h2>
