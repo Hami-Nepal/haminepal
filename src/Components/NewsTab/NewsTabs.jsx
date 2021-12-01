@@ -62,8 +62,14 @@ export default function NewsTabs() {
             <a href={news.link} className="news_card">
               <img src={news.photo} />
               <div className="news">News</div>
-              <p style={{ fontSize: "14px", color: "grey", margin: "18px" }}>
-                {news.createdAt.slice(0, 10)}
+              <p
+                style={{
+                  fontSize: "16px",
+                  color: "grey",
+                  margin: "10px 0px 0px 20px",
+                }}
+              >
+                {news.createdAt}
               </p>
               <p className="summary">{news.summary}</p>
             </a>
