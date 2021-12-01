@@ -70,7 +70,7 @@ export default function KindnessCard(props) {
         ))}
       </div>
 
-      <div style={{ marginBottom: "50px" }}>
+      <div style={{ margin: "20px" }}>
         <Stack justifyContent="center" alignItems="center" spacing={2}>
           <Pagination
             count={page}
