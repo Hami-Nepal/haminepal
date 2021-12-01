@@ -12,7 +12,7 @@ import { Link } from "react-location";
 import { Helmet } from "react-helmet";
 
 import Partners from "../../Mocks/OurPartners.json";
-import Influencers from "../../Mocks/Influencers.json";
+import InfluenerCarousel from "../../Components/Influencers/InfluencersCarousel";
 
 import KindnessCard from "../../Components/Act of Kindness/KindnessCard";
 import BoardMembersCarousel from "../../Components/BoardMembers/BoardMembersCarousel";
@@ -365,14 +365,7 @@ export default function Home() {
         </ul>
         <div>
           <h1 style={{ marginTop: "3rem" }}>Our Social Media Influencers</h1>
-          <ul>
-            {Influencers.Influencers.map((person) => (
-              <li>
-                <h5>{person.name}</h5>
-                <p>{person.details}</p>
-              </li>
-            ))}
-          </ul>
+          <InfluenerCarousel />
         </div>
       </div>
 
