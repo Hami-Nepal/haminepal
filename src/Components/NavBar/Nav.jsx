@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './style.scss';
 
@@ -8,8 +8,8 @@ import { Link } from 'react-location';
 
 const Nav = () => {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
-  const isLoggedIn = !!(
-    localStorage.getItem('user') || localStorage.getItem('vinfo')
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    !!(localStorage.getItem('user') || localStorage.getItem('vinfo'))
   );
 
   return (
@@ -63,6 +63,7 @@ const Nav = () => {
                 to="/"
                 onClick={() => {
                   localStorage.clear();
+                  setIsLoggedIn(false);
                 }}
               >
                 Logout
