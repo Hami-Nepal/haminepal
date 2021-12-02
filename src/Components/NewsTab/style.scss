@@ -1,46 +1,73 @@
-/** @section => volunteer cards */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&display=swap");
 
-.row {
-  display: grid;
-  gap: 1.5rem;
-  margin: 20px 0 80px;
-  padding: 30px 40px;
-  max-width: 1200px;
-  margin: auto;
-
-  @media (min-width: 900px) {
-    grid-template-columns: repeat(2, 1fr);
+.news_container_cards {
+  margin: 20px 13rem 50px 14.2rem;
+  padding: 30px 10px 10px 10px;
+  background-color: #e4e4e4;
+  //  add media queries
+  h3 {
+    font-family: "Poppins", sans-serif !important;
+    margin-left: 18px;
   }
 
-  a {
-    text-decoration: none;
-    color: black;
+  p {
+    font-family: "Poppins", sans-serif !important;
+  }
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: row;
+    text-align: center;
 
-    &:hover {
-      text-decoration: underline;
-    }
+    .news_card {
+      background: white;
+      box-sizing: border-box;
+      cursor: pointer;
+      margin: 15px;
+      display: block;
+      height: 50vh;
+      width: 17.2vw;
+      overflow: hidden;
+      text-decoration: none;
+      transition: 1s;
+      color: rgb(20, 18, 18);
+      box-shadow: 0px 2px 10px rgba(26, 23, 23, 0.2);
 
-    img {
-      width: 100%;
-      height: auto;
+      // add media queries
+      :hover {
+        cursor: pointer;
+        filter: grayscale(100%);
+      }
+      img {
+        width: 100%;
+        height: 23vh;
+        object-fit: cover;
+      }
+      .news {
+        width: 3vw;
+        background: rgba(246, 50, 50, 0.89);
+        margin: -25px 0 0 15px;
+        position: relative;
+        color: white;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif !important;
+        // add media queries here
+      }
+      .summary {
+        font-size: 18px;
+        text-size-adjust: 100%;
+        margin: 0px 10px 0px 10px;
+        padding: 0px 10px 0px 10px;
+        font-weight: 600;
+        text-align: start;
+        // line-height: 33.6px;
+        position: relative;
+        height: auto;
+        text-decoration-style: solid;
+        word-spacing: 0.1rem;
+      }
+      // add media queries here
     }
   }
-}
-
-.news-title {
-  height: max-content;
-  max-height: 65px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.news-description {
-  line-height: 1.625;
-  min-height: 50px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }

@@ -1,14 +1,17 @@
-import * as React from 'react';
-import './style.scss';
+import * as React from "react"
+import "./style.scss"
 
-import Footer from '../../Components/Footer/Footer';
-import CivilRightTabs from '../../Components/CivilRightTabs';
-import NavBar from '../../Components/NavBar/Nav';
+import Logo from "../../Assets/logo.png"
+
+import Nav from "../../Components/NavBar/Nav"
+import Footer from "../../Components/Footer/Footer"
+import CivilRightTabs from "../../Components/CivilRightTabs"
 
 export default function CivilRightsMovement() {
   return (
     <div className="civil_container">
-      <NavBar />
+      {/* @sectoin => topbar */}
+      <Nav />
 
       {/* @section => landing */}
       <div className="civil_container__landing">
@@ -24,5 +27,5 @@ export default function CivilRightsMovement() {
 
       <Footer />
     </div>
-  );
+  )
 }
