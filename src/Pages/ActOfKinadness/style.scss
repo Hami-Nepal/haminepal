@@ -26,6 +26,9 @@
       text-shadow: 4px 10px 20px #000000;
       scroll-behavior: smooth;
       box-shadow: 5px 5px 20px 20px #1a1919c0;
+      @media (max-width: 600px) {
+        max-width: 50vw;
+      }
 
       p {
         width: 70%;
@@ -34,6 +37,7 @@
         text-align: center;
         font-weight: bolder;
         word-spacing: 0.3rem;
+        letter-spacing: 0.1rem;
         font-size: 28px;
 
         @media (max-width: 768px) {
@@ -43,10 +47,15 @@
           font-size: 1.5rem;
         }
         @media (max-width: 600px) {
-          font-size: 1rem;
+          font-size: 16px;
+          font-weight: 400;
         }
+
         @media (max-width: 400px) {
-          font-size: 12px;
+          font-size: 14px;
+          font-weight: lighter;
+          letter-spacing: 0rem;
+          word-spacing: 0rem;
         }
       }
     }

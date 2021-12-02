@@ -1,34 +1,36 @@
-import React from 'react';
-import './style.scss';
+import React from "react"
+import "./style.scss"
 
-import Alert from '@mui/material/Alert';
-import Iframe from 'react-iframe';
-import Footer from '../../Components/Footer/Footer';
+import Alert from "@mui/material/Alert"
 
-import emailjs from 'emailjs-com';
-import { useForm } from 'react-hook-form';
-import NavBar from '../../Components/NavBar/Nav';
+import Nav from "../../Components/NavBar/Nav"
+import Iframe from "react-iframe"
+import Footer from "../../Components/Footer/Footer"
+
+import emailjs from "emailjs-com"
+import { useForm } from "react-hook-form"
 
 // /**
 //  * @dev add messanger chat bot
 //  */
 export default function ContactUs() {
-  const [sucessMessage, setSucessMessage] = React.useState('');
-  const [sending, setSending] = React.useState(false);
+  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
+  const [sucessMessage, setSucessMessage] = React.useState("")
+  const [sending, setSending] = React.useState(false)
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm('');
+  } = useForm("")
 
-  const serviceID = 'service_csaylw9';
-  const templatedID = 'template_ylwv55j';
-  const userID = 'user_rvYNwEQQRyZaCjPfjPCkG';
+  const serviceID = "service_csaylw9"
+  const templatedID = "template_ylwv55j"
+  const userID = "user_rvYNwEQQRyZaCjPfjPCkG"
 
   const onSubmit = (data, r) => {
-    setSending(true);
-    setSucessMessage('');
+    setSending(true)
+    setSucessMessage("")
 
     sendEmail(
       serviceID,
@@ -39,12 +41,12 @@ export default function ContactUs() {
         description: data.description,
       },
       userID
-    );
-    r.target.reset();
-  };
+    )
+    r.target.reset()
+  }
 
   const sendEmail = (serviceID, templatedID, variables, userID) => {
-    console.log(variables);
+    console.log(variables)
     emailjs
       .send(serviceID, templatedID, variables, userID)
       .then(() => {
@@ -52,16 +54,16 @@ export default function ContactUs() {
           <Alert severity="success" varient="filled" sx={{ fontSize: 18 }}>
             Thank you for contacting us...
           </Alert>
-        );
-        setSending(false);
-        window.location.reload(false);
+        )
+        setSending(false)
+        window.location.reload(false)
       })
-      .catch((err) => alert(`Something Went Wrong`));
-  };
+      .catch((err) => alert(`Something Went Wrong`))
+  }
 
   return (
     <div className="contactUs__container">
-      <NavBar />
+      <Nav />
 
       {/* @section => form */}
       {/* Mail send Sucess Message */}
@@ -82,13 +84,13 @@ export default function ContactUs() {
                 id="name"
                 type="text"
                 name="name"
-                aria-invalid={errors.name ? 'true' : 'false'}
-                {...register('name', {
-                  required: 'Please enter your name',
+                aria-invalid={errors.name ? "true" : "false"}
+                {...register("name", {
+                  required: "Please enter your name",
                   maxLength: {
                     value: 50,
                     message:
-                      'Please enter a name with fewer than 50 characters',
+                      "Please enter a name with fewer than 50 characters",
                   },
                 })}
               />
@@ -100,12 +102,12 @@ export default function ContactUs() {
                 id="email"
                 placeholder="Email Address"
                 name="email"
-                aria-invalid={errors.email ? 'true' : 'false'}
-                {...register('email', {
-                  required: 'Please enter your email',
+                aria-invalid={errors.email ? "true" : "false"}
+                {...register("email", {
+                  required: "Please enter your email",
                   pattern: {
                     value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i,
-                    message: 'invalid Email',
+                    message: "invalid Email",
                   },
                 })}
               />
@@ -118,9 +120,9 @@ export default function ContactUs() {
                 id="description"
                 cols="30"
                 rows="10"
-                aria-invalid={errors.description ? 'true' : 'false'}
-                {...register('description', {
-                  required: 'Write some message',
+                aria-invalid={errors.description ? "true" : "false"}
+                {...register("description", {
+                  required: "Write some message",
                 })}
               ></textarea>
               <div className="error-message">
@@ -128,7 +130,7 @@ export default function ContactUs() {
               </div>
 
               <button className="btn-submit">
-                {sending ? 'sending...' : 'Submit'}
+                {sending ? "sending..." : "Submit"}
               </button>
             </div>
           </form>
@@ -148,5 +150,5 @@ export default function ContactUs() {
       {/* Mail send Sucess Message */}
       <Footer />
     </div>
-  );
+  )
 }
