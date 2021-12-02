@@ -13,7 +13,7 @@ import NavBar from '../../Components/NavBar/Nav';
 export default function VolunteerProfile(props) {
   const [volunteer, setVolunteer] = useState({});
 
-  const isLoggedIn = localStorage.getItem('vinfo')?.replace(/"/g, '');
+  const isLoggedIn = localStorage.getItem('vinfo');
 
   console.log(isLoggedIn);
 
