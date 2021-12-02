@@ -59,7 +59,7 @@ export default function KindnessCardPage(props) {
       <div class="kindness-hero">
         {posts.map((data) => (
           <div className="kindnessCard__container" key={data._id}>
-            <Link to="/">
+            <Link to={"/kindness-focused/" + data._id}>
               <img alt="example" src={data.photos[0]} />
               <div className="kindnessCard__container__title">{data.title}</div>
               <div className="kindnessCard__container__description">
