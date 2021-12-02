@@ -7,78 +7,14 @@ import { Link } from "react-location"
 
 import Footer from "../../Components/Footer/Footer"
 import NewsTabs from "../../Components/NewsTab/NewsTabs"
+import Nav from "../../Components/NavBar/Nav"
+
 export default function News() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false)
 
   return (
     <div className="news">
-      {/* @sectoin => topbar */}
-      <div className="news__topbar">
-        <img className="news__logo" src={Logo} alt="haminepal logo" />
-
-        <button onClick={() => setIsActiveMenu(true)}>
-          <i className="ri-menu-line"></i>
-        </button>
-      </div>
-
-      {/* @section => hidden menu */}
-      <div
-        className="news__landing__hiddenMenu"
-        style={{
-          display: isActiveMenu ? "flex" : "none",
-        }}
-      >
-        <div className="news__landing__hiddenMenu__topbar">
-          <img
-            className="news__landing__topbar__logo"
-            src={Logo}
-            alt="haminepal logo"
-          />
-
-          <button onClick={() => setIsActiveMenu(false)}>
-            <i className="ri-close-line"></i>
-          </button>
-        </div>
-        <ul className="news__landing__hiddenMenu__items left">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/news">News</Link>
-          </li>
-          <li>
-            <Link to="/act-of-kindness">Act of Kindness</Link>
-          </li>
-          <li>
-            <Link to="/civil-rights-movement">Civil Rights Movements</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-          <div className="divider"></div>
-          <li>
-            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
-          </li>
-        </ul>
-        <ul className="news__landing__hiddenMenu__items right">
-          <li>
-            <Link to="/about">About Us</Link>
-          </li>
-          <li>
-            <Link to="/causes">Cause</Link>
-          </li>
-          <li>
-            <Link to="/events">Events</Link>
-          </li>
-          <li>
-            <Link to="/">Transparency</Link>
-          </li>
-          <li>
-            <Link to="/our-work">ourWorks</Link>
-          </li>
-        </ul>
-      </div>
-
+      <Nav />
       {/* @section=>Landing */}
       <div className="news__container_landing ">
         <h1>News</h1>

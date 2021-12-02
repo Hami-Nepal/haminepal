@@ -45,7 +45,7 @@ const Nav = () => {
             <Link to="/news">News</Link>
           </li>
           <li>
-            <Link to="/">Act of Kindness</Link>
+            <Link to="/act-of-kindness">Act of Kindness</Link>
           </li>
           <li>
             <Link to="/civil-rights-movement">Civil Rights Movements</Link>
