@@ -49,32 +49,35 @@ export default function KindnessCardPage(props) {
   return (
     <div className="kindness-header">
       <h3>{count} results</h3>
-      <div class="kindness-hero">
-        {posts.map((data) => (
-          <div className="kindnessCard__container" key={data._id}>
-            <Link to={"/kindness-focused/" + data._id}>
-              <img alt="example" src={data.photos[0]} />
-              <div className="kindnessCard__container__title">{data.title}</div>
-              <div className="kindnessCard__container__description">
-                {data.summary}
-              </div>
-            </Link>
-          </div>
-        ))}
+      <div className="kindness-neck">
+        <div class="kindness-hero">
+          {posts.map((data) => (
+            <div className="kindnessCard__container" key={data._id}>
+              <Link to={"/kindness-focused/" + data._id}>
+                <img alt={data._id} src={data.photos[0]} />
+                <div className="kindnessCard__container__title">
+                  {data.title}
+                </div>
+                <div className="kindnessCard__container__description">
+                  {data.summary}
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div style={{ margin: "20px" }}>
-        <Stack justifyContent="center" alignItems="center" spacing={2}>
-          <Pagination
-            count={page}
-            page={currentPage}
-            onChange={paginate}
-            shape="rounded"
-            color="primary"
-            size="large"
-          />
-        </Stack>
-      </div>
+      <div style={{ margin: "20px" }}></div>
+      <Stack justifyContent="center" alignItems="center" spacing={2}>
+        <Pagination
+          count={page}
+          page={currentPage}
+          onChange={paginate}
+          shape="rounded"
+          color="primary"
+          size="large"
+        />
+      </Stack>
     </div>
   )
 }

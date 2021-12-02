@@ -4,59 +4,66 @@
 .kindness-header {
   h3 {
     text-align: start;
-    margin: 30px;
+    margin: 30px 0px 30px 120px;
     font-family: "Poppins", sans-serif !important;
     @media (max-width: 768px) {
       font-size: 1rem;
     }
   }
-  // outside-card
-  .kindness-hero {
+  .kindness-neck {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: flex-start;
-    // inside-card
-    .kindnessCard__container {
+    justify-content: center;
+    // outside-card
+    .kindness-hero {
       display: flex;
       flex-wrap: wrap;
-      max-width: 300px;
-      max-height: 50vh;
-      // max-width: 280px;
-      margin-top: 60px;
-      margin: 20px;
+      flex-direction: row;
+      justify-content: flex-start;
+      // inside-card
+      .kindnessCard__container {
+        background-color: white;
 
-      @media (max-width: 1200px) {
-        max-width: 340px;
-      }
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 330px;
+        max-height: 50vh;
 
-      @media (max-width: 768px) {
-        max-width: 100%;
-      }
+        @media (max-width: 1200px) {
+          max-width: 350px;
+        }
 
-      a {
-        text-decoration: none;
-        color: #000;
-      }
+        @media (max-width: 768px) {
+          max-width: 100%;
+        }
 
-      img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        margin-bottom: 10px;
-      }
+        a {
+          text-decoration: none;
+          color: #000;
+        }
 
-      .kindnessCard__container__title {
-        font-weight: 600;
-        margin-bottom: 10px;
-        padding: 0 3px;
-        font-family: "Poppins", sans-serif !important;
-      }
+        img {
+          width: 100%;
+          height: 180px;
+          object-fit: cover;
+          margin-bottom: 10px;
+        }
 
-      .kindnessCard__container__description {
-        line-height: 1.5;
-        padding: 0 3px;
-        font-family: "Poppins", sans-serif !important;
+        .kindnessCard__container__title {
+          font-weight: 600;
+          margin-bottom: 10px;
+          padding: 0 3px;
+          font-family: "Poppins", sans-serif !important;
+        }
+
+        .kindnessCard__container__description {
+          line-height: 1.5;
+          padding: 0 3px;
+          font-family: "Poppins", sans-serif !important;
+          height: 120px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: wrap;
+        }
       }
     }
   }

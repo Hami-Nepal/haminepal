@@ -55,24 +55,25 @@ export default function NewsTabs() {
       {/* @section=>main-loaded */}
       <div className="news_container_cards">
         <h3>{count} results</h3>
-
-        <div className="card-container">
-          {posts.map((news, _id) => (
-            <a href={news.link} className="news_card">
-              <img src={news.photo} />
-              <div className="news">News</div>
-              <p
-                style={{
-                  fontSize: "16px",
-                  color: "grey",
-                  margin: "10px 0px 0px 20px",
-                }}
-              >
-                {news.createdAt.slice(0, 10)}
-              </p>
-              <p className="summary">{news.summary}</p>
-            </a>
-          ))}
+        <div className="card-hero">
+          <div className="card-container">
+            {posts.map((news, _id) => (
+              <a href={news.link} className="news_card">
+                <img src={news.photo} />
+                <div className="news">News</div>
+                <p
+                  style={{
+                    fontSize: "16px",
+                    color: "grey",
+                    margin: "10px 0px 0px 20px",
+                  }}
+                >
+                  {news.createdAt.slice(0, 10)}
+                </p>
+                <p className="summary">{news.summary}</p>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
 
