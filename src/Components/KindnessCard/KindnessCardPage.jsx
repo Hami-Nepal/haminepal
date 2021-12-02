@@ -38,14 +38,7 @@ export default function KindnessCardPage(props) {
 
   if (loading) {
     return (
-      <div
-        class="text-center"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <div class="text-center">
         <div class="spinner-border text-primary" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>

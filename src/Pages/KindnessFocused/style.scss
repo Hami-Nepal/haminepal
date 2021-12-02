@@ -240,8 +240,8 @@
     align-items: center;
     flex-wrap: wrap;
     padding: 40px 5vw;
-    margin-bottom: 30px;
-    @media (max-width: 1250px) {
+    margin: 0px 0px 30px 35px;
+    @media (max-width: 1346px) {
       --auto-grid-min-size: 16rem;
       display: grid;
       grid-template-columns: repeat(
@@ -264,6 +264,9 @@
       @media (max-width: 768px) {
         width: 100%;
         height: 100%;
+      }
+      @media (max-width: 1346px) {
+        width: 100%;
       }
     }
   }
