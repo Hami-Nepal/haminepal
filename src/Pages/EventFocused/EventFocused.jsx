@@ -131,9 +131,12 @@ export default function EventFocused() {
 
       {/* @section => gallery */}
       <div className="eventFocused__container__gallery">
-        {data.photos?.map((url) => (
-          <img key={url} src={url} alt="" />
-        ))}
+        <h1>Event photos</h1>
+        <div className="eventFocused__container__gallery__container">
+          {data.photos?.map((url) => (
+            <img key={url} src={url} alt="" />
+          ))}
+        </div>
       </div>
 
       <Footer />
