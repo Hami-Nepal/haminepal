@@ -270,30 +270,34 @@ export default function VolunteerProfile(props) {
               </>
             )}
           </div>
-          {editMode ? (
-            <>
-              <Button type="submit" onClick={onSubmit}>
-                {requestState === 'pending' ? 'Loading...' : 'Save'}
+          {isLoggedIn ? (
+            editMode ? (
+              <>
+                <Button type="submit" onClick={onSubmit}>
+                  {requestState === 'pending' ? 'Loading...' : 'Save'}
+                </Button>
+                <Button
+                  type="button"
+                  onClick={() => {
+                    setEditMode(false);
+                    setRequestState(null);
+                  }}
+                >
+                  Cancel
+                </Button>
+                {requestState === 'failed' && (
+                  <p className="volunteer__submit__error">
+                    Something went wrong!
+                  </p>
+                )}
+              </>
+            ) : (
+              <Button type="button" onClick={() => setEditMode(true)}>
+                Edit profile
               </Button>
-              <Button
-                type="button"
-                onClick={() => {
-                  setEditMode(false);
-                  setRequestState(null);
-                }}
-              >
-                Cancel
-              </Button>
-              {requestState === 'failed' && (
-                <p className="volunteer__submit__error">
-                  Something went wrong!
-                </p>
-              )}
-            </>
+            )
           ) : (
-            <Button type="button" onClick={() => setEditMode(true)}>
-              Edit profile
-            </Button>
+            ''
           )}
         </form>
       </div>

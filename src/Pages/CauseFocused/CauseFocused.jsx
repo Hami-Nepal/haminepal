@@ -122,9 +122,12 @@ export default function CauseFocused() {
 
       {/* @section => gallery */}
       <div className="causeFocused__container__gallery">
-        {data.photos?.map((url) => (
-          <img key={url} src={url} alt="" />
-        ))}
+        <h1>Cause photos</h1>
+        <div className="causeFocused__container__gallery__container">
+          {data.photos?.map((url) => (
+            <img key={url} src={url} alt="" />
+          ))}
+        </div>
       </div>
 
       <Footer />
