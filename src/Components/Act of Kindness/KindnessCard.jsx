@@ -1,7 +1,7 @@
-import React from 'react';
-import './style.scss';
+import React from "react"
+import "./style.scss"
 
-import { Link } from 'react-location';
+import { Link } from "react-location"
 
 export default function KindnessCard(props) {
   return (
@@ -14,5 +14,5 @@ export default function KindnessCard(props) {
         </div>
       </Link>
     </div>
-  );
+  )
 }

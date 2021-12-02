@@ -1,0 +1,54 @@
+.kindness_container {
+  .kindness_container__landing {
+    z-index: 1;
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(148, 144, 144, 0.52),
+        rgba(20, 16, 16, 0.644)
+      ),
+      url("../../Assets/banner2.jpg");
+    background-size: cover;
+
+    padding: 0 5vw;
+
+    .slogan {
+      background-color: rgba(117, 110, 110, 0.602);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 20vh;
+      max-width: 40vw;
+      text-shadow: 4px 10px 20px #000000;
+      scroll-behavior: smooth;
+      box-shadow: 5px 5px 20px 20px #1a1919c0;
+
+      p {
+        width: 70%;
+        color: #fff;
+        line-height: 1.7;
+        text-align: center;
+        font-weight: bolder;
+        word-spacing: 0.3rem;
+        font-size: 28px;
+
+        @media (max-width: 768px) {
+          font-size: 1.3rem;
+        }
+        @media (max-width: 1200px) {
+          font-size: 1.5rem;
+        }
+        @media (max-width: 600px) {
+          font-size: 1rem;
+        }
+        @media (max-width: 400px) {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

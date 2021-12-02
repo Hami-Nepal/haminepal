@@ -11,9 +11,17 @@ import "./style.scss"
 import axios from "axios"
 import baseURL from "../../api/baseURL"
 
+import Box from "@mui/material/Box"
+import Card from "@mui/material/Card"
+import CardContent from "@mui/material/CardContent"
+import CardMedia from "@mui/material/CardMedia"
+import Typography from "@mui/material/Typography"
+
+import { Link } from "react-location"
+
 // main function component
 export default function NewsTabs() {
-  const [posts, setPosts] = React.useState([[]])
+  const [posts, setPosts] = React.useState([])
   const [loading, setLoading] = React.useState(false)
   const [currentPage, setCurrentPage] = React.useState(1)
   const [totalData, setTotalData] = React.useState(0)
@@ -43,67 +51,79 @@ export default function NewsTabs() {
   // loading Screen
   if (loading) {
     return (
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: "4rem",
-        }}
-      >
-        <h1>Loading....</h1>
+      <div class="text-center">
+        <div class="spinner-border text-danger" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
       </div>
     )
   }
   return (
     <>
       {/* @section=>main-loaded */}
-      <div className="news_container_cards">
-        <h3>{count} results</h3>
-        <div className="row">
-          {posts.map((news, _id) => (
-            <div class="col-sm-3  " key={_id} style={{ paddingBottom: "20px" }}>
-              <a href={news.link}>
-                <div style={{ backgroundColor: "white" }}>
-                  <div>
-                    <img
-                      src={news.photo}
-                      class="card-img-top"
-                      style={{
-                        maxHeight: "25vh",
-                        objectFit: "cover",
-                      }}
-                      alt="news._id"
-                    />
-                    <div
-                      style={{
-                        margin: "-25px 0 0 10px",
-                        textAlign: "center",
-                        position: "relative",
-                        color: "white",
-                        width: "3vw",
-                        backgroundColor: "red",
-                        fontWeight: "bolder",
-                      }}
-                    >
-                      News
-                    </div>
-                  </div>
+      <div className="row">
+        {posts.map((news) => {
+          let options = {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }
+          const date = new Date(news.createdAt.slice(0, 10))
 
-                  <div className="card-body">
-                    <p className="card-text">
-                      <small className="text-muted">{news.createdAt}</small>
-                    </p>
-                    <p
-                      className="card-text"
-                      style={{ fontSize: "1.2rem", fontWeight: "bolder" }}
-                    >
-                      {news.summary}
-                    </p>
-                  </div>
-                </div>
+          return (
+            <Card
+              sx={{
+                display: "flex",
+                padding: 0,
+                boxShadow: "none",
+                border: "1px solid rgb(202, 202, 202)",
+                borderRadius: "12px",
+              }}
+              key={news._id}
+            >
+              <a href={news.link} target="_blank">
+                <CardMedia
+                  component="img"
+                  sx={{ width: "50%", minHeight: "100%", maxHeight: 220 }}
+                  image={news.photo}
+                  alt="Live from space album cover"
+                />
               </a>
-            </div>
-          ))}
-        </div>
+              <Box
+                sx={{ display: "flex", flexDirection: "column", width: "50%" }}
+              >
+                <CardContent sx={{ flex: "1 0 auto" }}>
+                  <a href={news.link} target="_blank">
+                    <Typography
+                      component="div"
+                      variant="h5"
+                      className="news-title"
+                    >
+                      {news.title}
+                    </Typography>
+                  </a>
+                  <Typography
+                    variant="caption"
+                    color="text.secondary"
+                    component="div"
+                    margin=".5rem 0 .8rem"
+                  >
+                    {date.toLocaleDateString("en-US", options)}
+                  </Typography>
+                  <Typography
+                    variant="subtitle1"
+                    color="text.secondary"
+                    component="div"
+                    className="news-description"
+                  >
+                    {news.summary}
+                  </Typography>
+                </CardContent>
+              </Box>
+            </Card>
+          )
+        })}
       </div>
 
       {/* @sextion=>Pagination */}

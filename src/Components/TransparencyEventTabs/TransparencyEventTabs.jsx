@@ -89,9 +89,9 @@ export default function TransparencyEventTabs() {
   };
 
   return (
-    <div className='causesTabs__container'>
+    <div className='transparencyEventTabs__container'>
       <Box sx={{ width: "100%" }}>
-        <div className='causesTabs__meroTabs'>
+        <div className='events__container__items'>
           <Box sx={{ borderBottom: 2, borderColor: "#e74c3c" }}>
             <Tabs
               variant='scrollable'
@@ -129,7 +129,7 @@ export default function TransparencyEventTabs() {
           </Box>
         </div>
         <TabPanel
-          className='causes__container__items'
+          className='events__container__items'
           value={value}
           index={value}
         >

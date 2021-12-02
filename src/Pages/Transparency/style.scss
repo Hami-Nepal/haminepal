@@ -211,3 +211,40 @@
     margin-left: 5vw;
   }
 }
+
+.causesTabs__meroTabs {
+  width: max-content;
+  margin: 2rem auto;
+
+  .btn__fund {
+    margin-right: 1rem;
+    color: white;
+    background-color: gray;
+
+    &:hover {
+      background-color: #9f1718;
+    }
+
+    &:focus {
+      background-color: #9f1718;
+      color: white;
+    }
+  }
+}
+
+.tab-pane {
+  max-width: 700px;
+  width: 90%;
+  margin: 2rem auto 5rem;
+}
+
+.b10 {
+  background-color: #9f1718;
+  color: white;
+  font-weight: 600;
+  margin-left: 1rem;
+
+  &:hover {
+    color: white;
+  }
+}

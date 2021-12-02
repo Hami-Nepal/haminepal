@@ -31,7 +31,7 @@ export default function Login() {
 
   const handleVLogin = (e) => {
     e.preventDefault();
-
+    setSending(true);
     setSuccessful(false);
     setSending(true);
 
@@ -66,7 +66,7 @@ export default function Login() {
         setIsLoggedIn(true);
       })
       .catch(function (err) {
-        //handle error
+        // handle error
         setError(err.response.data.message);
         setSending(false);
         setSuccessful(false);
