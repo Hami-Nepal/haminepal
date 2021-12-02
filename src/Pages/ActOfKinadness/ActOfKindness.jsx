@@ -4,7 +4,7 @@ import "./style.scss"
 
 import Nav from "../../Components/NavBar/Nav"
 import Footer from "../../Components/Footer/Footer"
-import KindnessCard from "../../Components/Act of Kindness/KindnessCard"
+import KindnessCardPage from "../../Components/KindnessCard/KindnessCardPage"
 
 const ActOfKindness = () => {
   return (
@@ -17,7 +17,7 @@ const ActOfKindness = () => {
           </div>
         </div>
       </div>
-      <KindnessCard />
+      <KindnessCardPage />
       <Footer />
     </>
   )
