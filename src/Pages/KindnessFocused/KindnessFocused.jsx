@@ -3,28 +3,28 @@ import "./style.scss"
 
 import Nav from "../../Components/NavBar/Nav"
 
-import { Link } from "react-location"
+// import { Link } from "react-location"
 
 import { styled } from "@mui/material/styles"
 import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress"
-import { Button } from "@mui/material"
+// import { Button } from "@mui/material"
 import Footer from "../../Components/Footer/Footer"
 import baseURL from "../../api/baseURL"
 
-const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-  height: 10,
-  borderRadius: 5,
-  [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor:
-      theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
-  },
-  [`& .${linearProgressClasses.bar}`]: {
-    borderRadius: 5,
-    backgroundColor: theme.palette.mode === "light" ? "#23CE34" : "#308fe8",
-  },
-}))
+// const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+//   height: 10,
+//   borderRadius: 5,
+//   [`&.${linearProgressClasses.colorPrimary}`]: {
+//     backgroundColor:
+//       theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
+//   },
+//   [`& .${linearProgressClasses.bar}`]: {
+//     borderRadius: 5,
+//     backgroundColor: theme.palette.mode === "light" ? "#23CE34" : "#308fe8",
+//   },
+// }))
 
 export default function KindnessFocused() {
   const [data, setData] = useState({})
@@ -51,7 +51,6 @@ export default function KindnessFocused() {
 
   console.log(data)
 
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
   return (
     <div className="kindnessFocused__container">
       <Nav />

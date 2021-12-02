@@ -14,7 +14,6 @@ import { useForm } from "react-hook-form"
 //  * @dev add messanger chat bot
 //  */
 export default function ContactUs() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
   const [sucessMessage, setSucessMessage] = React.useState("")
   const [sending, setSending] = React.useState(false)
 
