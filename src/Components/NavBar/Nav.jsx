@@ -1,13 +1,16 @@
-import React from "react"
+import React from 'react';
 
-import "./style.scss"
+import './style.scss';
 
-import Logo from "../../Assets/logo.png"
+import Logo from '../../Assets/logo.png';
 
-import { Link } from "react-location"
+import { Link } from 'react-location';
 
 const Nav = () => {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
+  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
+  const isLoggedIn = !!(
+    localStorage.getItem('user') || localStorage.getItem('vinfo')
+  );
 
   return (
     <div className="nav_container">
@@ -23,7 +26,7 @@ const Nav = () => {
       <div
         className="nav_container__landing__hiddenMenu"
         style={{
-          display: isActiveMenu ? "flex" : "none",
+          display: isActiveMenu ? 'flex' : 'none',
         }}
       >
         <div className="nav_container__landing__hiddenMenu__topbar">
@@ -55,7 +58,21 @@ const Nav = () => {
           </li>
           <div className="divider"></div>
           <li>
-            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
+            {isLoggedIn ? (
+              <Link
+                to="/"
+                onClick={() => {
+                  localStorage.clear();
+                }}
+              >
+                Logout
+              </Link>
+            ) : (
+              <>
+                <Link to="/signup">Signup /</Link>
+                <Link to="/login"> Login</Link>
+              </>
+            )}
           </li>
         </ul>
         <ul className="nav_container__landing__hiddenMenu__items right">
@@ -77,6 +94,6 @@ const Nav = () => {
         </ul>
       </div>
     </div>
-  )
-}
-export default Nav
+  );
+};
+export default Nav;
