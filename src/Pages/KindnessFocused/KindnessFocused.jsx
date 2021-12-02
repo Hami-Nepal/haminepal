@@ -28,7 +28,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 
 export default function KindnessFocused() {
   const [data, setData] = useState({})
-  const [totalDonationAmount, setTotalDonationAmount] = useState(0)
+  // const [totalDonationAmount, setTotalDonationAmount] = useState(0)
 
   useEffect(() => {
     fetch(baseURL + "/kindness/" + window.location.pathname.split("/").pop())
@@ -49,7 +49,7 @@ export default function KindnessFocused() {
   //       .catch(({ response }) => console.log(response))
   //   }, [data])
 
-  console.log(data, "ma data check gardai xu")
+  console.log(data)
 
   const [isActiveMenu, setIsActiveMenu] = React.useState(false)
   return (
@@ -99,6 +99,11 @@ export default function KindnessFocused() {
       <div className="kindnessFocused__container__difficulties">
         <h1>Difficulties</h1>
         <p>{data.difficulties}</p>
+      </div>
+      {/* @section => results */}
+      <div className="kindnessFocused__container__results">
+        <h1>Results</h1>
+        <p>{data.results}</p>
       </div>
 
       {/* @section => volunteers */}
