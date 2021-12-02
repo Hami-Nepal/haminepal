@@ -1,44 +1,41 @@
-import React from "react";
-import isEmail from "validator/lib/isEmail";
-import "./style.scss";
+import React from 'react';
+import isEmail from 'validator/lib/isEmail';
+import './style.scss';
+import Iframe from 'react-iframe';
+import { Avatar, Button } from '@mui/material';
 
-import Logo from "../../Assets/logo.png";
+import Footer from '../../Components/Footer/Footer';
 
-import { Link } from "react-location";
-import Iframe from "react-iframe";
-import { Avatar, Button } from "@mui/material";
+import baseURL from '../../api/baseURL';
 
-import Footer from "../../Components/Footer/Footer";
-
-import baseURL from "../../api/baseURL";
+import NavBar from '../../Components/NavBar/Nav';
 
 const fileReader = new FileReader();
 
 export default function NewVolunteer() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
   const [volunteerImg, setVolunteerImg] = React.useState(null);
-  const [volunteerImgUrl, setVolunteerImgUrl] = React.useState("");
+  const [volunteerImgUrl, setVolunteerImgUrl] = React.useState('');
   const [fields, setFields] = React.useState({
-    first_name: "",
-    last_name: "",
-    phone: "",
-    email: "",
-    password: "",
-    cPassword: "",
-    age: "",
-    bloodGroup: "",
-    field_of_expertise: "",
-    bio: "",
-    motivation: "",
-    country: "",
-    state: "",
-    city: "",
-    street_address: "",
+    first_name: '',
+    last_name: '',
+    phone: '',
+    email: '',
+    password: '',
+    cPassword: '',
+    age: '',
+    bloodGroup: '',
+    field_of_expertise: '',
+    bio: '',
+    motivation: '',
+    country: '',
+    state: '',
+    city: '',
+    street_address: '',
   });
   const emailInput = React.useRef();
   const pass = React.useRef();
   const [requestState, setRequestState] = React.useState(null);
-  const [errorMsg, setErrorMsg] = React.useState("");
+  const [errorMsg, setErrorMsg] = React.useState('');
 
   const onFieldChange = (field) => (event) =>
     setFields((prev) => ({ ...prev, [field]: event.target.value }));
@@ -55,193 +52,122 @@ export default function NewVolunteer() {
   const onFormSubmit = (event) => {
     event.preventDefault();
 
-    if (requestState === "loading") return;
+    if (requestState === 'loading') return;
 
-    setRequestState("loading");
+    setRequestState('loading');
 
     const formData = new FormData();
 
     for (let field in fields) {
       formData.append(field, fields[field]);
     }
-    formData.append("photo", volunteerImg);
+    formData.append('photo', volunteerImg);
 
-    fetch(baseURL + "/volunteers", {
-      method: "post",
+    fetch(baseURL + '/volunteers', {
+      method: 'post',
       body: formData,
     })
       .then((data) => data.json())
       .then((data) => {
-        setRequestState("success");
+        setRequestState('success');
       })
       .catch(({ response }) => {
-        setRequestState("failed");
-        setErrorMsg(response?.message || "");
+        setRequestState('failed');
+        setErrorMsg(response?.message || '');
       });
   };
 
-  console.log(fields);
-
   return (
-    <div className='newVolunteer__container'>
-      {/* @sectoin => topbar */}
-      <div className='newVolunteer__container__topbar'>
-        <img
-          className='newVolunteer__container__logo'
-          src={Logo}
-          alt='haminepal logo'
-        />
-
-        <button onClick={() => setIsActiveMenu(true)}>
-          <i className='ri-menu-line'></i>
-        </button>
-      </div>
-
-      {/* @section => hidden menu */}
-      <div
-        className='newVolunteer__container__landing__hiddenMenu'
-        style={{
-          display: isActiveMenu ? "flex" : "none",
-        }}
-      >
-        <div className='newVolunteer__container__landing__hiddenMenu__topbar'>
-          <img
-            className='newVolunteer__container__landing__topbar__logo'
-            src={Logo}
-            alt='haminepal logo'
-          />
-
-          <button onClick={() => setIsActiveMenu(false)}>
-            <i className='ri-close-line'></i>
-          </button>
-        </div>
-        <ul className='newVolunteer__container__landing__hiddenMenu__items left'>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/'>News</Link>
-          </li>
-          <li>
-            <Link to='/'>Act of Kindness</Link>
-          </li>
-          <li>
-            <Link to='/'>Civil Rights Movements</Link>
-          </li>
-          <li>
-            <Link to='/contact'>Contact Us</Link>
-          </li>
-          <div className='divider'></div>
-          <li>
-            <Link to='/login'>Login/</Link> <Link to='/signup'>Signup</Link>
-          </li>
-        </ul>
-        <ul className='newVolunteer__container__landing__hiddenMenu__items right'>
-          <li>
-            <Link to='/about'>About Us</Link>
-          </li>
-          <li>
-            <Link to='/causes'>Cause</Link>
-          </li>
-          <li>
-            <Link to='/events'>Events</Link>
-          </li>
-          <li>
-            <Link to='/transparency'>Transparency</Link>
-          </li>
-          <li>
-            <Link to='/volunteer'>Volunteers</Link>
-          </li>
-        </ul>
-      </div>
+    <div className="newVolunteer__container">
+      <NavBar />
 
       {/* @section => form */}
-      <div className='newVolunteer__container__form'>
+      <div className="newVolunteer__container__form">
         <h1>Volunteer Details</h1>
-        <div className='divider'></div>
+        <div className="divider"></div>
 
         {/* @section => upload image */}
-        <div className='uploadImage'>
-          <label for='file-upload' className='custom-file-upload'>
+        <div className="uploadImage">
+          <label for="file-upload" className="custom-file-upload">
             {/* on image upload preview here */}
-            {volunteerImg ? <img src={volunteerImgUrl} alt='' /> : <Avatar />}
+            {volunteerImg ? <img src={volunteerImgUrl} alt="" /> : <Avatar />}
             <div>Upload Image</div>
           </label>
-          <input id='file-upload' type='file' onChange={onSelectImage} />
+          <input id="file-upload" type="file" onChange={onSelectImage} />
         </div>
 
         {/* @section => form container */}
-        <div className='newVolunteer__container__form__inputs'>
+        <div className="newVolunteer__container__form__inputs">
           <form
             onSubmit={onFormSubmit}
-            className='newVolunteer__container__form__inputs__input left'
+            className="newVolunteer__container__form__inputs__input left"
           >
             <div>
               <input
-                type='text'
-                placeholder='First Name'
+                type="text"
+                placeholder="First Name"
                 value={fields.first_name}
-                onChange={onFieldChange("first_name")}
+                onChange={onFieldChange('first_name')}
                 required
               />
               <input
-                type='text'
-                placeholder='Last Name'
+                type="text"
+                placeholder="Last Name"
                 value={fields.last_name}
-                onChange={onFieldChange("last_name")}
+                onChange={onFieldChange('last_name')}
                 required
               />
             </div>
 
             <div>
               <input
-                type='email'
-                placeholder='Email Address'
+                type="email"
+                placeholder="Email Address"
                 required
                 value={fields.email}
                 ref={emailInput}
-                onChange={onFieldChange("email")}
+                onChange={onFieldChange('email')}
                 onBlur={(e) => {
                   if (!isEmail(e.target.value)) {
-                    emailInput.current.style.borderColor = "red";
-                    emailInput.current.style.borderWidth = "2px";
+                    emailInput.current.style.borderColor = 'red';
+                    emailInput.current.style.borderWidth = '2px';
                   } else {
-                    emailInput.current.style.borderColor = "black";
-                    emailInput.current.style.borderWidth = "1px";
+                    emailInput.current.style.borderColor = 'black';
+                    emailInput.current.style.borderWidth = '1px';
                   }
                 }}
               />
               <input
-                type='number'
-                placeholder='Phone Number'
+                type="number"
+                placeholder="Phone Number"
                 required
                 value={fields.phone}
-                onChange={onFieldChange("phone")}
+                onChange={onFieldChange('phone')}
               />
             </div>
 
             <div>
               <input
-                type='password'
-                placeholder='Password'
+                type="password"
+                placeholder="Password"
                 required
                 value={fields.password}
-                onChange={onFieldChange("password")}
+                onChange={onFieldChange('password')}
               />
               <input
-                type='password'
-                placeholder='Confirm Password'
+                type="password"
+                placeholder="Confirm Password"
                 required
                 value={fields.cPassword}
                 ref={pass}
-                onChange={onFieldChange("cPassword")}
+                onChange={onFieldChange('cPassword')}
                 onBlur={(e) => {
                   if (fields.password !== fields.cPassword) {
-                    pass.current.style.borderColor = "red";
-                    pass.current.style.borderWidth = "2px";
+                    pass.current.style.borderColor = 'red';
+                    pass.current.style.borderWidth = '2px';
                   } else {
-                    pass.current.style.borderColor = "black";
-                    pass.current.style.borderWidth = "1px";
+                    pass.current.style.borderColor = 'black';
+                    pass.current.style.borderWidth = '1px';
                   }
                 }}
               />
@@ -249,51 +175,51 @@ export default function NewVolunteer() {
 
             <div>
               <input
-                type='text'
-                placeholder='Street Address'
+                type="text"
+                placeholder="Street Address"
                 required
                 value={fields.street_address}
-                onChange={onFieldChange("street_address")}
+                onChange={onFieldChange('street_address')}
               />
               <input
-                type='text'
-                placeholder='City'
+                type="text"
+                placeholder="City"
                 required
                 value={fields.city}
-                onChange={onFieldChange("city")}
+                onChange={onFieldChange('city')}
               />
             </div>
             <div>
               <input
-                type='number'
-                placeholder='Age'
+                type="number"
+                placeholder="Age"
                 required
                 value={fields.age}
-                onChange={onFieldChange("age")}
+                onChange={onFieldChange('age')}
               />
               <input
-                type='text'
-                placeholder='Country'
+                type="text"
+                placeholder="Country"
                 required
                 value={fields.country}
-                onChange={onFieldChange("country")}
+                onChange={onFieldChange('country')}
               />
             </div>
             <div>
               <select
                 value={fields.state}
-                onChange={onFieldChange("state")}
+                onChange={onFieldChange('state')}
                 required
               >
                 <option hidden>State</option>
                 {[
-                  "Province 1",
-                  "Province 2",
-                  "Bagmati",
-                  "Gandaki",
-                  "Lumbini",
-                  "Karnali",
-                  "Sudurpashchim",
+                  'Province 1',
+                  'Province 2',
+                  'Bagmati',
+                  'Gandaki',
+                  'Lumbini',
+                  'Karnali',
+                  'Sudurpashchim',
                 ].map((group) => (
                   <option value={group} key={group}>
                     {group}
@@ -301,29 +227,29 @@ export default function NewVolunteer() {
                 ))}
               </select>
               <input
-                type='text'
-                placeholder='Bio'
+                type="text"
+                placeholder="Bio"
                 required
                 value={fields.bio}
-                onChange={onFieldChange("bio")}
+                onChange={onFieldChange('bio')}
               />
             </div>
             <div>
               <select
                 value={fields.bloodGroup}
                 required
-                onChange={onFieldChange("bloodGroup")}
+                onChange={onFieldChange('bloodGroup')}
               >
                 <option hidden>Blood group</option>
                 {[
-                  "A +ve",
-                  "B +ve",
-                  "A -ve",
-                  "AB +ve",
-                  "AB -ve",
-                  "B -ve",
-                  "O +ve",
-                  "O -ve",
+                  'A +ve',
+                  'B +ve',
+                  'A -ve',
+                  'AB +ve',
+                  'AB -ve',
+                  'B -ve',
+                  'O +ve',
+                  'O -ve',
                 ].map((group) => (
                   <option value={group} key={group}>
                     {group}
@@ -331,50 +257,50 @@ export default function NewVolunteer() {
                 ))}
               </select>
               <input
-                type='text'
-                placeholder='Motivation'
+                type="text"
+                placeholder="Motivation"
                 value={fields.motivation}
                 required
-                onChange={onFieldChange("motivation")}
+                onChange={onFieldChange('motivation')}
               />
             </div>
 
             <div>
               <input
-                type='text'
-                placeholder='Field of Expertise'
+                type="text"
+                placeholder="Field of Expertise"
                 required
                 value={fields.field_of_expertise}
-                onChange={onFieldChange("field_of_expertise")}
+                onChange={onFieldChange('field_of_expertise')}
               />
             </div>
 
-            {requestState === "success" ? (
-              <p className={"volunteer volunteer__" + requestState}>
+            {requestState === 'success' ? (
+              <p className={'volunteer volunteer__' + requestState}>
                 Request sent successfully! Please wait while admins verify's
                 your data.
               </p>
-            ) : requestState === "failed" ? (
-              <p className={"volunteer volunteer__" + requestState}>
+            ) : requestState === 'failed' ? (
+              <p className={'volunteer volunteer__' + requestState}>
                 Something went wrong! {errorMsg}
               </p>
             ) : (
-              ""
+              ''
             )}
 
-            <Button type='submit'>
-              {requestState === "loading" ? "Loading..." : "Register"}
+            <Button type="submit">
+              {requestState === 'loading' ? 'Loading...' : 'Register'}
             </Button>
           </form>
 
-          <div className='newVolunteer__container__form__inputs__input right'>
+          <div className="newVolunteer__container__form__inputs__input right">
             <Iframe
-              url='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56504.95209466454!2d85.29435527910155!3d27.730883699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19e402e28da1%3A0xa5f874e6acdd4479!2sHami%20Nepal!5e0!3m2!1sen!2snp!4v1637297091696!5m2!1sen!2snp'
-              width='100%'
-              height='450px'
-              className='maps'
-              display='initial'
-              position='relative'
+              url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56504.95209466454!2d85.29435527910155!3d27.730883699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19e402e28da1%3A0xa5f874e6acdd4479!2sHami%20Nepal!5e0!3m2!1sen!2snp!4v1637297091696!5m2!1sen!2snp"
+              width="100%"
+              height="450px"
+              className="maps"
+              display="initial"
+              position="relative"
             />
           </div>
         </div>

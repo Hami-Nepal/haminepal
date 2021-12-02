@@ -1,15 +1,15 @@
-import React from "react"
+import React from 'react';
 
-import "./style.scss"
+import './style.scss';
 
-import Nav from "../../Components/NavBar/Nav"
-import Footer from "../../Components/Footer/Footer"
-import KindnessCardPage from "../../Components/KindnessCard/KindnessCardPage"
+import NavBar from '../../Components/NavBar/Nav';
+import Footer from '../../Components/Footer/Footer';
+import KindnessCardPage from '../../Components/KindnessCard/KindnessCardPage';
 
 const ActOfKindness = () => {
   return (
     <>
-      <Nav />
+      <NavBar />
       <div className="kindness_container">
         <div className="kindness_container__landing">
           <div className="slogan">
@@ -20,6 +20,6 @@ const ActOfKindness = () => {
       <KindnessCardPage />
       <Footer />
     </>
-  )
-}
-export default ActOfKindness
+  );
+};
+export default ActOfKindness;

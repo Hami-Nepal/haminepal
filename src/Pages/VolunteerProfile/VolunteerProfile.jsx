@@ -2,17 +2,15 @@ import React, { useEffect, useState } from 'react';
 
 import './style.scss';
 
-import Logo from '../../Assets/logo.png';
-
-import { Link } from 'react-location';
 import Footer from '../../Components/Footer/Footer';
 import { Button } from '@mui/material';
 import baseURL from '../../api/baseURL';
 import Switch from '@mui/material/Switch';
 import axios from 'axios';
 
+import NavBar from '../../Components/NavBar/Nav';
+
 export default function VolunteerProfile(props) {
-  const [isActiveMenu, setIsActiveMenu] = useState(false);
   const [volunteer, setVolunteer] = useState({});
 
   const isLoggedIn = localStorage.getItem('vinfo')?.replace(/"/g, '');
@@ -44,76 +42,7 @@ export default function VolunteerProfile(props) {
     <div className="volunteerProfile__container">
       <div className="volunteerProfile__container__blob"></div>
 
-      {/* @sectoin => topbar */}
-      <div className="volunteerProfile__container__topbar">
-        <img
-          className="volunteerProfile__container__logo"
-          src={Logo}
-          alt="haminepal logo"
-        />
-
-        <button onClick={() => setIsActiveMenu(true)}>
-          <i className="ri-menu-line"></i>
-        </button>
-      </div>
-
-      {/* @section => hidden menu */}
-      <div
-        className="volunteerProfile__container__landing__hiddenMenu"
-        style={{
-          display: isActiveMenu ? 'flex' : 'none',
-        }}
-      >
-        <div className="volunteerProfile__container__landing__hiddenMenu__topbar">
-          <img
-            className="volunteerProfile__container__landing__topbar__logo"
-            src={Logo}
-            alt="haminepal logo"
-          />
-
-          <button onClick={() => setIsActiveMenu(false)}>
-            <i className="ri-close-line"></i>
-          </button>
-        </div>
-        <ul className="volunteerProfile__container__landing__hiddenMenu__items left">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/">News</Link>
-          </li>
-          <li>
-            <Link to="/">Act of Kindness</Link>
-          </li>
-          <li>
-            <Link to="/">Civil Rights Movements</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-          <div className="divider"></div>
-          <li>
-            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
-          </li>
-        </ul>
-        <ul className="volunteerProfile__container__landing__hiddenMenu__items right">
-          <li>
-            <Link to="/about">About Us</Link>
-          </li>
-          <li>
-            <Link to="/causes">Cause</Link>
-          </li>
-          <li>
-            <Link to="/events">Events</Link>
-          </li>
-          <li>
-            <Link to="/transparency">Transparency</Link>
-          </li>
-          <li>
-            <Link to="/volunteer">Volunteers</Link>
-          </li>
-        </ul>
-      </div>
+      <NavBar />
 
       {/* @section => main content */}
       <div className="volunteerProfile__container__main">
