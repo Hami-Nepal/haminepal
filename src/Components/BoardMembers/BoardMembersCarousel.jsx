@@ -17,7 +17,7 @@ export default function BoardMembersCarousel() {
   }, []);
   return (
     <div className='boardMembersCarousel__container'>
-      <Carousel>
+      <Carousel className='boardMembersCarousel__container__carourel'>
         {Members &&
           Members.map((member, index) => (
             <div className='boardMembersCarousel__container__item' key={index}>

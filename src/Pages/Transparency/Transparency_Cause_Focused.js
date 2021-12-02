@@ -29,8 +29,8 @@ const style = {
 
 export default function Causes() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
-  const [eventTitle, setEventTitle] = useState("");
-  const [eventDesc, setDesc] = useState("");
+  const [causeTitle, setCauseTitle] = useState("");
+  const [causeDesc, setDesc] = useState("");
   const [data, setData] = useState([]);
   const [donations, setDonations] = useState([]);
 
@@ -39,7 +39,6 @@ export default function Causes() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [active, setActive] = useState(false);
   const [fundReceived, setFundReceived] = useState(false);
 
   const fundcardStyle = {
@@ -48,29 +47,29 @@ export default function Causes() {
   };
 
   useEffect(() => {
-    fetch(baseURL + "/events/" + window.location.pathname.split("/").pop())
+    fetch(baseURL + "/causes/" + window.location.pathname.split("/").pop())
       .then((data) => data.json())
       .then(({ data }) => {
-        setEventTitle(data.name);
-        setDesc(data.description);
+        setCauseTitle(data.cause.name);
+        setDesc(data.cause.description);
       })
       .catch(({ response }) => console.log(response));
   }, []);
 
   useEffect(() => {
-    fetch(baseURL + `/transparency?event_name=${eventTitle}`)
+    fetch(baseURL + `/transparency?cause_name=${causeTitle}`)
       .then((data) => data.json())
       .then(({ data }) => {
         setData(data);
         // console.log(slug);
       })
       .catch(({ response }) => console.log(response));
-  }, [eventTitle]);
+  }, [causeTitle]);
 
   useEffect(() => {
     fetch(
       baseURL +
-        "/donations?category=event&event=" +
+        "/donations?category=cause&cause=" +
         window.location.pathname.split("/").pop()
     )
       .then((data) => data.json())
@@ -156,9 +155,9 @@ export default function Causes() {
 
       {/* @section => landing */}
       <div className='causes__container__landing'>
-        <h1>{eventTitle}</h1>
+        <h1>{causeTitle}</h1>
 
-        <p>{eventDesc}</p>
+        <p>{causeDesc}</p>
       </div>
       {/* tabs-area-start */}
       <div className='causesTabs__container'>

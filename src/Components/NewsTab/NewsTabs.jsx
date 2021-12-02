@@ -11,6 +11,14 @@ import "./style.scss"
 import axios from "axios"
 import baseURL from "../../api/baseURL"
 
+import Box from "@mui/material/Box"
+import Card from "@mui/material/Card"
+import CardContent from "@mui/material/CardContent"
+import CardMedia from "@mui/material/CardMedia"
+import Typography from "@mui/material/Typography"
+
+import { Link } from "react-location"
+
 // main function component
 export default function NewsTabs() {
   const [posts, setPosts] = React.useState([])
@@ -53,32 +61,74 @@ export default function NewsTabs() {
   return (
     <>
       {/* @section=>main-loaded */}
-      <div className="news_container_cards">
-        <h3>{count} results</h3>
+      <div className="row">
+        {posts.map((news) => {
+          let options = {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }
+          const date = new Date(news.createdAt.slice(0, 10))
 
-        <div className="card-container">
-          {posts.map((news, _id) => (
-            <a href={news.link} className="news_card">
-              <img src={news.photo} />
-              <div className="news">News</div>
-              <p
-                style={{
-                  fontSize: "16px",
-                  color: "grey",
-                  margin: "10px 0px 0px 20px",
-                }}
+          return (
+            <Card
+              sx={{
+                display: "flex",
+                padding: 0,
+                boxShadow: "none",
+                border: "1px solid rgb(202, 202, 202)",
+                borderRadius: "12px",
+              }}
+              key={news._id}
+            >
+              <a href={news.link} target="_blank">
+                <CardMedia
+                  component="img"
+                  sx={{ width: "50%", minHeight: "100%", maxHeight: 220 }}
+                  image={news.photo}
+                  alt="Live from space album cover"
+                />
+              </a>
+              <Box
+                sx={{ display: "flex", flexDirection: "column", width: "50%" }}
               >
-                {news.createdAt.slice(0, 10)}
-              </p>
-              <p className="summary">{news.summary}</p>
-            </a>
-          ))}
-        </div>
+                <CardContent sx={{ flex: "1 0 auto" }}>
+                  <a href={news.link} target="_blank">
+                    <Typography
+                      component="div"
+                      variant="h5"
+                      className="news-title"
+                    >
+                      {news.title}
+                    </Typography>
+                  </a>
+                  <Typography
+                    variant="caption"
+                    color="text.secondary"
+                    component="div"
+                    margin=".5rem 0 .8rem"
+                  >
+                    {date.toLocaleDateString("en-US", options)}
+                  </Typography>
+                  <Typography
+                    variant="subtitle1"
+                    color="text.secondary"
+                    component="div"
+                    className="news-description"
+                  >
+                    {news.summary}
+                  </Typography>
+                </CardContent>
+              </Box>
+            </Card>
+          )
+        })}
       </div>
 
       {/* @sextion=>Pagination */}
       <div style={{ marginBottom: "50px" }}>
-        <Stack justifyContent="center" alignItems="center" spacing={2}>
+        <Stack justifyContent="center" alignItems="center">
           <Pagination
             count={page}
             page={currentPage}

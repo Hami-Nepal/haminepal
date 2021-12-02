@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import "./style.scss"
 
 import Logo from "../../Assets/logo.png"
+import mobile from "../../Assets/mobile.jpeg"
 import BannerVideo from "../../Assets/banner.mp4"
 import BannerVideoWebm from "../../Assets/banner.webm"
 import BannerVideoOgm from "../../Assets/banner.ogm"
@@ -12,6 +13,7 @@ import { Link } from "react-location"
 import { Helmet } from "react-helmet"
 
 import Partners from "../../Mocks/OurPartners.json"
+import InfluenerCarousel from "../../Components/Influencers/InfluencersCarousel"
 
 import KindnessCard from "../../Components/Act of Kindness/KindnessCard"
 import BoardMembersCarousel from "../../Components/BoardMembers/BoardMembersCarousel"
@@ -28,6 +30,7 @@ export default function Home() {
   const [totalDonations, setTotalDonations] = useState(0)
   const [totalExpenses, setTotalExpenses] = useState(0)
   const [homeHero, setHomeHero] = useState({})
+  // const [influencers, setInfluencers] = useState([Influencers.Influencers]);
 
   useEffect(() => {
     fetch(baseURL + "/donations?sort=-donation_amount&limit=5")
@@ -290,7 +293,6 @@ export default function Home() {
         <h1>Our Board Members</h1>
         <BoardMembersCarousel />
       </div>
-
       {/** @section => coming soon */}
       <div className="home__container__comingSoon">
         <img
@@ -320,49 +322,40 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/** @section => our partner */}
+      {/** @section => our mentor */}
       <div className="home__container__ourPartner">
         <h1>Our Mentor</h1>
         <div className="Mentor">
           <img
-            style={{ width: 450, height: 450, borderRadius: "8%" }}
+            style={{ width: 450, height: 400, borderRadius: "8%" }}
             src="https://www.abc.net.au/cm/rimage/9966990-1x1-large.jpg?v=3"
             alt="Sandukh Ruit"
           />
           <div className="Mentor__details">
             <h3>Dr. Sanduk Ruit</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
-              temporibus recusandae natus dolores nam dicta odit est commodi!
-              Quo odio error voluptatem? In, quae ullam nesciunt sint suscipit
-              voluptas porro omnis! Eaque vitae voluptatibus perferendis vero
-              rerum. Neque vitae ratione quo perferendis natus, aliquam nam quos
-              officiis dolor expedita! Porro expedita incidunt, nesciunt quis
-              sit harum deserunt corrupti laboriosam natus voluptate quae
-              mollitia asperiores?
+              Dr. Sanduk Ruit is a respected eye surgeon who was awarded
+              Magsaysay Award in 2006 for his work to bring back eyesight of the
+              poor in countries including Nepal, China, India, Bangladesh,
+              Cambodia.
             </p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-              doloribus dolorum enim minima sit dolores odit voluptas
-              reprehenderit doloremque quibusdam vitae soluta dolor repellendus
-              fugit et voluptates vero distinctio illum praesentium, iste ipsa
-              modi rerum reiciendis consequatur. Maxime nam dolore laudantium
-              eum tempore placeat ipsa corrupti! Ducimus voluptatum expedita
-              quaerat nisi dolorem esse autem fuga excepturi quam quis! Deleniti
-              veniam velit dolores assumenda. Culpa!
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
-              praesentium id corrupti sequi, eveniet architecto sed a, voluptate
-              earum nisi qui rerum et culpa facere consequatur quibusdam, non
-              quam quos?
+              In 2006, he and his team performed sight-restoring surgery in
+              North Korea on over 1,000 patients in six days. He devised an
+              affordable suture-less procedure that speeds cataract surgery and
+              reduces patients’ recovery time. He is the Director Medical
+              Director of the Tilganga Eye Centre that provides high quality eye
+              treatments at a highly cheap cost to poor patients. In 2016, the
+              Canada-based Albert Einstein Foundation nominated Dr Ruit as one
+              of the 100 leading global visionaries. He was born in
+              Olangchunggola, Taplejung.
             </p>
           </div>
         </div>
       </div>
+
       <div className="home__container__ourPartner">
-        <h1>Our Partner</h1>
+        <h1>Our Partners</h1>
         <ul>
           {Partners.partners.map((partner, index) => (
             <li key={index}>
@@ -370,6 +363,10 @@ export default function Home() {
             </li>
           ))}
         </ul>
+        <div className="infuencer__heading">
+          <h1 style={{ marginTop: "3rem" }}>Our Social Media Influencers</h1>
+          <InfluenerCarousel />
+        </div>
       </div>
 
       <Footer />
@@ -378,7 +375,8 @@ export default function Home() {
         <div>&copy; Hami Nepal. All Rights Reserved</div>
         <div>
           {" "}
-          Made with ❤️ by <Link to="/">Hash Technologies</Link>
+          Made with ❤️ by{" "}
+          <a href="https://hashtechnologies.net">Hash Technologies</a>
         </div>
       </div>
     </div>
