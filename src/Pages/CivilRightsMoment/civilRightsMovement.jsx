@@ -8,8 +8,6 @@ import Footer from "../../Components/Footer/Footer"
 import CivilRightTabs from "../../Components/CivilRightTabs"
 
 export default function CivilRightsMovement() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
-
   return (
     <div className="civil_container">
       {/* @sectoin => topbar */}

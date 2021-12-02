@@ -1,17 +1,12 @@
 import React from "react"
 import "./style.scss"
 
-import Logo from "../../Assets/logo.png"
-
-import { Link } from "react-location"
-
 import Footer from "../../Components/Footer/Footer"
 import NewsTabs from "../../Components/NewsTab/NewsTabs"
+
 import Nav from "../../Components/NavBar/Nav"
 
 export default function News() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
-
   return (
     <div className="news">
       <Nav />
