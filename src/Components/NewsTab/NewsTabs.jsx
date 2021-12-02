@@ -59,7 +59,7 @@ export default function NewsTabs() {
           <div className="card-container">
             {posts.map((news, _id) => (
               <a href={news.link} className="news_card">
-                <img src={news.photo} />
+                <img src={news.photo} alt={news._id} />
                 <div className="news">News</div>
                 <p
                   style={{

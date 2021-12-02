@@ -5,10 +5,10 @@ import Nav from "../../Components/NavBar/Nav"
 
 // import { Link } from "react-location"
 
-import { styled } from "@mui/material/styles"
-import LinearProgress, {
-  linearProgressClasses,
-} from "@mui/material/LinearProgress"
+// import { styled } from "@mui/material/styles"
+// import LinearProgress, {
+//   linearProgressClasses,
+// } from "@mui/material/LinearProgress"
 // import { Button } from "@mui/material"
 import Footer from "../../Components/Footer/Footer"
 import baseURL from "../../api/baseURL"

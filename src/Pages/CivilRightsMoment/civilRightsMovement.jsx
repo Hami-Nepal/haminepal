@@ -1,8 +1,6 @@
 import * as React from "react"
 import "./style.scss"
 
-import Logo from "../../Assets/logo.png"
-
 import Nav from "../../Components/NavBar/Nav"
 import Footer from "../../Components/Footer/Footer"
 import CivilRightTabs from "../../Components/CivilRightTabs"
