@@ -40,7 +40,10 @@ const Nav = () => {
             <i className="ri-close-line"></i>
           </button>
         </div>
-        <ul className="nav_container__landing__hiddenMenu__items left">
+        <ul
+          className="nav_container__landing__hiddenMenu__items left"
+          style={{ marginBottom: 0, marginTop: '-1rem' }}
+        >
           <li>
             <Link to="/">Home</Link>
           </li>
