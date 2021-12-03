@@ -1,88 +1,16 @@
-import React from "react"
-import "./style.scss"
+import React from 'react';
+import './style.scss';
 
-import Logo from "../../Assets/logo.png"
+import AboutUsTabs from '../../Components/AboutUsTabs/AboutUsTabs';
 
-import { Link } from "react-location"
-import AboutUsTabs from "../../Components/AboutUsTabs/AboutUsTabs"
+import Footer from '../../Components/Footer/Footer';
 
-import Footer from "../../Components/Footer/Footer"
+import NavBar from '../../Components/NavBar/Nav';
 
 export default function AboutUs() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
-
   return (
     <div className="aboutUs__container">
-      {/* @sectoin => topbar */}
-      <div className="aboutUs__container__topbar">
-        <img
-          className="aboutUs__container__logo"
-          src={Logo}
-          alt="haminepal logo"
-        />
-
-        <button onClick={() => setIsActiveMenu(true)}>
-          <i className="ri-menu-line"></i>
-        </button>
-      </div>
-
-      {/* @section => hidden menu */}
-      <div
-        className="aboutUs__container__landing__hiddenMenu"
-        style={{
-          display: isActiveMenu ? "flex" : "none",
-        }}
-      >
-        <div className="aboutUs__container__landing__hiddenMenu__topbar">
-          <img
-            className="aboutUs__container__landing__topbar__logo"
-            src={Logo}
-            alt="haminepal logo"
-          />
-
-          <button onClick={() => setIsActiveMenu(false)}>
-            <i className="ri-close-line"></i>
-          </button>
-        </div>
-        <ul className="aboutUs__container__landing__hiddenMenu__items left">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/news">News</Link>
-          </li>
-          <li>
-            <Link to="/">Act of Kindness</Link>
-          </li>
-          <li>
-            <Link to="/">Civil Rights Movements</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-          <div className="divider"></div>
-          <li>
-            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
-          </li>
-        </ul>
-        <ul className="aboutUs__container__landing__hiddenMenu__items right">
-          <li>
-            <Link to="/about">About Us</Link>
-          </li>
-          <li>
-            <Link to="/causes">Cause</Link>
-          </li>
-          <li>
-            <Link to="/events">Events</Link>
-          </li>
-          <li>
-            <Link to="/">Transparency</Link>
-          </li>
-          <li>
-            <Link to="/volunteer">Volunteer</Link>
-          </li>
-        </ul>
-      </div>
+      <NavBar />
 
       {/* @section => landing */}
       <div className="aboutUs__container__landing">
@@ -101,5 +29,5 @@ export default function AboutUs() {
 
       <Footer />
     </div>
-  )
+  );
 }

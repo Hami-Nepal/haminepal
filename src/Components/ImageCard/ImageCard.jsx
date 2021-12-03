@@ -19,18 +19,16 @@ class ImageCard extends React.Component {
   }
 
   render() {
-    {
-      return (
-        <div style={{ gridRowEnd: `span ${this.state.spans}` }}>
-          <div className="img_container">
-            <img ref={this.imageRef} src={this.props.image.image} />
-            <div>
-              <p>{this.props.image.title}</p>
-            </div>
+    return (
+      <div style={{ gridRowEnd: `span ${this.state.spans}` }}>
+        <div className="img_container">
+          <img ref={this.imageRef} src={this.props.image.image} alt="civil" />
+          <div>
+            <p>{this.props.image.title}</p>
           </div>
         </div>
-      )
-    }
+      </div>
+    )
   }
 }
 export default ImageCard

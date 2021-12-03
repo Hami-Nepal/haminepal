@@ -72,7 +72,7 @@
         padding-top: 15vh;
 
         a {
-          font-family: 'Playfair Display', serif;
+          font-family: "Playfair Display", serif;
           font-size: 50px;
           font-weight: 700;
 
@@ -106,7 +106,7 @@
       padding: 30px;
 
       h1 {
-        font-family: 'Playfair Display', serif;
+        font-family: "Playfair Display", serif;
         font-size: 50px;
         font-weight: 700;
         margin-bottom: 30px;
@@ -160,7 +160,7 @@
     padding: 0 8vw;
 
     h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: "Playfair Display", serif;
       font-weight: 700;
       font-size: 50px;
       margin-bottom: 10px;
@@ -178,7 +178,7 @@
     margin-top: 60px;
 
     h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: "Playfair Display", serif;
       font-weight: 700;
       font-size: 50px;
       margin-bottom: 10px;
@@ -245,27 +245,37 @@
   }
 
   .eventFocused__container__gallery {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 40px 5vw;
-    margin-bottom: 30px;
+    padding: 50px 5vw 70px 5vw;
 
-    img {
-      width: 25vw;
-      height: 25vw;
-      object-fit: cover;
-      margin-top: 50px;
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
 
-      @media (max-width: 992px) {
-        width: 48%;
-        height: 48%;
-      }
-      @media (max-width: 768px) {
-        width: 100%;
-        height: 100%;
+    &__container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+      margin-bottom: 30px;
+
+      img {
+        width: 25vw;
+        height: 25vw;
+        object-fit: cover;
+
+        @media (max-width: 992px) {
+          width: 48%;
+          height: 48%;
+        }
+        @media (max-width: 768px) {
+          width: 100%;
+          height: 100%;
+        }
       }
     }
   }

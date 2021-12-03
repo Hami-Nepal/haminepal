@@ -51,13 +51,10 @@ export default function NewsTabs() {
   // loading Screen
   if (loading) {
     return (
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: "4rem",
-        }}
-      >
-        <h1>Loading....</h1>
+      <div class='text-center'>
+        <div class='spinner-border text-danger' role='status'>
+          <span class='visually-hidden'>Loading...</span>
+        </div>
       </div>
     );
   }

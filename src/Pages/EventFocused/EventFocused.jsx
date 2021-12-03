@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './style.scss';
 
-import Logo from '../../Assets/logo.png';
-
-import { Link } from 'react-location';
-
 import { styled } from '@mui/material/styles';
 import { Button } from '@mui/material';
 import LinearProgress, {
@@ -12,6 +8,7 @@ import LinearProgress, {
 } from '@mui/material/LinearProgress';
 import Footer from '../../Components/Footer/Footer';
 import baseURL from '../../api/baseURL';
+import NavBar from '../../Components/NavBar/Nav';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 10,
@@ -49,81 +46,9 @@ export default function EventFocused() {
       .catch(({ response }) => console.log(response));
   }, [data]);
 
-  console.log(data, 'ma data check gardai xu');
-
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
   return (
     <div className="eventFocused__container">
-      {/* @sectoin => topbar */}
-      <div className="eventFocused__container__topbar">
-        <img
-          className="eventFocused__container__logo"
-          src={Logo}
-          alt="haminepal logo"
-        />
-
-        <button onClick={() => setIsActiveMenu(true)}>
-          <i className="ri-menu-line"></i>
-        </button>
-      </div>
-
-      {/* @section => hidden menu */}
-      <div
-        className="eventFocused__container__landing__hiddenMenu"
-        style={{
-          display: isActiveMenu ? 'flex' : 'none',
-        }}
-      >
-        <div className="eventFocused__container__landing__hiddenMenu__topbar">
-          <img
-            className="eventFocused__container__landing__topbar__logo"
-            src={Logo}
-            alt="haminepal logo"
-          />
-
-          <button onClick={() => setIsActiveMenu(false)}>
-            <i className="ri-close-line"></i>
-          </button>
-        </div>
-        <ul className="eventFocused__container__landing__hiddenMenu__items left">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/">News</Link>
-          </li>
-          <li>
-            <Link to="/">Act of Kindness</Link>
-          </li>
-          <li>
-            <Link to="/">Civil Rights Movements</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-          <div className="divider"></div>
-          <li>
-            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
-          </li>
-        </ul>
-        <ul className="eventFocused__container__landing__hiddenMenu__items right">
-          <li>
-            <Link to="/about">About Us</Link>
-          </li>
-          <li>
-            <Link to="/causes">Causes</Link>
-          </li>
-          <li>
-            <Link to="/events">Events</Link>
-          </li>
-          <li>
-            <Link to="/transparency">Transparency</Link>
-          </li>
-          <li>
-            <Link to="/volunteer">Volunteer</Link>
-          </li>
-        </ul>
-      </div>
+      <NavBar />
 
       {/* @section => landing */}
       <div className="eventFocused__container__landing">
@@ -206,9 +131,12 @@ export default function EventFocused() {
 
       {/* @section => gallery */}
       <div className="eventFocused__container__gallery">
-        {data.photos?.map((url) => (
-          <img key={url} src={url} alt="" />
-        ))}
+        <h1>Event photos</h1>
+        <div className="eventFocused__container__gallery__container">
+          {data.photos?.map((url) => (
+            <img key={url} src={url} alt="" />
+          ))}
+        </div>
       </div>
 
       <Footer />

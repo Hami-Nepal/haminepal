@@ -80,6 +80,10 @@ export default function Home() {
       .catch(({ response }) => console.log(response));
   }, []);
 
+  const isLoggedIn = !!(
+    localStorage.getItem("user") || localStorage.getItem("vinfo")
+  );
+
   return (
     <div className='home__container'>
       <Helmet>
@@ -187,7 +191,21 @@ export default function Home() {
             </li>
             <div className='divider'></div>
             <li>
-              <Link to='/login'>Login/</Link> <Link to='/signup'>Signup</Link>
+              {isLoggedIn ? (
+                <Link
+                  to='/'
+                  onClick={() => {
+                    localStorage.clear();
+                  }}
+                >
+                  Logout
+                </Link>
+              ) : (
+                <>
+                  <Link to='/signup'>Signup /</Link>
+                  <Link to='/login'> Login</Link>
+                </>
+              )}
             </li>
           </ul>
           <ul className='home__container__landing__hiddenMenu__items right'>
