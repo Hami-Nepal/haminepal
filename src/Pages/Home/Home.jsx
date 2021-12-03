@@ -30,6 +30,25 @@ export default function Home() {
   const [totalDonations, setTotalDonations] = useState(0);
   const [totalExpenses, setTotalExpenses] = useState(0);
   const [homeHero, setHomeHero] = useState({});
+  const arr = [
+    "Kathmandu",
+    "Pokhara",
+    "Hetauda",
+    "Birgung",
+    "Manang",
+    "Besisahar",
+    "Bhaktapur",
+    "Helambu",
+    "Remachap",
+    "Bhojpur",
+    "Bheri",
+    "Doti",
+    "Dhangadi",
+    "Mugu",
+    "Karnali",
+    "Rukum",
+    "Bardiya",
+  ];
   // const [influencers, setInfluencers] = useState([Influencers.Influencers]);
 
   useEffect(() => {
@@ -158,7 +177,7 @@ export default function Home() {
               <Link to='/news'>News</Link>
             </li>
             <li>
-              <Link to='/'>Act of Kindness</Link>
+              <Link to='/act-of-kindness'>Act of Kindness</Link>
             </li>
             <li>
               <Link to='/civil-rights-movement'>Civil Rights Movements</Link>
@@ -242,14 +261,6 @@ export default function Home() {
 
       {/* @section HamiNepalMap */}
       <div className='home_container_mapVideo'>
-        <div className='home_container_mapVideo_right'>
-          <h1>Our Locations</h1>
-          <p>
-            Kathmandu, Pokhara, Hetauda, Birgung, Manang, Besisahar, Bhaktapur,
-            Helambu, Remachap, Bhojpur, Bheri, Doti, Dhangadi, Mugu, Karnali,
-            Rukum, Bardiya
-          </p>
-        </div>
         <video
           className='Map__video'
           src={MapVideo}
@@ -260,12 +271,20 @@ export default function Home() {
           playsInline='true'
           poster={BannerPoster}
         />
+        <div className='home_container_mapVideo_right'>
+          <h1>Our Locations</h1>
+          <ul>
+            {arr.map((place, index) => (
+              <li key={index}>{place}</li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/** @section => act of kindness */}
       <div className='home__container__actOfKindness'>
         <h1>
-          ACT OF KINDNESS <span>Featured</span>
+          ACT OF KINDNESS <span style={{ color: "red" }}>Featured</span>
         </h1>
 
         <div className='home__container__actOfKindness__items'>
@@ -327,7 +346,7 @@ export default function Home() {
         <h1>Our Mentor</h1>
         <div className='Mentor'>
           <img
-            style={{ width: 450, height: 400, borderRadius: "8%" }}
+            style={{ width: 450, height: 400, borderRadius: "4%" }}
             src='https://www.abc.net.au/cm/rimage/9966990-1x1-large.jpg?v=3'
             alt='Sandukh Ruit'
           />

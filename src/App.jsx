@@ -28,6 +28,8 @@ import Transparency from "./Pages/Transparency/Transparency";
 import CivilRightsMovement from "./Pages/CivilRightsMoment/civilRightsMovement";
 import TransparencyEventFocused from "./Pages/Transparency/Transparency_Event_Focused";
 import TransparencyCauseFocused from "./Pages/Transparency/Transparency_Cause_Focused";
+import ActOfKindness from "./Pages/ActOfKinadness/ActOfKindness";
+import KindnessFocused from "./Pages/KindnessFocused/KindnessFocused";
 
 const location = new ReactLocation();
 
@@ -112,6 +114,14 @@ export default function App() {
           {
             path: "/civil-rights-movement",
             element: <CivilRightsMovement />,
+          },
+          {
+            path: "/act-of-kindness",
+            element: <ActOfKindness />,
+          },
+          {
+            path: "/kindness-focused",
+            element: <KindnessFocused />,
           },
         ]}
       />

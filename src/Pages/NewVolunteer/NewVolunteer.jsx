@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import isEmail from "validator/lib/isEmail";
 import "./style.scss";
+import MapContainer from "./mapcontainer";
 
 import Logo from "../../Assets/logo.png";
 
@@ -11,6 +12,7 @@ import { Avatar, Button } from "@mui/material";
 import Footer from "../../Components/Footer/Footer";
 
 import baseURL from "../../api/baseURL";
+import axios from "axios";
 
 const fileReader = new FileReader();
 
@@ -18,6 +20,9 @@ export default function NewVolunteer() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
   const [volunteerImg, setVolunteerImg] = React.useState(null);
   const [volunteerImgUrl, setVolunteerImgUrl] = React.useState("");
+  const [center, setCenter] = React.useState(null);
+  const [lat, setLat] = React.useState(null);
+  const [lang, setLang] = React.useState(null);
   const [fields, setFields] = React.useState({
     first_name: "",
     last_name: "",
@@ -80,7 +85,26 @@ export default function NewVolunteer() {
       });
   };
 
-  console.log(fields);
+  const handleLocationError = (hasGeolocation, string) => {
+    console.log(hasGeolocation, string);
+  };
+
+  const fetchMyLocation = (e) => {
+    e.preventDefault();
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        setCenter({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+        setLat(position.coords.latitude);
+        setLang(position.coords.longitude);
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, "Browser doesnt Support");
+    }
+  };
 
   return (
     <div className='newVolunteer__container'>
@@ -168,6 +192,12 @@ export default function NewVolunteer() {
             <div>Upload Image</div>
           </label>
           <input id='file-upload' type='file' onChange={onSelectImage} />
+          <Button
+            // className='btn btn-primary mb-4'
+            onClick={fetchMyLocation}
+          >
+            Fetch my Location
+          </Button>
         </div>
 
         {/* @section => form container */}
@@ -368,13 +398,12 @@ export default function NewVolunteer() {
           </form>
 
           <div className='newVolunteer__container__form__inputs__input right'>
-            <Iframe
-              url='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56504.95209466454!2d85.29435527910155!3d27.730883699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19e402e28da1%3A0xa5f874e6acdd4479!2sHami%20Nepal!5e0!3m2!1sen!2snp!4v1637297091696!5m2!1sen!2snp'
-              width='100%'
-              height='450px'
-              className='maps'
-              display='initial'
-              position='relative'
+            <MapContainer
+              apiKey='AIzaSyC9ygizb1G5HWBnHPE9UWOM23fPiuWZAiw'
+              center={center || {}}
+              handleMyLocationChange={(coords) => {
+                // console.log(coords);
+              }}
             />
           </div>
         </div>
