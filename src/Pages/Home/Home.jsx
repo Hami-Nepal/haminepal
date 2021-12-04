@@ -280,7 +280,7 @@ export default function Home() {
       {/* @section HamiNepalMap */}
       <div className='home_container_mapVideo'>
         <video
-          className='Map__video'
+          className='map__video'
           src={MapVideo}
           preload='metadata'
           autoPlay={true}
