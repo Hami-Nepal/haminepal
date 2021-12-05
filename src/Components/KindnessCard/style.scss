@@ -1,71 +1,73 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&display=swap');
 
 // main
 .kindness-header {
+  padding: 6rem 2rem;
+
+  @media (min-width: 768px) {
+    padding: 6rem 4rem;
+  }
+
   h3 {
     text-align: start;
-    margin: 30px 0px 30px 20px;
+    margin-bottom: 3rem;
     text-decoration: underline;
-    font-family: "Poppins", sans-serif !important;
+    font-family: 'Poppins', sans-serif !important;
     @media (max-width: 768px) {
       font-size: 1rem;
     }
   }
-  .kindness-neck {
+
+  .kindness-hero {
     display: flex;
-    justify-content: center;
-    // outside-card
-    .kindness-hero {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    // inside-card
+    .kindnessCard__container {
+      background-color: white;
+
       display: flex;
       flex-wrap: wrap;
-      flex-direction: row;
-      justify-content: flex-start;
-      // inside-card
-      .kindnessCard__container {
-        background-color: white;
+      max-width: 330px;
+      max-height: 50vh;
+      margin: 10px;
 
-        display: flex;
-        flex-wrap: wrap;
-        max-width: 330px;
-        max-height: 50vh;
-        margin: 10px;
+      @media (max-width: 1200px) {
+        max-width: 350px;
+      }
 
-        @media (max-width: 1200px) {
-          max-width: 350px;
-        }
+      @media (max-width: 768px) {
+        max-width: 100%;
+      }
 
-        @media (max-width: 768px) {
-          max-width: 100%;
-        }
+      a {
+        text-decoration: none;
+        color: #000;
+      }
 
-        a {
-          text-decoration: none;
-          color: #000;
-        }
+      img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        margin-bottom: 10px;
+      }
 
-        img {
-          width: 100%;
-          height: 180px;
-          object-fit: cover;
-          margin-bottom: 10px;
-        }
+      .kindnessCard__container__title {
+        font-weight: 600;
+        margin-bottom: 10px;
+        padding: 0 3px;
+        font-family: 'Poppins', sans-serif !important;
+      }
 
-        .kindnessCard__container__title {
-          font-weight: 600;
-          margin-bottom: 10px;
-          padding: 0 3px;
-          font-family: "Poppins", sans-serif !important;
-        }
-
-        .kindnessCard__container__description {
-          line-height: 1.5;
-          padding: 0 3px;
-          font-family: "Poppins", sans-serif !important;
-          height: 120px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: wrap;
-        }
+      .kindnessCard__container__description {
+        line-height: 1.5;
+        padding: 0 3px;
+        font-family: 'Poppins', sans-serif !important;
+        height: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: wrap;
       }
     }
   }
