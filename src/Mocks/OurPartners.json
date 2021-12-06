@@ -30,7 +30,19 @@
     },
     {
       "photo": "https://visioncraft.com.np/resources/front/assets/image/new-logo.png",
-      "link": "visioncraft.com.np"
+      "link": "https://visioncraft.com.np"
+    },
+    {
+      "photo": "https://www.goldstarshoes.com/MediaThumb/original/Media/Goldstar/Logos/goldstar-logo-blue.png",
+      "link": "https://www.goldstarshoes.com/"
+    },
+    {
+      "photo": "https://www.ambassadornepal.com/images/preference/Rtapm-logo.png",
+      "link": "https://www.ambassadornepal.com/#"
+    },
+    {
+      "photo": "https://media-exp1.licdn.com/dms/image/C4E0BAQEKwzGiyoOE1Q/company-logo_200_200/0/1591528533367?e=2159024400&v=beta&t=BjakTTf224J0Zc0XLs6tcEPH7MDz0lAFUNB2cfAAhs0",
+      "link": "https://www.agnigroup.com.np/"
     }
   ]
 }
