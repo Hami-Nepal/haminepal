@@ -415,7 +415,9 @@ export default function Home() {
         <ul>
           {Partners.partners.map((partner, index) => (
             <li key={index}>
-              <img src={partner} alt='' />
+              <a href={partner.link} target='_blank' rel='noreferrer'>
+                <img src={partner.photo} alt='' />
+              </a>
             </li>
           ))}
         </ul>
