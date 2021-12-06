@@ -1,10 +1,14 @@
 /** @section => volunteer cards */
-
+.news-header {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
 .row {
   display: grid;
   gap: 1.5rem;
   margin: 20px 0 80px;
-  padding: 30px 40px;
+  padding: news-header30px 40px;
   max-width: 1200px;
   margin: auto;
 
