@@ -321,11 +321,11 @@
       }
       ul {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        margin: 1rem;
+        grid-template-columns: 1fr;
+        // margin: 1rem;
 
         li {
-          margin-bottom: 0.6rem;
+          margin-bottom: 0;
           margin-right: 10rem;
           margin-left: -4rem;
         }
@@ -518,15 +518,15 @@
   }
 
   /** @section => copyright info */
-  .home__container__copyrightInfo {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 0 5vw;
-    font-weight: 500;
-    background: rgb(245, 245, 245);
-    padding-bottom: 20px;
-  }
+  // .home__container__copyrightInfo {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   justify-content: space-between;
+  //   padding: 0 5vw;
+  //   font-weight: 500;
+  //   background: rgb(245, 245, 245);
+  //   padding-bottom: 20px;
+  // }
 }
 
 .boardMembersCarousel__container__carourel {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./style.scss";
 
 import Logo from "../../Assets/logo.png";
-import mobile from "../../Assets/mobile.jpeg";
+
 import BannerVideo from "../../Assets/banner.mp4";
 import BannerVideoWebm from "../../Assets/banner.webm";
 import BannerVideoOgm from "../../Assets/banner.ogm";
@@ -107,11 +107,13 @@ export default function Home() {
         </video>
 
         <div className='home__container__landing__topbar'>
-          <img
-            className='home__container__landing__topbar__logo'
-            src={Logo}
-            alt='haminepal logo'
-          />
+          <a href='/'>
+            <img
+              className='home__container__landing__topbar__logo'
+              src={Logo}
+              alt='haminepal logo'
+            />
+          </a>
 
           <button onClick={() => setIsActiveMenu(true)}>
             <i className='ri-menu-line'></i>
@@ -371,21 +373,38 @@ export default function Home() {
           <div className='Mentor__details'>
             <h3>Dr. Sanduk Ruit</h3>
             <p>
-              Dr. Sanduk Ruit is a respected eye surgeon who was awarded
-              Magsaysay Award in 2006 for his work to bring back eyesight of the
-              poor in countries including Nepal, China, India, Bangladesh,
-              Cambodia.
+              Sanduk Ruit is a Nepalese ophthalmologist (eye surgeon) who has
+              used small-incision cataract surgery to restore the sight of over
+              130,000 individuals in Africa and Asia. He is also a founding
+              member of the Tilganga Institute of Ophthalmology. He has been
+              dubbed the "God of Sight" for his efforts in bringing excellent,
+              life-changing cataract surgery to the lowest of the impoverished.
+              He was a founding member of the Tilganga Institute of
+              Ophthalmology, which gives free treatment to individuals who
+              cannot afford it. It produces high-quality intraocular lenses for
+              surgery for a tenth of the cost of its prior production. Because
+              of the incredibly inexpensive cost of these lenses, even the
+              poorest people may now afford professional cataract surgery. He
+              received the prestigious Ramon Magsaysay Award for Peace and
+              International Understanding, considered the Asian equivalent of
+              the Nobel Prize, for "putting Nepal at the forefront of developing
+              safe, effective, and cost-effective cataract surgery procedures,
+              allowing the needlessly blind in even the poorest countries to see
+              again."
             </p>
             <p>
-              In 2006, he and his team performed sight-restoring surgery in
-              North Korea on over 1,000 patients in six days. He devised an
-              affordable suture-less procedure that speeds cataract surgery and
-              reduces patients’ recovery time. He is the Director Medical
-              Director of the Tilganga Eye Centre that provides high quality eye
-              treatments at a highly cheap cost to poor patients. In 2016, the
-              Canada-based Albert Einstein Foundation nominated Dr Ruit as one
-              of the 100 leading global visionaries. He was born in
-              Olangchunggola, Taplejung.
+              Dr. Sanduk Ruit has been a tremendous help to Hami Nepal. He
+              serves as Hami Nepal's backbone. Throughout the tasks undertaken
+              by the Hami Nepal team, he has consistently provided
+              contributions. Even when he couldn't be physically present, he
+              would always lead us via his experiences. He assisted our team in
+              the verification procedure. Dr. Sanduk provided our team with all
+              of the essential information, making the verification process much
+              easier, particularly when dealing with hospitals. He also offered
+              a team of experts to carry out the task. Dr. Sanduk also assisted
+              Hami Nepal with its activities. Nonetheless, he has always served
+              as a protector, advising us on how to establish a competent team
+              and how to improve internal operations.
             </p>
           </div>
         </div>
@@ -401,21 +420,20 @@ export default function Home() {
           ))}
         </ul>
         <div className='infuencer__heading'>
-          <h1 style={{ marginTop: "3rem" }}>Our Social Media Influencers</h1>
+          <h1 style={{ marginTop: "3rem" }}>Social Influencers</h1>
           <InfluenerCarousel />
         </div>
       </div>
 
       <Footer />
-
-      <div className='home__container__copyrightInfo'>
+      {/* <div className='home__container__copyrightInfo'>
         <div>&copy; Hami Nepal. All Rights Reserved</div>
-        <div>
+        <div style={{ fontWeight: "bold" }}>
           {" "}
-          Made with ❤️ by{" "}
+          Voluntarily Developed by{" "}
           <a href='https://hashtechnologies.net'>Hash Technologies</a>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -6,7 +6,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Button } from "@mui/material";
+
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
@@ -83,10 +83,6 @@ export default function TransparencyEventTabs() {
       .then(({ data }) => setEventCards(data))
       .catch(({ response }) => console.log(response));
   }, [value, activeEventStatus, eventTypes]);
-
-  const onDonate = (event) => {
-    event.preventDefault();
-  };
 
   return (
     <div className='transparencyEventTabs__container'>

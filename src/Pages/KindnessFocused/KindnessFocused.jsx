@@ -93,10 +93,10 @@ export default function KindnessFocused() {
         <p>{data.challenges}</p>
       </div>
       {/* @section => difficulties */}
-      <div className='kindnessFocused__container__difficulties'>
+      {/* <div className='kindnessFocused__container__difficulties'>
         <h1>Difficulties</h1>
         <p>{data.difficulties}</p>
-      </div>
+      </div> */}
       {/* @section => results */}
       <div className='kindnessFocused__container__results'>
         <h1>Results</h1>

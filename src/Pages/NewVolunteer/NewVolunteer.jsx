@@ -1,7 +1,6 @@
 import React from "react";
 import isEmail from "validator/lib/isEmail";
 import "./style.scss";
-import Iframe from "react-iframe";
 import { Avatar, Button } from "@mui/material";
 import MapContainer from "./mapcontainer";
 
@@ -17,8 +16,6 @@ export default function NewVolunteer() {
   const [volunteerImg, setVolunteerImg] = React.useState(null);
   const [volunteerImgUrl, setVolunteerImgUrl] = React.useState("");
   const [center, setCenter] = React.useState(null);
-  const [lat, setLat] = React.useState(null);
-  const [lang, setLang] = React.useState(null);
   const [fields, setFields] = React.useState({
     first_name: "",
     last_name: "",
@@ -93,8 +90,6 @@ export default function NewVolunteer() {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         });
-        setLat(position.coords.latitude);
-        setLang(position.coords.longitude);
       });
     } else {
       // Browser doesn't support Geolocation
