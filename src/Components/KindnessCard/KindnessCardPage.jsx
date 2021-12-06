@@ -47,24 +47,20 @@ export default function KindnessCardPage(props) {
   }
 
   return (
-    <div className="kindness-header">
+    <div className="kindness-container">
       <h3>Act of kindness</h3>
-      <div className="kindness-neck">
-        <div class="kindness-hero">
-          {posts.map((data) => (
-            <div className="kindnessCard__container" key={data._id}>
-              <Link to={"/kindness-focused/" + data._id}>
-                <img alt={data._id} src={data.photos[0]} />
-                <div className="kindnessCard__container__title">
-                  {data.title}
-                </div>
-                <div className="kindnessCard__container__description">
-                  {data.summary}
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
+      <div class="kindness-hero">
+        {posts.map((data) => (
+          <div className="kindnessCard__container" key={data._id}>
+            <Link to={"/kindness-focused/" + data._id}>
+              <img alt={data._id} src={data.photos[0]} />
+              <div className="kindnessCard__container__title">{data.title}</div>
+              <div className="kindnessCard__container__description">
+                {data.summary}
+              </div>
+            </Link>
+          </div>
+        ))}
       </div>
 
       <div style={{ margin: "20px" }}></div>
