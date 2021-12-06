@@ -44,14 +44,6 @@ const MapContainer = (props) => {
   );
 };
 const Marker = () => {
-  const markerStyle = {
-    borderRadius: 15,
-    background: "#15222b",
-    color: "white",
-    width: 105,
-    padding: "5px 5px",
-    transform: "translate(15px, -50%)",
-  };
   return (
     <div>
       <img

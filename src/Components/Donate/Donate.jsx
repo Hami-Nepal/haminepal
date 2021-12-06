@@ -12,17 +12,17 @@ const label = { inputProps: { "aria-label": "Switch demo" } };
 export default function Donate({ setIsDonationFormOpen }) {
   const [anonymousDonation, setAnonymousDonation] = React.useState(false);
   return (
-    <div className="donate__container">
-      <div className="donate__container__topbar">
-        <img src={Logo} alt="logo" />
+    <div className='donate__container'>
+      <div className='donate__container__topbar'>
+        <img src={Logo} alt='logo' />
         <h3>Donation Form</h3>
         <button onClick={() => setIsDonationFormOpen(false)}>
-          <i className="ri-close-line"></i>
+          <i className='ri-close-line'></i>
         </button>
       </div>
 
-      <div className="donate__container__form">
-        <div className="donate__container__form__switch">
+      <div className='donate__container__form'>
+        <div className='donate__container__form__switch'>
           <Switch
             checked={anonymousDonation}
             onClick={() => setAnonymousDonation(!anonymousDonation)}
@@ -35,38 +35,38 @@ export default function Donate({ setIsDonationFormOpen }) {
           <>
             <h3>User Details</h3>
             <div>
-              <input type="text" placeholder="First Name" />
-              <input type="text" placeholder="Last Name" />
+              <input type='text' placeholder='First Name' />
+              <input type='text' placeholder='Last Name' />
             </div>
             <div>
-              <input type="email" placeholder="Email Address" />
-              <input type="text" placeholder="Phone Number" />
+              <input type='email' placeholder='Email Address' />
+              <input type='text' placeholder='Phone Number' />
             </div>
-            <input type="text" placeholder="Street Address" />
+            <input type='text' placeholder='Street Address' />
             <div>
-              <input type="text" placeholder="City" />
-              <input type="text" placeholder="State/Province/Region" />
+              <input type='text' placeholder='City' />
+              <input type='text' placeholder='State/Province/Region' />
             </div>
             <div>
-              <input type="text" placeholder="Zip Postal Code" />
-              <input type="text" placeholder="Country" />
+              <input type='text' placeholder='Zip Postal Code' />
+              <input type='text' placeholder='Country' />
             </div>
           </>
         )}
 
         <h3>Donation Details</h3>
         <div>
-          <input type="text" placeholder="Zip Postal Code" />
-          <select placeholder="Donation Type">
-            <option value="">Test</option>
+          <input type='text' placeholder='Zip Postal Code' />
+          <select placeholder='Donation Type'>
+            <option value=''>Test</option>
           </select>
         </div>
         <textarea
-          name=""
-          id=""
-          cols="30"
-          rows="10"
-          placeholder="Message"
+          name=''
+          id=''
+          cols='30'
+          rows='10'
+          placeholder='Message'
         ></textarea>
 
         <h3>Pay with</h3>
@@ -74,16 +74,28 @@ export default function Donate({ setIsDonationFormOpen }) {
         {/** @dev add images here instead of texts */}
         <ul>
           <li>
-            <Link to="/">eSewa</Link>
+            <input
+              type='radio'
+              className='form-check'
+              name='payment_type'
+              id='esewa'
+              value='ESEWA'
+            />
+            <label for='esewa'>
+              <img src='' alt='esewa' />
+            </label>
           </li>
           <li>
-            <Link to="/">Khalti</Link>
-          </li>
-          <li>
-            <Link to="/">SCTnPay</Link>
-          </li>
-          <li>
-            <Link to="/">IMEPAY</Link>
+            <input
+              type='radio'
+              className='form-check'
+              name='payment_type'
+              id='esewa'
+              value='ESEWA'
+            />
+            <label for='esewa'>
+              <img src='' alt='esewa' />
+            </label>
           </li>
         </ul>
 
@@ -91,10 +103,10 @@ export default function Donate({ setIsDonationFormOpen }) {
         <span style={{ marginTop: "30px" }}>Outside Nepal</span>
         <ul>
           <li>
-            <Link to="/">gofundme</Link>
+            <Link to='/'>gofundme</Link>
           </li>
           <li>
-            <Link to="/">gofundme</Link>
+            <Link to='/'>gofundme</Link>
           </li>
         </ul>
 

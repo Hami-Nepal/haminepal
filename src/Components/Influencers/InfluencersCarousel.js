@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./style.scss";
 
 import Carousel from "react-elastic-carousel";
-import baseURL from "../../api/baseURL";
 import Influencers from "../../Mocks/Influencers.json";
 
 export default function BoardMembersCarousel() {

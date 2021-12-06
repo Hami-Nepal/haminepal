@@ -53,3 +53,24 @@
     }
   }
 }
+
+.footer__container__copyrightInfo {
+  background-color: rgb(245, 245, 245);
+  // border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  padding: 0 2rem 2rem;
+  .copyright {
+    margin-right: 10px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #e74c3c;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
