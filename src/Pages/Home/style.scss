@@ -300,7 +300,7 @@
 
       video,
       .home_container_mapVideo_right {
-        width: 50%;
+        width: 65%;
       }
     }
 
@@ -312,9 +312,11 @@
 
       ul {
         width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+
         gap: 1rem;
+        li {
+          margin: 0;
+        }
       }
     }
   }
@@ -341,10 +343,8 @@
     }
 
     .home__container__actOfKindness__items {
-      display: flex;
-      // align-items: center;
-      flex-wrap: wrap;
-      justify-content: start;
+      display: grid;
+      grid-template-columns: auto auto auto auto auto;
       gap: 2rem;
 
       & > * {
