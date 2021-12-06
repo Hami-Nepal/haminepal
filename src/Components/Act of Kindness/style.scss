@@ -1,5 +1,5 @@
 .kindnessCard__container {
-  max-width: 230px;
+  // max-width: 230px;
   margin-top: 40px;
 
   @media (max-width: 1200px) {
@@ -17,7 +17,7 @@
 
   img {
     width: 100%;
-    height: 150px;
+    height: 200px;
     object-fit: cover;
     margin-bottom: 10px;
   }
@@ -26,14 +26,20 @@
     font-weight: 600;
     margin-bottom: 10px;
     padding: 0 3px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: #a11b1c;
   }
 
   .kindnessCard__container__description {
     line-height: 1.5;
     min-height: 50px;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-align: justify;
   }
 }

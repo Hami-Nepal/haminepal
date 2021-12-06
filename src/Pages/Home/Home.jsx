@@ -412,7 +412,7 @@ export default function Home() {
         <div>&copy; Hami Nepal. All Rights Reserved</div>
         <div>
           {" "}
-          Made with ❤️ by{" "}
+          Voluntarily Designed with ❤️ by{" "}
           <a href="https://hashtechnologies.net">Hash Technologies</a>
         </div>
       </div>

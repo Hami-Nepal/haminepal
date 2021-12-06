@@ -75,7 +75,7 @@ export default function NewsTabs() {
       <div className="news-header">
         <h3>{count} results</h3>
         <div>
-          Sort by
+          {/* Sort by
           <FormControl sx={{ m: 1, maxWidth: 120 }}>
             <Select
               value={newsType}
@@ -87,7 +87,7 @@ export default function NewsTabs() {
               <MenuItem value="national">National</MenuItem>
               <MenuItem value="international">International</MenuItem>
             </Select>
-          </FormControl>
+          </FormControl> */}
         </div>
       </div>
       {/* @section=>main-loaded */}

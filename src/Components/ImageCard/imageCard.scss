@@ -11,14 +11,12 @@ figure {
     letter-spacing: 0.1rem;
     text-decoration: underline;
 
-    @media only screen and (max-width: 786px) {
+    :hover {
+      color: rgb(210, 36, 30);
+      background: white;
+    }
+    @media only screen and (max-width: 600px) {
       font-size: 1rem;
     }
-  }
-
-  :hover {
-    cursor: pointer;
-    color: brown;
-    background-color: white;
   }
 }
