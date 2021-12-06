@@ -167,7 +167,7 @@
           padding-top: 23vh;
 
           a {
-            font-family: "Playfair Display", serif;
+            font-family: 'Playfair Display', serif;
             font-size: 50px;
             font-weight: 700;
 
@@ -191,7 +191,7 @@
     flex-wrap: wrap;
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       margin-bottom: 30px;
@@ -238,7 +238,7 @@
       }
 
       h2 {
-        font-family: "Playfair Display", serif;
+        font-family: 'Playfair Display', serif;
         font-weight: 700;
         font-size: 25px;
         margin-bottom: 20px;
@@ -286,41 +286,34 @@
 
   /**@section => nepal map video */
   .home_container_mapVideo {
-    min-height: 120vh;
-    width: 100%;
-    position: relative;
-    // background: rgb(245, 245, 245);
-    // margin-bottom: 50px;
-    margin-top: -8rem;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 1rem;
-    gap: 2rem;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 6rem 2rem;
 
     @media (min-width: 756px) {
-      padding: 4rem;
+      padding: 8rem 4rem;
     }
-    video {
-      position: relative;
-      top: 0;
-      left: 0;
-      width: 700px;
-      height: 400px;
-      object-fit: initial;
-      z-index: 0;
-      margin: auto;
-      // max-width: 1500px;
-      border-radius: 1%;
+
+    @media (min-width: 1200px) {
+      flex-direction: row;
+
+      video,
+      .home_container_mapVideo_right {
+        width: 50%;
+      }
     }
+
     .home_container_mapVideo_right {
       h1 {
         font-size: 2rem;
-        margin-top: 8rem;
-        margin-left: -2rem;
+        margin-bottom: 2rem;
       }
+
       ul {
+        width: 100%;
         display: grid;
+<<<<<<< HEAD
         grid-template-columns: 1fr;
         // margin: 1rem;
 
@@ -329,18 +322,25 @@
           margin-right: 10rem;
           margin-left: -4rem;
         }
+=======
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+>>>>>>> ba64dad3f53f3281e80a728346b007f843c93c4c
       }
     }
   }
 
   /** @section => act of kindness */
   .home__container__actOfKindness {
-    padding: 0 5vw;
-    margin-top: -5rem;
+    padding: 8rem 2rem;
     background: rgb(245, 245, 245);
 
+    @media (min-width: 756px) {
+      padding: 8rem 4rem;
+    }
+
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
 
@@ -356,20 +356,28 @@
       // align-items: center;
       flex-wrap: wrap;
       justify-content: start;
-      gap: 0.5rem;
+      gap: 1rem;
+
+      & > * {
+        flex: 250px 1 1;
+      }
     }
   }
 
   /** @section => how we work */
   .home__container__howWeWork {
-    padding: 80px 5vw;
+    padding: 8rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 
+    @media (min-width: 756px) {
+      padding: 8rem 4rem;
+    }
+
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       flex: 2;
@@ -400,12 +408,16 @@
 
   /** @section => our board members */
   .home__container__boardMembers {
-    padding: 50px 5vw;
     margin-top: 10px;
     background: rgb(245, 245, 245);
+    padding: 8rem 2rem;
+
+    @media (min-width: 756px) {
+      padding: 8rem 4rem;
+    }
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       text-align: center;
@@ -419,8 +431,12 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 80px 5vw;
     flex-direction: row;
+    padding: 8rem 2rem;
+
+    @media (min-width: 756px) {
+      padding: 8rem 4rem;
+    }
 
     @media (max-width: 768px) {
       flex-direction: column;
@@ -443,7 +459,7 @@
 
     .home__container__comingSoon__contents {
       h1 {
-        font-family: "Playfair Display", serif;
+        font-family: 'Playfair Display', serif;
         font-weight: 700;
         font-size: 50px;
       }
@@ -467,6 +483,7 @@
       }
     }
   }
+
   .Mentor {
     display: flex;
     flex-direction: column;
@@ -479,14 +496,18 @@
 
   /** @section => our partner */
   .home__container__ourPartner {
-    padding: 70px 5vw;
+    padding: 8rem 2rem;
+
+    @media (min-width: 756px) {
+      padding: 8rem 4rem;
+    }
 
     background: rgb(245, 245, 245);
     border-bottom: 1px solid grey;
     padding-top: 40px;
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       margin-bottom: 40px;
