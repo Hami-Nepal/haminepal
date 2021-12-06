@@ -7,6 +7,8 @@ import Tab from "@mui/material/Tab"
 import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
 
+import axios from "axios"
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props
 
@@ -42,6 +44,16 @@ function a11yProps(index) {
 
 export default function OurWorkTabs() {
   const [value, setValue] = React.useState(0)
+  const [causeType, setCauseType] = React.useState([])
+
+  console.log(causeType)
+
+  React.useEffect(() => {
+    const fetchCauseTypes = async () => {
+      const res = await axios.get("https://api.haminepal.org/api/v1/cause_type")
+      setCauseType(res)
+    }
+  }, [])
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
