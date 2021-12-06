@@ -2,6 +2,8 @@ import React from "react"
 
 import "./imageCard.scss"
 
+import { Link } from "react-location"
+
 class ImageCard extends React.Component {
   constructor(props) {
     super(props)
@@ -21,12 +23,12 @@ class ImageCard extends React.Component {
   render() {
     return (
       <div style={{ gridRowEnd: `span ${this.state.spans}` }}>
-        <div className="img_container">
-          <img ref={this.imageRef} src={this.props.image.image} alt="civil" />
-          <div>
-            <p>{this.props.image.title}</p>
-          </div>
-        </div>
+        <Link to={"/civil-focused/" + this.props.image.id}>
+          <figure className="img_container">
+            <img ref={this.imageRef} src={this.props.image.image} alt="civil" />
+            <figcaption>{this.props.image.title}</figcaption>
+          </figure>
+        </Link>
       </div>
     )
   }

@@ -3,6 +3,11 @@ import * as React from "react";
 // import mui lib
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormHelperText from "@mui/material/FormHelperText";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 // scss import
 import "./style.scss";
@@ -56,6 +61,23 @@ export default function NewsTabs() {
   }
   return (
     <>
+      <div className='news-header'>
+        <div>
+          {/* Sort by
+          <FormControl sx={{ m: 1, maxWidth: 120 }}>
+            <Select
+              value={newsType}
+              onChange={handleChange}
+              displayEmpty
+              inputProps={{ "aria-label": "Without label" }}
+            >
+              <MenuItem value="All">All</MenuItem>
+              <MenuItem value="national">National</MenuItem>
+              <MenuItem value="international">International</MenuItem>
+            </Select>
+          </FormControl> */}
+        </div>
+      </div>
       {/* @section=>main-loaded */}
       <div className='row'>
         {posts.map((news) => {

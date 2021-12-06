@@ -298,9 +298,12 @@
     @media (min-width: 1200px) {
       flex-direction: row;
 
-      video,
+      video {
+        width: 70%;
+      }
+
       .home_container_mapVideo_right {
-        width: 50%;
+        width: 30%;
       }
     }
 
@@ -315,12 +318,6 @@
         display: grid;
         grid-template-columns: 1fr;
         // margin: 1rem;
-
-        li {
-          margin-bottom: 0;
-          margin-right: 10rem;
-          margin-left: -4rem;
-        }
       }
     }
   }
@@ -347,14 +344,21 @@
     }
 
     .home__container__actOfKindness__items {
-      display: flex;
+      display: grid;
       // align-items: center;
-      flex-wrap: wrap;
-      justify-content: start;
-      gap: 1rem;
+      gap: 2rem;
+      grid-template-columns: repeat(1, 1fr);
 
-      & > * {
-        flex: 250px 1 1;
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (min-width: 992px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media (min-width: 1200px) {
+        grid-template-columns: repeat(5, 1fr);
       }
     }
   }
