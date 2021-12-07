@@ -31,7 +31,8 @@ export default function NewsTabs() {
   const [currentPage, setCurrentPage] = React.useState(1)
   const [totalData, setTotalData] = React.useState(0)
   const [count, setCount] = React.useState(0)
-  const [newsType, setnewsType] = React.useState("All")
+  const [newsType, setnewsType] = React.useState("national")
+  console.log(newsType)
 
   console.log(posts)
 
@@ -48,14 +49,16 @@ export default function NewsTabs() {
   React.useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true)
-      const res = await axios.get(baseURL + `/news?page=${currentPage}`)
+      const res = await axios.get(
+        baseURL + `/news?page=${currentPage}&newsType=${newsType}`
+      )
       setPosts(res.data.data)
       setTotalData(res.data.total_data)
       setCount(res.data.count)
       setLoading(false)
     }
     fetchPosts()
-  }, [currentPage])
+  }, [currentPage, newsType])
 
   // number of Pages
   const page = Math.ceil(totalData / 10)
@@ -74,21 +77,21 @@ export default function NewsTabs() {
     <>
       <div className="news-header">
         <h3>{count} results</h3>
-        <div>
-          {/* Sort by
-          <FormControl sx={{ m: 1, maxWidth: 120 }}>
-            <Select
-              value={newsType}
-              onChange={handleChange}
-              displayEmpty
-              inputProps={{ "aria-label": "Without label" }}
-            >
-              <MenuItem value="All">All</MenuItem>
-              <MenuItem value="national">National</MenuItem>
-              <MenuItem value="international">International</MenuItem>
-            </Select>
-          </FormControl> */}
-        </div>
+
+        <FormControl sx={{ m: 1, minWidth: 80 }}>
+          <InputLabel id="demo-simple-select-label">Sort by</InputLabel>
+          <Select
+            labelId="demo-simple-select-autowidth-label"
+            value={newsType}
+            onChange={handleChange}
+            displayEmpty
+            autoWidth
+            inputProps={{ "aria-label": "Without label" }}
+          >
+            <MenuItem value="national">National</MenuItem>
+            <MenuItem value="international">International</MenuItem>
+          </Select>
+        </FormControl>
       </div>
       {/* @section=>main-loaded */}
       <div className="row">
@@ -157,7 +160,7 @@ export default function NewsTabs() {
       </div>
 
       {/* @sextion=>Pagination */}
-      <div style={{ marginBottom: "50px" }}>
+      <div style={{ margin: "50px 0px 50px 0px" }}>
         <Stack justifyContent="center" alignItems="center">
           <Pagination
             count={page}
