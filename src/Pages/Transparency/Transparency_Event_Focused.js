@@ -5,6 +5,7 @@ import "./style.scss";
 //Model
 
 import Modal from "@mui/material/Modal";
+import BillCarousel from "../../Components/Bill carousel/BillCarousel";
 
 import Logo from "../../Assets/logo.png";
 
@@ -21,8 +22,11 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
-  border: "2px solid #000",
+  maxWidth: 600,
+  height: "auto",
+  width: "100%",
+  bgcolor: "transparent",
+  p: 4,
 };
 
 export default function Causes() {
@@ -212,7 +216,7 @@ export default function Causes() {
                       aria-describedby='modal-modal-description'
                     >
                       <Box sx={style}>
-                        <img src={row.photo} alt='bill' />
+                        <BillCarousel />
                       </Box>
                     </Modal>
                   </div>
