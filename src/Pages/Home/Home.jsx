@@ -93,7 +93,7 @@ export default function Home() {
       <div className="home__container__landing">
         <video
           className="Home__video"
-          src={homeHero.videoUrl}
+          src={homeHero?.videoUrl}
           preload="metadata"
           autoPlay={true}
           muted={true}
@@ -122,16 +122,16 @@ export default function Home() {
 
         <div className="home__container__landing__footer">
           <div>
-            <h1 style={{ color: homeHero.color || 'white' }}>
-              {homeHero.content}
+            <h1 style={{ color: homeHero?.color || 'white' }}>
+              {homeHero?.content}
             </h1>
             <Link
               onClick={() => setIsDonationFormOpen(true)}
               className="home__container__landing__footer__donate"
               to="/"
               style={{
-                color: homeHero.color || 'white',
-                borderColor: homeHero.color || 'white',
+                color: homeHero?.color || 'white',
+                borderColor: homeHero?.color || 'white',
               }}
             >
               Donate
@@ -142,8 +142,8 @@ export default function Home() {
             className="home__container__landing__footer__ourWork"
             to="/our-work"
             style={{
-              color: homeHero.color || 'white',
-              borderColor: homeHero.color || 'white',
+              color: homeHero?.color || 'white',
+              borderColor: homeHero?.color || 'white',
             }}
           >
             Our Work
