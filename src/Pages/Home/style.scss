@@ -167,7 +167,7 @@
           padding-top: 23vh;
 
           a {
-            font-family: "Playfair Display", serif;
+            font-family: 'Playfair Display', serif;
             font-size: 50px;
             font-weight: 700;
 
@@ -184,14 +184,33 @@
   /** @section => transparency */
   .home__container__transparency {
     padding: 80px 5vw;
-    display: flex;
-    justify-content: space-between;
     background: rgb(245, 245, 245);
-    align-items: center;
-    flex-wrap: wrap;
+
+    &__column {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 2rem 0;
+      gap: 4rem;
+
+      hr {
+        display: none;
+      }
+
+      @media (min-width: 992px) {
+        flex-direction: row;
+
+        hr {
+          display: block;
+          height: 450px;
+          width: 1px;
+        }
+      }
+    }
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       margin-bottom: 30px;
@@ -202,7 +221,6 @@
 
       .home__container__transparency__info__item {
         padding: 25px 0;
-        width: 80%;
 
         &.center {
           border-top: 0.5px solid #7e7e7e;
@@ -222,27 +240,6 @@
 
     .home__container__transparency__topDonors {
       flex: 3;
-      border-left: 0.3px solid #7a7a7a;
-      padding-left: 80px;
-      margin-left: 20px;
-
-      @media (max-width: 1200px) {
-        padding-left: 40px;
-        margin-left: 40px;
-      }
-
-      @media (max-width: 768px) {
-        padding-left: 30px;
-        margin-left: 5px;
-        margin-top: 30px;
-      }
-
-      h2 {
-        font-family: "Playfair Display", serif;
-        font-weight: 700;
-        font-size: 25px;
-        margin-bottom: 20px;
-      }
 
       .home__container__transparency__topDonors__donor {
         display: flex;
@@ -300,7 +297,7 @@
 
       video,
       .home_container_mapVideo_right {
-        width: 65%;
+        width: 80%;
       }
     }
 
@@ -331,7 +328,7 @@
     }
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
 
@@ -366,7 +363,7 @@
     }
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       flex: 2;
@@ -406,7 +403,7 @@
     }
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       text-align: center;
@@ -448,7 +445,7 @@
 
     .home__container__comingSoon__contents {
       h1 {
-        font-family: "Playfair Display", serif;
+        font-family: 'Playfair Display', serif;
         font-weight: 700;
         font-size: 50px;
       }
@@ -496,7 +493,7 @@
     padding-top: 40px;
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       margin-bottom: 40px;
