@@ -1,11 +1,52 @@
 {
   "partners": [
-    "https://www.cmsjob.com/uploads/2019/06/shankerlogo.jpg",
-    "https://infinityholdings.biz/wp-content/uploads/2021/09/cropped-infinity-logo.png",
-    "https://hami-nepal.web.app/assets/logo6.a9795fc3.jpg",
-    "https://hami-nepal.web.app/assets/logo3.0a46c67e.jpg",
-    "https://hami-nepal.web.app/assets/logo2.dd47597b.jpg",
-    "https://hami-nepal.web.app/assets/logo4.858e45bb.jpg",
-    "https://hami-nepal.web.app/assets/logo1.f1a65aac.jpg"
+    {
+      "photo": "https://www.cmsjob.com/uploads/2019/06/shankerlogo.jpg",
+      "link": "/"
+    },
+    {
+      "photo": "https://infinityholdings.biz/wp-content/uploads/2021/09/cropped-infinity-logo.png",
+      "link": "/"
+    },
+    {
+      "photo": "https://hami-nepal.web.app/assets/logo6.a9795fc3.jpg",
+      "link": "http://barbarafoundation.org/"
+    },
+    {
+      "photo": "https://hami-nepal.web.app/assets/logo3.0a46c67e.jpg",
+      "link": "http://www.dalle.com.np/"
+    },
+    {
+      "photo": "https://hami-nepal.web.app/assets/logo2.dd47597b.jpg",
+      "link": "https://www.facebook.com/b2bhospitality/"
+    },
+    {
+      "photo": "https://hami-nepal.web.app/assets/logo4.858e45bb.jpg",
+      "link": "/"
+    },
+    {
+      "photo": "https://hami-nepal.web.app/assets/logo1.f1a65aac.jpg",
+      "link": "https://www.metalfornepal.org/about"
+    },
+    {
+      "photo": "https://visioncraft.com.np/resources/front/assets/image/new-logo.png",
+      "link": "https://visioncraft.com.np"
+    },
+    {
+      "photo": "https://www.goldstarshoes.com/MediaThumb/original/Media/Goldstar/Logos/goldstar-logo-blue.png",
+      "link": "https://www.goldstarshoes.com/"
+    },
+    {
+      "photo": "https://www.ambassadornepal.com/images/preference/Rtapm-logo.png",
+      "link": "https://www.ambassadornepal.com/#"
+    },
+    {
+      "photo": "https://media-exp1.licdn.com/dms/image/C4E0BAQEKwzGiyoOE1Q/company-logo_200_200/0/1591528533367?e=2159024400&v=beta&t=BjakTTf224J0Zc0XLs6tcEPH7MDz0lAFUNB2cfAAhs0",
+      "link": "https://www.agnigroup.com.np/"
+    },
+    {
+      "photo": "https://www.ktmcty.com/frontend/assets/media/general/logo-dark.png",
+      "link": "https://www.ktmcty.com/nepal/home"
+    }
   ]
 }

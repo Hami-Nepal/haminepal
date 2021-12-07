@@ -1,88 +1,88 @@
-import React, { useEffect, useState } from "react"
-import "./style.scss"
+import React, { useEffect, useState } from 'react';
+import './style.scss';
 
-import Logo from "../../Assets/logo.png"
-import mobile from "../../Assets/mobile.jpeg"
-import BannerVideo from "../../Assets/banner.mp4"
-import BannerVideoWebm from "../../Assets/banner.webm"
-import BannerVideoOgm from "../../Assets/banner.ogm"
-import BannerPoster from "../../Assets/poster-banner.png"
-import MapVideo from "../../Assets/nepalMap.mp4"
+import Logo from '../../Assets/logo.png';
 
-import { Link } from "react-location"
-import { Helmet } from "react-helmet"
+import BannerVideo from '../../Assets/banner.mp4';
+import BannerVideoWebm from '../../Assets/banner.webm';
+import BannerVideoOgm from '../../Assets/banner.ogm';
+import BannerPoster from '../../Assets/poster-banner.png';
+import MapVideo from '../../Assets/nepalMap.mp4';
 
-import Partners from "../../Mocks/OurPartners.json"
-import InfluenerCarousel from "../../Components/Influencers/InfluencersCarousel"
+import { Link } from 'react-location';
+import { Helmet } from 'react-helmet';
 
-import KindnessCard from "../../Components/Act of Kindness/KindnessCard"
-import BoardMembersCarousel from "../../Components/BoardMembers/BoardMembersCarousel"
-import Footer from "../../Components/Footer/Footer"
-import Donate from "../../Components/Donate/Donate"
+import Partners from '../../Mocks/OurPartners.json';
+import InfluenerCarousel from '../../Components/Influencers/InfluencersCarousel';
 
-import baseURL from "../../api/baseURL"
+import KindnessCard from '../../Components/Act of Kindness/KindnessCard';
+import BoardMembersCarousel from '../../Components/BoardMembers/BoardMembersCarousel';
+import Footer from '../../Components/Footer/Footer';
+import Donate from '../../Components/Donate/Donate';
+
+import baseURL from '../../api/baseURL';
 
 export default function Home() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
-  const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false)
-  const [topDonors, setTopDonors] = useState([])
-  const [kindness, setKindness] = useState([])
-  const [totalDonations, setTotalDonations] = useState(0)
-  const [totalExpenses, setTotalExpenses] = useState(0)
-  const [homeHero, setHomeHero] = useState({})
+  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
+  const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
+  const [topDonors, setTopDonors] = useState([]);
+  const [kindness, setKindness] = useState([]);
+  const [totalDonations, setTotalDonations] = useState(0);
+  const [totalExpenses, setTotalExpenses] = useState(0);
+  const [homeHero, setHomeHero] = useState({});
   const arr = [
-    "Kathmandu",
-    "Pokhara",
-    "Hetauda",
-    "Birgung",
-    "Manang",
-    "Besisahar",
-    "Bhaktapur",
-    "Helambu",
-    "Remachap",
-    "Bhojpur",
-    "Bheri",
-    "Doti",
-    "Dhangadi",
-    "Mugu",
-    "Karnali",
-    "Rukum",
-    "Bardiya",
-  ]
+    'Kathmandu',
+    'Pokhara',
+    'Hetauda',
+    'Birgung',
+    'Manang',
+    'Besisahar',
+    'Bhaktapur',
+    'Helambu',
+    'Remachap',
+    'Bhojpur',
+    'Bheri',
+    'Doti',
+    'Dhangadi',
+    'Mugu',
+    'Karnali',
+    'Rukum',
+    'Bardiya',
+  ];
   // const [influencers, setInfluencers] = useState([Influencers.Influencers]);
 
   useEffect(() => {
-    fetch(baseURL + "/donations?sort=-donation_amount&limit=5")
+    fetch(baseURL + '/donations?sort=-donation_amount&limit=5')
       .then((data) => data.json())
       .then(({ data }) => setTopDonors(data))
-      .catch(({ response }) => console.log(response))
+      .catch(({ response }) => console.log(response));
 
-    fetch(baseURL + "/kindness/featured")
+    fetch(baseURL + '/kindness/featured')
       .then((data) => data.json())
       .then(({ featured }) => setKindness(featured))
-      .catch(({ response }) => console.log(response))
+      .catch(({ response }) => console.log(response));
 
-    fetch(baseURL + "/find/totalDonations")
+    fetch(baseURL + '/find/totalDonations')
       .then((data) => data.json())
       .then(({ data }) => setTotalDonations(data.length ? data[0].donation : 0))
-      .catch(({ response }) => console.log(response))
+      .catch(({ response }) => console.log(response));
 
-    fetch(baseURL + "/find/totalExpenses")
+    fetch(baseURL + '/find/totalExpenses')
       .then((data) => data.json())
       .then(({ data }) =>
         setTotalExpenses(data.length ? data[0].total_expenses : 0)
       )
-      .catch(({ response }) => console.log(response))
+      .catch(({ response }) => console.log(response));
 
-    fetch(baseURL + "/homepage")
+    fetch(baseURL + '/homepage')
       .then((data) => data.json())
       .then(({ data }) => setHomeHero(data[0]))
-      .catch(({ response }) => console.log(response))
-  }, [])
+      .catch(({ response }) => console.log(response));
+  }, []);
 
   const isLoggedIn = !!(
-    localStorage.getItem("user") || localStorage.getItem("vinfo")
-  )
+    localStorage.getItem('user') || localStorage.getItem('vinfo')
+  );
 
   return (
     <div className="home__container">
@@ -107,11 +107,13 @@ export default function Home() {
         </video>
 
         <div className="home__container__landing__topbar">
-          <img
-            className="home__container__landing__topbar__logo"
-            src={Logo}
-            alt="haminepal logo"
-          />
+          <a href="/">
+            <img
+              className="home__container__landing__topbar__logo"
+              src={Logo}
+              alt="haminepal logo"
+            />
+          </a>
 
           <button onClick={() => setIsActiveMenu(true)}>
             <i className="ri-menu-line"></i>
@@ -120,7 +122,7 @@ export default function Home() {
 
         <div className="home__container__landing__footer">
           <div>
-            <h1 style={{ color: homeHero.color || "white" }}>
+            <h1 style={{ color: homeHero.color || 'white' }}>
               {homeHero.content}
             </h1>
             <Link
@@ -128,8 +130,8 @@ export default function Home() {
               className="home__container__landing__footer__donate"
               to="/"
               style={{
-                color: homeHero.color || "white",
-                borderColor: homeHero.color || "white",
+                color: homeHero.color || 'white',
+                borderColor: homeHero.color || 'white',
               }}
             >
               Donate
@@ -140,8 +142,8 @@ export default function Home() {
             className="home__container__landing__footer__ourWork"
             to="/our-work"
             style={{
-              color: homeHero.color || "white",
-              borderColor: homeHero.color || "white",
+              color: homeHero.color || 'white',
+              borderColor: homeHero.color || 'white',
             }}
           >
             Our Work
@@ -150,7 +152,7 @@ export default function Home() {
 
         {/** @dev this is dismissiable donation form */}
         <div
-          style={{ display: isDonationFormOpen ? "block" : "none" }}
+          style={{ display: isDonationFormOpen ? 'block' : 'none' }}
           className="home__container__landing__donationForm"
         >
           <Donate setIsDonationFormOpen={setIsDonationFormOpen} />
@@ -159,7 +161,7 @@ export default function Home() {
         <div
           className="home__container__landing__hiddenMenu"
           style={{
-            display: isActiveMenu ? "flex" : "none",
+            display: isActiveMenu ? 'flex' : 'none',
           }}
         >
           <div className="home__container__landing__hiddenMenu__topbar">
@@ -195,7 +197,7 @@ export default function Home() {
                 <Link
                   to="/"
                   onClick={() => {
-                    localStorage.clear()
+                    localStorage.clear();
                   }}
                 >
                   Logout
@@ -230,50 +232,78 @@ export default function Home() {
 
       {/** @section => transparency */}
       <div className="home__container__transparency">
-        <div className="home__container__transparency__info">
-          <h1>Transparency</h1>
-
-          <div className="home__container__transparency__info__item">
-            <h2>Rs {totalDonations}</h2>
-            <div className="home__container__transparency__info__item__title">
-              Donation Received
-            </div>
-          </div>
-          <div className="home__container__transparency__info__item center">
-            <h2>Rs {totalExpenses}</h2>
-            <div className="home__container__transparency__info__item__title">
-              Expenditure
-            </div>
-          </div>
-          <div className="home__container__transparency__info__item">
-            <h2>Rs {totalDonations - totalExpenses}</h2>
-            <div className="home__container__transparency__info__item__title">
-              Remaining Donation
-            </div>
-          </div>
-        </div>
-
-        <div className="home__container__transparency__topDonors">
-          <h2>Top Donors</h2>
-
-          {topDonors.map((user, index) => (
-            <div
-              className={`home__container__transparency__topDonors__donor ${
-                index !== 0 && "border"
-              }`}
-              key={user._id}
-            >
-              <div>
-                <img src={Logo} alt="donor icon" />
-                <p>
-                  {user.first_name} {user.last_name}
-                </p>
+        <h1>Transparency</h1>
+        <div className="home__container__transparency__column">
+          <div className="home__container__transparency__info">
+            <h2>Cash</h2>
+            <div className="home__container__transparency__info__item">
+              <h2>Rs {totalDonations}</h2>
+              <div className="home__container__transparency__info__item__title">
+                Donation Received
               </div>
-              <b>Rs. {user.donation_amount}</b>
             </div>
-          ))}
+            <div className="home__container__transparency__info__item center">
+              <h2>Rs {totalExpenses}</h2>
+              <div className="home__container__transparency__info__item__title">
+                Expenditure
+              </div>
+            </div>
+            <div className="home__container__transparency__info__item">
+              <h2>Rs {totalDonations - totalExpenses}</h2>
+              <div className="home__container__transparency__info__item__title">
+                Remaining Donation
+              </div>
+            </div>
+          </div>
 
-          <Link to="/">Learn more about transparency</Link>
+          <hr />
+
+          <div className="home__container__transparency__info home__container__transparency__kindness">
+            <h2>Kinds</h2>
+            <div className="home__container__transparency__info__item">
+              <h2>Rs {totalDonations}</h2>
+              <div className="home__container__transparency__info__item__title">
+                Donation Received
+              </div>
+            </div>
+            <div className="home__container__transparency__info__item center">
+              <h2>Rs {totalExpenses}</h2>
+              <div className="home__container__transparency__info__item__title">
+                Expenditure
+              </div>
+            </div>
+            <div className="home__container__transparency__info__item">
+              <h2>Rs {totalDonations - totalExpenses}</h2>
+              <div className="home__container__transparency__info__item__title">
+                Remaining Donation
+              </div>
+            </div>
+          </div>
+
+          <hr />
+
+          <div className="home__container__transparency__topDonors">
+            <h2>Top Donors</h2>
+
+            {topDonors.map((user, index) => (
+              <div
+                className={`home__container__transparency__topDonors__donor ${
+                  index !== 0 && 'border'
+                }`}
+                key={user._id}
+              >
+                <div>
+                  <img src={Logo} alt="donor icon" />
+                  <p>
+                    {user.first_name} {user.last_name}
+                  </p>
+                </div>
+                <b>Rs. {user.donation_amount}</b>
+              </div>
+            ))}
+
+            <Link to="/">Learn more about transparency</Link>
+          </div>
         </div>
       </div>
 
@@ -302,7 +332,7 @@ export default function Home() {
       {/** @section => act of kindness */}
       <div className="home__container__actOfKindness">
         <h1>
-          ACT OF KINDNESS <span style={{ color: "red" }}>Featured</span>
+          ACT OF KINDNESS <span style={{ color: 'red' }}>Featured</span>
         </h1>
 
         <div className="home__container__actOfKindness__items">
@@ -364,28 +394,45 @@ export default function Home() {
         <h1>Our Mentor</h1>
         <div className="Mentor">
           <img
-            style={{ width: 450, height: 400, borderRadius: "4%" }}
+            style={{ width: 450, height: 400, borderRadius: '4%' }}
             src="https://www.abc.net.au/cm/rimage/9966990-1x1-large.jpg?v=3"
             alt="Sandukh Ruit"
           />
           <div className="Mentor__details">
             <h3>Dr. Sanduk Ruit</h3>
             <p>
-              Dr. Sanduk Ruit is a respected eye surgeon who was awarded
-              Magsaysay Award in 2006 for his work to bring back eyesight of the
-              poor in countries including Nepal, China, India, Bangladesh,
-              Cambodia.
+              Sanduk Ruit is a Nepalese ophthalmologist (eye surgeon) who has
+              used small-incision cataract surgery to restore the sight of over
+              130,000 individuals in Africa and Asia. He is also a founding
+              member of the Tilganga Institute of Ophthalmology. He has been
+              dubbed the "God of Sight" for his efforts in bringing excellent,
+              life-changing cataract surgery to the lowest of the impoverished.
+              He was a founding member of the Tilganga Institute of
+              Ophthalmology, which gives free treatment to individuals who
+              cannot afford it. It produces high-quality intraocular lenses for
+              surgery for a tenth of the cost of its prior production. Because
+              of the incredibly inexpensive cost of these lenses, even the
+              poorest people may now afford professional cataract surgery. He
+              received the prestigious Ramon Magsaysay Award for Peace and
+              International Understanding, considered the Asian equivalent of
+              the Nobel Prize, for "putting Nepal at the forefront of developing
+              safe, effective, and cost-effective cataract surgery procedures,
+              allowing the needlessly blind in even the poorest countries to see
+              again."
             </p>
             <p>
-              In 2006, he and his team performed sight-restoring surgery in
-              North Korea on over 1,000 patients in six days. He devised an
-              affordable suture-less procedure that speeds cataract surgery and
-              reduces patients’ recovery time. He is the Director Medical
-              Director of the Tilganga Eye Centre that provides high quality eye
-              treatments at a highly cheap cost to poor patients. In 2016, the
-              Canada-based Albert Einstein Foundation nominated Dr Ruit as one
-              of the 100 leading global visionaries. He was born in
-              Olangchunggola, Taplejung.
+              Dr. Sanduk Ruit has been a tremendous help to Hami Nepal. He
+              serves as Hami Nepal's backbone. Throughout the tasks undertaken
+              by the Hami Nepal team, he has consistently provided
+              contributions. Even when he couldn't be physically present, he
+              would always lead us via his experiences. He assisted our team in
+              the verification procedure. Dr. Sanduk provided our team with all
+              of the essential information, making the verification process much
+              easier, particularly when dealing with hospitals. He also offered
+              a team of experts to carry out the task. Dr. Sanduk also assisted
+              Hami Nepal with its activities. Nonetheless, he has always served
+              as a protector, advising us on how to establish a competent team
+              and how to improve internal operations.
             </p>
           </div>
         </div>
@@ -396,26 +443,27 @@ export default function Home() {
         <ul>
           {Partners.partners.map((partner, index) => (
             <li key={index}>
-              <img src={partner} alt="" />
+              <a href={partner.link} target="_blank" rel="noreferrer">
+                <img src={partner.photo} alt="" />
+              </a>
             </li>
           ))}
         </ul>
         <div className="infuencer__heading">
-          <h1 style={{ marginTop: "3rem" }}>Our Social Media Influencers</h1>
+          <h1 style={{ marginTop: '3rem' }}>Social Influencers</h1>
           <InfluenerCarousel />
         </div>
       </div>
 
       <Footer />
-
-      <div className="home__container__copyrightInfo">
+      {/* <div className='home__container__copyrightInfo'>
         <div>&copy; Hami Nepal. All Rights Reserved</div>
-        <div>
+        <div style={{ fontWeight: "bold" }}>
           {" "}
-          Voluntarily Designed with ❤️ by{" "}
-          <a href="https://hashtechnologies.net">Hash Technologies</a>
+          Voluntarily Developed by{" "}
+          <a href='https://hashtechnologies.net'>Hash Technologies</a>
         </div>
-      </div>
+      </div> */}
     </div>
-  )
+  );
 }

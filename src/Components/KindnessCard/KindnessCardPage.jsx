@@ -14,8 +14,6 @@ export default function KindnessCardPage(props) {
   const [loading, setLoading] = React.useState(false)
   const [currentPage, setCurrentPage] = React.useState(1)
   const [totalData, setTotalData] = React.useState(0)
-  const [count, setCount] = React.useState(0)
-
   const paginate = (e, number) => {
     setCurrentPage(number)
   }
@@ -28,7 +26,6 @@ export default function KindnessCardPage(props) {
       )
       setPosts(res.data.data)
       setTotalData(res.data.total_data)
-      setCount(res.data.count)
       setLoading(false)
     }
     fetchPosts()
@@ -49,18 +46,22 @@ export default function KindnessCardPage(props) {
   return (
     <div className="kindness-container">
       <h3>Act of kindness</h3>
-      <div class="kindness-hero">
-        {posts.map((data) => (
-          <div className="kindnessCard__container" key={data._id}>
-            <Link to={"/kindness-focused/" + data._id}>
-              <img alt={data._id} src={data.photos[0]} />
-              <div className="kindnessCard__container__title">{data.title}</div>
-              <div className="kindnessCard__container__description">
-                {data.summary}
-              </div>
-            </Link>
-          </div>
-        ))}
+      <div className="kindness-neck">
+        <div class="kindness-hero">
+          {posts.map((data) => (
+            <div className="kindnessCard__container" key={data._id}>
+              <Link to={"/kindness-focused/" + data._id}>
+                <img alt={data._id} src={data.photos[0]} />
+                <div className="kindnessCard__container__title">
+                  {data.title}
+                </div>
+                <div className="kindnessCard__container__description">
+                  {data.summary}
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div style={{ margin: "20px" }}></div>

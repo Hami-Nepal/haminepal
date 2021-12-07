@@ -15,7 +15,13 @@ const Nav = () => {
   return (
     <div className='nav_container'>
       <div className='nav_container__topbar'>
-        <img className='nav_container__logo' src={Logo} alt='haminepal logo' />
+        <a href='/'>
+          <img
+            className='nav_container__logo'
+            src={Logo}
+            alt='haminepal logo'
+          />
+        </a>
 
         <button onClick={() => setIsActiveMenu(true)}>
           <i className='ri-menu-line'></i>
@@ -30,11 +36,13 @@ const Nav = () => {
         }}
       >
         <div className='nav_container__landing__hiddenMenu__topbar'>
-          <img
-            className='nav_container__landing__topbar__logo'
-            src={Logo}
-            alt='haminepal logo'
-          />
+          <a href='/'>
+            <img
+              className='nav_container__landing__topbar__logo'
+              src={Logo}
+              alt='haminepal logo'
+            />
+          </a>
 
           <button onClick={() => setIsActiveMenu(false)}>
             <i className='ri-close-line'></i>

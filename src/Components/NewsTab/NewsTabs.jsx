@@ -22,8 +22,6 @@ import CardContent from "@mui/material/CardContent"
 import CardMedia from "@mui/material/CardMedia"
 import Typography from "@mui/material/Typography"
 
-import { Link } from "react-location"
-
 // main function component
 export default function NewsTabs() {
   const [posts, setPosts] = React.useState([])
@@ -115,7 +113,7 @@ export default function NewsTabs() {
               }}
               key={news._id}
             >
-              <a href={news.link} target="_blank">
+              <a href={news.link} rel="noreferrer" target="_blank">
                 <CardMedia
                   component="img"
                   sx={{ width: "50%", minHeight: "100%", maxHeight: 220 }}
@@ -127,7 +125,7 @@ export default function NewsTabs() {
                 sx={{ display: "flex", flexDirection: "column", width: "50%" }}
               >
                 <CardContent sx={{ flex: "1 0 auto" }}>
-                  <a href={news.link} target="_blank">
+                  <a href={news.link} rel="noreferrer" target="_blank">
                     <Typography
                       component="div"
                       variant="h5"

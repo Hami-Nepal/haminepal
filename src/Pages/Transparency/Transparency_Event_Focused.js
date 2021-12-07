@@ -7,12 +7,10 @@ import "./style.scss";
 import Modal from "@mui/material/Modal";
 
 import Logo from "../../Assets/logo.png";
-import PropTypes from "prop-types";
+
 import { Link } from "react-location";
-import Typography from "@mui/material/Typography";
+
 import Box from "@mui/material/Box";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import Footer from "../../Components/Footer/Footer";
 import { useState, useEffect } from "react";
 import baseURL from "../../api/baseURL";
@@ -38,8 +36,6 @@ export default function Causes() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const [active, setActive] = useState(false);
   const [fundReceived, setFundReceived] = useState(false);
 
   const fundcardStyle = {
@@ -216,7 +212,7 @@ export default function Causes() {
                       aria-describedby='modal-modal-description'
                     >
                       <Box sx={style}>
-                        <img src={row.photo} alt='bill photo' />
+                        <img src={row.photo} alt='bill' />
                       </Box>
                     </Modal>
                   </div>

@@ -23,6 +23,8 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: flex-start;
+    gap: 2rem;
+
     // inside-card
     .kindnessCard__container {
       background-color: white;
@@ -31,7 +33,7 @@
       flex-wrap: wrap;
       max-width: 330px;
       max-height: 50vh;
-      margin: 10px;
+      // margin: 10px;
 
       @media (max-width: 1200px) {
         max-width: 350px;
