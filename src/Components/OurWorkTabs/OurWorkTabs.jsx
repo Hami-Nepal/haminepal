@@ -7,7 +7,7 @@ import Tab from "@mui/material/Tab"
 import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
 
-import axios from "axios"
+import baseURL from "../../api/baseURL"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -45,17 +45,23 @@ function a11yProps(index) {
 export default function OurWorkTabs() {
   const [value, setValue] = React.useState(0)
   const [causeType, setCauseType] = React.useState([])
-
-  console.log(causeType)
+  const [posts, setPosts] = React.useState([])
 
   React.useEffect(() => {
-    const fetchCauseTypes = async () => {
-      const res = await axios.get("https://api.haminepal.org/api/v1/cause_type")
-      setCauseType(res)
-    }
+    fetch(baseURL + "/cause_type")
+      .then((data) => data.json())
+      .then(({ data }) => setCauseType(data))
+      .catch(({ response }) => console.log(response))
   }, [])
 
-  const handleChange = (event, newValue) => {
+  React.useEffect(() => {
+    fetch(baseURL + `/causes?cause_type=${causeType[value]?.cause_type}`)
+      .then((data) => data.json())
+      .then(({ data }) => setPosts(data))
+      .catch(({ response }) => console.log(response))
+  }, [value, causeType])
+
+  const handleChange = (e, newValue) => {
     setValue(newValue)
   }
 
@@ -70,11 +76,13 @@ export default function OurWorkTabs() {
             onChange={handleChange}
             aria-label="basic tabs example"
           >
-            <Tab label="Natural Calamities" {...a11yProps(0)} />
-            <Tab label="Animal Welfare" {...a11yProps(1)} />
-            <Tab label="Shelter" {...a11yProps(2)} />
-            <Tab label="Child Education" {...a11yProps(3)} />
-            <Tab label="Pregnant Woman Rescue" {...a11yProps(4)} />
+            {causeType.map((type, index) => (
+              <Tab
+                key={type._id}
+                label={type.cause_type}
+                {...a11yProps(index)}
+              />
+            ))}
           </Tabs>
         </Box>
         <TabPanel
@@ -82,22 +90,22 @@ export default function OurWorkTabs() {
           value={value}
           index={0}
         >
-          <div className="images">
-            <div className="column">
-              <img
-                src="https://images.unsplash.com/photo-1633114128814-11fac33f707b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1637270868031-b28f517e152e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                alt=""
-              />
-              <img
-                src="https://images.unsplash.com/photo-1636886519725-6a048800b5b4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=928&q=80"
-                alt=""
-              />
+          {posts.map((data) => (
+            <div className="images" key={data._id}>
+              <div className="column">
+                <img src={data.photos[0]} alt="" />
+                {/* <img
+                  src="https://images.unsplash.com/photo-1637270868031-b28f517e152e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
+                  alt=""
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1636886519725-6a048800b5b4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=928&q=80"
+                  alt=""
+                /> */}
+              </div>
             </div>
-            <div className="column">
+          ))}
+          {/* <div className="column">
               <img
                 src="https://images.unsplash.com/photo-1637140548016-882a3f9a819b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
                 alt=""
@@ -124,10 +132,10 @@ export default function OurWorkTabs() {
                 src="https://images.unsplash.com/photo-1637275769153-b5fb9e5647f1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
                 alt=""
               />
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
         </TabPanel>
-        <TabPanel
+        {/* <TabPanel
           className="ourWorkTabs__container__items"
           value={value}
           index={1}
@@ -326,7 +334,7 @@ export default function OurWorkTabs() {
               />
             </div>
           </div>
-        </TabPanel>
+        </TabPanel> */}
       </Box>
     </div>
   )
