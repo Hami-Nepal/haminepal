@@ -86,8 +86,8 @@ export default function NewsTabs() {
             autoWidth
             inputProps={{ "aria-label": "Without label" }}
           >
-            <MenuItem value="national">National</MenuItem>
-            <MenuItem value="international">International</MenuItem>
+            <MenuItem value="national">Inside Nepal</MenuItem>
+            <MenuItem value="international">Outside Nepal</MenuItem>
           </Select>
         </FormControl>
       </div>
