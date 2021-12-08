@@ -18,9 +18,9 @@ const CivilRightTabs = () => {
     }
     fetchData()
   }, [])
-  const handleChange = (e, number) => {
-    setCurrentPage(number)
-  }
+  // const handleChange = (e, number) => {
+  //   setCurrentPage(number)
+  // }
 
   return (
     <>

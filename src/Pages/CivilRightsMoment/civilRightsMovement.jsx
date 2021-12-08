@@ -13,7 +13,7 @@ export default function CivilRightsMovement() {
 
       {/* @section => landing */}
       <div className="civil_container__landing">
-        <h1>Civil Rights Moment</h1>
+        <h1>Civil Rights Movement</h1>
 
         <p>
           Life's Most Persistent And Urgent Question Is, What Are You Doing For
