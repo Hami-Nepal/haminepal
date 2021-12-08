@@ -126,13 +126,6 @@ export default function VolunteerProfile(props) {
                     {...register('phone')}
                   />
 
-                  <h4>Email Address</h4>
-                  <input
-                    required
-                    defaultValue={volunteer.email}
-                    {...register('email')}
-                  />
-
                   <h4>City</h4>
                   <input
                     required
@@ -146,9 +139,7 @@ export default function VolunteerProfile(props) {
                     defaultValue={volunteer.street_address}
                     {...register('street_address')}
                   />
-                </div>
 
-                <div>
                   <h4>State</h4>
                   <select
                     defaultValue={volunteer.state}
@@ -169,7 +160,9 @@ export default function VolunteerProfile(props) {
                       </option>
                     ))}
                   </select>
+                </div>
 
+                <div>
                   <h4>Age</h4>
                   <input
                     type="number"
