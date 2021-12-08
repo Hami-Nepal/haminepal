@@ -30,7 +30,6 @@ export default function CreateEvent() {
   };
 
   const onSubmit = (data) => {
-    console.log('form data submit gardai xu ma', data);
     setRequestStatus('pending');
     setError(null);
 
@@ -40,11 +39,15 @@ export default function CreateEvent() {
       formData.append(field, data[field]);
     }
 
+    const headers = {
+      Authorization: 'Bearer ' + token,
+    };
+
+    if (localStorage.getItem('vinfo')) headers.volunteer = true;
+
     axios
       .post(baseURL + '/events', formData, {
-        headers: {
-          Authorization: 'Bearer ' + token,
-        },
+        headers,
       })
       .then((data) => setRequestStatus('success'))
       .catch(({ response }) => {
