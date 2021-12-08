@@ -3,32 +3,11 @@ import "./style.scss"
 
 import Nav from "../../Components/NavBar/Nav"
 
-// import { Link } from "react-location"
-
-// import { styled } from "@mui/material/styles"
-// import LinearProgress, {
-//   linearProgressClasses,
-// } from "@mui/material/LinearProgress"
-// import { Button } from "@mui/material"
 import Footer from "../../Components/Footer/Footer"
 import baseURL from "../../api/baseURL"
 
-// const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-//   height: 10,
-//   borderRadius: 5,
-//   [`&.${linearProgressClasses.colorPrimary}`]: {
-//     backgroundColor:
-//       theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
-//   },
-//   [`& .${linearProgressClasses.bar}`]: {
-//     borderRadius: 5,
-//     backgroundColor: theme.palette.mode === "light" ? "#23CE34" : "#308fe8",
-//   },
-// }))
-
 export default function KindnessFocused() {
   const [data, setData] = useState({})
-  // const [totalDonationAmount, setTotalDonationAmount] = useState(0)
 
   useEffect(() => {
     fetch(baseURL + "/kindness/" + window.location.pathname.split("/").pop())
@@ -37,42 +16,18 @@ export default function KindnessFocused() {
       .catch(({ response }) => console.log(response))
   }, [])
 
-  //   useEffect(() => {
-  //     // specific cause or events ko ako total amount herna ko lagi jugad
-  //     fetch(baseURL + "/donations/?slug=" + data.slug)
-  //       .then((data) => data.json())
-  //       .then(({ data }) =>
-  //         setTotalDonationAmount(
-  //           data.reduce((acc, val) => acc + val.donation_amount, 0)
-  //         )
-  //       )
-  //       .catch(({ response }) => console.log(response))
-  //   }, [data])
-
-  console.log(data)
-
   return (
     <div className="kindnessFocused__container">
       <Nav />
+      <div className="kindness_hero">
+        <h1>{data.title}</h1>
+      </div>
       {/* @section => landing */}
       <div className="kindnessFocused__container__landing">
         <div className="kindnessFocused__container__landing__info">
           <h1>{data.title}</h1>
-          <div className="divider"></div>
-          {/* <p>
-            Cause type: <span>{data.type}</span>
-          </p> */}
-          <p>
-            Status: <span>{data.type}</span>
-          </p>
-          <hr className="kindnessDetails__hr" />
-          <p>{data.summary}</p>
 
-          {/* <BorderLinearProgress variant="determinate" value={50} />
-          <div>
-            <span>Rs. {totalDonationAmount}</span> of Rs.{data.balance}
-          </div>
-          <Button>Donate</Button> */}
+          <p>{data.summary}</p>
         </div>
 
         <img
@@ -92,11 +47,7 @@ export default function KindnessFocused() {
         <h1>Challenges</h1>
         <p>{data.challenges}</p>
       </div>
-      {/* @section => difficulties */}
-      {/* <div className='kindnessFocused__container__difficulties'>
-        <h1>Difficulties</h1>
-        <p>{data.difficulties}</p>
-      </div> */}
+
       {/* @section => results */}
       <div className="kindnessFocused__container__results">
         <h1>Results</h1>

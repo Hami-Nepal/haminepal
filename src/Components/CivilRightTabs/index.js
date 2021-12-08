@@ -1,43 +1,48 @@
 import React from "react"
-
-import image from "./image"
-import ImageCard from "../ImageCard/ImageCard"
+import { useEffect, useState } from "react"
+import { Link } from "react-location"
 
 import "./style.scss"
-
+import axios from "axios"
 import Pagination from "@mui/material/Pagination"
 import Stack from "@mui/material/Stack"
 
 const CivilRightTabs = () => {
-  const [posts, setPosts] = React.useState(image)
-  const [currentPage, setCurrentPage] = React.useState(1)
-  const [postsPerPage, setPostsPerPage] = React.useState(8)
-
-  const handleChange = (e, number) => {
-    setCurrentPage(number)
-  }
-
-  const indexOfLastPost = currentPage * postsPerPage
-  const indexOfFirstPost = indexOfLastPost - postsPerPage
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
-  const result = Math.ceil(posts.length / postsPerPage)
+  const [cards, setCards] = useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await axios.get(
+        "https://api.haminepal.org/api/v1/civilrights"
+      )
+      setCards(res.data.data)
+    }
+    fetchData()
+  }, [])
+  // const handleChange = (e, number) => {
+  //   setCurrentPage(number)
+  // }
 
   return (
     <>
-      <div className="civil_right_tab_container">
-        {currentPosts.map((data) => (
-          <ImageCard image={data} key={data.id} />
-        ))}
-      </div>
-      <Stack spacing={2} justifyContent="center" alignItems="center">
-        <Pagination
-          count={result}
-          page={currentPage}
-          variant="outlined"
-          color="primary"
-          onChange={handleChange}
-        />
-      </Stack>
+      {cards.map((v) => {
+        return (
+          <>
+            <div className="CivilRightMoments_content_listing">
+              <div className="CivilRightMoments_content">
+                <img src={v.photos[0]} alt="" />
+                <p>
+                  {v.introduction.slice(0, 300)}....
+                  <br />
+                  <Link to={"/civil-focused/" + v._id} className="SeeMoreText">
+                    See More
+                  </Link>
+                </p>
+              </div>
+              <div className="underline"></div>
+            </div>
+          </>
+        )
+      })}
     </>
   )
 }
