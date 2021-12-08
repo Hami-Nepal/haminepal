@@ -14,6 +14,8 @@ import NavBar from '../../Components/NavBar/Nav';
 export default function VolunteerProfile(props) {
   const [volunteer, setVolunteer] = useState({});
   const isLoggedIn = localStorage.getItem('vinfo');
+  const isMyProfile =
+    localStorage.getItem('vID') === window.location.pathname.split('/').pop();
 
   const [editMode, setEditMode] = useState(false);
 
@@ -80,7 +82,7 @@ export default function VolunteerProfile(props) {
             {volunteer.first_name} {volunteer.last_name}
           </div>
           <div className="position">{volunteer.field_of_expertise}</div>
-          {isLoggedIn && (
+          {isLoggedIn && isMyProfile && (
             <>
               <div style={{ marginTop: '1.5rem' }}>Status</div>
               <Switch checked={volunteer.isActive} onClick={setActive} />
@@ -270,7 +272,7 @@ export default function VolunteerProfile(props) {
               </>
             )}
           </div>
-          {isLoggedIn ? (
+          {isLoggedIn && isMyProfile ? (
             editMode ? (
               <>
                 <Button type="submit" onClick={onSubmit}>
