@@ -47,9 +47,11 @@ export default function Login() {
         if (response.data.token) {
           if (userLogin) {
             localStorage.setItem('user', response.data.token);
+            localStorage.setItem('userID', response.data.id);
           } else {
             localStorage.setItem('vinfo', response.data.token);
-            console.log(response.data);
+            localStorage.setItem('vID', response.data.id);
+
             const profileURL = '/volunteer-profile/' + response.data.id;
             navigate({ to: profileURL });
           }

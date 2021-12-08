@@ -92,45 +92,51 @@ export default function EventFocused() {
       </div>
 
       {/* @section => details */}
-      <div className="eventFocused__container__details">
-        <h1>Description</h1>
-        <p>{data.description}</p>
-      </div>
+      {data.description === "" ? (
+        <></>
+      ) : (
+        <>
+          <div className="eventFocused__container__details">
+            <h1>Description</h1>
+            <p>{data.description}</p>
+          </div>
 
-      {/* @section => challenges */}
-      <div className="eventFocused__container__challenges">
-        <h1>Challenges</h1>
-        <p>{data.challenges}</p>
-      </div>
-      {/* @section => difficulties */}
-      <div className="eventFocused__container__difficulties">
-        <h1>Difficulties</h1>
-        <p>{data.difficulties}</p>
-      </div>
+          {/* @section => challenges */}
+          <div className="eventFocused__container__challenges">
+            <h1>Challenges</h1>
+            <p>{data.challenges}</p>
+          </div>
+          {/* @section => difficulties */}
+          <div className="eventFocused__container__difficulties">
+            <h1>Difficulties</h1>
+            <p>{data.difficulties}</p>
+          </div>
 
-      {/* @section => volunteers */}
-      <div className="eventFocused__container__volunteers">
-        <h1>Volunteers</h1>
+          {/* @section => volunteers */}
+          <div className="eventFocused__container__volunteers">
+            <h1>Volunteers</h1>
 
-        <div className="eventFocused__container__volunteers__items">
-          {[0, 1, 2, 3, 4, 5].map((item) => (
-            <div
-              className="eventFocused__container__volunteers__items__item"
-              key={item}
-            >
-              <img
-                src="https://avatars.githubusercontent.com/u/93448253?s=400&u=389a238cf991d86adcc03166270d30241e94a95b&v=4"
-                alt="volunteer"
-              />
+            <div className="eventFocused__container__volunteers__items">
+              {[0, 1, 2, 3, 4, 5].map((item) => (
+                <div
+                  className="eventFocused__container__volunteers__items__item"
+                  key={item}
+                >
+                  <img
+                    src="https://avatars.githubusercontent.com/u/93448253?s=400&u=389a238cf991d86adcc03166270d30241e94a95b&v=4"
+                    alt="volunteer"
+                  />
 
-              <div className="userInfo">
-                <div className="name">Volunter Name</div>
-                <div className="position">Some Info</div>
-              </div>
+                  <div className="userInfo">
+                    <div className="name">Volunter Name</div>
+                    <div className="position">Some Info</div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        </>
+      )}
 
       {/* @section => gallery */}
       <div className="eventFocused__container__gallery">
