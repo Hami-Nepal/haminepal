@@ -38,19 +38,19 @@ export default function KindnessFocused() {
 
       {/* @section => details */}
       <div className="kindnessFocused__container__details">
-        <h1>Description</h1>
+        <h2>Description</h2>
         <p>{data.details}</p>
       </div>
 
       {/* @section => challenges */}
       <div className="kindnessFocused__container__challenges">
-        <h1>Challenges</h1>
+        <h2>Challenges</h2>
         <p>{data.challenges}</p>
       </div>
 
       {/* @section => results */}
       <div className="kindnessFocused__container__results">
-        <h1>Results</h1>
+        <h2>Results</h2>
         <p>{data.results}</p>
       </div>
 
