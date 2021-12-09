@@ -22,6 +22,9 @@ import Donate from '../../Components/Donate/Donate';
 
 import baseURL from '../../api/baseURL';
 
+import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+
 export default function Home() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
   const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
@@ -83,6 +86,19 @@ export default function Home() {
   const isLoggedIn = !!(
     localStorage.getItem('user') || localStorage.getItem('vinfo')
   );
+
+  // scroll 50% of the screen on click
+  const partnerScrollContainer = React.useRef();
+
+  const onPartnerLeftButtonClick = () => {
+    partnerScrollContainer.current.scrollLeft -=
+      (document.documentElement.scrollWidth * 50) / 100;
+  };
+
+  const onPartnerRightButtonClick = () => {
+    partnerScrollContainer.current.scrollLeft +=
+      (document.documentElement.scrollWidth * 50) / 100;
+  };
 
   return (
     <div className="home__container">
@@ -440,15 +456,42 @@ export default function Home() {
 
       <div className="home__container__ourPartner">
         <h1>Our Partners</h1>
-        <ul>
-          {Partners.partners.map((partner, index) => (
-            <li key={index}>
+
+        {/* <ul>
+          {Partners.partners.map((partner) => (
+            <li key={partner.photo}>
               <a href={partner.link} target="_blank" rel="noreferrer">
                 <img src={partner.photo} alt="" />
               </a>
             </li>
           ))}
-        </ul>
+        </ul> */}
+
+        <div className="home__ourPartners__scroll">
+          <ArrowCircleLeftIcon
+            fontSize="large"
+            onClick={onPartnerLeftButtonClick}
+          />
+
+          <div
+            className="home__ourPartners__scroll__container"
+            ref={partnerScrollContainer}
+          >
+            {Partners.partners.map((partner) => (
+              <div className="home__ourPartners__scroll__child">
+                <a href={partner.link} target="_blank" rel="noreferrer">
+                  <img src={partner.photo} alt="" />
+                </a>
+              </div>
+            ))}
+          </div>
+
+          <ArrowCircleRightIcon
+            fontSize="large"
+            onClick={onPartnerRightButtonClick}
+          />
+        </div>
+
         <div className="infuencer__heading">
           <h1 style={{ marginTop: '3rem' }}>Social Influencers</h1>
           <InfluenerCarousel />
@@ -456,14 +499,6 @@ export default function Home() {
       </div>
 
       <Footer />
-      {/* <div className='home__container__copyrightInfo'>
-        <div>&copy; Hami Nepal. All Rights Reserved</div>
-        <div style={{ fontWeight: "bold" }}>
-          {" "}
-          Voluntarily Developed by{" "}
-          <a href='https://hashtechnologies.net'>Hash Technologies</a>
-        </div>
-      </div> */}
     </div>
   );
 }

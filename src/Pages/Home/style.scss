@@ -167,7 +167,7 @@
           padding-top: 23vh;
 
           a {
-            font-family: "Playfair Display", serif;
+            font-family: 'Playfair Display', serif;
             font-size: 50px;
             font-weight: 700;
 
@@ -210,7 +210,7 @@
     }
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       margin-bottom: 30px;
@@ -329,7 +329,7 @@
     }
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
 
@@ -364,7 +364,7 @@
     }
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       flex: 2;
@@ -404,7 +404,7 @@
     }
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       text-align: center;
@@ -446,7 +446,7 @@
 
     .home__container__comingSoon__contents {
       h1 {
-        font-family: "Playfair Display", serif;
+        font-family: 'Playfair Display', serif;
         font-weight: 700;
         font-size: 50px;
       }
@@ -494,7 +494,7 @@
     padding-top: 40px;
 
     h1 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 50px;
       margin-bottom: 40px;
@@ -543,6 +543,40 @@
   button {
     &:focus {
       color: black !important;
+    }
+  }
+}
+
+.home__ourPartners__scroll {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &__container {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 1rem 1rem 2rem;
+
+    /* width */
+    &::-webkit-scrollbar {
+      height: 5px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: #f1cccc;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: #df3d40;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: #851517;
     }
   }
 }
