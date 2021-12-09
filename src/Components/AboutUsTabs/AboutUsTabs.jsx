@@ -1,25 +1,25 @@
-import * as React from "react";
-import "./style.scss";
-import banner1 from "../../Assets/banner1.jpg";
-import banner2 from "../../Assets/banner2.jpg";
-import banner3 from "../../Assets/banner3.jpg";
+import * as React from 'react';
+import './style.scss';
+import banner1 from '../../Assets/banner1.jpg';
+import banner2 from '../../Assets/banner2.jpg';
+import banner3 from '../../Assets/banner3.jpg';
 
-import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
 
-import baseURL from "../../api/baseURL";
+import baseURL from '../../api/baseURL';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
     <div
-      role='tabpanel'
+      role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
@@ -43,17 +43,16 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
   };
 }
 
 export default function AboutUsTabs() {
   const [value, setValue] = React.useState(0);
   const [boardMembers, setBoardMembers] = React.useState([]);
-  console.log(boardMembers);
 
   React.useEffect(() => {
-    fetch(baseURL + "/boardmembers")
+    fetch(baseURL + '/boardmembers')
       .then((data) => data.json())
       .then(({ data }) => setBoardMembers(data))
       .catch(({ response }) => console.log(response));
@@ -64,28 +63,28 @@ export default function AboutUsTabs() {
   };
 
   return (
-    <div className='aboutUsTabs__container'>
-      <Box sx={{ width: "100%" }}>
-        <Box sx={{ borderBottom: 2, borderColor: "#e74c3c" }}>
+    <div className="aboutUsTabs__container">
+      <Box sx={{ width: '100%' }}>
+        <Box sx={{ borderBottom: 2, borderColor: '#e74c3c' }}>
           <Tabs
-            variant='scrollable'
-            scrollButtons='auto'
+            variant="scrollable"
+            scrollButtons="auto"
             value={value}
             onChange={handleChange}
-            aria-label='basic tabs example'
+            aria-label="basic tabs example"
           >
-            <Tab label='Who we are' {...a11yProps(0)} />
-            <Tab label='What we do' {...a11yProps(1)} />
-            <Tab label='How we work' {...a11yProps(2)} />
-            <Tab label='Team' {...a11yProps(3)} />
+            <Tab label="Who we are" {...a11yProps(0)} />
+            <Tab label="What we do" {...a11yProps(1)} />
+            <Tab label="How we work" {...a11yProps(2)} />
+            <Tab label="Team" {...a11yProps(3)} />
           </Tabs>
         </Box>
         <TabPanel
-          className='aboutUsTabs__container__whoWeAre'
+          className="aboutUsTabs__container__whoWeAre"
           value={value}
           index={0}
         >
-          <img src={banner1} alt='banner' />
+          <img src={banner1} alt="banner" />
           <h1>INTRODUCTION</h1>
           <p>
             Hami Nepal is a non-profit organisation, established in 2015 A.D.
@@ -136,11 +135,11 @@ export default function AboutUsTabs() {
         </TabPanel>
 
         <TabPanel
-          className='aboutUsTabs__container__whatWeDo'
+          className="aboutUsTabs__container__whatWeDo"
           value={value}
           index={1}
         >
-          <img src={banner2} alt='banner' />
+          <img src={banner2} alt="banner" />
 
           <h2>What We Do?</h2>
           <p>
@@ -154,11 +153,11 @@ export default function AboutUsTabs() {
           </p>
         </TabPanel>
         <TabPanel
-          className='aboutUsTabs__container__howWeWork'
+          className="aboutUsTabs__container__howWeWork"
           value={value}
           index={2}
         >
-          <img src={banner3} alt='banner' />
+          <img src={banner3} alt="banner" />
           <p>
             Given our limited resources, we must ensure that resources are
             delivered to the appropriate location and people.
@@ -186,7 +185,7 @@ export default function AboutUsTabs() {
           </p>
         </TabPanel>
         <TabPanel
-          className='aboutUsTabs__container__team'
+          className="aboutUsTabs__container__team"
           value={value}
           index={3}
         >
@@ -201,16 +200,16 @@ export default function AboutUsTabs() {
             <br />
           </p>
           {boardMembers.map((data) => (
-            <div className='item' key={data._id}>
+            <div className="item" key={data._id}>
               <Card sx={{ maxWidth: 400 }}>
                 <CardMedia
-                  component='img'
-                  height='500'
+                  component="img"
+                  height="500"
                   image={data.photo}
                   alt={data.designation}
                 />
                 <h4>{data.name}</h4>
-                <div className='position'>{data.designation}</div>
+                <div className="position">{data.designation}</div>
               </Card>
             </div>
           ))}

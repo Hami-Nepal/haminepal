@@ -1,50 +1,65 @@
-import React, { useState, useEffect } from "react"
-import "./style.scss"
+import React, { useState, useEffect } from 'react';
+import './style.scss';
 
-import { styled } from "@mui/material/styles"
-import { Button } from "@mui/material"
+import { styled } from '@mui/material/styles';
+import { Button } from '@mui/material';
 import LinearProgress, {
   linearProgressClasses,
-} from "@mui/material/LinearProgress"
-import Footer from "../../Components/Footer/Footer"
-import baseURL from "../../api/baseURL"
-import NavBar from "../../Components/NavBar/Nav"
+} from '@mui/material/LinearProgress';
+import Footer from '../../Components/Footer/Footer';
+import baseURL from '../../api/baseURL';
+import NavBar from '../../Components/NavBar/Nav';
+import axios from 'axios';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 10,
   borderRadius: 5,
   [`&.${linearProgressClasses.colorPrimary}`]: {
     backgroundColor:
-      theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
+      theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 5,
-    backgroundColor: theme.palette.mode === "light" ? "#23CE34" : "#308fe8",
+    backgroundColor: theme.palette.mode === 'light' ? '#23CE34' : '#308fe8',
   },
-}))
+}));
 
 export default function EventFocused() {
-  const [data, setData] = useState({})
-  const [totalDonationAmount, setTotalDonationAmount] = useState(0)
+  const [data, setData] = useState({});
+  const [totalDonationAmount, setTotalDonationAmount] = useState(0);
+  const [volunteers, setVolunteers] = useState([]);
+
+  console.log(data);
 
   useEffect(() => {
-    fetch(baseURL + "/events/" + window.location.pathname.split("/").pop())
+    fetch(baseURL + '/events/' + window.location.pathname.split('/').pop())
       .then((data) => data.json())
-      .then(({ data }) => setData(data))
-      .catch(({ response }) => console.log(response))
-  }, [])
+      .then(async ({ data }) => {
+        setData(data);
+
+        data.volunteers = data.volunteers.filter((vol) => vol.participated);
+
+        const promises = data.volunteers.map((vol) =>
+          axios.get(baseURL + '/volunteers/' + vol.volunteerId)
+        );
+
+        const res = await Promise.all(promises);
+        setVolunteers(res);
+      })
+      .catch(({ response }) => console.log(response));
+  }, []);
 
   useEffect(() => {
     // specific cause or events ko ako total amount herna ko lagi jugad
-    fetch(baseURL + "/donations/?slug=" + data.slug)
+    fetch(baseURL + '/donations/?slug=' + data.slug)
       .then((data) => data.json())
       .then(({ data }) =>
         setTotalDonationAmount(
           data.reduce((acc, val) => acc + val.donation_amount, 0)
         )
       )
-      .catch(({ response }) => console.log(response))
-  }, [data])
+      .catch(({ response }) => console.log(response));
+  }, [data]);
 
   return (
     <div className="eventFocused__container">
@@ -88,11 +103,11 @@ export default function EventFocused() {
           <Button>Donate</Button>
         </div>
 
-        <img src={data?.photos?.length ? data.photos[0] : ""} alt="event" />
+        <img src={data?.photos?.length ? data.photos[0] : ''} alt="event" />
       </div>
 
       {/* @section => details */}
-      {data.description === "" ? (
+      {data.description === '' ? (
         <></>
       ) : (
         <>
@@ -117,19 +132,24 @@ export default function EventFocused() {
             <h1>Volunteers</h1>
 
             <div className="eventFocused__container__volunteers__items">
-              {[0, 1, 2, 3, 4, 5].map((item) => (
+              {volunteers.map(({ data }) => (
                 <div
                   className="eventFocused__container__volunteers__items__item"
-                  key={item}
+                  key={data.data.volunteer._id}
                 >
                   <img
-                    src="https://avatars.githubusercontent.com/u/93448253?s=400&u=389a238cf991d86adcc03166270d30241e94a95b&v=4"
+                    src="https://static.thenounproject.com/png/72032-200.png"
                     alt="volunteer"
                   />
 
                   <div className="userInfo">
-                    <div className="name">Volunter Name</div>
-                    <div className="position">Some Info</div>
+                    <div className="name">
+                      {data.data.volunteer.first_name}{' '}
+                      {data.data.volunteer.last_name}
+                    </div>
+                    <div className="position">
+                      {data.data.volunteer.field_of_expertise}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -150,5 +170,5 @@ export default function EventFocused() {
 
       <Footer />
     </div>
-  )
+  );
 }
