@@ -29,8 +29,6 @@ export default function EventFocused() {
   const [totalDonationAmount, setTotalDonationAmount] = useState(0);
   const [volunteers, setVolunteers] = useState([]);
 
-  console.log(data);
-
   useEffect(() => {
     fetch(baseURL + '/events/' + window.location.pathname.split('/').pop())
       .then((data) => data.json())
@@ -138,7 +136,11 @@ export default function EventFocused() {
                   key={data.data.volunteer._id}
                 >
                   <img
-                    src="https://static.thenounproject.com/png/72032-200.png"
+                    src={
+                      data.data.volunteer.photo.startsWith('http')
+                        ? data.data.volunteer.photo
+                        : 'https://static.thenounproject.com/png/72032-200.png'
+                    }
                     alt="volunteer"
                   />
 
