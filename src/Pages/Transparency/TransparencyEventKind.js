@@ -2,14 +2,12 @@ import React from "react";
 import "./style.scss";
 
 import Carousel from "react-elastic-carousel";
-import KindTransparencyCausePage from "./TransparencyCauseKind";
 
 import Box from "@mui/material/Box";
 import Footer from "../../Components/Footer/Footer";
 import { useState, useEffect } from "react";
 import baseURL from "../../api/baseURL";
 import Button from "@mui/material/Button";
-import NavBar from "../../Components/NavBar/Nav";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
@@ -23,15 +21,15 @@ export default function Causes() {
   const handleDonChange = (event, value) => {
     setDonPage(value);
   };
-  const [causeTitle, setCauseTitle] = useState("");
-  const [causeDesc, setCauseDesc] = useState("");
-  const [data, setData] = useState([]);
-  const [donations, setDonations] = useState([]);
-  const [tCount, setTCount] = useState();
-  const [dCount, setDCount] = useState();
+  const [eventTitle, setEventTitle] = useState("");
+  const [kData, setKData] = useState([]);
+  const [kDonations, setKDonations] = useState([]);
+  const [kTCount, setKTCount] = useState();
+  const [kDCount, setKDCount] = useState();
 
-  const [fundReceived, setFundReceived] = useState(false);
+  const [kFundReceived, setKFundReceived] = useState(false);
   const [modalPhoto, setModalPhoto] = useState([]);
+  const [modalKindPhoto, setModalKindPhoto] = useState([]);
 
   const fundcardStyle = {
     borderRight: "3px solid #ececec",
@@ -39,11 +37,10 @@ export default function Causes() {
   };
 
   useEffect(() => {
-    fetch(baseURL + "/causes/" + window.location.pathname.split("/").pop())
+    fetch(baseURL + "/events/" + window.location.pathname.split("/").pop())
       .then((data) => data.json())
       .then(({ data }) => {
-        setCauseTitle(data.cause.name);
-        setCauseDesc(data.description);
+        setEventTitle(data.name);
       })
       .catch(({ response }) => console.log(response));
   }, []);
@@ -51,58 +48,50 @@ export default function Causes() {
   useEffect(() => {
     fetch(
       baseURL +
-        `/transparency?cause_name=${causeTitle}&limit=5&page=${transPage}&sort=-createdAt`
+        `/kindtransparency?event_name=${eventTitle}&limit=5&page=${transPage}&sort=-createdAt`
     )
       .then((data) => data.json())
       .then((data) => {
-        setTCount(data.total_data);
-        setData(data.data);
-
+        setKData(data.data);
+        setKTCount(data.total_data);
         // console.log(data);
       })
       .catch(({ response }) => console.log(response));
-  }, [causeTitle, transPage]);
+  }, [eventTitle, transPage]);
 
   useEffect(() => {
     fetch(
       baseURL +
-        `/donations?cause=${window.location.pathname
-          .split("/")
-          .pop()}&limit=5&page=${donPage}&sort=-createdAt`
+        `/kinddonation?event_name=${eventTitle}&limit=5&page=${donPage}&sort=-createdAt`
     )
       .then((data) => data.json())
       .then((data) => {
-        setDonations(data.data);
-        setDCount(data.total_data);
+        setKDonations(data.data);
+        setKDCount(data.total_data);
         // console.log(slug);
       })
       .catch((error) => console.log(error));
-  }, [donPage]);
+  }, [eventTitle, donPage]);
 
   return (
     <div className='causes__container'>
-      <NavBar />
-
-      {/* @section => landing */}
-      <div className='causes__container__landing'>
-        <h1>{causeTitle}</h1>
-
-        <p>{causeDesc}</p>
-      </div>
       {/* tabs-area-start */}
-      <div style={{ marginTop: "2rem", marginLeft: "2rem" }}>
-        <h1>Cash Transparency</h1>
+      <div style={{ marginLeft: "2rem" }}>
+        <h1>Kind Transparency</h1>
       </div>
       <div className='causesTabs__container'>
         <Box>
           <div className='causesTabs__meroTabs'>
             <Button
               className='btn__fund'
-              onClick={() => setFundReceived(false)}
+              onClick={() => setKFundReceived(false)}
             >
               Fund Spent
             </Button>
-            <Button className='btn__fund' onClick={() => setFundReceived(true)}>
+            <Button
+              className='btn__fund'
+              onClick={() => setKFundReceived(true)}
+            >
               Fund Received
             </Button>
           </div>
@@ -119,8 +108,8 @@ export default function Causes() {
             Latest History
           </h6>
           <br />
-          {!fundReceived
-            ? data.map((row) => {
+          {!kFundReceived
+            ? kData.map((row) => {
                 return (
                   <div
                     style={fundcardStyle}
@@ -149,7 +138,7 @@ export default function Causes() {
                   </div>
                 );
               })
-            : donations.map((donation) => {
+            : kDonations.map((donation) => {
                 return (
                   <div
                     style={fundcardStyle}
@@ -158,37 +147,44 @@ export default function Causes() {
                   >
                     <div className='d-flex flex-column'>
                       <h6>
-                        <b>
-                          {donation.first_name} {donation.last_name}
-                        </b>
+                        <b>{donation.donerFullName}</b>
                       </h6>
                       <p>{donation.createdAt.slice(0, 10)}</p>
+                      <p>{donation.donatedItem}</p>
                     </div>
                     <div className='d-flex align-items-center'>
                       <h6 className='m-0' style={{ color: "green" }}>
-                        <b>Rs. {donation.donation_amount}</b>
+                        <b>Rs. {donation.itemWorth}</b>
                       </h6>
+                      <button
+                        class='btn mb1 b10'
+                        onClick={() => {
+                          setModalKindPhoto(donation.photos);
+                        }}
+                      >
+                        Photos
+                      </button>
                     </div>
                   </div>
                 );
               })}
           <Stack spacing={2}>
-            {!fundReceived ? (
+            {!kFundReceived ? (
               <Pagination
-                count={Math.ceil(tCount / 5)}
+                count={Math.ceil(kTCount / 5)}
                 page={transPage}
                 onChange={handleTransChange}
               />
             ) : (
               <Pagination
-                count={Math.ceil(dCount / 5)}
+                count={Math.ceil(kDCount / 5)}
                 page={donPage}
                 onChange={handleDonChange}
               />
             )}
           </Stack>
         </div>
-        {!fundReceived && (
+        {!kFundReceived ? (
           <div className='billCarousel__container'>
             <Carousel
               className='billCarousel__container__carourel'
@@ -207,9 +203,27 @@ export default function Causes() {
               ))}
             </Carousel>
           </div>
+        ) : (
+          <div className='billCarousel__container'>
+            <Carousel
+              className='billCarousel__container__carourel'
+              infiniteLoop={true}
+            >
+              {modalKindPhoto.map((photo, index) => (
+                <div className='billCarousel__container__item' key={index}>
+                  <img
+                    src={photo}
+                    alt='bill'
+                    key={index}
+                    // style={{ width: "60%", height: "auto" }}
+                  />
+                  ;
+                </div>
+              ))}
+            </Carousel>
+          </div>
         )}
       </div>
-      <KindTransparencyCausePage />
       <Footer />
     </div>
   );
