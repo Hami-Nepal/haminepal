@@ -16,13 +16,13 @@
     margin: 0px 0px 100px 0px;
     padding: 0 5vw;
     h1 {
-      max-width: 700px;
+      max-width: 14em;
       color: white;
       text-transform: uppercase;
       background-color: black;
       font-family: "Poppins", sans-serif;
       font-size: 50px;
-      padding: 10px;
+      padding: 0.1em;
       font-weight: 700px;
       @media (max-width: 768px) {
         font-size: 30px;
@@ -51,12 +51,13 @@
     }
 
     .kindnessFocused__container__landing__info {
-      padding: 30px;
-      max-width: 50vw;
+      padding: 40px;
+      max-width: 50em;
       h1 {
         font-family: "Poppins", sans-serif;
-        font-size: 40px;
+        font-size: 38px;
         font-weight: 600;
+        color: brown;
         text-transform: uppercase;
         margin-bottom: 30px;
         @media (max-width: 786px) {
@@ -67,8 +68,8 @@
       p {
         line-height: 1.8;
         margin-bottom: 30px;
+        text-align: justify;
         font-size: 18px;
-        font-weight: 600;
         @media (max-width: 786px) {
           font-size: 16px;
         }
@@ -93,22 +94,25 @@
   .kindnessFocused__container__results {
     padding: 0 8vw;
 
-    h1 {
+    h2 {
       font-family: "Poppins", sans-serif;
       margin-bottom: 10px;
-      margin-top: 40px;
+      margin-top: 10px;
+      font-size: 24px;
       font-weight: 600;
+      text-transform: uppercase;
+      color: brown;
     }
 
     p {
       line-height: 1.8;
       max-width: 50vw;
-      text-align: start;
+      text-align: justify;
       font-size: 18px;
-      font-weight: 600;
       @media (max-width: 786px) {
         font-size: 16px;
         text-align: justify;
+        max-width: 100%;
       }
     }
   }
@@ -187,8 +191,8 @@
 
   .kindnessFocused__container__gallery {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    flex-direction: row-reverse;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     padding: 40px 5vw;
@@ -205,7 +209,7 @@
 
     img {
       width: 25vw;
-      height: 25vw;
+      height: 20vw;
       object-fit: cover;
       margin: 50px 50px 0px 0px;
 
