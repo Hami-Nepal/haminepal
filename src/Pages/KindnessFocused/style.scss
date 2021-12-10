@@ -58,7 +58,7 @@
         font-size: 38px;
         font-weight: 600;
         color: brown;
-        text-transform: uppercase;
+        text-transform: capitalize;
         margin-bottom: 30px;
         @media (max-width: 786px) {
           font-size: 30px;
@@ -69,6 +69,8 @@
         line-height: 1.8;
         margin-bottom: 30px;
         text-align: justify;
+        letter-spacing: 1px;
+        word-spacing: 4px;
         font-size: 18px;
         @media (max-width: 786px) {
           font-size: 16px;
@@ -100,7 +102,7 @@
       margin-top: 10px;
       font-size: 24px;
       font-weight: 600;
-      text-transform: uppercase;
+      text-transform: capitalize;
       color: brown;
     }
 
@@ -108,6 +110,8 @@
       line-height: 1.8;
       max-width: 50vw;
       text-align: justify;
+      letter-spacing: 1px;
+      word-spacing: 4px;
       font-size: 18px;
       @media (max-width: 786px) {
         font-size: 16px;
