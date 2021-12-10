@@ -139,7 +139,7 @@ export default function EventTabs() {
       } else if (requestStatus === 'success') {
         buttonText = 'Request sent!';
       } else if (requestStatus === 'failed') {
-        buttonText = 'Failed';
+        buttonText = 'Already in the pending list';
       }
     }
 

@@ -1,46 +1,37 @@
 import React from "react";
 import "./style.scss";
-// import { TransparencyDetailData as data } from "./TransparencyDetailData";
 
-//Model
-
-import Modal from "@mui/material/Modal";
-import BillCarousel from "../../Components/Bill carousel/BillCarousel";
-
-import Logo from "../../Assets/logo.png";
-
-import { Link } from "react-location";
+import Carousel from "react-elastic-carousel";
+import KindTransparencyPage from "./TransparencyEventKind";
 
 import Box from "@mui/material/Box";
 import Footer from "../../Components/Footer/Footer";
 import { useState, useEffect } from "react";
 import baseURL from "../../api/baseURL";
 import Button from "@mui/material/Button";
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  maxWidth: 600,
-  height: "auto",
-  width: "100%",
-  bgcolor: "transparent",
-  p: 4,
-};
+import NavBar from "../../Components/NavBar/Nav";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 export default function Causes() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
+  //pagination
+  const [transPage, setTransPage] = React.useState(1);
+  const [donPage, setDonPage] = React.useState(1);
+  const handleTransChange = (event, value) => {
+    setTransPage(value);
+  };
+  const handleDonChange = (event, value) => {
+    setDonPage(value);
+  };
   const [eventTitle, setEventTitle] = useState("");
   const [eventDesc, setDesc] = useState("");
   const [data, setData] = useState([]);
   const [donations, setDonations] = useState([]);
+  const [tCount, setTCount] = useState();
+  const [dCount, setDCount] = useState();
 
-  //model
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
   const [fundReceived, setFundReceived] = useState(false);
+  const [modalPhoto, setModalPhoto] = useState([]);
 
   const fundcardStyle = {
     borderRight: "3px solid #ececec",
@@ -58,101 +49,39 @@ export default function Causes() {
   }, []);
 
   useEffect(() => {
-    fetch(baseURL + `/transparency?event_name=${eventTitle}`)
+    fetch(
+      baseURL +
+        `/transparency?event_name=${eventTitle}&limit=5&page=${transPage}&sort=-createdAt`
+    )
       .then((data) => data.json())
-      .then(({ data }) => {
-        setData(data);
-        // console.log(slug);
+      .then((data) => {
+        setTCount(data.total_data);
+        setData(data.data);
+
+        // console.log(data);
       })
       .catch(({ response }) => console.log(response));
-  }, [eventTitle]);
+  }, [eventTitle, transPage]);
 
   useEffect(() => {
     fetch(
       baseURL +
-        "/donations?category=event&event=" +
-        window.location.pathname.split("/").pop()
+        `/donations?event=${window.location.pathname
+          .split("/")
+          .pop()}&limit=5&page=${donPage}&sort=-createdAt`
     )
       .then((data) => data.json())
-      .then(({ data }) => {
-        setDonations(data);
+      .then((data) => {
+        setDonations(data.data);
+        setDCount(data.total_data);
         // console.log(slug);
       })
-      .catch(({ response }) => console.log(response));
-  }, []);
+      .catch((error) => console.log(error));
+  }, [donPage]);
 
   return (
     <div className='causes__container'>
-      {/* @sectoin => topbar */}
-      <div className='causes__container__topbar'>
-        <img
-          className='causes__container__logo'
-          src={Logo}
-          alt='haminepal logo'
-        />
-
-        <button onClick={() => setIsActiveMenu(true)}>
-          <i className='ri-menu-line'></i>
-        </button>
-      </div>
-
-      {/* @section => hidden menu */}
-      <div
-        className='causes__container__landing__hiddenMenu'
-        style={{
-          display: isActiveMenu ? "flex" : "none",
-        }}
-      >
-        <div className='causes__container__landing__hiddenMenu__topbar'>
-          <img
-            className='causes__container__landing__topbar__logo'
-            src={Logo}
-            alt='haminepal logo'
-          />
-
-          <button onClick={() => setIsActiveMenu(false)}>
-            <i className='ri-close-line'></i>
-          </button>
-        </div>
-        <ul className='causes__container__landing__hiddenMenu__items left'>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/news'>News</Link>
-          </li>
-          <li>
-            <Link to='/'>Act of Kindness</Link>
-          </li>
-          <li>
-            <Link to='/civil-rights-movement'>Civil Rights Movements</Link>
-          </li>
-          <li>
-            <Link to='/contact'>Contact Us</Link>
-          </li>
-          <div className='divider'></div>
-          <li>
-            <Link to='/login'>Login/</Link> <Link to='/signup'>Signup</Link>
-          </li>
-        </ul>
-        <ul className='causes__container__landing__hiddenMenu__items right'>
-          <li>
-            <Link to='/about'>About Us</Link>
-          </li>
-          <li>
-            <Link to='/causes'>Cause</Link>
-          </li>
-          <li>
-            <Link to='/events'>Events</Link>
-          </li>
-          <li>
-            <Link to='/transparency'>Transparency</Link>
-          </li>
-          <li>
-            <Link to='/volunteer'>Volunteer</Link>
-          </li>
-        </ul>
-      </div>
+      <NavBar />
 
       {/* @section => landing */}
       <div className='causes__container__landing'>
@@ -161,6 +90,9 @@ export default function Causes() {
         <p>{eventDesc}</p>
       </div>
       {/* tabs-area-start */}
+      <div style={{ marginTop: "2rem", marginLeft: "2rem" }}>
+        <h1>Cash Transparency</h1>
+      </div>
       <div className='causesTabs__container'>
         <Box>
           <div className='causesTabs__meroTabs'>
@@ -205,20 +137,15 @@ export default function Causes() {
                       <h6 className='m-0' style={{ color: "green" }}>
                         <b>Rs. {row.amount}</b>
                       </h6>
-                      <button class='btn mb1 b10' onClick={handleOpen}>
+                      <button
+                        class='btn mb1 b10'
+                        onClick={() => {
+                          setModalPhoto(row.photos);
+                        }}
+                      >
                         Bill
                       </button>
                     </div>
-                    <Modal
-                      open={open}
-                      onClose={handleClose}
-                      aria-labelledby='modal-modal-title'
-                      aria-describedby='modal-modal-description'
-                    >
-                      <Box sx={style}>
-                        <BillCarousel />
-                      </Box>
-                    </Modal>
                   </div>
                 );
               })
@@ -245,11 +172,44 @@ export default function Causes() {
                   </div>
                 );
               })}
-          <h6 className='fw-bold text-end my-2' style={{ color: "grey" }}>
-            Show All
-          </h6>
+          <Stack spacing={2}>
+            {!fundReceived ? (
+              <Pagination
+                count={Math.ceil(tCount / 5)}
+                page={transPage}
+                onChange={handleTransChange}
+              />
+            ) : (
+              <Pagination
+                count={Math.ceil(dCount / 5)}
+                page={donPage}
+                onChange={handleDonChange}
+              />
+            )}
+          </Stack>
         </div>
+        {!fundReceived && (
+          <div className='billCarousel__container'>
+            <Carousel
+              className='billCarousel__container__carourel'
+              infiniteLoop={true}
+            >
+              {modalPhoto.map((photo, index) => (
+                <div className='billCarousel__container__item' key={index}>
+                  <img
+                    src={photo}
+                    alt='bill'
+                    key={index}
+                    // style={{ width: "60%", height: "auto" }}
+                  />
+                  ;
+                </div>
+              ))}
+            </Carousel>
+          </div>
+        )}
       </div>
+      <KindTransparencyPage />
       <Footer />
     </div>
   );
