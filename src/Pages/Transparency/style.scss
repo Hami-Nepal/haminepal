@@ -261,3 +261,35 @@
   background-color: white !important;
   box-shadow: 0 0 1px 3px #9f1718 !important;
 }
+.tab-content {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.billCarousel__container {
+  text-align: center;
+
+  .sc-bdvvtL,
+  .cNNJIt,
+  .rec,
+  .rec-arrow,
+  .rec,
+  .jRFJkP {
+    background: transparent !important;
+    box-shadow: none !important;
+
+    &:disabled {
+      cursor: not-allowed;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+  }
+
+  .billCarousel__container__item {
+    img {
+      width: 300px;
+      height: auto;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+  }
+}
