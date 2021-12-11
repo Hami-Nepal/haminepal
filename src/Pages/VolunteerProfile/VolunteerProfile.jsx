@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-location';
 
 import './style.scss';
 
@@ -21,6 +22,7 @@ export default function VolunteerProfile(props) {
 
   const { register, handleSubmit } = useForm();
   const [requestState, setRequestState] = useState(null);
+  const [projects, setProjects] = useState([]);
 
   const onSubmit = (formData) => {
     if (!formData.age) return;
@@ -64,9 +66,30 @@ export default function VolunteerProfile(props) {
   useEffect(() => {
     fetch(baseURL + '/volunteers/' + window.location.pathname.split('/').pop())
       .then((data) => data.json())
-      .then(({ data }) => setVolunteer(data.volunteer))
+      .then(async ({ data }) => {
+        setVolunteer(data.volunteer);
+
+        let promises = data.volunteer.cause_involvement.map((id) =>
+          axios.get(baseURL + '/causes/' + id)
+        );
+
+        promises = [
+          ...promises,
+          ...data.volunteer.event_involvement.map((id) =>
+            axios.get(baseURL + '/events/' + id)
+          ),
+        ];
+
+        const res = await Promise.all(promises);
+
+        setProjects(
+          res.map(({ data }) => (data.data.cause ? data.data.cause : data.data))
+        );
+      })
       .catch(({ response }) => console.log(response));
   }, []);
+
+  console.log(projects);
 
   return (
     <div className="volunteerProfile__container">
@@ -302,22 +325,31 @@ export default function VolunteerProfile(props) {
         <h1>Projects worked on</h1>
 
         <div className="volunteerProfile__container__workedProjects__items">
-          {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-            <div className="item" key={item}>
-              <img
-                src="https://images.unsplash.com/photo-1617817546276-80b86dd60151?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                className="item__image"
-                alt="project"
-              />
-              <div className="item__info">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptate itaque dignissimos provident earum porro eius nesciunt
-                dolores quo laudantium! Facere quod consectetur debitis hic
-                dignissimos molestiae accusamus quos ipsa magni.
-              </div>
-              <Button>Donate</Button>
+          {projects.map((card) => (
+            <div className="item" key={card._id}>
+              <Link
+                to={
+                  card.cause_type
+                    ? '/cause-focused/' + card._id
+                    : '/event-focused/' + card._id
+                }
+                style={{ textDecoration: 'none' }}
+              >
+                <img
+                  src={
+                    card.photos.length
+                      ? card.photos[0]
+                      : 'https://images.unsplash.com/photo-1617817546276-80b86dd60151?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
+                  }
+                  className="item__image"
+                  alt="project"
+                />
+                <h2>{card.name}</h2>
+                <div className="item__info">{card.description}</div>
+              </Link>
             </div>
           ))}
+          {!projects.length && <p>Nothing yet</p>}
         </div>
       </div>
 

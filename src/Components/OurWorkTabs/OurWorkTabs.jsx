@@ -76,13 +76,18 @@ export default function OurWorkTabs() {
             onChange={handleChange}
             aria-label="basic tabs example"
           >
-            {causeType.map((type, index) => (
+            {/* {causeType.map((type, index) => (
               <Tab
                 key={type._id}
                 label={type.cause_type}
                 {...a11yProps(index)}
               />
             ))}
+          </Tabs> */}
+            <Tab label="All" />
+            <Tab label="Events" />
+            <Tab label="Causes" />
+            <Tab label="Act Of Kindness" />
           </Tabs>
         </Box>
         <TabPanel
@@ -90,22 +95,27 @@ export default function OurWorkTabs() {
           value={value}
           index={0}
         >
-          {posts.map((data) => (
-            <div className="images" key={data._id}>
-              <div className="column">
-                <img src={data.photos[0]} alt="" />
-                {/* <img
-                  src="https://images.unsplash.com/photo-1637270868031-b28f517e152e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
-                  alt=""
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1636886519725-6a048800b5b4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=928&q=80"
-                  alt=""
-                /> */}
-              </div>
+          <div className="images" key="">
+            <div className="column">
+              <img
+                src="https://images.unsplash.com/photo-1637270868031-b28f517e152e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
+                alt=""
+              />
+              <img
+                src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
+                alt=""
+              />
+              <img
+                src="https://images.unsplash.com/photo-1633114128814-11fac33f707b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
+                alt=""
+              />
+              <img
+                src="https://images.unsplash.com/photo-1637140548016-882a3f9a819b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                alt=""
+              />
             </div>
-          ))}
-          {/* <div className="column">
+
+            <div className="column">
               <img
                 src="https://images.unsplash.com/photo-1637140548016-882a3f9a819b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
                 alt=""
@@ -132,10 +142,10 @@ export default function OurWorkTabs() {
                 src="https://images.unsplash.com/photo-1637275769153-b5fb9e5647f1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1770&q=80"
                 alt=""
               />
-            </div> */}
-          {/* </div> */}
+            </div>
+          </div>
         </TabPanel>
-        {/* <TabPanel
+        <TabPanel
           className="ourWorkTabs__container__items"
           value={value}
           index={1}
@@ -334,7 +344,7 @@ export default function OurWorkTabs() {
               />
             </div>
           </div>
-        </TabPanel> */}
+        </TabPanel>
       </Box>
     </div>
   )
