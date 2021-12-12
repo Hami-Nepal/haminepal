@@ -16,6 +16,7 @@ import { Link } from 'react-location';
 import axios from 'axios';
 import baseURL from '../../api/baseURL';
 import { useNavigate } from 'react-location';
+import Donate from '../../Components/Donate/Donate';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -51,6 +52,9 @@ function a11yProps(index) {
 }
 
 export default function EventTabs() {
+  const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
+  const [eventName, setEventName] = React.useState('');
+
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -90,10 +94,6 @@ export default function EventTabs() {
       .then(({ data }) => EventCards(data))
       .catch(({ response }) => console.log(response));
   }, [value, activeEventStatus, eventTypes]);
-
-  const onDonate = (event) => {
-    event.preventDefault();
-  };
 
   const onParticipate = (eventId) => (event) => {
     event.preventDefault();
@@ -212,7 +212,14 @@ export default function EventTabs() {
               {token ? (
                 buttonForVolunteer(card)
               ) : (
-                <Button onClick={onDonate} style={{ marginTop: 'auto' }}>
+                <Button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsDonationFormOpen(true);
+                    setEventName(card.name);
+                  }}
+                  style={{ marginTop: 'auto' }}
+                >
                   Donate
                 </Button>
               )}
@@ -220,6 +227,18 @@ export default function EventTabs() {
           ))}
         </TabPanel>
       </Box>
+
+      {/** @dev this is dismissiable donation form */}
+      <div
+        style={{ display: isDonationFormOpen ? 'block' : 'none' }}
+        className="home__container__landing__donationForm"
+      >
+        <Donate
+          setIsDonationFormOpen={setIsDonationFormOpen}
+          donation_type={'Event'}
+          donation_name={'> ' + eventName}
+        />
+      </div>
     </div>
   );
 }
