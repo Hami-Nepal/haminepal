@@ -13,6 +13,7 @@ import { Link } from "react-location";
 import { Helmet } from "react-helmet";
 
 import Partners from "../../Mocks/OurPartners.json";
+import OurSupporters from "../../Mocks/OurSupporters.json";
 import InfluenerCarousel from "../../Components/Influencers/InfluencersCarousel";
 
 import KindnessCard from "../../Components/Act of Kindness/KindnessCard";
@@ -380,7 +381,7 @@ export default function Home() {
       {/** @section => act of kindness */}
       <div className='home__container__actOfKindness'>
         <h1>
-          Act Of Kindness <span style={{ color: "red" }}>Featured</span>
+          Act of Kindness <span style={{ color: "red" }}>Featured</span>
         </h1>
 
         <div className='home__container__actOfKindness__items'>
@@ -528,11 +529,19 @@ export default function Home() {
           <h1 style={{ marginTop: "3rem" }}>Social Supporters</h1>
           <InfluenerCarousel />
         </div>
-        <div className='infuencer__heading'>
+        <div className='supporter_heading'>
           <h1 style={{ marginTop: "3rem" }}>Our Supporters</h1>
         </div>
+        <div className='Supporters'>
+          {OurSupporters.supporters.map((supp) => (
+            <div className='ourSupporters__container'>
+              <a href={supp.link} target='_blank' rel='noreferrer'>
+                <img src={supp.photo} alt='' />
+              </a>
+            </div>
+          ))}
+        </div>
       </div>
-
       <Footer />
     </div>
   );
