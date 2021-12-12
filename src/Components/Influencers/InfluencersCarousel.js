@@ -27,7 +27,9 @@ export default function BoardMembersCarousel() {
         {Influencers.Influencers &&
           Influencers.Influencers.map((member, index) => (
             <div className='boardMembersCarousel__container__item' key={index}>
-              <img src={member.photo} alt='Influencer member' />
+              <a href={member.social_link} rel='noreferrer' target='_blank'>
+                <img src={member.photo} alt='Influencer member' />
+              </a>
               <div className='boardMembersCarousel__container__memberName'>
                 {member.name}
               </div>
