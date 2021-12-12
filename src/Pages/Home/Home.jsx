@@ -28,7 +28,6 @@ import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 export default function Home() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
   const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
-  const [topDonors, setTopDonors] = useState([]);
   const [kindness, setKindness] = useState([]);
   const [totalDonations, setTotalDonations] = useState(0);
   const [totalKindDonations, setTotalKindDonations] = useState(0);
@@ -54,14 +53,8 @@ export default function Home() {
     'Rukum',
     'Bardiya',
   ];
-  // const [influencers, setInfluencers] = useState([Influencers.Influencers]);
 
   useEffect(() => {
-    fetch(baseURL + '/donations?sort=-donation_amount&limit=5')
-      .then((data) => data.json())
-      .then(({ data }) => setTopDonors(data))
-      .catch(({ response }) => console.log(response));
-
     fetch(baseURL + '/kindness/featured')
       .then((data) => data.json())
       .then(({ featured }) => setKindness(featured))
