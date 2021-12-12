@@ -70,3 +70,11 @@
     margin-top: auto;
   }
 }
+
+.home__container__landing__donationForm {
+  position: absolute;
+  z-index: 3;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}

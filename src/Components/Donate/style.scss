@@ -14,7 +14,7 @@
     justify-content: space-between;
 
     h2 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       margin-bottom: 20px;
     }
 
@@ -24,7 +24,7 @@
       border-radius: 14px;
       padding: 10px;
       font-size: 1.2rem;
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       color: #000;
       cursor: pointer;
 
@@ -41,6 +41,8 @@
     background: rgb(245, 245, 245);
     display: flex;
     flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 
     @media (max-width: 768px) {
       padding: 20px 30px;
@@ -53,7 +55,7 @@
     }
 
     h3 {
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
       margin: 20px 0;
     }
 
@@ -75,7 +77,7 @@
       flex-wrap: wrap;
 
       label {
-        font-family: "Playfair Display", serif;
+        font-family: 'Playfair Display', serif;
         font-size: 1.2rem;
         color: #000;
       }
@@ -146,10 +148,32 @@
   }
 }
 
-.pay-with.form-check input[type="radio"] {
+.pay-with.form-check input[type='radio'] {
   display: block;
   margin-right: 5px;
 }
 .pay-with label img {
   width: 140px;
+}
+
+.donation__type {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 10px;
+  margin: 0 0 30px;
+
+  h3,
+  p {
+    margin: 0 !important;
+    text-align: left !important;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  p {
+    color: #444;
+  }
 }

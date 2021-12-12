@@ -8,8 +8,12 @@ import Footer from '../../Components/Footer/Footer';
 
 import baseURL from '../../api/baseURL';
 import NavBar from '../../Components/NavBar/Nav';
+import Donate from '../../Components/Donate/Donate';
 
 export default function Volunteer() {
+  const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
+  const [volunteerName, setVolunteerName] = React.useState('');
+
   const [volunteers, setVolunteers] = React.useState([]);
 
   useEffect(() => {
@@ -51,15 +55,33 @@ export default function Volunteer() {
       {/* @section => cards */}
       <div className="volunteer__container__cards">
         {volunteers.map((volunteer) => (
-          <VolunteerCard {...volunteer} key={volunteer._id} />
+          <VolunteerCard
+            {...volunteer}
+            key={volunteer._id}
+            onClick={(e) => {
+              e.preventDefault();
+              setIsDonationFormOpen(true);
+              setVolunteerName(
+                volunteer.first_name + ' ' + volunteer.last_name
+              );
+            }}
+          />
         ))}
       </div>
 
-      <Footer />
+      {/** @dev this is dismissiable donation form */}
+      <div
+        style={{ display: isDonationFormOpen ? 'block' : 'none' }}
+        className="home__container__landing__donationForm"
+      >
+        <Donate
+          setIsDonationFormOpen={setIsDonationFormOpen}
+          donation_type={'Volunteer'}
+          donation_name={'> ' + volunteerName}
+        />
+      </div>
 
-      <h4>
-        Made with ❤️ in <Link>Hash Technologies</Link>
-      </h4>
+      <Footer />
     </div>
   );
 }

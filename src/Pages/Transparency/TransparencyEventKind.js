@@ -86,13 +86,13 @@ export default function Causes() {
               className='btn__fund'
               onClick={() => setKFundReceived(false)}
             >
-              Fund Spent
+              Kindness Spent
             </Button>
             <Button
               className='btn__fund'
               onClick={() => setKFundReceived(true)}
             >
-              Fund Received
+              Kindness Received
             </Button>
           </div>
         </Box>
