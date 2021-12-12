@@ -31,7 +31,9 @@ export default function Home() {
   const [topDonors, setTopDonors] = useState([]);
   const [kindness, setKindness] = useState([]);
   const [totalDonations, setTotalDonations] = useState(0);
+  const [totalKindDonations, setTotalKindDonations] = useState(0);
   const [totalExpenses, setTotalExpenses] = useState(0);
+  const [totalKindExpenses, setTotalKindExpenses] = useState(0);
   const [homeHero, setHomeHero] = useState({});
   const arr = [
     'Kathmandu',
@@ -70,10 +72,24 @@ export default function Home() {
       .then(({ data }) => setTotalDonations(data.length ? data[0].donation : 0))
       .catch(({ response }) => console.log(response));
 
+    fetch(baseURL + '/find/totalkindDonations')
+      .then((data) => data.json())
+      .then(({ data }) =>
+        setTotalKindDonations(data.length ? data[0].kinddonation : 0)
+      )
+      .catch(({ response }) => console.log(response));
+
     fetch(baseURL + '/find/totalExpenses')
       .then((data) => data.json())
       .then(({ data }) =>
         setTotalExpenses(data.length ? data[0].total_expenses : 0)
+      )
+      .catch(({ response }) => console.log(response));
+
+    fetch(baseURL + '/find/totalkindExpenses')
+      .then((data) => data.json())
+      .then(({ data }) =>
+        setTotalKindExpenses(data.length ? data[0].total_kind_expenses : 0)
       )
       .catch(({ response }) => console.log(response));
 
@@ -82,7 +98,7 @@ export default function Home() {
       .then(({ data }) => setHomeHero(data[0]))
       .catch(({ response }) => console.log(response));
   }, []);
-
+  // console.log(totalKindExpenses);
   const isLoggedIn = !!(
     localStorage.getItem('user') || localStorage.getItem('vinfo')
   );
@@ -253,22 +269,31 @@ export default function Home() {
       <div className="home__container__transparency">
         <h1>Transparency</h1>
         <div className="home__container__transparency__column">
-          <div className="home__container__transparency__info">
-            <h2>Cash</h2>
+          <div className="home__container__transparency__info home__container__transparency__kindness">
+            <h2>Kinds</h2>
             <div className="home__container__transparency__info__item">
-              <h2>Rs {totalDonations}</h2>
+              <h2>
+                Rs {new Intl.NumberFormat('en-IN').format(totalKindDonations)}
+              </h2>
               <div className="home__container__transparency__info__item__title">
                 Donation Received
               </div>
             </div>
             <div className="home__container__transparency__info__item center">
-              <h2>Rs {totalExpenses}</h2>
+              <h2>
+                Rs {new Intl.NumberFormat('en-IN').format(totalKindExpenses)}
+              </h2>
               <div className="home__container__transparency__info__item__title">
                 Expenditure
               </div>
             </div>
             <div className="home__container__transparency__info__item">
-              <h2>Rs {totalDonations - totalExpenses}</h2>
+              <h2>
+                Rs{' '}
+                {new Intl.NumberFormat('en-IN').format(
+                  totalKindDonations - totalKindExpenses
+                )}
+              </h2>
               <div className="home__container__transparency__info__item__title">
                 Remaining Donation
               </div>
@@ -277,22 +302,29 @@ export default function Home() {
 
           <hr />
 
-          <div className="home__container__transparency__info home__container__transparency__kindness">
-            <h2>Kinds</h2>
+          <div className="home__container__transparency__info">
+            <h2>Cash</h2>
             <div className="home__container__transparency__info__item">
-              <h2>Rs {totalDonations}</h2>
+              <h2>
+                Rs {new Intl.NumberFormat('en-IN').format(totalDonations)}
+              </h2>
               <div className="home__container__transparency__info__item__title">
                 Donation Received
               </div>
             </div>
             <div className="home__container__transparency__info__item center">
-              <h2>Rs {totalExpenses}</h2>
+              <h2>Rs {new Intl.NumberFormat('en-IN').format(totalExpenses)}</h2>
               <div className="home__container__transparency__info__item__title">
                 Expenditure
               </div>
             </div>
             <div className="home__container__transparency__info__item">
-              <h2>Rs {totalDonations - totalExpenses}</h2>
+              <h2>
+                Rs{' '}
+                {new Intl.NumberFormat('en-IN').format(
+                  totalDonations - totalExpenses
+                )}
+              </h2>
               <div className="home__container__transparency__info__item__title">
                 Remaining Donation
               </div>
@@ -339,7 +371,7 @@ export default function Home() {
           poster={BannerPoster}
         />
         <div className="home_container_mapVideo_right">
-          <h1>Our Locations</h1>
+          <h1>Places Reached</h1>
           <ul>
             {arr.map((place, index) => (
               <li key={index}>{place}</li>
@@ -351,7 +383,7 @@ export default function Home() {
       {/** @section => act of kindness */}
       <div className="home__container__actOfKindness">
         <h1>
-          ACT OF KINDNESS <span style={{ color: 'red' }}>Featured</span>
+          Act Of Kindness <span style={{ color: 'red' }}>Featured</span>
         </h1>
 
         <div className="home__container__actOfKindness__items">
@@ -496,8 +528,11 @@ export default function Home() {
         </div>
 
         <div className="infuencer__heading">
-          <h1 style={{ marginTop: '3rem' }}>Social Influencers</h1>
+          <h1 style={{ marginTop: '3rem' }}>Social Supporters</h1>
           <InfluenerCarousel />
+        </div>
+        <div className="infuencer__heading">
+          <h1 style={{ marginTop: '3rem' }}>Our Supporters</h1>
         </div>
       </div>
 

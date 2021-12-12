@@ -82,10 +82,6 @@ export default function Volunteer() {
       </div>
 
       <Footer />
-
-      <h4>
-        Made with ❤️ in <Link>Hash Technologies</Link>
-      </h4>
     </div>
   );
 }
