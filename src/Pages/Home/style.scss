@@ -585,6 +585,11 @@
   display: flex;
   gap: 1rem;
   justify-content: flex-start;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+  }
   .ourSupporters__container {
     img {
       height: 150px;
