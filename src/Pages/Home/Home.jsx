@@ -12,8 +12,8 @@ import MapVideo from "../../Assets/nepalMap.mp4";
 import { Link } from "react-location";
 import { Helmet } from "react-helmet";
 
-import Partners from "../../Mocks/OurPartners.json";
-import OurSupporters from "../../Mocks/OurSupporters.json";
+import OurSupporters from "../../Mocks/ourSupporter.json";
+import OurPartners from "../../Mocks/ourPartner.json";
 import InfluenerCarousel from "../../Components/Influencers/InfluencersCarousel";
 
 import KindnessCard from "../../Components/Act of Kindness/KindnessCard";
@@ -446,38 +446,22 @@ export default function Home() {
           <div className='Mentor__details'>
             <h3>Dr. Sanduk Ruit</h3>
             <p>
-              Sanduk Ruit is a Nepalese ophthalmologist (eye surgeon) who has
-              used small-incision cataract surgery to restore the sight of over
-              130,000 individuals in Africa and Asia. He is also a founding
-              member of the Tilganga Institute of Ophthalmology. He has been
-              dubbed the "God of Sight" for his efforts in bringing excellent,
-              life-changing cataract surgery to the lowest of the impoverished.
-              He was a founding member of the Tilganga Institute of
-              Ophthalmology, which gives free treatment to individuals who
-              cannot afford it. It produces high-quality intraocular lenses for
-              surgery for a tenth of the cost of its prior production. Because
-              of the incredibly inexpensive cost of these lenses, even the
-              poorest people may now afford professional cataract surgery. He
-              received the prestigious Ramon Magsaysay Award for Peace and
-              International Understanding, considered the Asian equivalent of
-              the Nobel Prize, for "putting Nepal at the forefront of developing
-              safe, effective, and cost-effective cataract surgery procedures,
-              allowing the needlessly blind in even the poorest countries to see
-              again."
-            </p>
-            <p>
-              Dr. Sanduk Ruit has been a tremendous help to Hami Nepal. He
-              serves as Hami Nepal's backbone. Throughout the tasks undertaken
-              by the Hami Nepal team, he has consistently provided
-              contributions. Even when he couldn't be physically present, he
-              would always lead us via his experiences. He assisted our team in
-              the verification procedure. Dr. Sanduk provided our team with all
-              of the essential information, making the verification process much
-              easier, particularly when dealing with hospitals. He also offered
-              a team of experts to carry out the task. Dr. Sanduk also assisted
-              Hami Nepal with its activities. Nonetheless, he has always served
-              as a protector, advising us on how to establish a competent team
-              and how to improve internal operations.
+              Dr. Sanduk Ruit, as we all know is an opthalmologist widely
+              recognised for providing extraordinary sercices in the field of
+              ophthalmology. He is not just known as a doctor or a surgeon but
+              as angel who has been sent to help visually impaired people to
+              bring back their sight as well as their happiness. Since Sanduk
+              Ruit himself has been serving the needy ones, he has been a great
+              supporter of Hami Nepal because our motto is same that is-service.
+              He has always been a fatherly figure to the team. Even during the
+              times when he couldn't be physically present with us, he has led
+              us with his experience, ideas and visions. Dr. Ruit assisted our
+              team in verification process by providing require indormation
+              which made the process much more easier, especially whilst dealing
+              with hospitals. Not only that, he even helped us by providing a
+              team of experts to carry out the task more efficiently and
+              effectively. As a fatherly figure, he has always been there for us
+              when we need any kind of support.
             </p>
           </div>
         </div>
@@ -496,6 +480,23 @@ export default function Home() {
           ))}
         </ul> */}
 
+        <div className='Supporters'>
+          {OurPartners.partners.map((partner) => (
+            <div className='ourSupporters__container'>
+              <a href={partner.link} target='_blank' rel='noreferrer'>
+                <img src={partner.photo} alt='' />
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <div className='infuencer__heading'>
+          <h1 style={{ marginTop: "3rem" }}>Social Supporters</h1>
+          <InfluenerCarousel />
+        </div>
+        <div className='supporter_heading'>
+          <h1 style={{ marginTop: "3rem" }}>Our Supporters</h1>
+        </div>
         <div className='home__ourPartners__scroll'>
           <ArrowCircleLeftIcon
             fontSize='large'
@@ -506,10 +507,10 @@ export default function Home() {
             className='home__ourPartners__scroll__container'
             ref={partnerScrollContainer}
           >
-            {Partners.partners.map((partner) => (
+            {OurSupporters.supporters.map((supporter) => (
               <div className='home__ourPartners__scroll__child'>
-                <a href={partner.link} target='_blank' rel='noreferrer'>
-                  <img src={partner.photo} alt='' />
+                <a href={supporter.link} target='_blank' rel='noreferrer'>
+                  <img src={supporter.photo} alt='' />
                 </a>
               </div>
             ))}
@@ -519,23 +520,6 @@ export default function Home() {
             fontSize='large'
             onClick={onPartnerRightButtonClick}
           />
-        </div>
-
-        <div className='infuencer__heading'>
-          <h1 style={{ marginTop: "3rem" }}>Social Supporters</h1>
-          <InfluenerCarousel />
-        </div>
-        <div className='supporter_heading'>
-          <h1 style={{ marginTop: "3rem" }}>Our Supporters</h1>
-        </div>
-        <div className='Supporters'>
-          {OurSupporters.supporters.map((supp) => (
-            <div className='ourSupporters__container'>
-              <a href={supp.link} target='_blank' rel='noreferrer'>
-                <img src={supp.photo} alt='' />
-              </a>
-            </div>
-          ))}
         </div>
       </div>
       <Footer />

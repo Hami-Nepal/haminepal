@@ -136,7 +136,7 @@ export default function TransparencyCausesTabs() {
             >
               <h2 style={{ margin: "1rem" }}>{card.name}</h2>
               <img src={card.photos[0]} className='item__image' alt='project' />
-              <div className='item__info'>{card.description}</div>
+              <div className='item__info'>{card.summary}</div>
             </Link>
           ))}
         </TabPanel>

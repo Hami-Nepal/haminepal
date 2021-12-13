@@ -1,17 +1,5 @@
 {
-  "partners": [
-    {
-      "photo": "https://www.cmsjob.com/uploads/2019/06/shankerlogo.jpg",
-      "link": "https://www.shankergroup.com"
-    },
-    {
-      "photo": "https://infinityholdings.biz/wp-content/uploads/2021/09/cropped-infinity-logo.png",
-      "link": "/"
-    },
-    {
-      "photo": "https://hami-nepal.web.app/assets/logo6.a9795fc3.jpg",
-      "link": "http://barbarafoundation.org/"
-    },
+  "supporters": [
     {
       "photo": "https://hami-nepal.web.app/assets/logo3.0a46c67e.jpg",
       "link": "http://www.dalle.com.np/"
@@ -26,8 +14,20 @@
       "link": "https://www.metalfornepal.org/about"
     },
     {
+      "photo": "https://scontent.fktm12-1.fna.fbcdn.net/v/t1.6435-9/131373500_103641958303608_1448770756175746929_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=RTc6y9o6F0kAX-uq6vS&_nc_ht=scontent.fktm12-1.fna&oh=1ceac0db92f6e9c3beaf89378aec9b4e&oe=61D78AED",
+      "link": "https://hashtechnologies.net/"
+    },
+    {
       "photo": "https://visioncraft.com.np/resources/front/assets/image/new-logo.png",
       "link": "https://visioncraft.com.np"
+    },
+    {
+      "photo": "https://www.ktmcty.com/frontend/assets/media/general/logo-dark.png",
+      "link": "https://www.ktmcty.com/nepal/home"
+    },
+    {
+      "photo": "https://iclean-tech.com/wp-content/uploads/2021/04/ic-logo.svg",
+      "link": "https://iclean-tech.com/"
     },
     {
       "photo": "https://www.goldstarshoes.com/MediaThumb/original/Media/Goldstar/Logos/goldstar-logo-blue.png",
@@ -40,10 +40,6 @@
     {
       "photo": "https://media-exp1.licdn.com/dms/image/C4E0BAQEKwzGiyoOE1Q/company-logo_200_200/0/1591528533367?e=2159024400&v=beta&t=BjakTTf224J0Zc0XLs6tcEPH7MDz0lAFUNB2cfAAhs0",
       "link": "https://www.agnigroup.com.np/"
-    },
-    {
-      "photo": "https://www.ktmcty.com/frontend/assets/media/general/logo-dark.png",
-      "link": "https://www.ktmcty.com/nepal/home"
     },
     {
       "photo": "https://scontent.fbir5-1.fna.fbcdn.net/v/t1.6435-9/200493895_115718170724397_1290592248048219717_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=bDrZHJFDbJQAX-0WwF3&tn=YESPt14WvUnd0KBr&_nc_ht=scontent.fbir5-1.fna&oh=656a3f2855e7386fcb9277a25b346ed2&oe=61D49DEC",
@@ -76,14 +72,6 @@
     {
       "photo": "https://krishnapaurotibhandar.com/wp-content/uploads/2020/11/cropped-Logo-01-2-1-1.png",
       "link": "https://krishnapaurotibhandar.com/"
-    },
-    {
-      "photo": "https://iclean-tech.com/wp-content/uploads/2021/04/ic-logo.svg",
-      "link": "https://iclean-tech.com/"
-    },
-    {
-      "photo": "https://scontent.fktm12-1.fna.fbcdn.net/v/t1.6435-9/131373500_103641958303608_1448770756175746929_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=RTc6y9o6F0kAX-uq6vS&_nc_ht=scontent.fktm12-1.fna&oh=1ceac0db92f6e9c3beaf89378aec9b4e&oe=61D78AED",
-      "link": "https://hashtechnologies.net/"
     }
   ]
 }

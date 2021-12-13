@@ -1,5 +1,5 @@
 {
-  "supporters": [
+  "partners": [
     {
       "photo": "https://www.cmsjob.com/uploads/2019/06/shankerlogo.jpg",
       "link": "https://www.shankergroup.com"
@@ -11,10 +11,6 @@
     {
       "photo": "https://hami-nepal.web.app/assets/logo6.a9795fc3.jpg",
       "link": "http://barbarafoundation.org/"
-    },
-    {
-      "photo": "https://hami-nepal.web.app/assets/logo1.f1a65aac.jpg",
-      "link": "https://www.metalfornepal.org/about"
     }
   ]
 }
