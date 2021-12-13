@@ -14,14 +14,13 @@
 
   .causes__container__items > .MuiBox-root > p {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
     flex-wrap: wrap;
+    gap: 3rem;
 
     .item {
       text-decoration: none;
       color: #000;
-      width: 25vw;
+      width: 28vw;
       margin-top: 40px;
       box-shadow: 0 0 2px 0 rgba(145, 158, 171, 0.24),
         0 16px 32px -4px rgba(145, 158, 171, 0.24);
@@ -37,12 +36,29 @@
       }
       img {
         width: 100%;
+        height: 220px;
+        object-fit: cover;
+        object-position: center;
         border-radius: 14px 14px 0 0;
+      }
+      h2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
 
       .item__info {
+        // margin-bottom: 1.5rem;
         padding: 20px;
-        line-height: 1.7;
+        line-height: 1.625;
+        margin-bottom: 1rem;
+        height: max-content;
+        max-height: 70px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
 
       .MuiButton-root {

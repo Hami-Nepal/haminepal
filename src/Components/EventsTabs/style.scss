@@ -40,12 +40,19 @@
         object-position: center;
         border-radius: 14px 14px 0 0;
       }
+      h2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
 
       .item__info {
         // margin-bottom: 1.5rem;
         padding: 20px;
         line-height: 1.625;
         height: max-content;
+        margin-bottom: 1rem;
         max-height: 70px;
         display: -webkit-box;
         -webkit-line-clamp: 2;
