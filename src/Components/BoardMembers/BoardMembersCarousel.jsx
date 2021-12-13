@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect } from "react"
 import "./style.scss"
 
 import Carousel from "react-elastic-carousel"
@@ -16,26 +16,9 @@ export default function BoardMembersCarousel() {
     fetchData()
   }, [])
 
-  const carouselRef = useRef(null)
-  let resetTimeout
-
   return (
     <div className="boardMembersCarousel__container">
-      <Carousel
-        className="boardMembersCarousel__container__carourel"
-        ref={carouselRef}
-        enableAutoPlay
-        autoPlaySpeed={3000} // same time
-        onNextEnd={({ index }) => {
-          clearTimeout(resetTimeout)
-          if (index + 1 === 11) {
-            resetTimeout = setTimeout(() => {
-              carouselRef.current.goTo(0)
-            }, 3000) // same time
-          }
-        }}
-        itemsToShow={1}
-      >
+      <Carousel className="boardMembersCarousel__container__carourel">
         {Members &&
           Members.map((member, index) => (
             <div className="boardMembersCarousel__container__item" key={index}>
