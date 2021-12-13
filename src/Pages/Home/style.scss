@@ -51,7 +51,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 65px 50px;
+      padding: 20px 50px;
       flex-wrap: wrap;
 
       h1 {
@@ -81,6 +81,7 @@
           border: 3px solid #fff;
           border-radius: 50%;
           padding: 30px 8px;
+          margin-bottom: -30px;
         }
 
         &:hover {
@@ -584,4 +585,16 @@
   display: flex;
   gap: 1rem;
   justify-content: center;
+  .ourSupporters__container {
+    img {
+      height: 150px;
+      width: 150px;
+      object-fit: contain;
+      border-radius: 10%;
+
+      @media (max-width: 768px) {
+        margin-top: 20px;
+      }
+    }
+  }
 }
