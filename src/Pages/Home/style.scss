@@ -584,7 +584,7 @@
 .Supporters {
   display: flex;
   gap: 1rem;
-  justify-content: center;
+  justify-content: flex-start;
   .ourSupporters__container {
     img {
       height: 150px;
