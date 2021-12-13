@@ -4,7 +4,6 @@ import "./style.scss"
 import { Link } from "react-location"
 
 import Footer from "../../Components/Footer/Footer"
-import OurWorkTabs from "../../Components/OurWorkTabs/OurWorkTabs"
 import NavBar from "../../Components/NavBar/Nav"
 
 export default function OurWork() {
@@ -36,6 +35,7 @@ export default function OurWork() {
               adipisicing elit. Harum aut error unde? Voluptate asperiores
               dolore, hic consectetur molestiae minus recusandae consequuntur ex
               repellat quasi ipsam tempore placeat nulla repudiandae non.
+              <br />
               <br />
               <Link to="/act-of-kindness">
                 <span>See our all kindness</span>
@@ -88,6 +88,7 @@ export default function OurWork() {
               dolore, hic consectetur molestiae minus recusandae consequuntur ex
               repellat quasi ipsam tempore placeat nulla repudiandae non.
               <br />
+              <br />
               <Link to="/events">
                 <span>See our all events</span>
               </Link>
@@ -138,6 +139,7 @@ export default function OurWork() {
               adipisicing elit. Harum aut error unde? Voluptate asperiores
               dolore, hic consectetur molestiae minus recusandae consequuntur ex
               repellat quasi ipsam tempore placeat nulla repudiandae non.
+              <br />
               <br />
               <Link to="causes">
                 <span>See our all causes</span>
