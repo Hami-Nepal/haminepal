@@ -120,10 +120,10 @@ export default function EventFocused() {
             <p>{data.challenges}</p>
           </div>
           {/* @section => difficulties */}
-          <div className='eventFocused__container__difficulties'>
+          {/* <div className='eventFocused__container__difficulties'>
             <h1>Difficulties</h1>
             <p>{data.difficulties}</p>
-          </div>
+          </div> */}
 
           {/* @section => volunteers */}
           <div className='eventFocused__container__volunteers'>
