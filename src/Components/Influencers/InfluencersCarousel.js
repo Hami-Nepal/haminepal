@@ -13,13 +13,13 @@ export default function BoardMembersCarousel() {
         className='boardMembersCarousel__container__carourel'
         ref={carouselRef}
         enableAutoPlay
-        autoPlaySpeed={4000} // same time
+        autoPlaySpeed={10000} // same time
         onNextEnd={({ index }) => {
           clearTimeout(resetTimeout);
           if (index + 1 === 11) {
             resetTimeout = setTimeout(() => {
               carouselRef.current.goTo(0);
-            }, 4000); // same time
+            }, 10000); // same time
           }
         }}
         itemsToShow={1}
