@@ -212,6 +212,8 @@ export default function CausesTabs() {
               <div className='item__info'>{card.summary}</div>
               {token ? (
                 buttonForVolunteer(card)
+              ) : card.status === "past" ? (
+                ""
               ) : (
                 <Button
                   onClick={(e) => {

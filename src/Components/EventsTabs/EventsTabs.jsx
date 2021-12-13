@@ -211,6 +211,8 @@ export default function EventTabs() {
               <div className='item__info'>{card.summary} </div>
               {token ? (
                 buttonForVolunteer(card)
+              ) : card.status === "past" ? (
+                ""
               ) : (
                 <Button
                   onClick={(e) => {
