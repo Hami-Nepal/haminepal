@@ -13,6 +13,7 @@ import { Link } from 'react-location';
 import { Helmet } from 'react-helmet';
 
 import OurSupporters from '../../Mocks/ourSupporter.json';
+import Carousel from 'react-elastic-carousel';
 import OurPartners from '../../Mocks/ourPartner.json';
 import InfluenerCarousel from '../../Components/Influencers/InfluencersCarousel';
 
@@ -109,6 +110,9 @@ export default function Home() {
     partnerScrollContainer.current.scrollLeft +=
       (document.documentElement.scrollWidth * 50) / 100;
   };
+
+  const carouselRef = React.useRef(null);
+  let resetTimeout;
 
   return (
     <div className="home__container">
@@ -405,6 +409,7 @@ export default function Home() {
         <h1>Our Board Members</h1>
         <BoardMembersCarousel />
       </div>
+
       {/** @section => coming soon */}
       <div className="home__container__comingSoon">
         <img
@@ -498,28 +503,34 @@ export default function Home() {
           <h1 style={{ marginTop: '3rem' }}>Our Supporters</h1>
         </div>
         <div className="home__ourPartners__scroll">
-          <ArrowCircleLeftIcon
-            fontSize="large"
-            onClick={onPartnerLeftButtonClick}
-          />
-
-          <div
-            className="home__ourPartners__scroll__container"
-            ref={partnerScrollContainer}
+          <Carousel
+            className="influencersCarousel__container__carourel"
+            ref={carouselRef}
+            enableAutoPlay
+            autoPlaySpeed={500} // same time
+            onNextEnd={({ index }) => {
+              console.log(index);
+              clearTimeout(resetTimeout);
+              if (index + 1 === 8) {
+                resetTimeout = setTimeout(() => {
+                  carouselRef.current.goTo(0);
+                }, 500); // same time
+              }
+            }}
+            itemsToShow={8}
           >
-            {OurSupporters.supporters.map((supporter) => (
-              <div className="home__ourPartners__scroll__child">
-                <a href={supporter.link} target="_blank" rel="noreferrer">
-                  <img src={supporter.photo} alt="" />
-                </a>
-              </div>
-            ))}
-          </div>
-
-          <ArrowCircleRightIcon
-            fontSize="large"
-            onClick={onPartnerRightButtonClick}
-          />
+            {OurSupporters.supporters &&
+              OurSupporters.supporters.map((member, index) => (
+                <div
+                  className="influencersCarousel__container__item"
+                  key={index}
+                >
+                  <a href={member.link} rel="noreferrer" target="_blank">
+                    <img src={member.photo} alt="Influencer member" />
+                  </a>
+                </div>
+              ))}
+          </Carousel>
         </div>
       </div>
       <Footer />
