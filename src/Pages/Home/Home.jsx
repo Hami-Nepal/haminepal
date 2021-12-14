@@ -194,11 +194,13 @@ export default function Home() {
           }}
         >
           <div className="home__container__landing__hiddenMenu__topbar">
-            <img
-              className="home__container__landing__topbar__logo"
-              src={Logo}
-              alt="haminepal logo"
-            />
+            <a href="/">
+              <img
+                className="home__container__landing__topbar__logo"
+                src={Logo}
+                alt="haminepal logo"
+              />
+            </a>
 
             <button onClick={() => setIsActiveMenu(false)}>
               <i className="ri-close-line"></i>

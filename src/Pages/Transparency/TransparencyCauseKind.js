@@ -85,15 +85,15 @@ export default function Causes() {
           <div className='causesTabs__meroTabs'>
             <Button
               className='btn__fund'
-              onClick={() => setKFundReceived(false)}
-            >
-              Kind Donation Spent
-            </Button>
-            <Button
-              className='btn__fund'
               onClick={() => setKFundReceived(true)}
             >
               Kind Donation Received
+            </Button>
+            <Button
+              className='btn__fund'
+              onClick={() => setKFundReceived(false)}
+            >
+              Kind Donation Spent
             </Button>
           </div>
         </Box>
@@ -119,7 +119,9 @@ export default function Causes() {
                   >
                     <div className='d-flex flex-column'>
                       <h6>
-                        <b>{row.name}</b>
+                        <b>
+                          {row.name}, Qty. = {row.quantity}
+                        </b>
                       </h6>
                       <p>{row.createdAt.slice(0, 10)}</p>
                     </div>
@@ -148,7 +150,9 @@ export default function Causes() {
                   >
                     <div className='d-flex flex-column'>
                       <h6>
-                        <b>{donation.donerFullName}</b>
+                        <b>
+                          {donation.donerFullName}, Qty. ={donation.quantity}
+                        </b>
                       </h6>
                       <p>{donation.createdAt.slice(0, 10)}</p>
                       <p>{donation.donatedItem}</p>
@@ -187,38 +191,46 @@ export default function Causes() {
         </div>
         {!kFundReceived ? (
           <div className='billCarousel__container'>
-            <Carousel
-              className='billCarousel__container__carourel'
-              infiniteLoop={true}
-            >
-              {modalPhoto.map((photo, index) => (
-                <div className='billCarousel__container__item' key={index}>
-                  <img
-                    src={photo}
-                    alt='bill'
-                    key={index}
-                    // style={{ width: "60%", height: "auto" }}
-                  />
-                  ;
-                </div>
-              ))}
-            </Carousel>
+            {modalPhoto.length != 0 ? (
+              <Carousel
+                className='billCarousel__container__carourel'
+                infiniteLoop={true}
+              >
+                {modalPhoto.map((photo, index) => (
+                  <div className='billCarousel__container__item' key={index}>
+                    <img
+                      src={photo}
+                      alt='bill'
+                      key={index}
+                      // style={{ width: "60%", height: "auto" }}
+                    />
+                    ;
+                  </div>
+                ))}
+              </Carousel>
+            ) : (
+              ""
+            )}
           </div>
         ) : (
           <div className='billCarousel__container'>
-            <Carousel className='billCarousel__container__carourel'>
-              {modalKindPhoto.map((photo, index) => (
-                <div className='billCarousel__container__item' key={index}>
-                  <img
-                    src={photo}
-                    alt='bill'
-                    key={index}
-                    // style={{ width: "60%", height: "auto" }}
-                  />
-                  ;
-                </div>
-              ))}
-            </Carousel>
+            {modalKindPhoto.length != 0 ? (
+              <Carousel className='billCarousel__container__carourel'>
+                {modalKindPhoto.map((photo, index) => (
+                  <div className='billCarousel__container__item' key={index}>
+                    <img
+                      src={photo}
+                      alt='bill'
+                      key={index}
+                      // style={{ width: "60%", height: "auto" }}
+                    />
+                    ;
+                  </div>
+                ))}
+              </Carousel>
+            ) : (
+              ""
+            )}
           </div>
         )}
       </div>
