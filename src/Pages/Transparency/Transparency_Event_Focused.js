@@ -96,14 +96,14 @@ export default function Causes() {
       <div className='causesTabs__container'>
         <Box>
           <div className='causesTabs__meroTabs'>
+            <Button className='btn__fund' onClick={() => setFundReceived(true)}>
+              Fund Received
+            </Button>
             <Button
               className='btn__fund'
               onClick={() => setFundReceived(false)}
             >
               Fund Spent
-            </Button>
-            <Button className='btn__fund' onClick={() => setFundReceived(true)}>
-              Fund Received
             </Button>
           </div>
         </Box>
@@ -190,22 +190,26 @@ export default function Causes() {
         </div>
         {!fundReceived && (
           <div className='billCarousel__container'>
-            <Carousel
-              className='billCarousel__container__carourel'
-              infiniteLoop={true}
-            >
-              {modalPhoto.map((photo, index) => (
-                <div className='billCarousel__container__item' key={index}>
-                  <img
-                    src={photo}
-                    alt='bill'
-                    key={index}
-                    // style={{ width: "60%", height: "auto" }}
-                  />
-                  ;
-                </div>
-              ))}
-            </Carousel>
+            {modalPhoto.length != 0 ? (
+              <Carousel
+                className='billCarousel__container__carourel'
+                infiniteLoop={true}
+              >
+                {modalPhoto.map((photo, index) => (
+                  <div className='billCarousel__container__item' key={index}>
+                    <img
+                      src={photo}
+                      alt='bill'
+                      key={index}
+                      // style={{ width: "60%", height: "auto" }}
+                    />
+                    ;
+                  </div>
+                ))}
+              </Carousel>
+            ) : (
+              ""
+            )}
           </div>
         )}
       </div>
