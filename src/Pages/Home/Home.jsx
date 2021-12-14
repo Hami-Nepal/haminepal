@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import './style.scss';
 
@@ -26,17 +27,47 @@ import baseURL from '../../api/baseURL';
 
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+=======
+import React, { useEffect, useState } from "react"
+import "./style.scss"
+
+import Logo from "../../Assets/logo.png"
+
+import BannerVideo from "../../Assets/banner.mp4"
+import BannerVideoWebm from "../../Assets/banner.webm"
+import BannerVideoOgm from "../../Assets/banner.ogm"
+import BannerPoster from "../../Assets/poster-banner.png"
+import MapVideo from "../../Assets/nepalMap.mp4"
+
+import { Link } from "react-location"
+import { Helmet } from "react-helmet"
+
+import OurSupporters from "../../Mocks/ourSupporter.json"
+import OurPartners from "../../Mocks/ourPartner.json"
+import InfluenerCarousel from "../../Components/Influencers/InfluencersCarousel"
+
+import KindnessCard from "../../Components/Act of Kindness/KindnessCard"
+import BoardMembersCarousel from "../../Components/BoardMembers/BoardMembersCarousel"
+import Footer from "../../Components/Footer/Footer"
+import Donate from "../../Components/Donate/Donate"
+
+import baseURL from "../../api/baseURL"
+
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft"
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight"
+>>>>>>> 4038ddd802a23054430502e6e69ffc400f440d57
 
 export default function Home() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
-  const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
-  const [kindness, setKindness] = useState([]);
-  const [totalDonations, setTotalDonations] = useState(0);
-  const [totalKindDonations, setTotalKindDonations] = useState(0);
-  const [totalExpenses, setTotalExpenses] = useState(0);
-  const [totalKindExpenses, setTotalKindExpenses] = useState(0);
-  const [homeHero, setHomeHero] = useState({});
+  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
+  const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false)
+  const [kindness, setKindness] = useState([])
+  const [totalDonations, setTotalDonations] = useState(0)
+  const [totalKindDonations, setTotalKindDonations] = useState(0)
+  const [totalExpenses, setTotalExpenses] = useState(0)
+  const [totalKindExpenses, setTotalKindExpenses] = useState(0)
+  const [homeHero, setHomeHero] = useState({})
   const arr = [
+<<<<<<< HEAD
     'Kathmandu',
     'Pokhara',
     'Hetauda',
@@ -55,61 +86,86 @@ export default function Home() {
     'Rukum',
     'Bardiya',
   ];
+=======
+    "Kathmandu",
+    "Pokhara",
+    "Hetauda",
+    "Birgung",
+    "Manang",
+    "Besisahar",
+    "Bhaktapur",
+    "Helambu",
+    "Remachap",
+    "Bhojpur",
+    "Bheri",
+    "Doti",
+    "Dhangadi",
+    "Mugu",
+    "Karnali",
+    "Rukum",
+    "Bardiya",
+  ]
+>>>>>>> 4038ddd802a23054430502e6e69ffc400f440d57
 
   useEffect(() => {
     fetch(baseURL + '/kindness/featured')
       .then((data) => data.json())
       .then(({ featured }) => setKindness(featured))
-      .catch(({ response }) => console.log(response));
+      .catch(({ response }) => console.log(response))
 
     fetch(baseURL + '/find/totalDonations')
       .then((data) => data.json())
       .then(({ data }) => setTotalDonations(data.length ? data[0].donation : 0))
-      .catch(({ response }) => console.log(response));
+      .catch(({ response }) => console.log(response))
 
     fetch(baseURL + '/find/totalkindDonations')
       .then((data) => data.json())
       .then(({ data }) =>
         setTotalKindDonations(data.length ? data[0].kinddonation : 0)
       )
-      .catch(({ response }) => console.log(response));
+      .catch(({ response }) => console.log(response))
 
     fetch(baseURL + '/find/totalExpenses')
       .then((data) => data.json())
       .then(({ data }) =>
         setTotalExpenses(data.length ? data[0].total_expenses : 0)
       )
-      .catch(({ response }) => console.log(response));
+      .catch(({ response }) => console.log(response))
 
     fetch(baseURL + '/find/totalkindExpenses')
       .then((data) => data.json())
       .then(({ data }) =>
         setTotalKindExpenses(data.length ? data[0].total_kind_expenses : 0)
       )
-      .catch(({ response }) => console.log(response));
+      .catch(({ response }) => console.log(response))
 
     fetch(baseURL + '/homepage')
       .then((data) => data.json())
       .then(({ data }) => setHomeHero(data[0]))
-      .catch(({ response }) => console.log(response));
-  }, []);
+      .catch(({ response }) => console.log(response))
+  }, [])
   // console.log(totalKindExpenses);
   const isLoggedIn = !!(
+<<<<<<< HEAD
     localStorage.getItem('user') || localStorage.getItem('vinfo')
   );
+=======
+    localStorage.getItem("user") || localStorage.getItem("vinfo")
+  )
+>>>>>>> 4038ddd802a23054430502e6e69ffc400f440d57
 
   // scroll 50% of the screen on click
-  const partnerScrollContainer = React.useRef();
+  const partnerScrollContainer = React.useRef()
 
   const onPartnerLeftButtonClick = () => {
     partnerScrollContainer.current.scrollLeft -=
-      (document.documentElement.scrollWidth * 50) / 100;
-  };
+      (document.documentElement.scrollWidth * 50) / 100
+  }
 
   const onPartnerRightButtonClick = () => {
     partnerScrollContainer.current.scrollLeft +=
-      (document.documentElement.scrollWidth * 50) / 100;
-  };
+      (document.documentElement.scrollWidth * 50) / 100
+  }
 
   const carouselRef = React.useRef(null);
   let resetTimeout;
@@ -182,7 +238,11 @@ export default function Home() {
 
         {/** @dev this is dismissiable donation form */}
         <div
+<<<<<<< HEAD
           style={{ display: isDonationFormOpen ? 'block' : 'none' }}
+=======
+          style={{ display: isDonationFormOpen ? "block" : "none" }}
+>>>>>>> 4038ddd802a23054430502e6e69ffc400f440d57
           className="home__container__landing__donationForm"
         >
           <Donate
@@ -198,11 +258,21 @@ export default function Home() {
           }}
         >
           <div className="home__container__landing__hiddenMenu__topbar">
+<<<<<<< HEAD
             <img
               className="home__container__landing__topbar__logo"
               src={Logo}
               alt="haminepal logo"
             />
+=======
+            <a href="/">
+              <img
+                className="home__container__landing__topbar__logo"
+                src={Logo}
+                alt="haminepal logo"
+              />
+            </a>
+>>>>>>> 4038ddd802a23054430502e6e69ffc400f440d57
 
             <button onClick={() => setIsActiveMenu(false)}>
               <i className="ri-close-line"></i>
@@ -230,7 +300,7 @@ export default function Home() {
                 <Link
                   to="/"
                   onClick={() => {
-                    localStorage.clear();
+                    localStorage.clear()
                   }}
                 >
                   Logout
@@ -311,7 +381,11 @@ export default function Home() {
               </div>
             </div>
             <div className="home__container__transparency__info__item center">
+<<<<<<< HEAD
               <h2>Rs {new Intl.NumberFormat('en-IN').format(totalExpenses)}</h2>
+=======
+              <h2>Rs {new Intl.NumberFormat("en-IN").format(totalExpenses)}</h2>
+>>>>>>> 4038ddd802a23054430502e6e69ffc400f440d57
               <div className="home__container__transparency__info__item__title">
                 Expenditure
               </div>
@@ -444,7 +518,11 @@ export default function Home() {
         <h1>Our Mentor</h1>
         <div className="Mentor">
           <img
+<<<<<<< HEAD
             style={{ width: 450, height: 400, borderRadius: '4%' }}
+=======
+            style={{ width: 450, height: 400, borderRadius: "4%" }}
+>>>>>>> 4038ddd802a23054430502e6e69ffc400f440d57
             src="https://www.abc.net.au/cm/rimage/9966990-1x1-large.jpg?v=3"
             alt="Sandukh Ruit"
           />
@@ -496,6 +574,7 @@ export default function Home() {
         </div>
 
         <div className="infuencer__heading">
+<<<<<<< HEAD
           <h1 style={{ marginTop: '3rem' }}>Social Supporters</h1>
           <InfluenerCarousel />
         </div>
@@ -531,9 +610,40 @@ export default function Home() {
                 </div>
               ))}
           </Carousel>
+=======
+          <h1 style={{ marginTop: "3rem" }}>Social Supporters</h1>
+          <InfluenerCarousel />
+        </div>
+        <div className="supporter_heading">
+          <h1 style={{ marginTop: "3rem" }}>Our Supporters</h1>
+        </div>
+        <div className="home__ourPartners__scroll">
+          <ArrowCircleLeftIcon
+            fontSize="large"
+            onClick={onPartnerLeftButtonClick}
+          />
+
+          <div
+            className="home__ourPartners__scroll__container"
+            ref={partnerScrollContainer}
+          >
+            {OurSupporters.supporters.map((supporter) => (
+              <div className="home__ourPartners__scroll__child">
+                <a href={supporter.link} target="_blank" rel="noreferrer">
+                  <img src={supporter.photo} alt="" />
+                </a>
+              </div>
+            ))}
+          </div>
+
+          <ArrowCircleRightIcon
+            fontSize="large"
+            onClick={onPartnerRightButtonClick}
+          />
+>>>>>>> 4038ddd802a23054430502e6e69ffc400f440d57
         </div>
       </div>
       <Footer />
     </div>
-  );
+  )
 }
