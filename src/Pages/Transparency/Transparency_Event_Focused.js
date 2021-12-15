@@ -190,7 +190,7 @@ export default function Causes() {
         </div>
         {!fundReceived && (
           <div className='billCarousel__container'>
-            {modalPhoto.length != 0 ? (
+            {modalPhoto.length !== 0 ? (
               <Carousel
                 className='billCarousel__container__carourel'
                 infiniteLoop={true}

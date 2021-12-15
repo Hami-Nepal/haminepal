@@ -191,7 +191,7 @@ export default function Causes() {
         </div>
         {!kFundReceived ? (
           <div className='billCarousel__container'>
-            {modalPhoto.length != 0 ? (
+            {modalPhoto.length !== 0 ? (
               <Carousel
                 className='billCarousel__container__carourel'
                 infiniteLoop={true}
@@ -214,7 +214,7 @@ export default function Causes() {
           </div>
         ) : (
           <div className='billCarousel__container'>
-            {modalKindPhoto.length != 0 ? (
+            {modalKindPhoto.length !== 0 ? (
               <Carousel className='billCarousel__container__carourel'>
                 {modalKindPhoto.map((photo, index) => (
                   <div className='billCarousel__container__item' key={index}>
