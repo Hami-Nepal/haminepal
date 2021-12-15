@@ -63,6 +63,10 @@ export default function CauseFocused() {
       .catch(({ response }) => console.log(response));
   }, [data]);
 
+  const createMarkup = () => {
+    return { __html: data.description };
+  };
+
   return (
     <div className='causeFocused__container'>
       <NavBar />
@@ -105,7 +109,10 @@ export default function CauseFocused() {
         <>
           <div className='causeFocused__container__details'>
             <h1>Description</h1>
-            <p>{data.description}</p>
+            <div
+              dangerouslySetInnerHTML={createMarkup()}
+              className='editor'
+            ></div>
           </div>
 
           {/* @section => challenges */}

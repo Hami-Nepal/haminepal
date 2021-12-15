@@ -59,6 +59,10 @@ export default function EventFocused() {
       .catch(({ response }) => console.log(response));
   }, [data]);
 
+  const createMarkup = () => {
+    return { __html: data.description };
+  };
+
   return (
     <div className='eventFocused__container'>
       <NavBar />
@@ -111,7 +115,10 @@ export default function EventFocused() {
         <>
           <div className='eventFocused__container__details'>
             <h1>Description</h1>
-            <p>{data.description}</p>
+            <div
+              dangerouslySetInnerHTML={createMarkup()}
+              className='editor'
+            ></div>
           </div>
 
           {/* @section => challenges */}
