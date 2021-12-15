@@ -609,3 +609,25 @@
     }
   }
 }
+
+.home__ourPartners__scroll {
+  text-align: center;
+
+  .sc-bdvvtL,
+  .cNNJIt,
+  .rec,
+  .rec-arrow,
+  .rec,
+  .rec-arrow-right,
+  .jRFJkP,
+  .rec-arrow-left {
+    background: transparent !important;
+    box-shadow: none !important;
+
+    &:disabled {
+      cursor: not-allowed;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+  }
+}
