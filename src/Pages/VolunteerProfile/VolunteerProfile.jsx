@@ -89,7 +89,29 @@ export default function VolunteerProfile(props) {
       .catch(({ response }) => console.log(response));
   }, []);
 
-  console.log(projects);
+  const updateVolunteerProfile = (e) => {
+    if (!e.target.files.length) return;
+
+    const formData = new FormData();
+    formData.append('photo', e.target.files[0]);
+
+    axios
+      .put(
+        baseURL + '/volunteers/' + window.location.pathname.split('/').pop(),
+        formData,
+        {
+          headers: {
+            Authorization: 'Bearer ' + isLoggedIn,
+          },
+        }
+      )
+      .then(({ data }) => {
+        setVolunteer(data.data);
+      })
+      .catch(({ response }) => {
+        console.log(response);
+      });
+  };
 
   return (
     <div className="volunteerProfile__container">
@@ -100,7 +122,17 @@ export default function VolunteerProfile(props) {
       {/* @section => main content */}
       <div className="volunteerProfile__container__main">
         <div className="volunteerProfile__container__main__userimage">
-          <img src={volunteer.photo} alt="" />
+          <picture>
+            <img src={volunteer.photo} alt="" />
+            <label>
+              Update
+              <input
+                type="file"
+                onChange={updateVolunteerProfile}
+                accept="image/*"
+              />
+            </label>
+          </picture>
           <div className="name">
             {volunteer.first_name} {volunteer.last_name}
           </div>

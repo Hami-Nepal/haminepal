@@ -296,3 +296,33 @@
   font-weight: 600;
   color: rgb(138, 28, 28);
 }
+
+.volunteerProfile__container__main__userimage {
+  picture {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    max-width: 250px;
+    margin: auto;
+    border-radius: 100rem;
+  }
+
+  label {
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding: 0.5rem 0 1rem;
+    background-color: #a11a1cc9;
+    font-weight: bold;
+
+    &:hover {
+      background-color: #a11a1c;
+    }
+
+    input {
+      display: none;
+    }
+  }
+}
