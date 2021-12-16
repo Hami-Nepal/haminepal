@@ -34,9 +34,6 @@ export default function CauseFocused() {
       .then((data) => data.json())
       .then(async ({ data }) => {
         setData(data.cause);
-
-        console.log(data.cause.volunteers);
-
         data.cause.volunteers = data.cause.volunteers.filter(
           (vol) => vol.participated
         );
