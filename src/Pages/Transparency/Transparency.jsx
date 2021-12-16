@@ -45,17 +45,21 @@ export default function Transparency() {
           <li>
             <i className='ri-money-dollar-circle-line'></i>
             <h3>Total Fund Raised</h3>
-            <p>{totalDonations}</p>
+            <p>{new Intl.NumberFormat("en-IN").format(totalDonations)}</p>
           </li>
           <li>
             <i className='ri-tools-line'></i>
             <h3>Total Expenses</h3>
-            <p>{totalExpenses}</p>
+            <p>{new Intl.NumberFormat("en-IN").format(totalExpenses)}</p>
           </li>
           <li>
             <i className='ri-coin-line'></i>
             <h3>Remaining Fund</h3>
-            <p>{totalDonations - totalExpenses}</p>
+            <p>
+              {new Intl.NumberFormat("en-IN").format(
+                totalDonations - totalExpenses
+              )}
+            </p>
           </li>
         </ul>
       </div>
