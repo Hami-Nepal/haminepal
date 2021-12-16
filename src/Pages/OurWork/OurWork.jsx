@@ -17,6 +17,8 @@ export default function OurWork() {
   const [kindness, setKindness] = React.useState([])
   const [status, setStatus] = React.useState("past")
   const [more, setMore] = React.useState(true)
+  const [more1, setMore1] = React.useState(true)
+  const [more2, setMore2] = React.useState(true)
 
   React.useEffect(() => {
     const posts = async () => {
@@ -126,6 +128,17 @@ export default function OurWork() {
             </>
           ) : (
             <>
+              {/* {kindness.map((data) => (
+                <div className="image-container">
+                  <img
+                    src={data.photos[0]}
+                    alt={data._id}
+                    key={data._id}
+                    className="images"
+                  />
+                  <p>{data.title}</p>
+                </div>
+              ))} */}
               <div className="image-container">
                 <img
                   src="https://informnepal.com/wp-content/uploads/2021/05/hami-1.jpeg"
@@ -189,7 +202,7 @@ export default function OurWork() {
             </>
           )}
         </div>
-        <center>
+        <center className="more-btn">
           <div onClick={() => setMore(!more)}>
             {more ? (
               <>
@@ -238,7 +251,7 @@ export default function OurWork() {
               className="images"
             />
           ))} */}
-          {more ? (
+          {more1 ? (
             <>
               <div className="image-container">
                 <img
@@ -337,8 +350,8 @@ export default function OurWork() {
           )}
         </div>
         <center>
-          <div onClick={() => setMore(!more)}>
-            {more ? (
+          <div onClick={() => setMore1(!more1)}>
+            {more1 ? (
               <>
                 <img src={downArrow} />
               </>
@@ -382,7 +395,7 @@ export default function OurWork() {
               className="images"
             />
           ))} */}
-          {more ? (
+          {more2 ? (
             <>
               <div className="image-container">
                 <img
@@ -481,8 +494,8 @@ export default function OurWork() {
           )}
         </div>
         <center>
-          <div onClick={() => setMore(!more)}>
-            {more ? (
+          <div onClick={() => setMore2(!more2)}>
+            {more2 ? (
               <>
                 <img src={downArrow} />
               </>

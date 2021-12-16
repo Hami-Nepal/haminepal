@@ -16,6 +16,7 @@
     letter-spacing: 1px;
     margin: -40px 0 40px 0;
   }
+
   .our_work_act_of_kindness {
     display: flex;
     justify-content: center;
@@ -24,32 +25,32 @@
     text-align: justify;
     .kindnessContents {
       width: 50%;
+      h1 {
+        font-size: 44px;
+        color: #a52a2a;
+        font-family: "Playfair Display", serif;
+      }
+      p {
+        font-size: 18px;
+        font-family: "Raleway", sans-serif;
+        line-height: 1.6rem;
+        word-spacing: 2px;
+        letter-spacing: 1px;
+        span {
+          font-weight: bold;
+          text-decoration: underline;
+          text-transform: uppercase;
+          color: #a52a2a;
+          word-spacing: 2px;
+          letter-spacing: 1px;
+          cursor: pointer;
+        }
+      }
     }
     .kindnessImage {
       height: 400px;
       width: 400px;
       object-fit: cover;
-    }
-    h1 {
-      font-size: 52rem;
-      color: #a52a2a;
-      font-family: "Playfair Display", serif;
-    }
-    p {
-      font-size: 14px;
-      font-family: "Raleway", sans-serif;
-      line-height: 1.3rem;
-      word-spacing: 2px;
-      letter-spacing: 1px;
-      span {
-        font-weight: bold;
-        text-decoration: underline;
-        text-transform: uppercase;
-        color: #a52a2a;
-        word-spacing: 2px;
-        letter-spacing: 1px;
-        cursor: pointer;
-      }
     }
   }
   .our_work_events {
@@ -61,33 +62,33 @@
     text-align: justify;
     .eventsContents {
       width: 50%;
+      h1 {
+        font-size: 44px;
+        color: #a52a2a;
+        font-family: "Playfair Display", serif;
+      }
+      p {
+        font-size: 18px;
+        font-family: "Raleway", sans-serif;
+        line-height: 1.6rem;
+        word-spacing: 2px;
+        letter-spacing: 1px;
+
+        span {
+          font-weight: bold;
+          text-decoration: underline;
+          text-transform: uppercase;
+          color: #a52a2a;
+          word-spacing: 2px;
+          letter-spacing: 1px;
+          cursor: pointer;
+        }
+      }
     }
     .eventImage {
       height: 400px;
       width: 400px;
       object-fit: cover;
-    }
-    h1 {
-      font-size: 44px;
-      color: #a52a2a;
-      font-family: "Playfair Display", serif;
-    }
-    p {
-      font-size: 14px;
-      font-family: "Raleway", sans-serif;
-      line-height: 1.3rem;
-      word-spacing: 2px;
-      letter-spacing: 1px;
-
-      span {
-        font-weight: bold;
-        text-decoration: underline;
-        text-transform: uppercase;
-        color: #a52a2a;
-        word-spacing: 2px;
-        letter-spacing: 1px;
-        cursor: pointer;
-      }
     }
   }
   .our_work_causes {
@@ -98,33 +99,33 @@
     text-align: justify;
     .causesContents {
       width: 50%;
+      h1 {
+        font-size: 33px;
+        color: #a52a2a;
+        font-family: "Playfair Display", serif;
+      }
+      p {
+        font-size: 18px;
+        font-family: "Raleway", sans-serif;
+        line-height: 1.3rem;
+        word-spacing: 2px;
+        letter-spacing: 1px;
+        span {
+          font-weight: bold;
+          text-decoration: underline;
+          text-transform: uppercase;
+          color: #a52a2a;
+          word-spacing: 2px;
+          letter-spacing: 1px;
+          cursor: pointer;
+        }
+      }
     }
     .causesImage {
       height: 400px;
       width: 400px;
       object-fit: cover;
     }
-    h1 {
-      font-size: 33px;
-      color: #a52a2a;
-      font-family: "Playfair Display", serif;
-    }
-    p {
-      font-size: 14px;
-      font-family: "Raleway", sans-serif;
-      line-height: 1.3rem;
-      word-spacing: 2px;
-      letter-spacing: 1px;
-      span {
-        font-weight: bold;
-        text-decoration: underline;
-        text-transform: uppercase;
-        color: #a52a2a;
-        word-spacing: 2px;
-        letter-spacing: 1px;
-        cursor: pointer;
-      }
-    }
   }
 }
 
@@ -141,7 +142,9 @@
       align-items: center;
       gap: 2rem;
       text-align: justify;
-
+      .kindnessContents {
+        width: 100%;
+      }
       h1 {
         font-size: 32px;
         color: #a52a2a;
@@ -158,9 +161,12 @@
       align-items: center;
       gap: 2rem;
       text-align: justify;
-      h1 {
-        font-size: 32px;
-        color: #a52a2a;
+      .eventsContents {
+        width: 100%;
+        h1 {
+          font-size: 32px;
+          color: #a52a2a;
+        }
       }
       .eventImage {
         height: 400px;
@@ -174,173 +180,12 @@
       align-items: center;
       gap: 2rem;
       text-align: justify;
-      h1 {
-        font-size: 32px;
-        color: #a52a2a;
-      }
-      .causesImage {
-        height: 400px;
+      .causesContents {
         width: 100%;
-      }
-    }
-  }
-}
-.image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.7rem;
-  flex-wrap: wrap;
-
-  .images {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-  }
-}
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
-.our_work_container {
-  margin: 4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 5rem;
-  .our_work_act_of_kindness {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    text-align: justify;
-    .kindnessImage {
-      height: 400px;
-      width: 400px;
-    }
-    h1 {
-      font-size: 52px;
-      color: #a52a2a;
-      font-family: "Playfair Display", serif;
-    }
-    p {
-      font-size: 18px;
-
-      font-family: "Raleway", sans-serif;
-      line-height: 1.6rem;
-
-      span {
-        font-weight: bold;
-        text-decoration: underline;
-        color: rgb(141, 23, 23);
-        cursor: pointer;
-      }
-    }
-  }
-  .our_work_events {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    text-align: justify;
-    .eventImage {
-      height: 400px;
-      width: 400px;
-    }
-    h1 {
-      font-size: 52px;
-      color: #a52a2a;
-      font-family: "Playfair Display", serif;
-    }
-    p {
-      font-size: 18px;
-      font-family: "Raleway", sans-serif;
-      line-height: 1.6rem;
-
-      span {
-        font-weight: bold;
-        text-decoration: underline;
-        color: rgb(141, 23, 23);
-        cursor: pointer;
-      }
-    }
-  }
-  .our_work_causes {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    text-align: justify;
-    .causesImage {
-      height: 400px;
-      width: 400px;
-    }
-    h1 {
-      font-size: 52px;
-      color: #a52a2a;
-      font-family: "Playfair Display", serif;
-    }
-    p {
-      font-size: 18px;
-      font-family: "Raleway", sans-serif;
-      line-height: 1.6rem;
-      span {
-        font-weight: bold;
-        text-decoration: underline;
-
-        color: rgb(141, 23, 23);
-        cursor: pointer;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 928px) {
-  .our_work_container {
-    margin: 4rem;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    .our_work_act_of_kindness {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap-reverse;
-      align-items: center;
-      gap: 2rem;
-      text-align: justify;
-      h1 {
-        font-size: 32px;
-        color: #a52a2a;
-      }
-      .kindnessImage {
-        height: 400px;
-        width: 100%;
-      }
-    }
-    .our_work_events {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap-reverse;
-      align-items: center;
-      gap: 2rem;
-      text-align: justify;
-      h1 {
-        font-size: 32px;
-        color: #a52a2a;
-      }
-      .eventImage {
-        height: 400px;
-        width: 100%;
-      }
-    }
-    .our_work_causes {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap-reverse;
-      align-items: center;
-      gap: 2rem;
-      text-align: justify;
-      h1 {
-        font-size: 32px;
-        color: #a52a2a;
+        h1 {
+          font-size: 32px;
+          color: #a52a2a;
+        }
       }
       .causesImage {
         height: 400px;
@@ -378,5 +223,14 @@
       position: absolute;
       padding: 0 30px;
     }
+  }
+}
+center {
+  margin-top: -50px;
+  img {
+    width: 50px;
+  }
+  :hover {
+    cursor: pointer;
   }
 }
