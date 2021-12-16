@@ -127,10 +127,14 @@ export default function EventFocused() {
             <p>{data.challenges}</p>
           </div>
           {/* @section => difficulties */}
-          {/* <div className='eventFocused__container__difficulties'>
-            <h1>Difficulties</h1>
-            <p>{data.difficulties}</p>
-          </div> */}
+          {data.status === "past" ? (
+            <div className='eventFocused__container__results'>
+              <h1>Results</h1>
+              <p>{data.results}</p>
+            </div>
+          ) : (
+            ""
+          )}
 
           {/* @section => volunteers */}
           <div className='eventFocused__container__volunteers'>

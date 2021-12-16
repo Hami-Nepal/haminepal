@@ -496,13 +496,13 @@ export default function Home() {
             className='influencersCarousel__container__carourel'
             ref={carouselRef}
             enableAutoPlay
-            autoPlaySpeed={500} // same time
+            autoPlaySpeed={1} // same time
             onNextEnd={({ index }) => {
               clearTimeout(resetTimeout);
               if (index + 1 === 9) {
                 resetTimeout = setTimeout(() => {
                   carouselRef.current.goTo(0);
-                }, 500); // same time
+                }, 1); // same time
               }
             }}
             itemsToShow={8}
