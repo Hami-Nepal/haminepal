@@ -261,19 +261,25 @@ export default function Home() {
           <div className='home__container__transparency__info home__container__transparency__kindness'>
             <h2>Kinds</h2>
             <div className='home__container__transparency__info__item'>
-              <h2>Rs {new Intl.NumberFormat("en-IN").format(38444879.0)}</h2>
+              <h2 style={{ fontFamily: "sans-serif" }}>
+                Rs {new Intl.NumberFormat("en-IN").format(38444879.0)}
+              </h2>
               <div className='home__container__transparency__info__item__title'>
                 Donation Received
               </div>
             </div>
             <div className='home__container__transparency__info__item center'>
-              <h2>Rs {new Intl.NumberFormat("en-IN").format(32291314)}</h2>
+              <h2 style={{ fontFamily: "sans-serif" }}>
+                Rs {new Intl.NumberFormat("en-IN").format(32291314)}
+              </h2>
               <div className='home__container__transparency__info__item__title'>
                 Expenditure
               </div>
             </div>
             <div className='home__container__transparency__info__item'>
-              <h2>Rs {new Intl.NumberFormat("en-IN").format(6153565)}</h2>
+              <h2 style={{ fontFamily: "sans-serif" }}>
+                Rs {new Intl.NumberFormat("en-IN").format(6153565)}
+              </h2>
               <div className='home__container__transparency__info__item__title'>
                 Remaining Donation
               </div>
@@ -283,19 +289,25 @@ export default function Home() {
           <div className='home__container__transparency__info'>
             <h2>Cash</h2>
             <div className='home__container__transparency__info__item'>
-              <h2>Rs {new Intl.NumberFormat("en-IN").format(12949876.63)}</h2>
+              <h2 style={{ fontFamily: "sans-serif" }}>
+                Rs {new Intl.NumberFormat("en-IN").format(12949876.63)}
+              </h2>
               <div className='home__container__transparency__info__item__title'>
                 Donation Received
               </div>
             </div>
             <div className='home__container__transparency__info__item center'>
-              <h2>Rs {new Intl.NumberFormat("en-IN").format(6707701.44)}</h2>
+              <h2 style={{ fontFamily: "sans-serif" }}>
+                Rs {new Intl.NumberFormat("en-IN").format(6707701.44)}
+              </h2>
               <div className='home__container__transparency__info__item__title'>
                 Expenditure
               </div>
             </div>
             <div className='home__container__transparency__info__item'>
-              <h2>Rs {new Intl.NumberFormat("en-IN").format(6242175.19)}</h2>
+              <h2 style={{ fontFamily: "sans-serif" }}>
+                Rs {new Intl.NumberFormat("en-IN").format(6242175.19)}
+              </h2>
               <div className='home__container__transparency__info__item__title'>
                 Remaining Donation
               </div>

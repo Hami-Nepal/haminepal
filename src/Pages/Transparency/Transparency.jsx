@@ -44,10 +44,7 @@ export default function Transparency() {
 
       {/* @section => landing */}
       <div className='transparency__container__landing'>
-        <h1>
-          People around the world are raising money for what they are passionate
-          about.
-        </h1>
+        <h1>Hami Nepal Encourages donation in kind.</h1>
 
         {/* <ul>
           <li>
@@ -89,7 +86,8 @@ export default function Transparency() {
             assistance for association. If any terms of perplexity occurs, our
             honorable president can bridge the dubiety.
           </p>
-          <p>President Sudan Gurung Contact Detail : 9801066111</p>
+          <p>President Sudan Gurung </p>
+          <p>Contact Detail : 9801066111</p>
         </div>
         <img src={image} alt='' />
       </div>
@@ -106,7 +104,9 @@ export default function Transparency() {
               >
                 <h6>Received</h6>
               </a>
-              <p>{new Intl.NumberFormat("en-IN").format(38444879.0)}</p>
+              <p style={{ fontFamily: "sans-serif" }}>
+                {new Intl.NumberFormat("en-IN").format(38444879.0)}
+              </p>
             </li>
             <hr />
             <li>
@@ -118,7 +118,9 @@ export default function Transparency() {
               >
                 <h6>Spent</h6>
               </a>
-              <p>{new Intl.NumberFormat("en-IN").format(32291314.0)}</p>
+              <p style={{ fontFamily: "sans-serif" }}>
+                {new Intl.NumberFormat("en-IN").format(32291314.0)}
+              </p>
             </li>
             <hr />
             <li>
@@ -130,7 +132,9 @@ export default function Transparency() {
               >
                 <h6>Balance</h6>
               </a>
-              <p>{new Intl.NumberFormat("en-IN").format(6153565.0)}</p>
+              <p style={{ fontFamily: "sans-serif" }}>
+                {new Intl.NumberFormat("en-IN").format(6153565.0)}
+              </p>
             </li>
           </ul>
         </div>
@@ -140,7 +144,9 @@ export default function Transparency() {
             <li>
               <h6>Received</h6>
 
-              <p>{new Intl.NumberFormat("en-IN").format(12949876.63)}</p>
+              <p style={{ fontFamily: "sans-serif" }}>
+                {new Intl.NumberFormat("en-IN").format(12949876.63)}
+              </p>
             </li>
             <hr />
             <li>
@@ -152,7 +158,9 @@ export default function Transparency() {
               >
                 <h6>Spent</h6>
               </a>
-              <p>{new Intl.NumberFormat("en-IN").format(6707701.44)}</p>
+              <p style={{ fontFamily: "sans-serif" }}>
+                {new Intl.NumberFormat("en-IN").format(6707701.44)}
+              </p>
             </li>
             <hr />
             <li>
@@ -164,7 +172,9 @@ export default function Transparency() {
               >
                 <h6>Balance</h6>
               </a>
-              <p>{new Intl.NumberFormat("en-IN").format(6242175.19)}</p>
+              <p style={{ fontFamily: "sans-serif" }}>
+                {new Intl.NumberFormat("en-IN").format(6242175.19)}
+              </p>
             </li>
           </ul>
           <span>
@@ -205,7 +215,7 @@ export default function Transparency() {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell align='left'>Salary Allowances</TableCell>
-                  <TableCell align='left'>0</TableCell>
+                  <TableCell align='left'>Run on Volunteering Basis</TableCell>
                 </TableRow>
                 <TableRow
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -217,15 +227,9 @@ export default function Transparency() {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell align='left'>Office Rent</TableCell>
-                  <TableCell align='left'>0</TableCell>
-                </TableRow>
-                <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
                   <TableCell align='left'>
-                    Guest Entertainment Expenses
+                    Provided by Barbara Foundation
                   </TableCell>
-                  <TableCell align='left'>0</TableCell>
                 </TableRow>
                 <TableRow
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -237,13 +241,17 @@ export default function Transparency() {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell align='left'>Internet Expenses</TableCell>
-                  <TableCell align='left'>0</TableCell>
+                  <TableCell align='left'>
+                    Borne by Barbara Foundation
+                  </TableCell>
                 </TableRow>
                 <TableRow
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell align='left'>Website</TableCell>
-                  <TableCell align='left'>0</TableCell>
+                  <TableCell align='left'>
+                    Voluntarily Prepared by youth of Hash Technologies
+                  </TableCell>
                 </TableRow>
                 <TableRow
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
