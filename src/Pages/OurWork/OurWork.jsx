@@ -83,7 +83,7 @@ export default function OurWork() {
             className="kindnessImage"
           />
         </div>
-
+        {/* @section Image Cards */}
         <div className="image">
           {/* {kindness.map((data) => (
             <img
