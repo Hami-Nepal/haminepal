@@ -78,9 +78,18 @@ export default function Transparency() {
           <div className='divider'></div>
 
           <p>
-            Transparency, revealing the correct information about where your
-            donation is going.
+            Assurance, accountability, credibility and transparency between the
+            transaction of every penny that we receive. For the first time in
+            history, philanthropist, and donors can directly check their
+            empathetic kind acts through verification process. The process of
+            donation becomes simple where anyone can track every single steps of
+            processing wherein every extended “helping hand” is assured and not
+            evade. As we believe “Giving is not just about making a donation,
+            it’s about making a difference” We believe transparency is critical
+            assistance for association. If any terms of perplexity occurs, our
+            honorable president can bridge the dubiety.
           </p>
+          <p>President Sudan Gurung Contact Detail : 9801066111</p>
         </div>
         <img src={image} alt='' />
       </div>
