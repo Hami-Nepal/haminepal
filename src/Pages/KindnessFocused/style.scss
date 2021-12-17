@@ -1,0 +1,258 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&display=swap");
+
+.kindnessFocused__container {
+  .kindness_hero {
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(148, 144, 144, 0.52),
+        rgba(20, 16, 16, 0.493)
+      ),
+      url("../../Assets/banner2.jpg");
+    background-size: cover;
+    margin: 0px 0px 100px 0px;
+    padding: 0 5vw;
+    h1 {
+      max-width: 14em;
+      color: white;
+
+      text-transform: uppercase;
+      background-color: black;
+      font-family: "Poppins", sans-serif;
+      font-size: 50px;
+      padding: 0.1em;
+      word-spacing: 4px;
+      letter-spacing: 2px;
+      font-weight: 700px;
+      @media (max-width: 768px) {
+        font-size: 30px;
+        padding: 5px;
+        max-width: 100%;
+      }
+    }
+  }
+
+  // @section => landing
+  .kindnessFocused__container__landing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0px 0px 10px 0px;
+    padding: 0 5vw;
+    @media (max-width: 992px) {
+      flex-direction: column;
+    }
+
+    .kindnessFocused__container__landing__info,
+    img {
+      flex: 1 1 0;
+    }
+
+    .kindnessFocused__container__landing__info {
+      padding: 40px;
+      max-width: 50em;
+      h1 {
+        font-family: "Poppins", sans-serif;
+        font-size: 32px;
+        font-weight: 600;
+        color: brown;
+        word-spacing: 2px;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
+        @media (max-width: 786px) {
+          font-size: 30px;
+        }
+      }
+
+      p {
+        line-height: 1.8;
+        margin-bottom: 30px;
+        text-align: justify;
+        letter-spacing: 1px;
+        word-spacing: 2px;
+        font-size: 18px;
+        @media (max-width: 786px) {
+          font-size: 16px;
+        }
+      }
+      @media (max-width: 786px) {
+        padding: 10px;
+        max-width: 100%;
+      }
+    }
+
+    img {
+      width: 80%;
+      height: 452px;
+      object-fit: cover;
+      max-width: 530px;
+    }
+  }
+
+  .kindnessFocused__container__details,
+  .kindnessFocused__container__challenges,
+  .kindnessFocused__container__difficulties,
+  .kindnessFocused__container__results {
+    padding: 0 8vw;
+
+    h2 {
+      font-family: "Poppins", sans-serif;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      font-size: 24px;
+      letter-spacing: 1px;
+      font-weight: 600;
+      text-transform: capitalize;
+      color: brown;
+    }
+
+    p {
+      line-height: 1.8;
+      max-width: 50vw;
+      text-align: start;
+      letter-spacing: 1px;
+      word-spacing: 2px;
+      font-size: 18px;
+      text-align: justify;
+      @media (max-width: 786px) {
+        font-size: 16px;
+        text-align: justify;
+        max-width: 100%;
+      }
+    }
+  }
+
+  .kindnessFocused__container__volunteers {
+    padding: 50px 5vw 70px 5vw;
+    background: rgb(245, 245, 245);
+    margin-top: 60px;
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
+
+    .kindnessFocused__container__volunteers__items {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .kindnessFocused__container__volunteers__items__item {
+        position: relative;
+        transition: all 0.3s ease-in-out;
+        height: 25vw;
+        width: 25vw;
+        margin-top: 50px;
+
+        @media (max-width: 768px) {
+          width: 100%;
+          height: 100%;
+        }
+
+        img {
+          width: 100%;
+          object-fit: contain;
+        }
+
+        .userInfo {
+          transition: all 0.3s ease-in-out !important;
+          display: none;
+          background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          );
+        }
+
+        &:hover {
+          .userInfo {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+
+            .name {
+              color: #fff;
+              font-weight: 600;
+              font-size: 20px;
+              margin-bottom: 5px;
+            }
+            .position {
+              color: rgb(235, 235, 235);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .kindnessFocused__container__gallery {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 40px 5vw;
+    margin: 0px 0px 30px 35px;
+    @media (max-width: 1346px) {
+      --auto-grid-min-size: 16rem;
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(var(--auto-grid-min-size), 1fr)
+      );
+      grid-gap: 1rem;
+    }
+
+    img {
+      width: 25vw;
+      height: 20vw;
+      object-fit: cover;
+      margin: 50px 50px 0px 0px;
+
+      @media (max-width: 992px) {
+        width: 100%;
+        height: 100%;
+      }
+      @media (max-width: 768px) {
+        width: 100%;
+        height: 100%;
+      }
+      @media (max-width: 1346px) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.kindnessFocused__container__landing__info button {
+  background-color: #a11a1c;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 2rem;
+
+  &:hover {
+    background-color: #bb2124;
+  }
+}
+
+.kindnessDetails__hr {
+  margin: 1.5rem 0;
+  border: none;
+  height: 1px;
+  background-color: rgb(211, 211, 211);
+}

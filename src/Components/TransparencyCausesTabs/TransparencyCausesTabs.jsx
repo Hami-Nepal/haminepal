@@ -1,17 +1,22 @@
-import * as React from "react";
-import "./style.scss";
+import * as React from "react"
+import "./style.scss"
 
-import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import { Button } from "@mui/material";
+import PropTypes from "prop-types"
+import Tabs from "@mui/material/Tabs"
+import Tab from "@mui/material/Tab"
+import Typography from "@mui/material/Typography"
+import Box from "@mui/material/Box"
+import MenuItem from "@mui/material/MenuItem"
+import FormControl from "@mui/material/FormControl"
+import Select from "@mui/material/Select"
 
-import { Link } from "react-location";
+import { Link } from "react-location"
+
+import { useState, useEffect } from "react"
+import baseURL from "../../api/baseURL"
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props
 
   return (
     <div
@@ -27,138 +32,115 @@ function TabPanel(props) {
         </Box>
       )}
     </div>
-  );
+  )
 }
 
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
-};
+}
 
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
     "aria-controls": `simple-tabpanel-${index}`,
-  };
+  }
 }
 
 export default function TransparencyCausesTabs() {
-    const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(0)
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
 
-    return (
-        <div className="transparencyCausesTabs__container">
-            <Box sx={{ width: "100%" }}>
-        <Box sx={{ borderBottom: 2, borderColor: "#e74c3c" }}>
-          <Tabs
-            variant="scrollable"
-            scrollButtons="auto"
-            value={value}
-            onChange={handleChange}
-            aria-label="basic tabs example"
-          >
-            <Tab label="Natural Calamities" {...a11yProps(0)} />
-            <Tab label="Animal Welfare" {...a11yProps(1)} />
-            <Tab label="Shelter" {...a11yProps(2)} />
-            <Tab label="Child Education" {...a11yProps(3)} />
-            <Tab label="Pregnant Woman Rescue" {...a11yProps(4)} />
-          </Tabs>
-        </Box>
-        <TabPanel className="events__container__items" value={value} index={0}>
-          {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-            <Link className="item" to="/event-focused/?id=1234" key={item}>
-              <img
-                src="https://images.unsplash.com/photo-1617817546276-80b86dd60151?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                className="item__image"
-                alt="project"
-              />
-              <div className="item__info">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptate itaque dignissimos provident earum porro eius nesciunt
-                dolores quo laudantium! Facere quod consectetur debitis hic
-                dignissimos molestiae accusamus quos ipsa magni.
-              </div>
-              <Button>Donate</Button>
-            </Link>
-          ))}
-        </TabPanel>
-        <TabPanel className="events__container__items" value={value} index={1}>
-          {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-            <Link className="item" to="/event-focused/?id=1234" key={item}>
-              <img
-                src="https://images.unsplash.com/photo-1617817546276-80b86dd60151?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                className="item__image"
-                alt="project"
-              />
-              <div className="item__info">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptate itaque dignissimos provident earum porro eius nesciunt
-                dolores quo laudantium! Facere quod consectetur debitis hic
-                dignissimos molestiae accusamus quos ipsa magni.
-              </div>
-              <Button>Donate</Button>
-            </Link>
-          ))}
-        </TabPanel>
-        <TabPanel className="events__container__items" value={value} index={2}>
-          {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-            <Link className="item" to="/event-focused/?id=1234" key={item}>
-              <img
-                src="https://images.unsplash.com/photo-1617817546276-80b86dd60151?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                className="item__image"
-                alt="project"
-              />
-              <div className="item__info">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptate itaque dignissimos provident earum porro eius nesciunt
-                dolores quo laudantium! Facere quod consectetur debitis hic
-                dignissimos molestiae accusamus quos ipsa magni.
-              </div>
-              <Button>Donate</Button>
-            </Link>
-          ))}
-        </TabPanel>
-        <TabPanel className="events__container__items" value={value} index={3}>
-          {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-            <Link className="item" to="/event-focused/?id=1234" key={item}>
-              <img
-                src="https://images.unsplash.com/photo-1617817546276-80b86dd60151?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                className="item__image"
-                alt="project"
-              />
-              <div className="item__info">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptate itaque dignissimos provident earum porro eius nesciunt
-                dolores quo laudantium! Facere quod consectetur debitis hic
-                dignissimos molestiae accusamus quos ipsa magni.
-              </div>
-              <Button>Donate</Button>
-            </Link>
-          ))}
-        </TabPanel>
-        <TabPanel className="events__container__items" value={value} index={4}>
-          {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-            <Link className="item" to="/event-focused/?id=1234" key={item}>
-              <img
-                src="https://images.unsplash.com/photo-1617817546276-80b86dd60151?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-                className="item__image"
-                alt="project"
-              />
-              <div className="item__info">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptate itaque dignissimos provident earum porro eius nesciunt
-                dolores quo laudantium! Facere quod consectetur debitis hic
-                dignissimos molestiae accusamus quos ipsa magni.
-              </div>
-              <Button>Donate</Button>
+  const [causeTypes, setCauseTypes] = useState([])
+  const [activeCauseStatus, setActiveCauseStatus] = useState("ongoing")
+  const [causeCards, setCauseCards] = useState([])
+
+  const handleStatusChange = (event) => {
+    setActiveCauseStatus(event.target.value)
+  }
+
+  useEffect(() => {
+    fetch(baseURL + "/cause_type")
+      .then((data) => data.json())
+      .then(({ data }) => setCauseTypes(data))
+      .catch(({ response }) => console.log(response))
+
+    // tettikai rakheko
+    setActiveCauseStatus("ongoing")
+  }, [])
+
+  useEffect(() => {
+    fetch(
+      baseURL +
+        `/causes?cause_type=${causeTypes[value]?.cause_type}&status=${activeCauseStatus}`
+    )
+      .then((data) => data.json())
+      .then(({ data }) => setCauseCards(data))
+      .catch(({ response }) => console.log(response))
+  }, [value, activeCauseStatus, causeTypes])
+
+  return (
+    <div className="transparencyCausesTabs__container">
+      <Box sx={{ width: "100%" }}>
+        <div className="events__container__items">
+          <Box sx={{ borderBottom: 2, borderColor: "#e74c3c" }}>
+            <Tabs
+              variant="scrollable"
+              scrollButtons="auto"
+              value={value}
+              onChange={handleChange}
+              aria-label="basic tabs example"
+            >
+              {causeTypes.map((type, index) => (
+                <Tab
+                  key={type._id}
+                  label={type.cause_type}
+                  {...a11yProps(index)}
+                />
+              ))}
+            </Tabs>
+          </Box>
+
+          <Box sx={{ width: 110, margin: "1rem" }}>
+            <FormControl fullWidth>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={activeCauseStatus}
+                onChange={handleStatusChange}
+                inputProps={{ "aria-label": "Without label" }}
+                displayEmpty
+              >
+                <MenuItem value="ongoing" selected>
+                  Ongoing
+                </MenuItem>
+                <MenuItem value="past">Past</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+        </div>
+        <TabPanel
+          className="causes__container__items"
+          value={value}
+          index={value}
+        >
+          {causeCards.map((card) => (
+            <Link
+              className="item"
+              to={"/transparency-cause-focused/" + card._id}
+              key={card._id}
+            >
+              <h2 style={{ margin: "1rem" }}>{card.name}</h2>
+              <img src={card.photos[0]} className="item__image" alt="project" />
+              <div className="item__info">{card.summary}</div>
             </Link>
           ))}
         </TabPanel>
       </Box>
-        </div>
-    )
+    </div>
+  )
 }

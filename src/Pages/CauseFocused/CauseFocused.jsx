@@ -1,45 +1,65 @@
-import React, { useState, useEffect } from 'react';
-import './style.scss';
+import React, { useState, useEffect } from "react";
+import "./style.scss";
 
-import Logo from '../../Assets/logo.png';
-
-import { Link } from 'react-location';
-
-import { styled } from '@mui/material/styles';
+import { styled } from "@mui/material/styles";
 import LinearProgress, {
   linearProgressClasses,
-} from '@mui/material/LinearProgress';
-import { Button } from '@mui/material';
-import Footer from '../../Components/Footer/Footer';
-import baseURL from '../../api/baseURL';
+} from "@mui/material/LinearProgress";
+import { Button } from "@mui/material";
+import Footer from "../../Components/Footer/Footer";
+import baseURL from "../../api/baseURL";
+import NavBar from "../../Components/NavBar/Nav";
+import axios from "axios";
+
+//table for bills
+// import Table from "@mui/material/Table";
+// import TableBody from "@mui/material/TableBody";
+// import TableCell from "@mui/material/TableCell";
+// import TableContainer from "@mui/material/TableContainer";
+// import TableHead from "@mui/material/TableHead";
+// import TableRow from "@mui/material/TableRow";
+// import Paper from "@mui/material/Paper";
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 10,
   borderRadius: 5,
   [`&.${linearProgressClasses.colorPrimary}`]: {
     backgroundColor:
-      theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
+      theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 5,
-    backgroundColor: theme.palette.mode === 'light' ? '#23CE34' : '#308fe8',
+    backgroundColor: theme.palette.mode === "light" ? "#23CE34" : "#308fe8",
   },
 }));
 
 export default function CauseFocused() {
   const [data, setData] = useState({});
   const [totalDonationAmount, setTotalDonationAmount] = useState(0);
+  const [volunteers, setVolunteers] = useState([]);
 
   useEffect(() => {
-    fetch(baseURL + '/causes/' + window.location.pathname.split('/').pop())
+    fetch(baseURL + "/causes/" + window.location.pathname.split("/").pop())
       .then((data) => data.json())
-      .then(({ data }) => setData(data.cause))
+      .then(async ({ data }) => {
+        setData(data.cause);
+        data.cause.volunteers = data.cause.volunteers.filter(
+          (vol) => vol.participated
+        );
+
+        const promises = data.cause.volunteers.map((vol) =>
+          axios.get(baseURL + "/volunteers/" + vol.volunteerId)
+        );
+
+        const res = await Promise.all(promises);
+        setVolunteers(res);
+      })
       .catch(({ response }) => console.log(response));
   }, []);
 
   useEffect(() => {
     // specific cause or events ko ako total amount herna ko lagi jugad
-    fetch(baseURL + '/donations/?slug=' + data.slug)
+    fetch(baseURL + "/donations/?slug=" + data.slug)
       .then((data) => data.json())
       .then(({ data }) =>
         setTotalDonationAmount(
@@ -49,157 +69,190 @@ export default function CauseFocused() {
       .catch(({ response }) => console.log(response));
   }, [data]);
 
-  console.log(data, 'ma data check gardai xu');
+  const createMarkup = () => {
+    return { __html: data.description };
+  };
 
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
   return (
-    <div className="causeFocused__container">
-      {/* @sectoin => topbar */}
-      <div className="causeFocused__container__topbar">
-        <img
-          className="causeFocused__container__logo"
-          src={Logo}
-          alt="haminepal logo"
-        />
-
-        <button onClick={() => setIsActiveMenu(true)}>
-          <i className="ri-menu-line"></i>
-        </button>
-      </div>
-
-      {/* @section => hidden menu */}
-      <div
-        className="causeFocused__container__landing__hiddenMenu"
-        style={{
-          display: isActiveMenu ? 'flex' : 'none',
-        }}
-      >
-        <div className="causeFocused__container__landing__hiddenMenu__topbar">
-          <img
-            className="causeFocused__container__landing__topbar__logo"
-            src={Logo}
-            alt="haminepal logo"
-          />
-
-          <button onClick={() => setIsActiveMenu(false)}>
-            <i className="ri-close-line"></i>
-          </button>
-        </div>
-        <ul className="causeFocused__container__landing__hiddenMenu__items left">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/">News</Link>
-          </li>
-          <li>
-            <Link to="/">Act of Kindness</Link>
-          </li>
-          <li>
-            <Link to="/">Civil Rights Movements</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-          <div className="divider"></div>
-          <li>
-            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
-          </li>
-        </ul>
-        <ul className="causeFocused__container__landing__hiddenMenu__items right">
-          <li>
-            <Link to="/about">About Us</Link>
-          </li>
-          <li>
-            <Link to="/causes">Cause</Link>
-          </li>
-          <li>
-            <Link to="/events">Events</Link>
-          </li>
-          <li>
-            <Link to="/transparency">Transparency</Link>
-          </li>
-          <li>
-            <Link to="/volunteer">Volunteer</Link>
-          </li>
-        </ul>
-      </div>
+    <div className='causeFocused__container'>
+      <NavBar />
 
       {/* @section => landing */}
-      <div className="causeFocused__container__landing">
-        <div className="causeFocused__container__landing__info">
+      <div className='causeFocused__container__landing'>
+        <div className='causeFocused__container__landing__info'>
           <h1>{data.name}</h1>
-          <div className="divider"></div>
+          <div className='divider'></div>
           <p>
             Cause type: <span>{data.cause_type}</span>
           </p>
           <p>
             Status: <span>{data.status}</span>
           </p>
-          <hr className="causeDetails__hr" />
+          <hr className='causeDetails__hr' />
           <p>{data.summary}</p>
 
-          <BorderLinearProgress variant="determinate" value={50} />
+          <BorderLinearProgress
+            variant='determinate'
+            value={(totalDonationAmount / data.balance) * 100}
+          />
 
           <div>
             <span>Rs. {totalDonationAmount}</span> of Rs.{data.balance}
           </div>
-
-          <Button>Donate</Button>
+          {data.status === "past" ? "" : <Button>Donate</Button>}
         </div>
 
         <img
-          src={data?.photos?.length ? data.photos[0] : ''}
-          alt="cause cover"
+          src={data?.photos?.length ? data.photos[0] : ""}
+          alt='cause cover'
         />
       </div>
 
       {/* @section => details */}
-      <div className="causeFocused__container__details">
-        <h1>Description</h1>
-        <p>{data.description}</p>
-      </div>
-
-      {/* @section => challenges */}
-      <div className="causeFocused__container__challenges">
-        <h1>Challenges</h1>
-        <p>{data.challenges}</p>
-      </div>
-      {/* @section => difficulties */}
-      <div className="causeFocused__container__difficulties">
-        <h1>Difficulties</h1>
-        <p>{data.difficulties}</p>
-      </div>
-
-      {/* @section => volunteers */}
-      <div className="causeFocused__container__volunteers">
-        <h1>Volunteers</h1>
-
-        <div className="causeFocused__container__volunteers__items">
-          {[0, 1, 2, 3, 4, 5].map((item) => (
+      {data.description === "" ? (
+        <></>
+      ) : (
+        <>
+          <div className='causeFocused__container__details'>
+            <h1>Description</h1>
             <div
-              className="causeFocused__container__volunteers__items__item"
-              key={item}
-            >
-              <img
-                src="https://avatars.githubusercontent.com/u/93444253?s=400&u=389a238cf991d86adcc03166270d30241e94a95b&v=4"
-                alt="volunteer"
-              />
+              dangerouslySetInnerHTML={createMarkup()}
+              className='editor'
+            ></div>
+          </div>
 
-              <div className="userInfo">
-                <div className="name">Deekshya Shahi</div>
-                <div className="position">Moto Vlogger</div>
-              </div>
+          {/* @section => challenges */}
+          <div className='causeFocused__container__challenges'>
+            <h1>Challenges</h1>
+            <p>{data.challenges}</p>
+          </div>
+          {/* @section => difficulties */}
+          {data.status === "past" ? (
+            <div className='causeFocused__container__results'>
+              <h1>Results</h1>
+              <p>{data.results}</p>
             </div>
-          ))}
-        </div>
-      </div>
+          ) : (
+            ""
+          )}
+          {/* <div className='causeFocused__container__results'>
+            <h1 style={{ marginBottom: "1rem" }}>Transparency</h1>
+          </div>
+          <div className='causeFocused__container__results'>
+            <h2 style={{ marginBottom: "2rem" }}>Kinds</h2>
+          </div>
+          <TableContainer
+            component={Paper}
+            sx={{ width: "50%", marginLeft: "7rem" }}
+          >
+            <Table sx={{ width: "100%" }} aria-label='simple table'>
+              <TableHead>
+                <TableRow>
+                  <TableCell align='center'>Doner Name</TableCell>
+                  <TableCell align='center'>Type</TableCell>
+                  <TableCell align='center'>Cause/Event</TableCell>
+                  <TableCell align='center'>Particulars</TableCell>
+                  <TableCell align='center'>Quantity</TableCell>
+                  <TableCell align='center'>Amount</TableCell>
+                  <TableCell align='center'>Bills</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell align='center'>Pawan Subedi</TableCell>
+                  <TableCell align='center'>Cause</TableCell>
+                  <TableCell align='center'>Bir Hospital</TableCell>
+                  <TableCell align='center'>Oxygen cylinder</TableCell>
+                  <TableCell align='center'>50</TableCell>
+                  <TableCell align='center'>50,000</TableCell>
+                  <TableCell align='center'>
+                    <Button
+                      style={{ backgroundColor: "#800000", color: "white" }}
+                    >
+                      Bill
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <div className='causeFocused__container__results'>
+            <h2 style={{ marginBottom: "2rem", marginTop: "4rem" }}>Cash</h2>
+          </div>
+          <TableContainer
+            component={Paper}
+            sx={{ width: "50%", marginLeft: "7rem" }}
+          >
+            <Table sx={{ width: "100%" }} aria-label='simple table'>
+              <TableHead>
+                <TableRow>
+                  <TableCell align='center'>Bill Name</TableCell>
+                  <TableCell align='center'>Type</TableCell>
+                  <TableCell align='center'>Cause/Event</TableCell>
+                  <TableCell align='center'>Amount</TableCell>
+                  <TableCell align='center'>Bills</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell align='center'>Oxygen</TableCell>
+                  <TableCell align='center'>Cause</TableCell>
+                  <TableCell align='center'>Bir Hospital</TableCell>
+                  <TableCell align='center'>50,000</TableCell>
+                  <TableCell align='center'>
+                    <Button
+                      style={{ backgroundColor: "#800000", color: "white" }}
+                    >
+                      Photos
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer> */}
+          {/* @section => volunteers */}
+          <div className='causeFocused__container__volunteers'>
+            <h1>Volunteers</h1>
+
+            <div className='causeFocused__container__volunteers__items'>
+              {volunteers.map(({ data }) => (
+                <div
+                  className='causeFocused__container__volunteers__items__item'
+                  key={data.data.volunteer._id}
+                >
+                  <img
+                    src={
+                      data.data.volunteer.photo.startsWith("http")
+                        ? data.data.volunteer.photo
+                        : "https://static.thenounproject.com/png/72032-200.png"
+                    }
+                    alt='volunteer'
+                  />
+
+                  <div className='userInfo'>
+                    <div className='name'>
+                      {data.data.volunteer.first_name}{" "}
+                      {data.data.volunteer.last_name}
+                    </div>
+                    <div className='position'>
+                      {data.data.volunteer.field_of_expertise}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
 
       {/* @section => gallery */}
-      <div className="causeFocused__container__gallery">
-        {data.photos?.map((url) => (
-          <img key={url} src={url} alt="" />
-        ))}
+      <div className='causeFocused__container__gallery'>
+        <h1>Cause photos</h1>
+        <div className='causeFocused__container__gallery__container'>
+          {data.photos?.map((url) => (
+            <img key={url} src={url} alt='' />
+          ))}
+        </div>
       </div>
 
       <Footer />

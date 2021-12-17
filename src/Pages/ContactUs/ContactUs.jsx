@@ -1,10 +1,9 @@
 import React from "react"
 import "./style.scss"
-import Logo from "../../Assets/logo.png"
 
 import Alert from "@mui/material/Alert"
 
-import { Link } from "react-location"
+import Nav from "../../Components/NavBar/Nav"
 import Iframe from "react-iframe"
 import Footer from "../../Components/Footer/Footer"
 
@@ -15,9 +14,8 @@ import { useForm } from "react-hook-form"
 //  * @dev add messanger chat bot
 //  */
 export default function ContactUs() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
   const [sucessMessage, setSucessMessage] = React.useState("")
-  const[sending,setSending]=React.useState(false)
+  const [sending, setSending] = React.useState(false)
 
   const {
     register,
@@ -64,76 +62,7 @@ export default function ContactUs() {
 
   return (
     <div className="contactUs__container">
-      {/* @sectoin => topbar */}
-      <div className="contactUs__container__topbar">
-        <img
-          className="contactUs__container__logo"
-          src={Logo}
-          alt="haminepal logo"
-        />
-
-        <button onClick={() => setIsActiveMenu(true)}>
-          <i className="ri-menu-line"></i>
-        </button>
-      </div>
-
-      {/* @section => hidden menu */}
-      <div
-        className="contactUs__container__landing__hiddenMenu"
-        style={{
-          display: isActiveMenu ? "flex" : "none",
-        }}
-      >
-        <div className="contactUs__container__landing__hiddenMenu__topbar">
-          <img
-            className="contactUs__container__landing__topbar__logo"
-            src={Logo}
-            alt="haminepal logo"
-          />
-
-          <button onClick={() => setIsActiveMenu(false)}>
-            <i className="ri-close-line"></i>
-          </button>
-        </div>
-        <ul className="contactUs__container__landing__hiddenMenu__items left">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/">News</Link>
-          </li>
-          <li>
-            <Link to="/">Act of Kindness</Link>
-          </li>
-          <li>
-            <Link to="/">Civil Rights Movements</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-          <div className="divider"></div>
-          <li>
-            <Link to="/login">Login/</Link> <Link to="/Signup">Signup</Link>
-          </li>
-        </ul>
-        <ul className="contactUs__container__landing__hiddenMenu__items right">
-          <li>
-            <Link to="/about">About Us</Link>
-          </li>
-          <li>
-            <Link to="/causes">Cause</Link>
-          </li>
-          <li>
-            <Link to="/events">Events</Link>
-          </li>
-          <li>
-            <Link to="/transparency">Transparency</Link>
-          </li>
-          <li>
-            <Link to="/volunteer">Volunteer</Link>
-          </li>
-        </ul>
-      </div>
+      <Nav />
 
       {/* @section => form */}
       {/* Mail send Sucess Message */}
@@ -198,10 +127,10 @@ export default function ContactUs() {
               <div className="error-message">
                 {errors.description && errors.description.message}
               </div>
-              <div className="ErrorMsg_BTN">
-              <button className="btn-submit" >{sending?"sending...":"Submit"}</button>
-              <div className="sucess-message">{sucessMessage}</div>
-            </div>
+
+              <button className="btn-submit">
+                {sending ? "sending..." : "Submit"}
+              </button>
             </div>
           </form>
 
@@ -217,7 +146,7 @@ export default function ContactUs() {
           </div>
         </div>
       </div>
-            {/* Mail send Sucess Message */}
+      {/* Mail send Sucess Message */}
       <Footer />
     </div>
   )

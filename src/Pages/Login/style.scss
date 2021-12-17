@@ -72,7 +72,7 @@
         padding-top: 15vh;
 
         a {
-          font-family: "Playfair Display", serif;
+          font-family: 'Playfair Display', serif;
           font-size: 50px;
           font-weight: 700;
 
@@ -94,11 +94,11 @@
     h1 {
       font-size: 50px;
       font-weight: 700;
-      font-family: "Playfair Display", serif;
+      font-family: 'Playfair Display', serif;
     }
 
     .divider {
-      width: 100px;
+      width: 300px;
       height: 3px;
       background: #9f1718;
       margin: 20px 0 30px 0;
@@ -116,12 +116,17 @@
         align-items: flex-start;
       }
 
+      // .switch {
+      //   display: flex;
+      //   align-items: center;
+      //   justify-content: center;
+      // }
       .login__container__form__inputs__input {
         &.left {
           flex: 2;
           padding: 8vh 0;
 
-          input { 
+          input {
             width: 65%;
             display: block;
             margin-bottom: 20px;
@@ -131,10 +136,6 @@
             font-size: 16px;
             margin-right: 15px;
 
-            &.full {
-              width: 92%;
-            }
-
             @media (max-width: 992px) {
               width: 90%;
               margin-bottom: 20px;
@@ -143,6 +144,12 @@
         }
 
         &.right {
+          display: none;
+
+          @media (min-width: 800px) {
+            display: block;
+          }
+
           flex: 2;
 
           img {
@@ -167,4 +174,8 @@
       margin-top: 40px;
     }
   }
+}
+
+.form-group {
+  margin-top: 2rem;
 }

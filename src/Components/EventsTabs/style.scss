@@ -1,58 +1,87 @@
 .eventsTabs__container {
-    margin-bottom: 50px;
-  
-    .Mui-selected {
-      color: #fff !important;
-      background: #e74c3c;
-      border: none !important;
-    }
-  
-    .MuiTabs-indicator {
-      display: none;
-    }
-  
-    .events__container__items > .MuiBox-root > p {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      flex-wrap: wrap;
-  
-      .item {
-          text-decoration: none;
-          color: #000;
-        width: 28vw;
-        margin-top: 40px;
-        box-shadow: 0 0 2px 0 rgba(145, 158, 171, 0.24),
-          0 16px 32px -4px rgba(145, 158, 171, 0.24);
-        border-radius: 14px;
-  
-        @media (max-width: 992px) {
-          width: 40vw;
-          margin-top: 60px;
-        }
-  
-        @media (max-width: 768px) {
-          width: 100%;
-        }
-        img {
-          width: 100%;
-          border-radius: 14px 14px 0 0;
-        }
-  
-        .item__info {
-          padding: 20px;
-          line-height: 1.7;
-        }
-  
-        .MuiButton-root {
-          display: block;
-          margin: 0 auto;
-          width: 90%;
-          color: #fff;
-          background: #a11a1c;
-          margin-bottom: 35px;
-        }
+  margin-bottom: 50px;
+
+  .Mui-selected {
+    color: #fff !important;
+    background: #e74c3c;
+    border: none !important;
+  }
+
+  .MuiTabs-indicator {
+    display: none;
+  }
+
+  .events__container__items > .MuiBox-root > p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+
+    .item {
+      text-decoration: none;
+      color: #000;
+      width: 28vw;
+      margin-top: 40px;
+      box-shadow: 0 0 2px 0 rgba(145, 158, 171, 0.24),
+        0 16px 32px -4px rgba(145, 158, 171, 0.24);
+      border-radius: 14px;
+
+      @media (max-width: 992px) {
+        width: 40vw;
+        margin-top: 60px;
+      }
+
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+      img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 14px 14px 0 0;
+      }
+      h2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .item__info {
+        // margin-bottom: 1.5rem;
+        padding: 20px;
+        line-height: 1.625;
+        height: max-content;
+        margin-bottom: 1rem;
+        max-height: 70px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .MuiButton-root {
+        display: block;
+        margin: 0 auto;
+        width: 90%;
+        color: #fff;
+        background: #a11a1c;
+        margin-bottom: 35px;
       }
     }
   }
-  
+}
+
+.events__container__items {
+  button {
+    margin-top: auto;
+  }
+}
+
+.home__container__landing__donationForm {
+  position: absolute;
+  z-index: 3;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}

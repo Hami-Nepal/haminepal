@@ -1,28 +1,28 @@
 import React from 'react';
 import isEmail from 'validator/lib/isEmail';
 import './style.scss';
-
-import Logo from '../../Assets/logo.png';
-
-import { Link } from 'react-location';
-import Iframe from 'react-iframe';
 import { Avatar, Button } from '@mui/material';
+import MapContainer from './mapcontainer';
 
 import Footer from '../../Components/Footer/Footer';
 
 import baseURL from '../../api/baseURL';
 
+import NavBar from '../../Components/NavBar/Nav';
+
 const fileReader = new FileReader();
 
 export default function NewVolunteer() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
   const [volunteerImg, setVolunteerImg] = React.useState(null);
   const [volunteerImgUrl, setVolunteerImgUrl] = React.useState('');
+  const [center, setCenter] = React.useState(null);
   const [fields, setFields] = React.useState({
     first_name: '',
     last_name: '',
     phone: '',
     email: '',
+    password: '',
+    cPassword: '',
     age: '',
     bloodGroup: '',
     field_of_expertise: '',
@@ -34,6 +34,7 @@ export default function NewVolunteer() {
     street_address: '',
   });
   const emailInput = React.useRef();
+  const pass = React.useRef();
   const [requestState, setRequestState] = React.useState(null);
   const [errorMsg, setErrorMsg] = React.useState('');
 
@@ -77,80 +78,28 @@ export default function NewVolunteer() {
       });
   };
 
-  console.log(fields);
+  const handleLocationError = (hasGeolocation, string) => {
+    console.log(hasGeolocation, string);
+  };
+
+  const fetchMyLocation = (e) => {
+    e.preventDefault();
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        setCenter({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, 'Browser doesnt Support');
+    }
+  };
 
   return (
     <div className="newVolunteer__container">
-      {/* @sectoin => topbar */}
-      <div className="newVolunteer__container__topbar">
-        <img
-          className="newVolunteer__container__logo"
-          src={Logo}
-          alt="haminepal logo"
-        />
-
-        <button onClick={() => setIsActiveMenu(true)}>
-          <i className="ri-menu-line"></i>
-        </button>
-      </div>
-
-      {/* @section => hidden menu */}
-      <div
-        className="newVolunteer__container__landing__hiddenMenu"
-        style={{
-          display: isActiveMenu ? 'flex' : 'none',
-        }}
-      >
-        <div className="newVolunteer__container__landing__hiddenMenu__topbar">
-          <img
-            className="newVolunteer__container__landing__topbar__logo"
-            src={Logo}
-            alt="haminepal logo"
-          />
-
-          <button onClick={() => setIsActiveMenu(false)}>
-            <i className="ri-close-line"></i>
-          </button>
-        </div>
-        <ul className="newVolunteer__container__landing__hiddenMenu__items left">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/">News</Link>
-          </li>
-          <li>
-            <Link to="/">Act of Kindness</Link>
-          </li>
-          <li>
-            <Link to="/">Civil Rights Movements</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-          <div className="divider"></div>
-          <li>
-            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
-          </li>
-        </ul>
-        <ul className="newVolunteer__container__landing__hiddenMenu__items right">
-          <li>
-            <Link to="/about">About Us</Link>
-          </li>
-          <li>
-            <Link to="/causes">Cause</Link>
-          </li>
-          <li>
-            <Link to="/events">Events</Link>
-          </li>
-          <li>
-            <Link to="/transparency">Transparency</Link>
-          </li>
-          <li>
-            <Link to="/volunteer">Volunteers</Link>
-          </li>
-        </ul>
-      </div>
+      <NavBar />
 
       {/* @section => form */}
       <div className="newVolunteer__container__form">
@@ -164,7 +113,18 @@ export default function NewVolunteer() {
             {volunteerImg ? <img src={volunteerImgUrl} alt="" /> : <Avatar />}
             <div>Upload Image</div>
           </label>
-          <input id="file-upload" type="file" onChange={onSelectImage} />
+          <input
+            id="file-upload"
+            type="file"
+            accept="image/*"
+            onChange={onSelectImage}
+          />
+          <Button
+            // className='btn btn-primary mb-4'
+            onClick={fetchMyLocation}
+          >
+            Fetch my Location
+          </Button>
         </div>
 
         {/* @section => form container */}
@@ -214,6 +174,33 @@ export default function NewVolunteer() {
                 required
                 value={fields.phone}
                 onChange={onFieldChange('phone')}
+              />
+            </div>
+
+            <div>
+              <input
+                type="password"
+                placeholder="Password"
+                required
+                value={fields.password}
+                onChange={onFieldChange('password')}
+              />
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                required
+                value={fields.cPassword}
+                ref={pass}
+                onChange={onFieldChange('cPassword')}
+                onBlur={(e) => {
+                  if (fields.password !== fields.cPassword) {
+                    pass.current.style.borderColor = 'red';
+                    pass.current.style.borderWidth = '2px';
+                  } else {
+                    pass.current.style.borderColor = 'black';
+                    pass.current.style.borderWidth = '1px';
+                  }
+                }}
               />
             </div>
 
@@ -338,13 +325,12 @@ export default function NewVolunteer() {
           </form>
 
           <div className="newVolunteer__container__form__inputs__input right">
-            <Iframe
-              url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56504.95209466454!2d85.29435527910155!3d27.730883699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19e402e28da1%3A0xa5f874e6acdd4479!2sHami%20Nepal!5e0!3m2!1sen!2snp!4v1637297091696!5m2!1sen!2snp"
-              width="100%"
-              height="450px"
-              className="maps"
-              display="initial"
-              position="relative"
+            <MapContainer
+              apiKey="AIzaSyC9ygizb1G5HWBnHPE9UWOM23fPiuWZAiw"
+              center={center || {}}
+              handleMyLocationChange={(coords) => {
+                // console.log(coords);
+              }}
             />
           </div>
         </div>

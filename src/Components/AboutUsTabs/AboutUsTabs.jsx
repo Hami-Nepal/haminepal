@@ -1,21 +1,21 @@
-import * as React from "react"
-import "./style.scss"
-import banner1 from "../../Assets/banner1.jpg"
-import banner2 from "../../Assets/banner2.jpg"
-import banner3 from "../../Assets/banner3.jpg"
+import * as React from 'react';
+import './style.scss';
+import banner1 from '../../Assets/banner1.jpg';
+import banner2 from '../../Assets/banner2.jpg';
+import banner3 from '../../Assets/banner3.jpg';
 
-import PropTypes from "prop-types"
-import Tabs from "@mui/material/Tabs"
-import Tab from "@mui/material/Tab"
-import Typography from "@mui/material/Typography"
-import Box from "@mui/material/Box"
-import Card from "@mui/material/Card"
-import CardMedia from "@mui/material/CardMedia"
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
 
-import baseURL from "../../api/baseURL"
+import baseURL from '../../api/baseURL';
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props
+  const { children, value, index, ...other } = props;
 
   return (
     <div
@@ -31,41 +31,41 @@ function TabPanel(props) {
         </Box>
       )}
     </div>
-  )
+  );
 }
 
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
-}
+};
 
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  }
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
 }
 
 export default function AboutUsTabs() {
-  const [value, setValue] = React.useState(0)
-  const [boardMembers, setBoardMembers] = React.useState([])
-  console.log(boardMembers)
+  const [value, setValue] = React.useState(0);
+  const [boardMembers, setBoardMembers] = React.useState([]);
 
   React.useEffect(() => {
-    fetch(baseURL + "/boardmembers")
+    fetch(baseURL + '/boardmembers')
       .then((data) => data.json())
-      .then(({ data }) => setBoardMembers(data)).catch(({ response }) => console.log(response))
-  }, [])
+      .then(({ data }) => setBoardMembers(data))
+      .catch(({ response }) => console.log(response));
+  }, []);
 
   const handleChange = (event, newValue) => {
-    setValue(newValue)
-  }
+    setValue(newValue);
+  };
 
   return (
     <div className="aboutUsTabs__container">
-      <Box sx={{ width: "100%" }}>
-        <Box sx={{ borderBottom: 2, borderColor: "#e74c3c" }}>
+      <Box sx={{ width: '100%' }}>
+        <Box sx={{ borderBottom: 2, borderColor: '#e74c3c' }}>
           <Tabs
             variant="scrollable"
             scrollButtons="auto"
@@ -87,16 +87,16 @@ export default function AboutUsTabs() {
           <img src={banner1} alt="banner" />
           <h1>INTRODUCTION</h1>
           <p>
-            Hami Nepal Youth Organisation is a non-profit organisation,
-            established in 2015 A.D. and registered in 2020 A.D. (Regd.no.
-            609789065), which directly connects the donors and the recipients.
-            Our main objective is to help anyone in need without any hesitations
-            and expectation of payback. The organisation doesn’t spend any of
-            the received donations on administration cost as we believe that
-            100% of the donation should reach the recipient in order to
-            establish effective helping. All of our volunteers, mobilised for
-            the authentication of the problem, logistics and delivery, cover
-            their own expenses in order to save the administrative expense.
+            Hami Nepal is a non-profit organisation, established in 2015 A.D.
+            and registered in 2020 A.D. (Regd.no. 609789065), which directly
+            connects the donors and the recipients. Our main objective is to
+            help anyone in need without any hesitations and expectation of
+            payback. The organisation doesn’t spend any of the received
+            donations on administration cost as we believe that 100% of the
+            donation should reach the recipient in order to establish effective
+            helping. All of our volunteers, mobilised for the authentication of
+            the problem, logistics and delivery, cover their own expenses in
+            order to save the administrative expense.
           </p>
           <br />
           <h1>HISTORY OF THE ORGANISATION</h1>
@@ -216,5 +216,5 @@ export default function AboutUsTabs() {
         </TabPanel>
       </Box>
     </div>
-  )
+  );
 }

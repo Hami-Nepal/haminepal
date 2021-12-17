@@ -88,7 +88,7 @@
   // @section => landing
   .transparency__container__landing {
     z-index: 1;
-    height: 85vh;
+    min-height: 85vh;
     width: 100%;
     background-image: linear-gradient(
         to bottom,
@@ -122,7 +122,7 @@
     }
 
     ul {
-      margin-top: 100px;
+      margin-top: 80px;
       list-style: none;
       color: #fff;
       display: flex;
@@ -143,6 +143,7 @@
       }
 
       p {
+        margin-bottom: 50px;
         font-size: 22px;
         color: #59d057;
         font-weight: 600;
@@ -159,7 +160,8 @@
     display: flex;
     padding: 80px 5vw;
     justify-content: space-between;
-    align-items: center;    
+    align-items: center;
+    margin-top: -2rem;
 
     img,
     div {
@@ -173,14 +175,14 @@
     }
 
     @media (max-width: 992px) {
-        flex-direction: column;
-        align-items: center;
+      flex-direction: column;
+      align-items: center;
 
-        img{
-            margin-top: 30px;
-            width: 100%;
-        }
+      img {
+        margin-top: 30px;
+        width: 100%;
       }
+    }
 
     .divider {
       margin-top: 10px;
@@ -201,12 +203,160 @@
     margin-left: 5vw;
   }
 
-  .tabs__divider{
-      margin-top: 10px;
+  .tabs__divider {
+    margin-top: 10px;
     width: 80px;
     height: 5px;
     margin-bottom: 30px;
     background: #9f1718;
     margin-left: 5vw;
+  }
+}
+
+.causesTabs__meroTabs {
+  width: max-content;
+  margin: 2rem auto;
+
+  .btn__fund {
+    margin-right: 1rem;
+    color: white;
+    background-color: gray;
+
+    &:hover {
+      background-color: #9f1718;
+    }
+
+    &:focus {
+      background-color: #9f1718;
+      color: white;
+    }
+  }
+}
+
+.tab-pane {
+  max-width: 700px;
+  width: 90%;
+  margin: 2rem auto 5rem;
+}
+
+.b10 {
+  background-color: #9f1718;
+  color: white;
+  font-weight: 600;
+  margin-left: 1rem;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.causes__container .causes__container__landing p {
+  width: 90vw;
+}
+
+.jRFJkP {
+  background-color: #9f1718 !important;
+}
+
+.lcUbOd {
+  background-color: white !important;
+  box-shadow: 0 0 1px 3px #9f1718 !important;
+}
+.tab-content {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.billCarousel__container {
+  text-align: center;
+
+  .sc-bdvvtL,
+  .cNNJIt,
+  .rec,
+  .rec-arrow,
+  .rec,
+  .jRFJkP {
+    background: transparent !important;
+    box-shadow: none !important;
+
+    &:disabled {
+      cursor: not-allowed;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+  }
+
+  .billCarousel__container__item {
+    img {
+      width: 300px;
+      height: auto;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.tarnsparenc__kind__Ko,
+.transparency__cash__ko {
+  width: 90%;
+  margin: auto;
+  padding: 3.5rem 0 0;
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  ul {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+
+    hr {
+      height: 1px;
+      width: 100%;
+    }
+
+    @media (min-width: 992px) {
+      flex-direction: row;
+
+      hr {
+        height: 70px;
+        width: 1px;
+      }
+    }
+
+    li {
+      list-style-type: none;
+
+      p {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  button {
+    background-color: #9f1718;
+    color: white;
+
+    &:hover {
+      opacity: 0.9;
+      background-color: #9f1718;
+    }
+  }
+}
+
+.transparency__cash__ko {
+  margin-bottom: 3rem;
+}
+
+.admin-expenses-ko-section {
+  width: 90%;
+  margin: 0 auto 3rem;
+
+  .admin-expenses-ko-column {
+    margin-top: 2rem;
   }
 }

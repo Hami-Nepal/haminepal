@@ -1,95 +1,10 @@
 .news {
-  .news__topbar,
-  .news__landing__hiddenMenu__topbar {
-    width: 100%;
-    padding: 25px 35px 25px 25px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1;
-
-    button {
-      background: transparent !important;
-      outline: none;
-      border: none;
-      cursor: pointer;
-      i {
-        font-size: 30px;
-        font-weight: 500;
-        color: #000;
-      }
-    }
-  }
-
-  .news__landing__hiddenMenu__topbar {
-    background: #fff;
-  }
-
-  // @section => hidden menu
-  .news__landing__hiddenMenu {
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    flex: 1;
-    display: flex;
-    width: 100%;
-    height: 85%;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-
-    .news__landing__hiddenMenu__items {
-      list-style: none;
-      height: 100%;
-      width: 100%;
-      padding: 0 50px;
-
-      a {
-        color: #ffff;
-        text-decoration: none;
-        font-size: 32px;
-        line-height: 1.8;
-        transition: all 0.3s ease-in-out;
-
-        &:hover {
-          border-left: 2px solid #fff;
-          padding-left: 25px;
-        }
-      }
-
-      &.left {
-        background: #34495e;
-        flex: 3;
-        padding-top: 22vh;
-      }
-
-      &.right {
-        background: #2c3e50;
-        text-align: right;
-        flex: 2;
-        padding-top: 15vh;
-
-        a {
-          font-family: "Playfair Display", serif;
-          font-size: 50px;
-          font-weight: 700;
-
-          &:hover {
-            border-right: 2px solid #fff;
-            padding-right: 25px;
-          }
-        }
-      }
-    }
-  }
-
   //   @section => landing
   .news__container_landing {
     z-index: 1;
     height: 85vh;
     width: 100%;
+    margin-top: -120px;
     background-image: linear-gradient(
         285.24deg,
         #d81d1d38 -13.53%,
@@ -118,15 +33,5 @@
         width: 70vw;
       }
     }
-  }
-  /** @section => volunteer cards */
-  .news_container_cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 4rem;
-    margin: 0 5vw;
-    margin-bottom: 60px;
   }
 }

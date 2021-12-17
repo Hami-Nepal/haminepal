@@ -1,101 +1,34 @@
-import React, { useEffect } from "react"
-import "./style.scss"
+import React, { useEffect } from "react";
+import "./style.scss";
 
-import Logo from "../../Assets/logo.png"
+import { Link } from "react-location";
 
-import { Link } from "react-location"
+import VolunteerCard from "../../Components/VolunteerCard/VolunteerCard";
+import Footer from "../../Components/Footer/Footer";
 
-import VolunteerCard from "../../Components/VolunteerCard/VolunteerCard"
-import Footer from "../../Components/Footer/Footer"
-
-import baseURL from "../../api/baseURL"
+import baseURL from "../../api/baseURL";
+import NavBar from "../../Components/NavBar/Nav";
+import Donate from "../../Components/Donate/Donate";
 
 export default function Volunteer() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
-  const [volunteers, setVolunteers] = React.useState([])
+  const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
+  const [volunteerName, setVolunteerName] = React.useState("");
+
+  const [volunteers, setVolunteers] = React.useState([]);
 
   useEffect(() => {
     fetch(baseURL + "/volunteers?isVerified=true")
       .then((data) => data.json())
       .then(({ data }) => setVolunteers(data))
-      .catch((err) => console.log(err, "\n", err.response))
-  }, [])
+      .catch((err) => console.log(err, "\n", err.response));
+  }, []);
 
   return (
-    <div className="volunteer__container">
-      {/* @sectoin => topbar */}
-      <div className="volunteer__container__topbar">
-        <img
-          className="volunteer__container__logo"
-          src={Logo}
-          alt="haminepal logo"
-        />
-
-        <button onClick={() => setIsActiveMenu(true)}>
-          <i className="ri-menu-line"></i>
-        </button>
-      </div>
-
-      {/* @section => hidden menu */}
-      <div
-        className="volunteer__container__landing__hiddenMenu"
-        style={{
-          display: isActiveMenu ? "flex" : "none",
-        }}
-      >
-        <div className="volunteer__container__landing__hiddenMenu__topbar">
-          <img
-            className="volunteer__container__landing__topbar__logo"
-            src={Logo}
-            alt="haminepal logo"
-          />
-
-          <button onClick={() => setIsActiveMenu(false)}>
-            <i className="ri-close-line"></i>
-          </button>
-        </div>
-        <ul className="volunteer__container__landing__hiddenMenu__items left">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/">News</Link>
-          </li>
-          <li>
-            <Link to="/">Act of Kindness</Link>
-          </li>
-          <li>
-            <Link to="/">Civil Rights Movements</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-          <div className="divider"></div>
-          <li>
-            <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
-          </li>
-        </ul>
-        <ul className="volunteer__container__landing__hiddenMenu__items right">
-          <li>
-            <Link to="/about">About Us</Link>
-          </li>
-          <li>
-            <Link to="/causes">Cause</Link>
-          </li>
-          <li>
-            <Link to="/events">Events</Link>
-          </li>
-          <li>
-            <Link to="/transparency">Transparency</Link>
-          </li>
-          <li>
-            <Link to="/volunteer">Volunteers</Link>
-          </li>
-        </ul>
-      </div>
+    <div className='volunteer__container'>
+      <NavBar />
 
       {/* @section => landing */}
-      <div className="volunteer__container__landing">
+      <div className='volunteer__container__landing'>
         <h1>Volunteer</h1>
 
         <p>
@@ -103,34 +36,52 @@ export default function Volunteer() {
           Others?
         </p>
 
-        <Link to="/new-volunteer">Be a Volunteer</Link>
+        <Link to='/new-volunteer'>Be a Volunteer</Link>
       </div>
 
       {/* @section => definition */}
-      <div className="volunteer__container__definition">
-        <h1 className="volunteer__container__definition__title">
+      <div className='volunteer__container__definition'>
+        <h1 className='volunteer__container__definition__title'>
           Our Volunteer
         </h1>
-        <div className="volunteer__container__definition__content">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda
-          architecto suscipit libero blanditiis sequi vitae nemo fuga, tempore
-          voluptas aperiam modi obcaecati, voluptates dignissimos voluptatem
-          dolores et sunt magni ipsa!
+        <div className='volunteer__container__definition__content'>
+          Volunteering has been a part of our network since we were founded six
+          years ago. To this day, voluntary service—helping others without
+          desire for personal gain—remains one of our Fundamental Principles
+          guiding everything we do. They are selfless, who works for the people.
         </div>
       </div>
 
       {/* @section => cards */}
-      <div className="volunteer__container__cards">
+      <div className='volunteer__container__cards'>
         {volunteers.map((volunteer) => (
-          <VolunteerCard {...volunteer} key={volunteer._id} />
+          <VolunteerCard
+            {...volunteer}
+            key={volunteer._id}
+            onClick={(e) => {
+              e.preventDefault();
+              setIsDonationFormOpen(true);
+              setVolunteerName(
+                volunteer.first_name + " " + volunteer.last_name
+              );
+            }}
+          />
         ))}
       </div>
 
-      <Footer />
+      {/** @dev this is dismissiable donation form */}
+      <div
+        style={{ display: isDonationFormOpen ? "block" : "none" }}
+        className='home__container__landing__donationForm'
+      >
+        <Donate
+          setIsDonationFormOpen={setIsDonationFormOpen}
+          donation_type={"Volunteer"}
+          donation_name={"> " + volunteerName}
+        />
+      </div>
 
-      <h4>
-        Made with ❤️ in <Link>Hash Technologies</Link>
-      </h4>
+      <Footer />
     </div>
-  )
+  );
 }

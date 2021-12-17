@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react"
 import "./style.scss"
-
+import Carousel from "react-elastic-carousel"
 import Logo from "../../Assets/logo.png"
+
 import BannerVideo from "../../Assets/banner.mp4"
 import BannerVideoWebm from "../../Assets/banner.webm"
 import BannerVideoOgm from "../../Assets/banner.ogm"
@@ -11,7 +12,9 @@ import MapVideo from "../../Assets/nepalMap.mp4"
 import { Link } from "react-location"
 import { Helmet } from "react-helmet"
 
-import Partners from "../../Mocks/OurPartners.json"
+import OurSupporters from "../../Mocks/ourSupporter.json"
+import OurPartners from "../../Mocks/ourPartner.json"
+import InfluenerCarousel from "../../Components/Influencers/InfluencersCarousel"
 
 import KindnessCard from "../../Components/Act of Kindness/KindnessCard"
 import BoardMembersCarousel from "../../Components/BoardMembers/BoardMembersCarousel"
@@ -20,21 +23,39 @@ import Donate from "../../Components/Donate/Donate"
 
 import baseURL from "../../api/baseURL"
 
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft"
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight"
+
 export default function Home() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false)
   const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false)
-  const [topDonors, setTopDonors] = useState([])
   const [kindness, setKindness] = useState([])
   const [totalDonations, setTotalDonations] = useState(0)
+  const [totalKindDonations, setTotalKindDonations] = useState(0)
   const [totalExpenses, setTotalExpenses] = useState(0)
+  const [totalKindExpenses, setTotalKindExpenses] = useState(0)
   const [homeHero, setHomeHero] = useState({})
+  const arr = [
+    "Kathmandu",
+    "Pokhara",
+    "Hetauda",
+    "Birgung",
+    "Manang",
+    "Besisahar",
+    "Bhaktapur",
+    "Helambu",
+    "Remachap",
+    "Bhojpur",
+    "Bheri",
+    "Doti",
+    "Dhangadi",
+    "Mugu",
+    "Karnali",
+    "Rukum",
+    "Bardiya",
+  ]
 
   useEffect(() => {
-    fetch(baseURL + "/donations?sort=-donation_amount&limit=5")
-      .then((data) => data.json())
-      .then(({ data }) => setTopDonors(data))
-      .catch(({ response }) => console.log(response))
-
     fetch(baseURL + "/kindness/featured")
       .then((data) => data.json())
       .then(({ featured }) => setKindness(featured))
@@ -45,10 +66,24 @@ export default function Home() {
       .then(({ data }) => setTotalDonations(data.length ? data[0].donation : 0))
       .catch(({ response }) => console.log(response))
 
+    fetch(baseURL + "/find/totalkindDonations")
+      .then((data) => data.json())
+      .then(({ data }) =>
+        setTotalKindDonations(data.length ? data[0].kinddonation : 0)
+      )
+      .catch(({ response }) => console.log(response))
+
     fetch(baseURL + "/find/totalExpenses")
       .then((data) => data.json())
       .then(({ data }) =>
         setTotalExpenses(data.length ? data[0].total_expenses : 0)
+      )
+      .catch(({ response }) => console.log(response))
+
+    fetch(baseURL + "/find/totalkindExpenses")
+      .then((data) => data.json())
+      .then(({ data }) =>
+        setTotalKindExpenses(data.length ? data[0].total_kind_expenses : 0)
       )
       .catch(({ response }) => console.log(response))
 
@@ -57,6 +92,13 @@ export default function Home() {
       .then(({ data }) => setHomeHero(data[0]))
       .catch(({ response }) => console.log(response))
   }, [])
+  // console.log(totalKindExpenses);
+  const isLoggedIn = !!(
+    localStorage.getItem("user") || localStorage.getItem("vinfo")
+  )
+
+  const carouselRef = React.useRef(null)
+  let resetTimeout
 
   return (
     <div className="home__container">
@@ -67,7 +109,7 @@ export default function Home() {
       <div className="home__container__landing">
         <video
           className="Home__video"
-          src={homeHero.videoUrl}
+          src={homeHero?.videoUrl}
           preload="metadata"
           autoPlay={true}
           muted={true}
@@ -81,11 +123,13 @@ export default function Home() {
         </video>
 
         <div className="home__container__landing__topbar">
-          <img
-            className="home__container__landing__topbar__logo"
-            src={Logo}
-            alt="haminepal logo"
-          />
+          <a href="/">
+            <img
+              className="home__container__landing__topbar__logo"
+              src={Logo}
+              alt="haminepal logo"
+            />
+          </a>
 
           <button onClick={() => setIsActiveMenu(true)}>
             <i className="ri-menu-line"></i>
@@ -94,16 +138,16 @@ export default function Home() {
 
         <div className="home__container__landing__footer">
           <div>
-            <h1 style={{ color: homeHero.color || "white" }}>
-              {homeHero.content}
+            <h1 style={{ color: homeHero?.color || "white" }}>
+              {homeHero?.content}
             </h1>
             <Link
               onClick={() => setIsDonationFormOpen(true)}
               className="home__container__landing__footer__donate"
               to="/"
               style={{
-                color: homeHero.color || "white",
-                borderColor: homeHero.color || "white",
+                color: homeHero?.color || "white",
+                borderColor: homeHero?.color || "white",
               }}
             >
               Donate
@@ -114,8 +158,8 @@ export default function Home() {
             className="home__container__landing__footer__ourWork"
             to="/our-work"
             style={{
-              color: homeHero.color || "white",
-              borderColor: homeHero.color || "white",
+              color: homeHero?.color || "white",
+              borderColor: homeHero?.color || "white",
             }}
           >
             Our Work
@@ -127,7 +171,10 @@ export default function Home() {
           style={{ display: isDonationFormOpen ? "block" : "none" }}
           className="home__container__landing__donationForm"
         >
-          <Donate setIsDonationFormOpen={setIsDonationFormOpen} />
+          <Donate
+            setIsDonationFormOpen={setIsDonationFormOpen}
+            donation_type={"Administrator"}
+          />
         </div>
 
         <div
@@ -137,11 +184,13 @@ export default function Home() {
           }}
         >
           <div className="home__container__landing__hiddenMenu__topbar">
-            <img
-              className="home__container__landing__topbar__logo"
-              src={Logo}
-              alt="haminepal logo"
-            />
+            <a href="/">
+              <img
+                className="home__container__landing__topbar__logo"
+                src={Logo}
+                alt="haminepal logo"
+              />
+            </a>
 
             <button onClick={() => setIsActiveMenu(false)}>
               <i className="ri-close-line"></i>
@@ -155,17 +204,31 @@ export default function Home() {
               <Link to="/news">News</Link>
             </li>
             <li>
-              <Link to="/">Act of Kindness</Link>
+              <Link to="/act-of-kindness">Act of Kindness</Link>
             </li>
             <li>
-              <Link to="/">Civil Rights Movements</Link>
+              <Link to="/civil-rights-movement">Civil Rights Movements</Link>
             </li>
             <li>
               <Link to="/contact">Contact Us</Link>
             </li>
             <div className="divider"></div>
             <li>
-              <Link to="/login">Login/</Link> <Link to="/signup">Signup</Link>
+              {isLoggedIn ? (
+                <Link
+                  to="/"
+                  onClick={() => {
+                    localStorage.clear()
+                  }}
+                >
+                  Logout
+                </Link>
+              ) : (
+                <>
+                  <Link to="/signup">Signup /</Link>
+                  <Link to="/login"> Login</Link>
+                </>
+              )}
             </li>
           </ul>
           <ul className="home__container__landing__hiddenMenu__items right">
@@ -190,57 +253,98 @@ export default function Home() {
 
       {/** @section => transparency */}
       <div className="home__container__transparency">
-        <div className="home__container__transparency__info">
-          <h1>Transparency</h1>
+        <Link to="/transparency" style={{ textDecoration: "none" }}>
+          <h1 style={{ color: "black" }}>Transparency</h1>
+        </Link>
 
-          <div className="home__container__transparency__info__item">
-            <h2>Rs {totalDonations}</h2>
-            <div className="home__container__transparency__info__item__title">
-              Donation Received
-            </div>
-          </div>
-          <div className="home__container__transparency__info__item center">
-            <h2>Rs {totalExpenses}</h2>
-            <div className="home__container__transparency__info__item__title">
-              Expenditure
-            </div>
-          </div>
-          <div className="home__container__transparency__info__item">
-            <h2>Rs {totalDonations - totalExpenses}</h2>
-            <div className="home__container__transparency__info__item__title">
-              Remaining Donation
-            </div>
-          </div>
-        </div>
-
-        <div className="home__container__transparency__topDonors">
-          <h2>Top Donors</h2>
-
-          {topDonors.map((user, index) => (
-            <div
-              className={`home__container__transparency__topDonors__donor ${
-                index !== 0 && "border"
-              }`}
-              key={user._id}
-            >
-              <div>
-                <img src={Logo} alt="donor icon" />
-                <p>
-                  {user.first_name} {user.last_name}
-                </p>
+        <div className="home__container__transparency__column">
+          <div className="home__container__transparency__info home__container__transparency__kindness">
+            <h2>Kinds</h2>
+            <div className="home__container__transparency__info__item">
+              <h2 style={{ fontFamily: "sans-serif" }}>
+                Rs {new Intl.NumberFormat("en-IN").format(38444879.0)}
+              </h2>
+              <div className="home__container__transparency__info__item__title">
+                Donation Received
               </div>
-              <b>Rs. {user.donation_amount}</b>
             </div>
-          ))}
+            <div className="home__container__transparency__info__item center">
+              <h2 style={{ fontFamily: "sans-serif" }}>
+                Rs {new Intl.NumberFormat("en-IN").format(32291314)}
+              </h2>
+              <div className="home__container__transparency__info__item__title">
+                Expenditure
+              </div>
+            </div>
+            <div className="home__container__transparency__info__item">
+              <h2 style={{ fontFamily: "sans-serif" }}>
+                Rs {new Intl.NumberFormat("en-IN").format(6153565)}
+              </h2>
+              <div className="home__container__transparency__info__item__title">
+                Remaining Donation
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div className="home__container__transparency__info">
+            <h2>Cash</h2>
+            <div className="home__container__transparency__info__item">
+              <h2 style={{ fontFamily: "sans-serif" }}>
+                Rs {new Intl.NumberFormat("en-IN").format(12949876.63)}
+              </h2>
+              <div className="home__container__transparency__info__item__title">
+                Donation Received
+              </div>
+            </div>
+            <div className="home__container__transparency__info__item center">
+              <h2 style={{ fontFamily: "sans-serif" }}>
+                Rs {new Intl.NumberFormat("en-IN").format(6707701.44)}
+              </h2>
+              <div className="home__container__transparency__info__item__title">
+                Expenditure
+              </div>
+            </div>
+            <div className="home__container__transparency__info__item">
+              <h2 style={{ fontFamily: "sans-serif" }}>
+                Rs {new Intl.NumberFormat("en-IN").format(6242175.19)}
+              </h2>
+              <div className="home__container__transparency__info__item__title">
+                Remaining Donation
+              </div>
+            </div>
+          </div>
 
-          <Link to="/">Learn more about transparency</Link>
+          {/* <hr />
+
+          <div className='home__container__transparency__topDonors'>
+            <h2>Top Donors</h2>
+
+            {topDonors.map((user, index) => (
+              <div
+                className={`home__container__transparency__topDonors__donor ${
+                  index !== 0 && "border"
+                }`}
+                key={user._id}
+              >
+                <div>
+                  <img src={Logo} alt='donor icon' />
+                  <p>
+                    {user.first_name} {user.last_name}
+                  </p>
+                </div>
+                <b>Rs. {user.donation_amount}</b>
+              </div>
+            ))}
+
+            <Link to='/'>Learn more about transparency</Link>
+          </div> */}
         </div>
       </div>
 
       {/* @section HamiNepalMap */}
       <div className="home_container_mapVideo">
         <video
-          className="Map__video"
+          className="map__video"
           src={MapVideo}
           preload="metadata"
           autoPlay={true}
@@ -250,25 +354,11 @@ export default function Home() {
           poster={BannerPoster}
         />
         <div className="home_container_mapVideo_right">
-          <h1>Our Locations</h1>
+          <h1>Places Reached</h1>
           <ul>
-            <li>kathmandu</li>
-            <li>Pokhara</li>
-            <li>Hetauda</li>
-            <li>Birgunj</li>
-            <li>Manang</li>
-            <li>Besisahar</li>
-            <li>Bhaktpur</li>
-            <li>Helambu</li>
-            <li>Ramechap</li>
-            <li>Bhojpur</li>
-            <li>Bheri</li>
-            <li>Doti</li>
-            <li>Dhangadi</li>
-            <li>Mugu</li>
-            <li>Karnali</li>
-            <li>Rukum</li>
-            <li>Bardiya</li>
+            {arr.map((place, index) => (
+              <li key={index}>{place}</li>
+            ))}
           </ul>
         </div>
       </div>
@@ -276,7 +366,7 @@ export default function Home() {
       {/** @section => act of kindness */}
       <div className="home__container__actOfKindness">
         <h1>
-          ACT OF KINDNESS <span>Featured</span>
+          Act of Kindness <span style={{ color: "red" }}>Featured</span>
         </h1>
 
         <div className="home__container__actOfKindness__items">
@@ -316,10 +406,7 @@ export default function Home() {
           <h1>Coming Soon</h1>
           <span>Hami Nepal App</span>
 
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-            asperiores cum minima. Maiores, harum.
-          </p>
+          <p>Hami Nepal app is coming soon! Stay tuned.</p>
 
           <div className="links">
             <Link to="/">
@@ -337,28 +424,100 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/** @section => our partner */}
+      {/** @section => our mentor */}
       <div className="home__container__ourPartner">
-        <h1>Our Partner</h1>
-        <ul>
-          {Partners.partners.map((partner, index) => (
-            <li key={index}>
-              <img src={partner} alt="" />
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <Footer />
-
-      <div className="home__container__copyrightInfo">
-        <div>&copy; Hami Nepal. All Rights Reserved</div>
-        <div>
-          {" "}
-          Made with ❤️ by <Link to="/">Hash Technologies</Link>
+        <h1>Our Mentor</h1>
+        <div className="Mentor">
+          <img
+            style={{ width: 450, height: 400, borderRadius: "4%" }}
+            src="https://www.abc.net.au/cm/rimage/9966990-1x1-large.jpg?v=3"
+            alt="Sandukh Ruit"
+          />
+          <div className="Mentor__details">
+            <h3>Dr. Sanduk Ruit</h3>
+            <p>
+              Dr. Sanduk Ruit, is a world renowned ophthalmologist and
+              philanthropist widely recognised for restoring the sight of over
+              130,000 people. He is an eminent eye-surgeon and also the first to
+              pioneer a method for delivering high-quality microsurgical
+              procedures in remote eye camps. Dr. Sanduk’s humanitarian efforts
+              have changed the lives of many, he has been a mentor and ally for
+              Hami Nepal. His assistance has been paramount during times of
+              crisis, providing his expertise in the medical field to carry out
+              the task more efficiently. During the second lockdown, he shared
+              Barbara foundation ‘s office space where Hami Nepal family has
+              found a home. His continued moral support, guidance has helped us
+              pursue a vision for better Nepal.
+            </p>
+          </div>
         </div>
       </div>
+
+      <div className="home__container__ourPartner">
+        <h1>Our Allies</h1>
+
+        {/* <ul>
+          {Partners.partners.map((partner) => (
+            <li key={partner.photo}>
+              <a href={partner.link} target="_blank" rel="noreferrer">
+                <img src={partner.photo} alt="" />
+              </a>
+            </li>
+          ))}
+        </ul> */}
+
+        <div className="Supporters">
+          {OurPartners.partners.map((partner) => (
+            <div className="ourSupporters__container">
+              <a href={partner.link} target="_blank" rel="noreferrer">
+                <img src={partner.photo} alt="" />
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <div className="infuencer__heading">
+          <h1 style={{ marginTop: "3rem" }}>Social Supporters</h1>
+          <InfluenerCarousel />
+        </div>
+        <div className="supporter_heading">
+          <h1 style={{ marginTop: "3rem" }}>Our Supporters</h1>
+        </div>
+
+        <div className="influencersCarousel__container">
+          <Carousel
+            className="influencersCarousel__container__carourel"
+            ref={carouselRef}
+            enableAutoPlay
+            autoPlaySpeed={1000} // same time
+            onNextEnd={({ index }) => {
+              clearTimeout(resetTimeout)
+              if (index + 1 === 11) {
+                resetTimeout = setTimeout(() => {
+                  carouselRef.current.goTo(0)
+                }, 1000) // same time
+              }
+            }}
+            itemsToShow={8}
+          >
+            {OurSupporters.supporters.map((supporter, index) => (
+              <div className="home__ourPartners__scroll__child">
+                <a href={supporter.link} target="_blank" rel="noreferrer">
+                  <img src={supporter.photo} alt="" />
+                </a>
+              </div>
+            ))}
+          </Carousel>
+        </div>
+        {/* {OurSupporters.supporters.map((supporter) => (
+              <div className="home__ourPartners__scroll__child">
+                <a href={supporter.link} target="_blank" rel="noreferrer">
+                  <img src={supporter.photo} alt="" />
+                </a>
+              </div>
+            ))} */}
+      </div>
+      <Footer />
     </div>
   )
 }
