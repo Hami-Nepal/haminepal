@@ -36,7 +36,29 @@ export default function BoardMembersCarousel() {
               <div className='influencersCarousel__container__message'>
                 "{member.details}"
               </div>
-              <div className='influencersCarousel__container__socialLinks'></div>
+              <div className='influencersCarousel__container__socialLinks'>
+                <ul>
+                  <li>
+                    <a
+                      href={member.instaLink || ""}
+                      target='_blank'
+                      rel='noreferrer'
+                    >
+                      {" "}
+                      <i className='ri-instagram-line'></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={member.facebookLink || ""}
+                      target='_blank'
+                      rel='noreferrer'
+                    >
+                      <i className='ri-facebook-circle-line'></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           ))}
       </Carousel>
