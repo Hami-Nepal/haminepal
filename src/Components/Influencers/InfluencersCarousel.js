@@ -1,12 +1,12 @@
-import React, { useRef } from 'react';
-import './style.scss';
+import React, { useRef } from "react"
+import "./style.scss"
 
-import Carousel from 'react-elastic-carousel';
-import Influencers from '../../Mocks/Influencers.json';
+import Carousel from "react-elastic-carousel"
+import Influencers from "../../Mocks/Influencers.json"
 
 export default function BoardMembersCarousel() {
-  const carouselRef = useRef(null);
-  let resetTimeout;
+  const carouselRef = useRef(null)
+  let resetTimeout
   return (
     <div className="influencersCarousel__container">
       <Carousel
@@ -15,11 +15,11 @@ export default function BoardMembersCarousel() {
         enableAutoPlay
         autoPlaySpeed={10000} // same time
         onNextEnd={({ index }) => {
-          clearTimeout(resetTimeout);
+          clearTimeout(resetTimeout)
           if (index + 1 === 11) {
             resetTimeout = setTimeout(() => {
-              carouselRef.current.goTo(0);
-            }, 10000); // same time
+              carouselRef.current.goTo(0)
+            }, 10000) // same time
           }
         }}
         itemsToShow={1}
@@ -36,10 +36,32 @@ export default function BoardMembersCarousel() {
               <div className="influencersCarousel__container__message">
                 "{member.details}"
               </div>
-              <div className="influencersCarousel__container__socialLinks"></div>
+              <div className="influencersCarousel__container__socialLinks">
+                <ul>
+                  <li>
+                    <a
+                      href={member.instaLink || ""}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {" "}
+                      <i className="ri-instagram-line"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={member.facebookLink || ""}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <i className="ri-facebook-circle-line"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           ))}
       </Carousel>
     </div>
-  );
+  )
 }
