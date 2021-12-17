@@ -424,29 +424,25 @@ export default function Home() {
           <div className='Mentor__details'>
             <h3>Dr. Sanduk Ruit</h3>
             <p>
-              Dr. Sanduk Ruit, as we all know is an opthalmologist widely
-              recognised for providing extraordinary sercices in the field of
-              ophthalmology. He is not just known as a doctor or a surgeon but
-              as angel who has been sent to help visually impaired people to
-              bring back their sight as well as their happiness. Since Sanduk
-              Ruit himself has been serving the needy ones, he has been a great
-              supporter of Hami Nepal because our motto is same that is-service.
-              He has always been a fatherly figure to the team. Even during the
-              times when he couldn't be physically present with us, he has led
-              us with his experience, ideas and visions. Dr. Ruit assisted our
-              team in verification process by providing require indormation
-              which made the process much more easier, especially whilst dealing
-              with hospitals. Not only that, he even helped us by providing a
-              team of experts to carry out the task more efficiently and
-              effectively. As a fatherly figure, he has always been there for us
-              when we need any kind of support.
+              Dr. Sanduk Ruit, is a world renowned ophthalmologist and
+              philanthropist widely recognised for restoring the sight of over
+              130,000 people. He is an eminent eye-surgeon and also the first to
+              pioneer a method for delivering high-quality microsurgical
+              procedures in remote eye camps. Dr. Sanduk’s humanitarian efforts
+              have changed the lives of many, he has been a mentor and ally for
+              Hami Nepal. His assistance has been paramount during times of
+              crisis, providing his expertise in the medical field to carry out
+              the task more efficiently. During the second lockdown, he shared
+              Barbara foundation ‘s office space where Hami Nepal family has
+              found a home. His continued moral support, guidance has helped us
+              pursue a vision for better Nepal.
             </p>
           </div>
         </div>
       </div>
 
       <div className='home__container__ourPartner'>
-        <h1>Our Partners</h1>
+        <h1>Our Allies</h1>
 
         {/* <ul>
           {Partners.partners.map((partner) => (
@@ -481,13 +477,13 @@ export default function Home() {
             className='influencersCarousel__container__carourel'
             ref={carouselRef}
             enableAutoPlay
-            autoPlaySpeed={5} // same time
+            autoPlaySpeed={1000} // same time
             onNextEnd={({ index }) => {
               clearTimeout(resetTimeout);
               if (index + 1 === 11) {
                 resetTimeout = setTimeout(() => {
                   carouselRef.current.goTo(0);
-                }, 1); // same time
+                }, 1000); // same time
               }
             }}
             itemsToShow={8}
