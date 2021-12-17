@@ -97,7 +97,7 @@ export default function Transparency() {
           <ul>
             <li>
               <a
-                href='https://drive.google.com/file/d/1X3oT0WJI_6wC7yFnEHw6Y05Af7exYjrf/view?usp=sharing'
+                href='https://drive.google.com/file/d/1OmyUNhOVi96wPFSNZZgBmrquZoC6Hs0i/view?usp=sharing'
                 download
                 target='_blank'
                 style={{ textDecoration: "none" }}
@@ -111,7 +111,7 @@ export default function Transparency() {
             <hr />
             <li>
               <a
-                href='https://drive.google.com/file/d/160FfRCh73JTEE_HBQC0U4tQJBaxg7S69/view?usp=sharing'
+                href='https://drive.google.com/file/d/1oXre3S6V8zrOyBdsQCHeJFrIudOMNPw-/view?usp=sharing'
                 download
                 target='_blank'
                 style={{ textDecoration: "none" }}
