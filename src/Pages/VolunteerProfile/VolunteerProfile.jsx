@@ -124,6 +124,7 @@ export default function VolunteerProfile(props) {
         <div className="volunteerProfile__container__main__userimage">
           <picture>
             <img
+              style={{ width: '250px', height: 'auto' }}
               src={
                 volunteer.photo !== 'null'
                   ? volunteer.photo
