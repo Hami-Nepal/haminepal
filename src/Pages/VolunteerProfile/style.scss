@@ -86,7 +86,7 @@
         padding-top: 15vh;
 
         a {
-          font-family: 'Playfair Display', serif;
+          font-family: "Playfair Display", serif;
           font-size: 50px;
           font-weight: 700;
 
@@ -129,6 +129,10 @@
         font-size: 22px;
         font-weight: 600;
         margin: 10px 0;
+        color: black;
+      }
+      .position {
+        color: black;
       }
     }
 
@@ -204,7 +208,7 @@
     h1 {
       font-size: 50px;
       font-weight: 700;
-      font-family: 'Playfair Display', serif;
+      font-family: "Playfair Display", serif;
       text-align: center;
 
       @media (max-width: 768px) {
