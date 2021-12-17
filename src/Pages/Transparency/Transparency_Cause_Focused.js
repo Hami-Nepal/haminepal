@@ -89,6 +89,7 @@ export default function Causes() {
 
         <p>{causeDesc}</p>
       </div>
+      <KindTransparencyCausePage />
       {/* tabs-area-start */}
       <div style={{ marginTop: "2rem", marginLeft: "2rem" }}>
         <h1>Cash Transparency</h1>
@@ -213,7 +214,7 @@ export default function Causes() {
           </div>
         )}
       </div>
-      <KindTransparencyCausePage />
+
       <Footer />
     </div>
   );
