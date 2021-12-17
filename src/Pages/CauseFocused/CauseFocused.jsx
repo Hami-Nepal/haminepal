@@ -11,6 +11,15 @@ import baseURL from "../../api/baseURL";
 import NavBar from "../../Components/NavBar/Nav";
 import axios from "axios";
 
+//table for bills
+// import Table from "@mui/material/Table";
+// import TableBody from "@mui/material/TableBody";
+// import TableCell from "@mui/material/TableCell";
+// import TableContainer from "@mui/material/TableContainer";
+// import TableHead from "@mui/material/TableHead";
+// import TableRow from "@mui/material/TableRow";
+// import Paper from "@mui/material/Paper";
+
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 10,
   borderRadius: 5,
@@ -126,7 +135,81 @@ export default function CauseFocused() {
           ) : (
             ""
           )}
-
+          {/* <div className='causeFocused__container__results'>
+            <h1 style={{ marginBottom: "1rem" }}>Transparency</h1>
+          </div>
+          <div className='causeFocused__container__results'>
+            <h2 style={{ marginBottom: "2rem" }}>Kinds</h2>
+          </div>
+          <TableContainer
+            component={Paper}
+            sx={{ width: "50%", marginLeft: "7rem" }}
+          >
+            <Table sx={{ width: "100%" }} aria-label='simple table'>
+              <TableHead>
+                <TableRow>
+                  <TableCell align='center'>Doner Name</TableCell>
+                  <TableCell align='center'>Type</TableCell>
+                  <TableCell align='center'>Cause/Event</TableCell>
+                  <TableCell align='center'>Particulars</TableCell>
+                  <TableCell align='center'>Quantity</TableCell>
+                  <TableCell align='center'>Amount</TableCell>
+                  <TableCell align='center'>Bills</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell align='center'>Pawan Subedi</TableCell>
+                  <TableCell align='center'>Cause</TableCell>
+                  <TableCell align='center'>Bir Hospital</TableCell>
+                  <TableCell align='center'>Oxygen cylinder</TableCell>
+                  <TableCell align='center'>50</TableCell>
+                  <TableCell align='center'>50,000</TableCell>
+                  <TableCell align='center'>
+                    <Button
+                      style={{ backgroundColor: "#800000", color: "white" }}
+                    >
+                      Bill
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <div className='causeFocused__container__results'>
+            <h2 style={{ marginBottom: "2rem", marginTop: "4rem" }}>Cash</h2>
+          </div>
+          <TableContainer
+            component={Paper}
+            sx={{ width: "50%", marginLeft: "7rem" }}
+          >
+            <Table sx={{ width: "100%" }} aria-label='simple table'>
+              <TableHead>
+                <TableRow>
+                  <TableCell align='center'>Bill Name</TableCell>
+                  <TableCell align='center'>Type</TableCell>
+                  <TableCell align='center'>Cause/Event</TableCell>
+                  <TableCell align='center'>Amount</TableCell>
+                  <TableCell align='center'>Bills</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell align='center'>Oxygen</TableCell>
+                  <TableCell align='center'>Cause</TableCell>
+                  <TableCell align='center'>Bir Hospital</TableCell>
+                  <TableCell align='center'>50,000</TableCell>
+                  <TableCell align='center'>
+                    <Button
+                      style={{ backgroundColor: "#800000", color: "white" }}
+                    >
+                      Photos
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer> */}
           {/* @section => volunteers */}
           <div className='causeFocused__container__volunteers'>
             <h1>Volunteers</h1>

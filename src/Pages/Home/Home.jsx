@@ -255,35 +255,6 @@ export default function Home() {
       <div className='home__container__transparency'>
         <h1>Transparency</h1>
         <div className='home__container__transparency__column'>
-          <div className='home__container__transparency__info'>
-            <h2>Cash</h2>
-            <div className='home__container__transparency__info__item'>
-              <h2>
-                Rs {new Intl.NumberFormat("en-IN").format(totalDonations)}
-              </h2>
-              <div className='home__container__transparency__info__item__title'>
-                Donation Received
-              </div>
-            </div>
-            <div className='home__container__transparency__info__item center'>
-              <h2>Rs {new Intl.NumberFormat("en-IN").format(totalExpenses)}</h2>
-              <div className='home__container__transparency__info__item__title'>
-                Expenditure
-              </div>
-            </div>
-            <div className='home__container__transparency__info__item'>
-              <h2>
-                Rs{" "}
-                {new Intl.NumberFormat("en-IN").format(
-                  totalDonations - totalExpenses
-                )}
-              </h2>
-              <div className='home__container__transparency__info__item__title'>
-                Remaining Donation
-              </div>
-            </div>
-          </div>
-          <hr />
           <div className='home__container__transparency__info home__container__transparency__kindness'>
             <h2>Kinds</h2>
             <div className='home__container__transparency__info__item'>
@@ -307,6 +278,35 @@ export default function Home() {
                 Rs{" "}
                 {new Intl.NumberFormat("en-IN").format(
                   totalKindDonations - totalKindExpenses
+                )}
+              </h2>
+              <div className='home__container__transparency__info__item__title'>
+                Remaining Donation
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div className='home__container__transparency__info'>
+            <h2>Cash</h2>
+            <div className='home__container__transparency__info__item'>
+              <h2>
+                Rs {new Intl.NumberFormat("en-IN").format(totalDonations)}
+              </h2>
+              <div className='home__container__transparency__info__item__title'>
+                Donation Received
+              </div>
+            </div>
+            <div className='home__container__transparency__info__item center'>
+              <h2>Rs {new Intl.NumberFormat("en-IN").format(totalExpenses)}</h2>
+              <div className='home__container__transparency__info__item__title'>
+                Expenditure
+              </div>
+            </div>
+            <div className='home__container__transparency__info__item'>
+              <h2>
+                Rs{" "}
+                {new Intl.NumberFormat("en-IN").format(
+                  totalDonations - totalExpenses
                 )}
               </h2>
               <div className='home__container__transparency__info__item__title'>
@@ -494,7 +494,7 @@ export default function Home() {
             className='influencersCarousel__container__carourel'
             ref={carouselRef}
             enableAutoPlay
-            autoPlaySpeed={1} // same time
+            autoPlaySpeed={5} // same time
             onNextEnd={({ index }) => {
               clearTimeout(resetTimeout);
               if (index + 1 === 11) {
