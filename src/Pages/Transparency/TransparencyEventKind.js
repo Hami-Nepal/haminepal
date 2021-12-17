@@ -236,7 +236,6 @@ export default function Causes() {
           </div>
         )}
       </div>
-      <Footer />
     </div>
   );
 }

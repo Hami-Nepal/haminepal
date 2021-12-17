@@ -161,6 +161,7 @@
     padding: 80px 5vw;
     justify-content: space-between;
     align-items: center;
+    margin-top: -2rem;
 
     img,
     div {
@@ -291,5 +292,71 @@
       object-fit: cover;
       margin-bottom: 10px;
     }
+  }
+}
+
+.tarnsparenc__kind__Ko,
+.transparency__cash__ko {
+  width: 90%;
+  margin: auto;
+  padding: 3.5rem 0 0;
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  ul {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+
+    hr {
+      height: 1px;
+      width: 100%;
+    }
+
+    @media (min-width: 992px) {
+      flex-direction: row;
+
+      hr {
+        height: 70px;
+        width: 1px;
+      }
+    }
+
+    li {
+      list-style-type: none;
+
+      p {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  button {
+    background-color: #9f1718;
+    color: white;
+
+    &:hover {
+      opacity: 0.9;
+      background-color: #9f1718;
+    }
+  }
+}
+
+.transparency__cash__ko {
+  margin-bottom: 3rem;
+}
+
+.admin-expenses-ko-section {
+  width: 90%;
+  margin: 0 auto 3rem;
+
+  .admin-expenses-ko-column {
+    margin-top: 2rem;
   }
 }
