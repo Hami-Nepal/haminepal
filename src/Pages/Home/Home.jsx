@@ -262,7 +262,7 @@ export default function Home() {
             <h2>Kinds</h2>
             <div className='home__container__transparency__info__item'>
               <h2 style={{ fontFamily: "sans-serif" }}>
-                Rs {new Intl.NumberFormat("en-IN").format(38444879.0)}
+                Rs {new Intl.NumberFormat("en-IN").format(58444879.0)}
               </h2>
               <div className='home__container__transparency__info__item__title'>
                 Donation Received
@@ -270,7 +270,7 @@ export default function Home() {
             </div>
             <div className='home__container__transparency__info__item center'>
               <h2 style={{ fontFamily: "sans-serif" }}>
-                Rs {new Intl.NumberFormat("en-IN").format(32291314)}
+                Rs {new Intl.NumberFormat("en-IN").format(52291314.0)}
               </h2>
               <div className='home__container__transparency__info__item__title'>
                 Expenditure

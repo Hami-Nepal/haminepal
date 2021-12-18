@@ -105,7 +105,7 @@ export default function Transparency() {
                 <h6>Received</h6>
               </a>
               <p style={{ fontFamily: "sans-serif" }}>
-                {new Intl.NumberFormat("en-IN").format(38444879.0)}
+                {new Intl.NumberFormat("en-IN").format(58444879.0)}
               </p>
             </li>
             <hr />
@@ -119,7 +119,7 @@ export default function Transparency() {
                 <h6>Spent</h6>
               </a>
               <p style={{ fontFamily: "sans-serif" }}>
-                {new Intl.NumberFormat("en-IN").format(32291314.0)}
+                {new Intl.NumberFormat("en-IN").format(52291314.0)}
               </p>
             </li>
             <hr />
