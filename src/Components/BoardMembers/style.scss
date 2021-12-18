@@ -28,11 +28,11 @@
     }
 
     img {
-      width: 400px;
-      height: 500px;
+      width: 350px;
+      height: 350px;
       object-fit: cover;
       border-radius: 2%;
-      margin-right: 4em;
+      margin-right: 1rem;
       @media (max-width: 960px) {
         margin: 0px;
         width: 100%;
@@ -58,7 +58,7 @@
 
       .boardMembersCarousel__container__message {
         font-size: 15px;
-        min-width: 800px;
+        min-width: 600px;
         line-height: 1.6;
         margin-bottom: 30px;
         text-align: justify;
