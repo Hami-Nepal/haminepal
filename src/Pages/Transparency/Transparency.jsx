@@ -44,10 +44,7 @@ export default function Transparency() {
 
       {/* @section => landing */}
       <div className='transparency__container__landing'>
-        <h1>
-          People around the world are raising money for what they are passionate
-          about.
-        </h1>
+        <h1>Hami Nepal Encourages donation in kind.</h1>
 
         {/* <ul>
           <li>
@@ -89,7 +86,8 @@ export default function Transparency() {
             assistance for association. If any terms of perplexity occurs, our
             honorable president can bridge the dubiety.
           </p>
-          <p>President Sudan Gurung Contact Detail : 9801066111</p>
+          <p>President : Sudan Gurung </p>
+          <p>Contact Detail : 9801066111</p>
         </div>
         <img src={image} alt='' />
       </div>
@@ -99,26 +97,30 @@ export default function Transparency() {
           <ul>
             <li>
               <a
-                href='https://drive.google.com/file/d/1X3oT0WJI_6wC7yFnEHw6Y05Af7exYjrf/view?usp=sharing'
+                href='https://drive.google.com/file/d/1OmyUNhOVi96wPFSNZZgBmrquZoC6Hs0i/view?usp=sharing'
                 download
                 target='_blank'
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none", color: "#800000" }}
               >
                 <h6>Received</h6>
               </a>
-              <p>{new Intl.NumberFormat("en-IN").format(38444879.0)}</p>
+              <p style={{ fontFamily: "sans-serif" }}>
+                {new Intl.NumberFormat("en-IN").format(58444879.0)}
+              </p>
             </li>
             <hr />
             <li>
               <a
-                href='https://drive.google.com/file/d/160FfRCh73JTEE_HBQC0U4tQJBaxg7S69/view?usp=sharing'
+                href='https://drive.google.com/file/d/1oXre3S6V8zrOyBdsQCHeJFrIudOMNPw-/view?usp=sharing'
                 download
                 target='_blank'
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none", color: "#800000" }}
               >
                 <h6>Spent</h6>
               </a>
-              <p>{new Intl.NumberFormat("en-IN").format(32291314.0)}</p>
+              <p style={{ fontFamily: "sans-serif" }}>
+                {new Intl.NumberFormat("en-IN").format(52291314.0)}
+              </p>
             </li>
             <hr />
             <li>
@@ -126,11 +128,13 @@ export default function Transparency() {
                 href='https://drive.google.com/file/d/1BAl-7dHOcp4lio6y17shYivQwdleg1bE/view?usp=sharing'
                 download
                 target='_blank'
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none", color: "#800000" }}
               >
                 <h6>Balance</h6>
               </a>
-              <p>{new Intl.NumberFormat("en-IN").format(6153565.0)}</p>
+              <p style={{ fontFamily: "sans-serif" }}>
+                {new Intl.NumberFormat("en-IN").format(6153565.0)}
+              </p>
             </li>
           </ul>
         </div>
@@ -138,9 +142,11 @@ export default function Transparency() {
           <h2>Cash donation</h2>
           <ul>
             <li>
-              <h6>Received</h6>
+              <h6 style={{ color: "#800000" }}>Received</h6>
 
-              <p>{new Intl.NumberFormat("en-IN").format(12949876.63)}</p>
+              <p style={{ fontFamily: "sans-serif" }}>
+                {new Intl.NumberFormat("en-IN").format(12949876.63)}
+              </p>
             </li>
             <hr />
             <li>
@@ -148,11 +154,13 @@ export default function Transparency() {
                 href='https://drive.google.com/file/d/1FowODctr52UoJDtITE50jsNNyAtJ7ZJC/view?usp=sharing'
                 download
                 target='_blank'
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none", color: "#800000" }}
               >
                 <h6>Spent</h6>
               </a>
-              <p>{new Intl.NumberFormat("en-IN").format(6707701.44)}</p>
+              <p style={{ fontFamily: "sans-serif" }}>
+                {new Intl.NumberFormat("en-IN").format(6707701.44)}
+              </p>
             </li>
             <hr />
             <li>
@@ -160,11 +168,13 @@ export default function Transparency() {
                 href='https://drive.google.com/file/d/1MEQpsdFn5KHNOggErMddBzc6_-WN7Mh2/view?usp=sharing'
                 download
                 target='_blank'
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none", color: "#800000" }}
               >
                 <h6>Balance</h6>
               </a>
-              <p>{new Intl.NumberFormat("en-IN").format(6242175.19)}</p>
+              <p style={{ fontFamily: "sans-serif" }}>
+                {new Intl.NumberFormat("en-IN").format(6242175.19)}
+              </p>
             </li>
           </ul>
           <span>
@@ -172,6 +182,7 @@ export default function Transparency() {
               href='https://drive.google.com/file/d/1xDokY_2pqhzp1rOjuj8OYqKDYVVDatSD/view?usp=sharing'
               download
               target='_blank'
+              style={{ color: "#800000", textDecoration: "none" }}
             >
               *Click here to download Audited Financial Statements of FY 2077/78
             </a>
@@ -205,7 +216,7 @@ export default function Transparency() {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell align='left'>Salary Allowances</TableCell>
-                  <TableCell align='left'>0</TableCell>
+                  <TableCell align='left'>Run on Volunteering Basis</TableCell>
                 </TableRow>
                 <TableRow
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -217,15 +228,9 @@ export default function Transparency() {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell align='left'>Office Rent</TableCell>
-                  <TableCell align='left'>0</TableCell>
-                </TableRow>
-                <TableRow
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
                   <TableCell align='left'>
-                    Guest Entertainment Expenses
+                    Provided by Barbara Foundation
                   </TableCell>
-                  <TableCell align='left'>0</TableCell>
                 </TableRow>
                 <TableRow
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -237,13 +242,17 @@ export default function Transparency() {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell align='left'>Internet Expenses</TableCell>
-                  <TableCell align='left'>0</TableCell>
+                  <TableCell align='left'>
+                    Borne by Barbara Foundation
+                  </TableCell>
                 </TableRow>
                 <TableRow
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell align='left'>Website</TableCell>
-                  <TableCell align='left'>0</TableCell>
+                  <TableCell align='left'>
+                    Voluntarily Prepared by youth of Hash Technologies
+                  </TableCell>
                 </TableRow>
                 <TableRow
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -315,6 +324,7 @@ export default function Transparency() {
                       href='https://drive.google.com/file/d/1lOXlyMr7J83m1Szcp9UKYJwcigQoxfhv/view?usp=sharing'
                       download
                       target='_blank'
+                      style={{ color: "#800000", textDecoration: "none" }}
                     >
                       Click here for download
                     </a>
@@ -334,6 +344,7 @@ export default function Transparency() {
                       href='https://drive.google.com/file/d/1sp1GyYZs6qKiZ_uhS4ChBswqgn1RDqHM/view?usp=sharing'
                       download
                       target='_blank'
+                      style={{ color: "#800000", textDecoration: "none" }}
                     >
                       Click here for download
                     </a>
@@ -347,7 +358,12 @@ export default function Transparency() {
                   <TableCell align='left'>1,494,625.9</TableCell>
                   <TableCell align='left'>11.54%</TableCell>
                   <TableCell align='left'>
-                    <a href=''>Click here for download</a>
+                    <a
+                      href=''
+                      style={{ color: "#800000", textDecoration: "none" }}
+                    >
+                      Click here for download
+                    </a>
                   </TableCell>
                 </TableRow>
                 <TableRow
@@ -369,7 +385,12 @@ export default function Transparency() {
                   <TableCell align='left'>38,331.17</TableCell>
                   <TableCell align='left'>0.30%</TableCell>
                   <TableCell align='left'>
-                    <a href=''>Click here for download</a>
+                    <a
+                      href=''
+                      style={{ color: "#800000", textDecoration: "none" }}
+                    >
+                      Click here for download
+                    </a>
                   </TableCell>
                 </TableRow>
                 <TableRow

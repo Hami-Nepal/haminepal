@@ -122,7 +122,7 @@ export default function VolunteerProfile(props) {
       {/* @section => main content */}
       <div className="volunteerProfile__container__main">
         <div className="volunteerProfile__container__main__userimage">
-          <picture>
+          <div className="picture">
             <img
               style={{ width: '250px', height: 'auto' }}
               alt="volunteer"
@@ -142,7 +142,8 @@ export default function VolunteerProfile(props) {
                 />
               </label>
             )}
-          </picture>
+          </div>
+
           <div className="name">
             {volunteer.first_name} {volunteer.last_name}
           </div>
