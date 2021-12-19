@@ -122,21 +122,24 @@ export default function VolunteerProfile(props) {
       {/* @section => main content */}
       <div className='volunteerProfile__container__main'>
         <div className='volunteerProfile__container__main__userimage'>
-          <img
-            style={{ width: "250px", height: "auto" }}
-            alt='volunteer'
-            src={volunteer.photo}
-          />
-          {isLoggedIn && isMyProfile && (
-            <label>
-              Update
-              <input
-                type='file'
-                onChange={updateVolunteerProfile}
-                accept='image/*'
-              />
-            </label>
-          )}
+          <div className='picture'>
+            <img
+              style={{ width: "250px", height: "auto" }}
+              alt='volunteer'
+              src={volunteer.photo}
+            />
+            {isLoggedIn && isMyProfile && (
+              <label>
+                Update
+                <input
+                  type='file'
+                  onChange={updateVolunteerProfile}
+                  accept='image/*'
+                />
+              </label>
+            )}
+          </div>
+
           <div className='name'>
             {volunteer.first_name} {volunteer.last_name}
           </div>
