@@ -23,6 +23,7 @@ export default function VolunteerProfile(props) {
   const { register, handleSubmit } = useForm();
   const [requestState, setRequestState] = useState(null);
   const [projects, setProjects] = useState([]);
+  const [updating, setUpdating] = useState(null);
 
   const onSubmit = (formData) => {
     if (!formData.age) return;
@@ -91,6 +92,7 @@ export default function VolunteerProfile(props) {
 
   const updateVolunteerProfile = (e) => {
     if (!e.target.files.length) return;
+    setUpdating(true);
 
     const formData = new FormData();
     formData.append("photo", e.target.files[0]);
@@ -107,9 +109,11 @@ export default function VolunteerProfile(props) {
       )
       .then(({ data }) => {
         setVolunteer(data.data);
+        setUpdating(false);
       })
       .catch(({ response }) => {
         console.log(response);
+        setUpdating(false);
       });
   };
 
@@ -128,16 +132,20 @@ export default function VolunteerProfile(props) {
               alt='volunteer'
               src={volunteer.photo}
             />
-            {isLoggedIn && isMyProfile && (
-              <label>
-                Update
-                <input
-                  type='file'
-                  onChange={updateVolunteerProfile}
-                  accept='image/*'
-                />
-              </label>
-            )}
+            {isLoggedIn &&
+              isMyProfile &&
+              (updating ? (
+                <label>Updating...</label>
+              ) : (
+                <label>
+                  Update
+                  <input
+                    type='file'
+                    onChange={updateVolunteerProfile}
+                    accept='image/*'
+                  />
+                </label>
+              ))}
           </div>
 
           <div className='name'>
