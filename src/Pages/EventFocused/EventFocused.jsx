@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from "react";
-import "./style.scss";
+import React, { useState, useEffect } from 'react';
+import './style.scss';
 
-import { styled } from "@mui/material/styles";
-import { Button } from "@mui/material";
+import { styled } from '@mui/material/styles';
+import { Button } from '@mui/material';
 import LinearProgress, {
   linearProgressClasses,
-} from "@mui/material/LinearProgress";
-import Footer from "../../Components/Footer/Footer";
-import baseURL from "../../api/baseURL";
-import NavBar from "../../Components/NavBar/Nav";
-import axios from "axios";
+} from '@mui/material/LinearProgress';
+import Footer from '../../Components/Footer/Footer';
+import baseURL from '../../api/baseURL';
+import NavBar from '../../Components/NavBar/Nav';
+import axios from 'axios';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 10,
   borderRadius: 5,
   [`&.${linearProgressClasses.colorPrimary}`]: {
     backgroundColor:
-      theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
+      theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
   },
   [`& .${linearProgressClasses.bar}`]: {
     borderRadius: 5,
-    backgroundColor: theme.palette.mode === "light" ? "#23CE34" : "#308fe8",
+    backgroundColor: theme.palette.mode === 'light' ? '#23CE34' : '#308fe8',
   },
 }));
 
@@ -30,7 +30,9 @@ export default function EventFocused() {
   const [volunteers, setVolunteers] = useState([]);
 
   useEffect(() => {
-    fetch(baseURL + "/events/" + window.location.pathname.split("/").pop())
+    document.documentElement.scrollTop = 0;
+
+    fetch(baseURL + '/events/' + window.location.pathname.split('/').pop())
       .then((data) => data.json())
       .then(async ({ data }) => {
         setData(data);
@@ -38,7 +40,7 @@ export default function EventFocused() {
         data.volunteers = data.volunteers.filter((vol) => vol.participated);
 
         const promises = data.volunteers.map((vol) =>
-          axios.get(baseURL + "/volunteers/" + vol.volunteerId)
+          axios.get(baseURL + '/volunteers/' + vol.volunteerId)
         );
 
         const res = await Promise.all(promises);
@@ -49,7 +51,7 @@ export default function EventFocused() {
 
   useEffect(() => {
     // specific cause or events ko ako total amount herna ko lagi jugad
-    fetch(baseURL + "/donations/?slug=" + data.slug)
+    fetch(baseURL + '/donations/?slug=' + data.slug)
       .then((data) => data.json())
       .then(({ data }) =>
         setTotalDonationAmount(
@@ -64,14 +66,14 @@ export default function EventFocused() {
   };
 
   return (
-    <div className='eventFocused__container'>
+    <div className="eventFocused__container">
       <NavBar />
 
       {/* @section => landing */}
-      <div className='eventFocused__container__landing'>
-        <div className='eventFocused__container__landing__info'>
+      <div className="eventFocused__container__landing">
+        <div className="eventFocused__container__landing__info">
           <h1>{data.name}</h1>
-          <div className='divider'></div>
+          <div className="divider"></div>
           <p>
             Event type: <span>{data.type}</span>
           </p>
@@ -90,11 +92,11 @@ export default function EventFocused() {
           <p>
             Street address: <span>{data.street_address}</span>
           </p>
-          <hr className='eventDetails__hr' />
+          <hr className="eventDetails__hr" />
           <p>{data.summary}</p>
 
           <BorderLinearProgress
-            variant='determinate'
+            variant="determinate"
             value={(totalDonationAmount / data.balance) * 100}
           />
 
@@ -102,65 +104,65 @@ export default function EventFocused() {
             <span>Rs. {totalDonationAmount}</span> of Rs.{data.balance}
           </div>
 
-          {data.status === "past" ? "" : <Button>Donate</Button>}
+          {data.status === 'past' ? '' : <Button>Donate</Button>}
         </div>
 
-        <img src={data?.photos?.length ? data.photos[0] : ""} alt='event' />
+        <img src={data?.photos?.length ? data.photos[0] : ''} alt="event" />
       </div>
 
       {/* @section => details */}
-      {data.description === "" ? (
+      {data.description === '' ? (
         <></>
       ) : (
         <>
-          <div className='eventFocused__container__details'>
+          <div className="eventFocused__container__details">
             <h1>Description</h1>
             <div
               dangerouslySetInnerHTML={createMarkup()}
-              className='editor'
+              className="editor"
             ></div>
           </div>
 
           {/* @section => challenges */}
-          <div className='eventFocused__container__challenges'>
+          <div className="eventFocused__container__challenges">
             <h1>Challenges</h1>
             <p>{data.challenges}</p>
           </div>
           {/* @section => difficulties */}
-          {data.status === "past" ? (
-            <div className='eventFocused__container__results'>
+          {data.status === 'past' ? (
+            <div className="eventFocused__container__results">
               <h1>Results</h1>
               <p>{data.results}</p>
             </div>
           ) : (
-            ""
+            ''
           )}
 
           {/* @section => volunteers */}
-          <div className='eventFocused__container__volunteers'>
+          <div className="eventFocused__container__volunteers">
             <h1>Volunteers</h1>
 
-            <div className='eventFocused__container__volunteers__items'>
+            <div className="eventFocused__container__volunteers__items">
               {volunteers.map(({ data }) => (
                 <div
-                  className='eventFocused__container__volunteers__items__item'
+                  className="eventFocused__container__volunteers__items__item"
                   key={data.data.volunteer._id}
                 >
                   <img
                     src={
-                      data.data.volunteer.photo.startsWith("http")
+                      data.data.volunteer.photo.startsWith('http')
                         ? data.data.volunteer.photo
-                        : "https://static.thenounproject.com/png/72032-200.png"
+                        : 'https://static.thenounproject.com/png/72032-200.png'
                     }
-                    alt='volunteer'
+                    alt="volunteer"
                   />
 
-                  <div className='userInfo'>
-                    <div className='name'>
-                      {data.data.volunteer.first_name}{" "}
+                  <div className="userInfo">
+                    <div className="name">
+                      {data.data.volunteer.first_name}{' '}
                       {data.data.volunteer.last_name}
                     </div>
-                    <div className='position'>
+                    <div className="position">
                       {data.data.volunteer.field_of_expertise}
                     </div>
                   </div>
@@ -172,11 +174,11 @@ export default function EventFocused() {
       )}
 
       {/* @section => gallery */}
-      <div className='eventFocused__container__gallery'>
+      <div className="eventFocused__container__gallery">
         <h1>Event photos</h1>
-        <div className='eventFocused__container__gallery__container'>
+        <div className="eventFocused__container__gallery__container">
           {data.photos?.map((url) => (
-            <img key={url} src={url} alt='' />
+            <img key={url} src={url} alt="" />
           ))}
         </div>
       </div>

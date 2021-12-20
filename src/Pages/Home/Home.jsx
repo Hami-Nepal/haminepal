@@ -1,104 +1,101 @@
-import React, { useEffect, useState } from "react"
-import "./style.scss"
-import Carousel from "react-elastic-carousel"
-import Logo from "../../Assets/logo.png"
+import React, { useEffect, useState } from 'react';
+import './style.scss';
+import Carousel from 'react-elastic-carousel';
+import Logo from '../../Assets/logo.png';
 
-import BannerVideo from "../../Assets/banner.mp4"
-import BannerVideoWebm from "../../Assets/banner.webm"
-import BannerVideoOgm from "../../Assets/banner.ogm"
-import BannerPoster from "../../Assets/poster-banner.png"
-import MapVideo from "../../Assets/nepalMap.mp4"
+import BannerVideo from '../../Assets/banner.mp4';
+import BannerVideoWebm from '../../Assets/banner.webm';
+import BannerVideoOgm from '../../Assets/banner.ogm';
+import BannerPoster from '../../Assets/poster-banner.png';
+import MapVideo from '../../Assets/nepalMap.mp4';
 
-import { Link } from "react-location"
-import { Helmet } from "react-helmet"
+import { Link } from 'react-location';
+import { Helmet } from 'react-helmet';
 
-import OurSupporters from "../../Mocks/ourSupporter.json"
-import OurPartners from "../../Mocks/ourPartner.json"
-import InfluenerCarousel from "../../Components/Influencers/InfluencersCarousel"
+import OurSupporters from '../../Mocks/ourSupporter.json';
+import OurPartners from '../../Mocks/ourPartner.json';
+import InfluenerCarousel from '../../Components/Influencers/InfluencersCarousel';
 
-import KindnessCard from "../../Components/Act of Kindness/KindnessCard"
-import BoardMembersCarousel from "../../Components/BoardMembers/BoardMembersCarousel"
-import Footer from "../../Components/Footer/Footer"
-import Donate from "../../Components/Donate/Donate"
+import KindnessCard from '../../Components/Act of Kindness/KindnessCard';
+import BoardMembersCarousel from '../../Components/BoardMembers/BoardMembersCarousel';
+import Footer from '../../Components/Footer/Footer';
+import Donate from '../../Components/Donate/Donate';
 
-import baseURL from "../../api/baseURL"
-
-import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft"
-import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight"
+import baseURL from '../../api/baseURL';
 
 export default function Home() {
-  const [isActiveMenu, setIsActiveMenu] = React.useState(false)
-  const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false)
-  const [kindness, setKindness] = useState([])
-  const [totalDonations, setTotalDonations] = useState(0)
-  const [totalKindDonations, setTotalKindDonations] = useState(0)
-  const [totalExpenses, setTotalExpenses] = useState(0)
-  const [totalKindExpenses, setTotalKindExpenses] = useState(0)
-  const [homeHero, setHomeHero] = useState({})
+  const [isActiveMenu, setIsActiveMenu] = React.useState(false);
+  const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
+  const [kindness, setKindness] = useState([]);
+  const [totalDonations, setTotalDonations] = useState(0);
+  const [totalKindDonations, setTotalKindDonations] = useState(0);
+  const [totalExpenses, setTotalExpenses] = useState(0);
+  const [totalKindExpenses, setTotalKindExpenses] = useState(0);
+  const [homeHero, setHomeHero] = useState({});
   const arr = [
-    "Kathmandu",
-    "Pokhara",
-    "Hetauda",
-    "Birgung",
-    "Manang",
-    "Besisahar",
-    "Bhaktapur",
-    "Helambu",
-    "Remachap",
-    "Bhojpur",
-    "Bheri",
-    "Doti",
-    "Dhangadi",
-    "Mugu",
-    "Karnali",
-    "Rukum",
-    "Bardiya",
-  ]
+    'Kathmandu',
+    'Pokhara',
+    'Hetauda',
+    'Birgung',
+    'Manang',
+    'Besisahar',
+    'Bhaktapur',
+    'Helambu',
+    'Remachap',
+    'Bhojpur',
+    'Bheri',
+    'Doti',
+    'Dhangadi',
+    'Mugu',
+    'Karnali',
+    'Rukum',
+    'Bardiya',
+  ];
 
   useEffect(() => {
-    fetch(baseURL + "/kindness/featured")
+    fetch(baseURL + '/kindness/featured')
       .then((data) => data.json())
       .then(({ featured }) => setKindness(featured))
-      .catch(({ response }) => console.log(response))
+      .catch(({ response }) => console.log(response));
 
-    fetch(baseURL + "/find/totalDonations")
+    fetch(baseURL + '/find/totalDonations')
       .then((data) => data.json())
       .then(({ data }) => setTotalDonations(data.length ? data[0].donation : 0))
-      .catch(({ response }) => console.log(response))
+      .catch(({ response }) => console.log(response));
 
-    fetch(baseURL + "/find/totalkindDonations")
+    fetch(baseURL + '/find/totalkindDonations')
       .then((data) => data.json())
       .then(({ data }) =>
         setTotalKindDonations(data.length ? data[0].kinddonation : 0)
       )
-      .catch(({ response }) => console.log(response))
+      .catch(({ response }) => console.log(response));
 
-    fetch(baseURL + "/find/totalExpenses")
+    fetch(baseURL + '/find/totalExpenses')
       .then((data) => data.json())
       .then(({ data }) =>
         setTotalExpenses(data.length ? data[0].total_expenses : 0)
       )
-      .catch(({ response }) => console.log(response))
+      .catch(({ response }) => console.log(response));
 
-    fetch(baseURL + "/find/totalkindExpenses")
+    fetch(baseURL + '/find/totalkindExpenses')
       .then((data) => data.json())
       .then(({ data }) =>
         setTotalKindExpenses(data.length ? data[0].total_kind_expenses : 0)
       )
-      .catch(({ response }) => console.log(response))
+      .catch(({ response }) => console.log(response));
 
-    fetch(baseURL + "/homepage")
+    fetch(baseURL + '/homepage')
       .then((data) => data.json())
       .then(({ data }) => setHomeHero(data[0]))
-      .catch(({ response }) => console.log(response))
-  }, [])
+      .catch(({ response }) => console.log(response));
+  }, []);
   // console.log(totalKindExpenses);
   const isLoggedIn = !!(
-    localStorage.getItem("user") || localStorage.getItem("vinfo")
-  )
+    localStorage.getItem('user') || localStorage.getItem('vinfo')
+  );
 
-  const carouselRef = React.useRef(null)
-  let resetTimeout
+  const carouselRef = React.useRef(null);
+  let resetTimeout;
 
   return (
     <div className="home__container">
@@ -138,7 +135,7 @@ export default function Home() {
 
         <div className="home__container__landing__footer">
           <div>
-            <h1 style={{ color: homeHero?.color || "white" }}>
+            <h1 style={{ color: homeHero?.color || 'white' }}>
               {homeHero?.content}
             </h1>
             <Link
@@ -146,8 +143,8 @@ export default function Home() {
               className="home__container__landing__footer__donate"
               to="/"
               style={{
-                color: homeHero?.color || "white",
-                borderColor: homeHero?.color || "white",
+                color: homeHero?.color || 'white',
+                borderColor: homeHero?.color || 'white',
               }}
             >
               Donate
@@ -158,8 +155,8 @@ export default function Home() {
             className="home__container__landing__footer__ourWork"
             to="/our-work"
             style={{
-              color: homeHero?.color || "white",
-              borderColor: homeHero?.color || "white",
+              color: homeHero?.color || 'white',
+              borderColor: homeHero?.color || 'white',
             }}
           >
             Our Work
@@ -168,19 +165,19 @@ export default function Home() {
 
         {/** @dev this is dismissiable donation form */}
         <div
-          style={{ display: isDonationFormOpen ? "block" : "none" }}
+          style={{ display: isDonationFormOpen ? 'block' : 'none' }}
           className="home__container__landing__donationForm"
         >
           <Donate
             setIsDonationFormOpen={setIsDonationFormOpen}
-            donation_type={"Administrator"}
+            donation_type={'Administrator'}
           />
         </div>
 
         <div
           className="home__container__landing__hiddenMenu"
           style={{
-            display: isActiveMenu ? "flex" : "none",
+            display: isActiveMenu ? 'flex' : 'none',
           }}
         >
           <div className="home__container__landing__hiddenMenu__topbar">
@@ -218,7 +215,7 @@ export default function Home() {
                 <Link
                   to="/"
                   onClick={() => {
-                    localStorage.clear()
+                    localStorage.clear();
                   }}
                 >
                   Logout
@@ -253,32 +250,32 @@ export default function Home() {
 
       {/** @section => transparency */}
       <div className="home__container__transparency">
-        <Link to="/transparency" style={{ textDecoration: "none" }}>
-          <h1 style={{ color: "black" }}>Transparency</h1>
+        <Link to="/transparency" style={{ textDecoration: 'none' }}>
+          <h1 style={{ color: 'black' }}>Transparency</h1>
         </Link>
 
         <div className="home__container__transparency__column">
           <div className="home__container__transparency__info home__container__transparency__kindness">
             <h2>Kinds</h2>
             <div className="home__container__transparency__info__item">
-              <h2 style={{ fontFamily: "sans-serif" }}>
-                Rs {new Intl.NumberFormat("en-IN").format(58444879.0)}
+              <h2 style={{ fontFamily: 'sans-serif' }}>
+                Rs {new Intl.NumberFormat('en-IN').format(58444879.0)}
               </h2>
               <div className="home__container__transparency__info__item__title">
                 Donation Received
               </div>
             </div>
             <div className="home__container__transparency__info__item center">
-              <h2 style={{ fontFamily: "sans-serif" }}>
-                Rs {new Intl.NumberFormat("en-IN").format(52291314.0)}
+              <h2 style={{ fontFamily: 'sans-serif' }}>
+                Rs {new Intl.NumberFormat('en-IN').format(52291314.0)}
               </h2>
               <div className="home__container__transparency__info__item__title">
                 Expenditure
               </div>
             </div>
             <div className="home__container__transparency__info__item">
-              <h2 style={{ fontFamily: "sans-serif" }}>
-                Rs {new Intl.NumberFormat("en-IN").format(6153565)}
+              <h2 style={{ fontFamily: 'sans-serif' }}>
+                Rs {new Intl.NumberFormat('en-IN').format(6153565)}
               </h2>
               <div className="home__container__transparency__info__item__title">
                 Remaining Donation
@@ -289,24 +286,24 @@ export default function Home() {
           <div className="home__container__transparency__info">
             <h2>Cash</h2>
             <div className="home__container__transparency__info__item">
-              <h2 style={{ fontFamily: "sans-serif" }}>
-                Rs {new Intl.NumberFormat("en-IN").format(12949876.63)}
+              <h2 style={{ fontFamily: 'sans-serif' }}>
+                Rs {new Intl.NumberFormat('en-IN').format(12949876.63)}
               </h2>
               <div className="home__container__transparency__info__item__title">
                 Donation Received
               </div>
             </div>
             <div className="home__container__transparency__info__item center">
-              <h2 style={{ fontFamily: "sans-serif" }}>
-                Rs {new Intl.NumberFormat("en-IN").format(6707701.44)}
+              <h2 style={{ fontFamily: 'sans-serif' }}>
+                Rs {new Intl.NumberFormat('en-IN').format(6707701.44)}
               </h2>
               <div className="home__container__transparency__info__item__title">
                 Expenditure
               </div>
             </div>
             <div className="home__container__transparency__info__item">
-              <h2 style={{ fontFamily: "sans-serif" }}>
-                Rs {new Intl.NumberFormat("en-IN").format(6242175.19)}
+              <h2 style={{ fontFamily: 'sans-serif' }}>
+                Rs {new Intl.NumberFormat('en-IN').format(6242175.19)}
               </h2>
               <div className="home__container__transparency__info__item__title">
                 Remaining Donation
@@ -366,7 +363,7 @@ export default function Home() {
       {/** @section => act of kindness */}
       <div className="home__container__actOfKindness">
         <h1>
-          Act of Kindness <span style={{ color: "red" }}>Featured</span>
+          Act of Kindness <span style={{ color: 'red' }}>Featured</span>
         </h1>
 
         <div className="home__container__actOfKindness__items">
@@ -429,7 +426,7 @@ export default function Home() {
         <h1>Our Mentor</h1>
         <div className="Mentor">
           <img
-            style={{ width: 450, height: 400, borderRadius: "4%" }}
+            style={{ width: 450, height: 400, borderRadius: '4%' }}
             src="https://www.abc.net.au/cm/rimage/9966990-1x1-large.jpg?v=3"
             alt="Sandukh Ruit"
           />
@@ -477,11 +474,11 @@ export default function Home() {
         </div>
 
         <div className="infuencer__heading">
-          <h1 style={{ marginTop: "3rem" }}>Social Supporters</h1>
+          <h1 style={{ marginTop: '3rem' }}>Social Supporters</h1>
           <InfluenerCarousel />
         </div>
         <div className="supporter_heading">
-          <h1 style={{ marginTop: "3rem" }}>Our Supporters</h1>
+          <h1 style={{ marginTop: '3rem' }}>Our Supporters</h1>
         </div>
 
         <div className="influencersCarousel__container">
@@ -491,11 +488,11 @@ export default function Home() {
             enableAutoPlay
             autoPlaySpeed={1000} // same time
             onNextEnd={({ index }) => {
-              clearTimeout(resetTimeout)
+              clearTimeout(resetTimeout);
               if (index + 1 === 11) {
                 resetTimeout = setTimeout(() => {
-                  carouselRef.current.goTo(0)
-                }, 1000) // same time
+                  carouselRef.current.goTo(0);
+                }, 1000); // same time
               }
             }}
             itemsToShow={8}
@@ -519,5 +516,5 @@ export default function Home() {
       </div>
       <Footer />
     </div>
-  )
+  );
 }

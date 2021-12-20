@@ -97,6 +97,10 @@ export default function NewVolunteer() {
     }
   };
 
+  React.useEffect(() => {
+    document.documentElement.scrollTop = 0;
+  }, []);
+
   return (
     <div className="newVolunteer__container">
       <NavBar />
