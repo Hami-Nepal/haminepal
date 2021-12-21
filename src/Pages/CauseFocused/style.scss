@@ -72,7 +72,7 @@
         padding-top: 15vh;
 
         a {
-          font-family: 'Playfair Display', serif;
+          font-family: "Playfair Display", serif;
           font-size: 50px;
           font-weight: 700;
 
@@ -106,7 +106,7 @@
       padding: 30px;
 
       h1 {
-        font-family: 'Playfair Display', serif;
+        font-family: "Playfair Display", serif;
         font-size: 50px;
         font-weight: 700;
         margin-bottom: 30px;
@@ -146,10 +146,11 @@
   .causeFocused__container__challenges,
   .causeFocused__container__difficulties,
   .causeFocused__container__results {
-    padding: 0 8vw;
+    padding: 50px 5vw 1px 5vw;
+    background: rgb(245, 245, 245);
 
     h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: "Playfair Display", serif;
       font-weight: 700;
       font-size: 50px;
       margin-bottom: 10px;
@@ -164,10 +165,9 @@
   .causeFocused__container__volunteers {
     padding: 50px 5vw 70px 5vw;
     background: rgb(245, 245, 245);
-    margin-top: 60px;
 
     h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: "Playfair Display", serif;
       font-weight: 700;
       font-size: 50px;
       margin-bottom: 10px;
@@ -235,9 +235,10 @@
 
   .causeFocused__container__gallery {
     padding: 50px 5vw 70px 5vw;
+    background: rgb(245, 245, 245);
 
     h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: "Playfair Display", serif;
       font-weight: 700;
       font-size: 50px;
       margin-bottom: 10px;
@@ -286,4 +287,128 @@
   border: none;
   height: 1px;
   background-color: rgb(211, 211, 211);
+}
+
+.causeFocused__container__transparency {
+  padding: 50px 5vw 1px 5vw;
+  background: rgb(245, 245, 245);
+
+  .clear__photo {
+    position: relative;
+    left: 82%;
+    color: #861616;
+
+    &:hover {
+      background-color: rgb(231, 150, 150);
+    }
+  }
+  .clear__photo2 {
+    position: relative;
+    left: 75%;
+    color: #861616;
+
+    &:hover {
+      background-color: rgb(231, 150, 150);
+    }
+  }
+  .clear__photo__cash {
+    position: relative;
+    left: 72%;
+    color: #861616;
+
+    &:hover {
+      background-color: rgb(231, 150, 150);
+    }
+  }
+
+  h1 {
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+    font-size: 50px;
+    margin-bottom: 10px;
+    margin-top: 40px;
+  }
+
+  p {
+    line-height: 1.8;
+  }
+  .causesTransTabs__meroTabs {
+    width: max-content;
+    margin: 2rem auto;
+
+    .btn__kind,
+    .btn__cash {
+      margin-right: 1rem;
+      color: white;
+      background-color: gray;
+      padding-left: 150px;
+      padding-right: 150px;
+
+      &:hover {
+        background-color: #9f1718;
+      }
+
+      &:focus {
+        background-color: #9f1718;
+        color: white;
+      }
+    }
+    @media (max-width: 992px) {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .btn__kind,
+      .btn__cash {
+        color: white;
+        background-color: gray;
+        padding-left: 150px;
+        padding-right: 150px;
+      }
+    }
+  }
+}
+.side__by__side {
+  display: grid;
+  grid-template-columns: auto auto;
+  background: rgb(245, 245, 245);
+  @media (max-width: 900px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .kbillCarousel__container {
+    .kbillCarousel__container__carourel__spent {
+      height: 500px;
+      width: 500px;
+      margin-left: 10rem;
+    }
+    .kbillCarousel__container__carourel {
+      height: 500px;
+      width: 500px;
+    }
+    .sc-bdvvtL,
+    .cNNJIt,
+    .rec,
+    .rec-arrow,
+    .rec,
+    .jRFJkP {
+      background: transparent !important;
+      box-shadow: none !important;
+
+      &:disabled {
+        cursor: not-allowed;
+        background: transparent !important;
+        box-shadow: none !important;
+      }
+    }
+    .kbillCarousel__container__item {
+      img {
+        width: 400px;
+        height: 500px;
+        object-fit: cover;
+        margin-bottom: 10px;
+      }
+    }
+  }
 }

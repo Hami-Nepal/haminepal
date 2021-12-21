@@ -20,19 +20,35 @@ import Paper from "@mui/material/Paper";
 export default function Transparency() {
   const [totalDonations, setTotalDonations] = useState(0);
   const [totalExpenses, setTotalExpenses] = useState(0);
+  const [totalKindDonations, setTotalKindDonations] = useState(0);
+  const [totalKindExpenses, setTotalKindExpenses] = useState(0);
 
   useEffect(() => {
     fetch(baseURL + "/find/totalDonations")
       .then((data) => data.json())
-      .then(({ data }) =>
-        setTotalDonations(data.length ? data[0].donation : 0)
-      );
+      .then(({ data }) => setTotalDonations(data.length ? data[0].donation : 0))
+      .catch(({ response }) => console.log(response));
 
     fetch(baseURL + "/find/totalExpenses")
       .then((data) => data.json())
       .then(({ data }) =>
         setTotalExpenses(data.length ? data[0].total_expenses : 0)
-      );
+      )
+      .catch(({ response }) => console.log(response));
+
+    fetch(baseURL + "/find/totalkindDonations")
+      .then((data) => data.json())
+      .then(({ data }) =>
+        setTotalKindDonations(data.length ? data[0].kinddonation : 0)
+      )
+      .catch(({ response }) => console.log(response));
+
+    fetch(baseURL + "/find/totalkindExpenses")
+      .then((data) => data.json())
+      .then(({ data }) =>
+        setTotalKindExpenses(data.length ? data[0].total_kind_expenses : 0)
+      )
+      .catch(({ response }) => console.log(response));
   }, []);
 
   return (
@@ -91,89 +107,60 @@ export default function Transparency() {
         </div>
         <img src={image} alt='' />
       </div>
-      <div className='transparency__horizontal' style={{ marginTop: "-3rem" }}>
+      <div className='transparency__horizontal'>
         <div className='tarnsparenc__kind__Ko'>
           <h2>Kind donation</h2>
+          <div className='divider'></div>
           <ul>
             <li>
-              <a
-                href='https://drive.google.com/file/d/1OmyUNhOVi96wPFSNZZgBmrquZoC6Hs0i/view?usp=sharing'
-                download
-                target='_blank'
-                style={{ textDecoration: "none", color: "#800000" }}
-              >
-                <h6>Received</h6>
-              </a>
-              <p style={{ fontFamily: "sans-serif" }}>
-                {new Intl.NumberFormat("en-IN").format(58444879.0)}
+              <h5>Received</h5>
+              <p>
+                Rs.
+                {new Intl.NumberFormat("en-IN").format(totalKindDonations)}
               </p>
             </li>
             <hr />
             <li>
-              <a
-                href='https://drive.google.com/file/d/1oXre3S6V8zrOyBdsQCHeJFrIudOMNPw-/view?usp=sharing'
-                download
-                target='_blank'
-                style={{ textDecoration: "none", color: "#800000" }}
-              >
-                <h6>Spent</h6>
-              </a>
-              <p style={{ fontFamily: "sans-serif" }}>
-                {new Intl.NumberFormat("en-IN").format(52291314.0)}
+              <h5>Spent</h5>
+
+              <p>
+                Rs.
+                {new Intl.NumberFormat("en-IN").format(totalKindExpenses)}
               </p>
             </li>
             <hr />
             <li>
-              <a
-                href='https://drive.google.com/file/d/1BAl-7dHOcp4lio6y17shYivQwdleg1bE/view?usp=sharing'
-                download
-                target='_blank'
-                style={{ textDecoration: "none", color: "#800000" }}
-              >
-                <h6>Balance</h6>
-              </a>
-              <p style={{ fontFamily: "sans-serif" }}>
-                {new Intl.NumberFormat("en-IN").format(6153565.0)}
+              <h5>Balance</h5>
+              <p>
+                Rs.
+                {new Intl.NumberFormat("en-IN").format(
+                  totalKindDonations - totalKindExpenses
+                )}
               </p>
             </li>
           </ul>
         </div>
         <div className='transparency__cash__ko'>
           <h2>Cash donation</h2>
+          <div className='divider'></div>
           <ul>
             <li>
-              <h6 style={{ color: "#800000" }}>Received</h6>
+              <h5>Received</h5>
 
-              <p style={{ fontFamily: "sans-serif" }}>
-                {new Intl.NumberFormat("en-IN").format(12949876.63)}
-              </p>
+              <p>{new Intl.NumberFormat("en-IN").format(totalDonations)}</p>
             </li>
             <hr />
             <li>
-              <a
-                href='https://drive.google.com/file/d/1FowODctr52UoJDtITE50jsNNyAtJ7ZJC/view?usp=sharing'
-                download
-                target='_blank'
-                style={{ textDecoration: "none", color: "#800000" }}
-              >
-                <h6>Spent</h6>
-              </a>
-              <p style={{ fontFamily: "sans-serif" }}>
-                {new Intl.NumberFormat("en-IN").format(6707701.44)}
-              </p>
+              <h5>Spent</h5>
+              <p>{new Intl.NumberFormat("en-IN").format(totalExpenses)}</p>
             </li>
             <hr />
             <li>
-              <a
-                href='https://drive.google.com/file/d/1MEQpsdFn5KHNOggErMddBzc6_-WN7Mh2/view?usp=sharing'
-                download
-                target='_blank'
-                style={{ textDecoration: "none", color: "#800000" }}
-              >
-                <h6>Balance</h6>
-              </a>
-              <p style={{ fontFamily: "sans-serif" }}>
-                {new Intl.NumberFormat("en-IN").format(6242175.19)}
+              <h5>Balance</h5>
+              <p>
+                {new Intl.NumberFormat("en-IN").format(
+                  totalDonations - totalExpenses
+                )}
               </p>
             </li>
           </ul>
@@ -182,6 +169,7 @@ export default function Transparency() {
               href='https://drive.google.com/file/d/1xDokY_2pqhzp1rOjuj8OYqKDYVVDatSD/view?usp=sharing'
               download
               target='_blank'
+              rel='noreferrer'
               style={{ color: "#800000", textDecoration: "none" }}
             >
               *Click here to download Audited Financial Statements of FY 2077/78
@@ -200,17 +188,16 @@ export default function Transparency() {
             sx={{ minWidth: 650, width: "50%" }}
           >
             <Table aria-label='simple table'>
-              {/* <TableHead>
+              <TableHead>
                 <TableRow>
                   <TableCell align='left' style={{ fontWeight: "bold" }}>
-                    Admin expe
+                    Particulars
                   </TableCell>
-                  <TableCell
-                    align='left'
-                    style={{ fontWeight: "bold" }}
-                  ></TableCell>
+                  <TableCell align='left' style={{ fontWeight: "bold" }}>
+                    Expenses
+                  </TableCell>
                 </TableRow>
-              </TableHead> */}
+              </TableHead>
               <TableBody>
                 <TableRow
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -451,31 +438,6 @@ export default function Transparency() {
           </TableContainer>
         </div>
       </div>
-
-      {/* @section => transparency content */}
-      {/* <div className='transparency__container__content'>
-        <div className='content'>
-          <h1>Transparency</h1>
-          <div className='divider'></div>
-
-          <p>
-            Transparency, revealing the correct information about where your
-            donation is going.
-          </p>
-        </div>
-        <img src={image} alt='' />
-      </div> */}
-
-      {/* @section => event tabs */}
-      {/* <h1 className='tabs__title'>Events</h1>
-      <div className='tabs__divider'></div>
-      <TransparencyEventTabs /> */}
-
-      {/* @section => causes tabs */}
-      {/* <h1 className='tabs__title'>Causes</h1>
-      <div className='tabs__divider'></div>
-      <TransparencyCausesTabs /> */}
-
       <Footer />
     </div>
   );

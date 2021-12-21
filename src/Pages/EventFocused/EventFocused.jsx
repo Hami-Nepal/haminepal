@@ -10,6 +10,20 @@ import Footer from "../../Components/Footer/Footer";
 import baseURL from "../../api/baseURL";
 import NavBar from "../../Components/NavBar/Nav";
 import axios from "axios";
+import EventFocusedCash from "../EventFocused/EventFocusedCash";
+
+//table for bills
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
+import Carousel from "react-elastic-carousel";
+import TablePagination from "@mui/material/TablePagination";
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 10,
@@ -28,6 +42,26 @@ export default function EventFocused() {
   const [data, setData] = useState({});
   const [totalDonationAmount, setTotalDonationAmount] = useState(0);
   const [volunteers, setVolunteers] = useState([]);
+
+  //Transparency
+  const [kindActive, setKindActive] = useState(null);
+  const [modalPhoto, setModalPhoto] = useState([]);
+  const [modalKindPhoto, setModalKindPhoto] = useState([]);
+
+  const [kSpent, setKSpent] = useState([]);
+  const [kReceived, setKReceived] = useState([]);
+  const [kSCount, setKSCount] = useState(0);
+  const [kRCount, setKRCount] = useState(0);
+
+  //pagination
+  const [transPage, setTransPage] = React.useState(0);
+  const [donPage, setDonPage] = React.useState(0);
+  const handleTransChange = (event, value) => {
+    setTransPage(value);
+  };
+  const handleDonChange = (event, value) => {
+    setDonPage(value);
+  };
 
   useEffect(() => {
     fetch(baseURL + "/events/" + window.location.pathname.split("/").pop())
@@ -48,6 +82,38 @@ export default function EventFocused() {
   }, []);
 
   useEffect(() => {
+    fetch(
+      baseURL +
+        `/kinddonation?event_name=${data.name}&limit=5&page=${
+          donPage + 1
+        }&sort=-createdAt`
+    )
+      .then((data) => data.json())
+      .then((data) => {
+        setKReceived(data.data);
+        setKRCount(data.total_data);
+        // console.log(slug);
+      })
+      .catch((error) => console.log(error));
+  }, [data.name, donPage]);
+
+  useEffect(() => {
+    fetch(
+      baseURL +
+        `/kindtransparency?event_name=${data.name}&limit=5&page=${
+          transPage + 1
+        }&sort=-createdAt`
+    )
+      .then((data) => data.json())
+      .then((data) => {
+        setKSpent(data.data);
+        setKSCount(data.total_data);
+        // console.log(data);
+      })
+      .catch(({ response }) => console.log(response));
+  }, [data.name, transPage]);
+
+  useEffect(() => {
     // specific cause or events ko ako total amount herna ko lagi jugad
     fetch(baseURL + "/donations/?slug=" + data.slug)
       .then((data) => data.json())
@@ -61,6 +127,13 @@ export default function EventFocused() {
 
   const createMarkup = () => {
     return { __html: data.description };
+  };
+
+  const clearPhoto = () => {
+    setModalKindPhoto([]);
+  };
+  const clearPhoto2 = () => {
+    setModalPhoto([]);
   };
 
   return (
@@ -134,6 +207,262 @@ export default function EventFocused() {
             </div>
           ) : (
             ""
+          )}
+
+          {/* section-event-transparency */}
+          {/* cause Transparency */}
+          <div className='eventFocused__container__transparency'>
+            <h1 style={{ marginBottom: "1rem" }}>Transparency</h1>
+            <div className='eventTabs__container'>
+              <Box>
+                <div className='eventTransTabs__meroTabs'>
+                  <Button
+                    className='btn__kind'
+                    onClick={() => setKindActive(true)}
+                  >
+                    Kinds
+                  </Button>
+                  <Button
+                    className='btn__cash'
+                    onClick={() => setKindActive(false)}
+                  >
+                    Cash
+                  </Button>
+                </div>
+              </Box>
+            </div>
+          </div>
+          {kindActive ? (
+            <>
+              <div className='eventFocused__container__transparency'>
+                <h2 style={{ marginTop: "-2rem" }}>Received</h2>
+                {modalKindPhoto.length != 0 ? (
+                  <Button className='clear__photo' onClick={clearPhoto}>
+                    Hide
+                  </Button>
+                ) : (
+                  ""
+                )}
+              </div>
+              <div className='side__by__side__event'>
+                <TableContainer
+                  component={Paper}
+                  sx={{ width: "88%", marginLeft: "4rem" }}
+                >
+                  <Table sx={{ width: "100%" }} aria-label='simple table'>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell
+                          align='center'
+                          style={{ fontWeight: "bold" }}
+                        >
+                          Doner Name
+                        </TableCell>
+                        <TableCell
+                          align='center'
+                          style={{ fontWeight: "bold" }}
+                        >
+                          Pariculars
+                        </TableCell>
+                        <TableCell
+                          align='center'
+                          style={{ fontWeight: "bold" }}
+                        >
+                          Quantity
+                        </TableCell>
+                        <TableCell
+                          align='center'
+                          style={{ fontWeight: "bold" }}
+                        >
+                          Amount
+                        </TableCell>
+                        <TableCell
+                          align='center'
+                          style={{ fontWeight: "bold" }}
+                        >
+                          Date
+                        </TableCell>
+                        <TableCell
+                          align='center'
+                          style={{ fontWeight: "bold" }}
+                        >
+                          Photos
+                        </TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {kReceived.length && kReceived ? (
+                        kReceived.map((doner) => (
+                          <TableRow key={doner._id}>
+                            <TableCell align='center'>
+                              {doner.donerFullName}
+                            </TableCell>
+                            <TableCell align='center'>
+                              {doner.donatedItem}
+                            </TableCell>
+                            <TableCell align='center'>
+                              {doner.quantity}
+                            </TableCell>
+                            <TableCell align='center'>
+                              {doner.itemWorth}
+                            </TableCell>
+                            <TableCell align='center'>
+                              {doner.createdAt.slice(0, 10)}
+                            </TableCell>
+                            <TableCell align='center'>
+                              <Button
+                                style={{
+                                  backgroundColor: "#800000",
+                                  color: "white",
+                                }}
+                                onClick={() => setModalKindPhoto(doner.photos)}
+                              >
+                                View
+                              </Button>
+                            </TableCell>
+                          </TableRow>
+                        ))
+                      ) : (
+                        <CircularProgress />
+                      )}
+                    </TableBody>
+                  </Table>
+                  <TablePagination
+                    component='div'
+                    count={kRCount}
+                    page={donPage}
+                    onPageChange={handleDonChange}
+                    rowsPerPage={5}
+                  />
+                </TableContainer>
+                <div className='kbillCarousel__container'>
+                  {kindActive && kReceived && modalKindPhoto.length !== 0 ? (
+                    <Carousel className='kbillCarousel__container__carourel'>
+                      {modalKindPhoto.map((photo, index) => (
+                        <div
+                          className='kbillCarousel__container__item'
+                          key={index}
+                        >
+                          <img
+                            src={photo}
+                            alt='photo'
+                            key={index}
+                            // style={{ width: "60%", height: "auto" }}
+                          />
+                          ;
+                        </div>
+                      ))}
+                    </Carousel>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </div>
+              <div className='eventFocused__container__transparency'>
+                <h2 style={{ marginTop: "1rem" }}>Spent</h2>
+                {modalPhoto.length != 0 ? (
+                  <Button className='clear__photo2' onClick={clearPhoto2}>
+                    Hide
+                  </Button>
+                ) : (
+                  ""
+                )}
+              </div>
+              <div className='side__by__side__event'>
+                <TableContainer
+                  component={Paper}
+                  sx={{ width: "100%", marginLeft: "4rem" }}
+                >
+                  <Table sx={{ width: "100%" }} aria-label='simple table'>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell
+                          align='center'
+                          style={{ fontWeight: "bold" }}
+                        >
+                          Activity
+                        </TableCell>
+                        <TableCell
+                          align='center'
+                          style={{ fontWeight: "bold" }}
+                        >
+                          Quantity
+                        </TableCell>
+                        <TableCell
+                          align='center'
+                          style={{ fontWeight: "bold" }}
+                        >
+                          Amount
+                        </TableCell>
+                        <TableCell
+                          align='center'
+                          style={{ fontWeight: "bold" }}
+                        >
+                          Bills
+                        </TableCell>
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {kSpent.length && kSpent ? (
+                        kSpent.map((bill) => (
+                          <TableRow key={bill._id}>
+                            <TableCell align='center'>{bill.name}</TableCell>
+                            <TableCell align='center'>
+                              {bill.quantity}
+                            </TableCell>
+                            <TableCell align='center'>{bill.amount}</TableCell>
+                            <TableCell align='center'>
+                              <Button
+                                style={{
+                                  backgroundColor: "#800000",
+                                  color: "white",
+                                }}
+                                onClick={() => setModalPhoto(bill.photos)}
+                              >
+                                View
+                              </Button>
+                            </TableCell>
+                          </TableRow>
+                        ))
+                      ) : (
+                        <CircularProgress />
+                      )}
+                    </TableBody>
+                  </Table>
+                  <TablePagination
+                    component='div'
+                    count={kSCount}
+                    page={transPage}
+                    onPageChange={handleTransChange}
+                    rowsPerPage={5}
+                  />
+                </TableContainer>
+                <div className='kbillCarousel__container'>
+                  {kindActive && kSpent && modalPhoto.length !== 0 ? (
+                    <Carousel className='kbillCarousel__container__carourel__spent'>
+                      {modalPhoto.map((bill, index) => (
+                        <div
+                          className='kbillCarousel__container__item'
+                          key={index}
+                        >
+                          <img
+                            src={bill}
+                            alt='photo'
+                            key={index}
+                            // style={{ width: "60%", height: "auto" }}
+                          />
+                          ;
+                        </div>
+                      ))}
+                    </Carousel>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </div>
+            </>
+          ) : (
+            kindActive === false && <EventFocusedCash eventName={data.name} />
           )}
 
           {/* @section => volunteers */}

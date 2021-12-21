@@ -191,11 +191,16 @@
       margin-bottom: 30px;
       background: #9f1718;
     }
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 50px;
+      font-weight: 700;
+    }
 
     p {
       line-height: 1.7;
-      font-size: 18px;
-      width: 90%;
+      font-size: 16px;
+      width: 95%;
     }
   }
 
@@ -294,15 +299,34 @@
     }
   }
 }
-
+// .divider {
+//   margin-top: 10px;
+//   width: 80px;
+//   height: 5px;
+//   margin-bottom: 30px;
+//   background: #9f1718;
+// }
+// h1 {
+//   font-family: "Playfair Display", serif;
+//   font-size: 50px;
+//   font-weight: 700;
+// }
 .tarnsparenc__kind__Ko,
 .transparency__cash__ko {
   width: 90%;
   margin: auto;
-  padding: 3.5rem 0 0;
+
+  .divider {
+    margin-top: -1rem;
+    width: 210px;
+    height: 2px;
+    margin-bottom: 30px;
+    background: #9f1718;
+  }
 
   h2 {
     margin-bottom: 2rem;
+    font-weight: 600;
   }
 
   ul {
@@ -311,7 +335,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0;
-    margin: 0;
+    margin-bottom: 20px;
     flex-direction: column;
 
     hr {
@@ -330,9 +354,13 @@
 
     li {
       list-style-type: none;
+      h5 {
+        color: #800000;
+      }
 
       p {
         font-size: 2rem;
+        font-family: sans-serif;
       }
     }
   }
@@ -355,6 +383,9 @@
 .admin-expenses-ko-section {
   width: 90%;
   margin: 0 auto 3rem;
+  h2 {
+    font-weight: 600;
+  }
 
   .admin-expenses-ko-column {
     margin-top: 2rem;
