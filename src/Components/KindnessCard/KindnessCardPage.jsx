@@ -10,6 +10,7 @@ import { useNavigate } from 'react-location';
 
 import axios from 'axios';
 import baseURL from '../../api/baseURL';
+import Donate from '../../Components/Donate/Donate';
 
 export default function KindnessCardPage(props) {
   const [posts, setPosts] = React.useState([]);
@@ -135,7 +136,7 @@ export default function KindnessCardPage(props) {
                     onClick={(e) => {
                       e.preventDefault();
                       setIsDonationFormOpen(true);
-                      setActiveCause(data.name);
+                      setActiveCause(data.title);
                     }}
                     style={{ marginTop: 'auto' }}
                   >
@@ -159,6 +160,18 @@ export default function KindnessCardPage(props) {
           size="large"
         />
       </Stack>
+
+      {/** @dev this is dismissiable donation form */}
+      <div
+        style={{ display: isDonationFormOpen ? 'block' : 'none' }}
+        className="home__container__landing__donationForm"
+      >
+        <Donate
+          setIsDonationFormOpen={setIsDonationFormOpen}
+          donation_type={'Act of Kindness'}
+          donation_name={'> ' + activeCause}
+        />
+      </div>
     </div>
   );
 }
