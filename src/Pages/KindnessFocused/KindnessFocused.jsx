@@ -1,20 +1,37 @@
-import React, { useState, useEffect } from "react"
-import "./style.scss"
+import React, { useState, useEffect } from 'react';
+import './style.scss';
+import axios from 'axios';
 
-import Nav from "../../Components/NavBar/Nav"
+import Nav from '../../Components/NavBar/Nav';
 
-import Footer from "../../Components/Footer/Footer"
-import baseURL from "../../api/baseURL"
+import Footer from '../../Components/Footer/Footer';
+import baseURL from '../../api/baseURL';
 
 export default function KindnessFocused() {
-  const [data, setData] = useState({})
+  const [data, setData] = useState({});
+  const [volunteers, setVolunteers] = useState([]);
 
   useEffect(() => {
-    fetch(baseURL + "/kindness/" + window.location.pathname.split("/").pop())
+    document.documentElement.scrollTop = 0;
+
+    fetch(baseURL + '/kindness/' + window.location.pathname.split('/').pop())
       .then((data) => data.json())
-      .then(({ data }) => setData(data))
-      .catch(({ response }) => console.log(response))
-  }, [])
+      .then(async ({ data }) => {
+        setData(data);
+
+        const trueVolunteers = data.volunteers.filter(
+          ({ participated }) => participated
+        );
+
+        const promises = trueVolunteers.map(({ volunteerId }) =>
+          axios.get(baseURL + '/volunteers/' + volunteerId)
+        );
+
+        const res = await Promise.all(promises);
+        setVolunteers(res.map((obj) => obj.data.data.volunteer));
+      })
+      .catch(({ response }) => console.log(response));
+  }, []);
 
   return (
     <div className="kindnessFocused__container">
@@ -31,7 +48,7 @@ export default function KindnessFocused() {
         </div>
 
         <img
-          src={data?.photos?.length ? data.photos[0] : ""}
+          src={data?.photos?.length ? data.photos[0] : ''}
           alt="kindness cover"
         />
       </div>
@@ -55,23 +72,25 @@ export default function KindnessFocused() {
       </div>
 
       {/* @section => volunteers */}
-      {/* <div className="kindnessFocused__container__volunteers">
+      <div className="kindnessFocused__container__volunteers">
         <h1>Volunteers</h1>
         <div className="kindnessFocused__container__volunteers__items">
-          {data.volunteers?.map((url) => (
+          {volunteers.map((data) => (
             <div
               className="kindnessFocused__container__volunteers__items__item"
-              key={url}
+              key={data._id}
             >
-              <img src={url} alt="volunteer" />
+              <img src={data.photo} alt="volunteer" />
               <div className="userInfo">
-                <div className="name">Deekshya Shahi</div>
-                <div className="position">Moto Vlogger</div>
+                <div className="name">
+                  {data.first_name} {data.last_name}
+                </div>
+                <div className="position">{data.field_of_expertise}</div>
               </div>
             </div>
           ))}
         </div>
-      </div> */}
+      </div>
 
       {/* @section => gallery */}
       <div className="kindnessFocused__container__gallery">
@@ -82,5 +101,5 @@ export default function KindnessFocused() {
 
       <Footer />
     </div>
-  )
+  );
 }

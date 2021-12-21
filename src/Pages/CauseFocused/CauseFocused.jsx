@@ -63,6 +63,8 @@ export default function CauseFocused() {
   };
 
   useEffect(() => {
+    document.documentElement.scrollTop = 0;
+
     fetch(baseURL + "/causes/" + window.location.pathname.split("/").pop())
       .then((data) => data.json())
       .then(async ({ data }) => {

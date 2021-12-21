@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&display=swap');
 
 // main
 .kindness-container {
@@ -12,7 +12,7 @@
     text-align: start;
     margin-bottom: 3rem;
     text-decoration: underline;
-    font-family: "Poppins", sans-serif !important;
+    font-family: 'Poppins', sans-serif !important;
     @media (max-width: 768px) {
       font-size: 1rem;
     }
@@ -55,11 +55,16 @@
         margin-bottom: 10px;
       }
 
+      button {
+        background-color: #a11b1c;
+        color: white;
+      }
+
       .kindnessCard__container__title {
         font-weight: 600;
         margin-bottom: 10px;
         padding: 0 3px;
-        font-family: "Poppins", sans-serif !important;
+        font-family: 'Poppins', sans-serif !important;
         display: -webkit-box;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
@@ -70,7 +75,7 @@
       }
 
       .kindnessCard__container__description {
-        font-family: "Poppins", sans-serif !important;
+        font-family: 'Poppins', sans-serif !important;
         line-height: 1.5;
         min-height: 50px;
         display: -webkit-box;

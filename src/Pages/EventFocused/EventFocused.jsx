@@ -64,6 +64,8 @@ export default function EventFocused() {
   };
 
   useEffect(() => {
+    document.documentElement.scrollTop = 0;
+
     fetch(baseURL + "/events/" + window.location.pathname.split("/").pop())
       .then((data) => data.json())
       .then(async ({ data }) => {
