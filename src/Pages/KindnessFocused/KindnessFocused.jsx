@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from "react"
-import "./style.scss"
+import React, { useState, useEffect } from 'react';
+import './style.scss';
 
-import Nav from "../../Components/NavBar/Nav"
+import Nav from '../../Components/NavBar/Nav';
 
-import Footer from "../../Components/Footer/Footer"
-import baseURL from "../../api/baseURL"
+import Footer from '../../Components/Footer/Footer';
+import baseURL from '../../api/baseURL';
 
 export default function KindnessFocused() {
-  const [data, setData] = useState({})
+  const [data, setData] = useState({});
 
   useEffect(() => {
-    fetch(baseURL + "/kindness/" + window.location.pathname.split("/").pop())
+    document.documentElement.scrollTop = 0;
+
+    fetch(baseURL + '/kindness/' + window.location.pathname.split('/').pop())
       .then((data) => data.json())
       .then(({ data }) => setData(data))
-      .catch(({ response }) => console.log(response))
-  }, [])
+      .catch(({ response }) => console.log(response));
+  }, []);
 
   return (
     <div className="kindnessFocused__container">
@@ -31,7 +33,7 @@ export default function KindnessFocused() {
         </div>
 
         <img
-          src={data?.photos?.length ? data.photos[0] : ""}
+          src={data?.photos?.length ? data.photos[0] : ''}
           alt="kindness cover"
         />
       </div>
@@ -82,5 +84,5 @@ export default function KindnessFocused() {
 
       <Footer />
     </div>
-  )
+  );
 }
