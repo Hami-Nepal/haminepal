@@ -319,31 +319,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          {/* <hr />
-
-          <div className='home__container__transparency__topDonors'>
-            <h2>Top Donors</h2>
-
-            {topDonors.map((user, index) => (
-              <div
-                className={`home__container__transparency__topDonors__donor ${
-                  index !== 0 && "border"
-                }`}
-                key={user._id}
-              >
-                <div>
-                  <img src={Logo} alt='donor icon' />
-                  <p>
-                    {user.first_name} {user.last_name}
-                  </p>
-                </div>
-                <b>Rs. {user.donation_amount}</b>
-              </div>
-            ))}
-
-            <Link to='/'>Learn more about transparency</Link>
-          </div> */}
         </div>
       </div>
 

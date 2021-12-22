@@ -245,7 +245,7 @@ export default function CauseFocused() {
                           align='center'
                           style={{ fontWeight: "bold" }}
                         >
-                          Doner Name
+                          Donor Name
                         </TableCell>
                         <TableCell
                           align='center'
@@ -281,22 +281,22 @@ export default function CauseFocused() {
                     </TableHead>
                     <TableBody>
                       {kReceived.length && kReceived ? (
-                        kReceived.map((doner) => (
-                          <TableRow key={doner._id}>
+                        kReceived.map((donor) => (
+                          <TableRow key={donor._id}>
                             <TableCell align='center'>
-                              {doner.donerFullName}
+                              {donor.donerFullName}
                             </TableCell>
                             <TableCell align='center'>
-                              {doner.donatedItem}
+                              {donor.donatedItem}
                             </TableCell>
                             <TableCell align='center'>
-                              {doner.quantity}
+                              {donor.quantity}
                             </TableCell>
                             <TableCell align='center'>
-                              {doner.itemWorth}
+                              {donor.itemWorth}
                             </TableCell>
                             <TableCell align='center'>
-                              {doner.createdAt.slice(0, 10)}
+                              {donor.createdAt.slice(0, 10)}
                             </TableCell>
                             <TableCell align='center'>
                               <Button
@@ -304,13 +304,15 @@ export default function CauseFocused() {
                                   backgroundColor: "#800000",
                                   color: "white",
                                 }}
-                                onClick={() => setModalKindPhoto(doner.photos)}
+                                onClick={() => setModalKindPhoto(donor.photos)}
                               >
                                 View
                               </Button>
                             </TableCell>
                           </TableRow>
                         ))
+                      ) : kReceived.length === 0 ? (
+                        <span>0</span>
                       ) : (
                         <CircularProgress />
                       )}
@@ -413,6 +415,8 @@ export default function CauseFocused() {
                             </TableCell>
                           </TableRow>
                         ))
+                      ) : kSpent.length === 0 ? (
+                        <span>0</span>
                       ) : (
                         <CircularProgress />
                       )}

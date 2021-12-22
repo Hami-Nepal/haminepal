@@ -87,7 +87,7 @@ export default function CauseFocusedCash(props) {
             <TableHead>
               <TableRow>
                 <TableCell align='center' style={{ fontWeight: "bold" }}>
-                  Doner Name
+                  Donor Name
                 </TableCell>
                 <TableCell align='center' style={{ fontWeight: "bold" }}>
                   Amount
@@ -99,16 +99,16 @@ export default function CauseFocusedCash(props) {
             </TableHead>
             <TableBody>
               {received.length && received ? (
-                received.map((doner) => (
-                  <TableRow key={doner._id}>
+                received.map((donor) => (
+                  <TableRow key={donor._id}>
                     <TableCell align='center'>
-                      {doner.first_name} {doner.last_name}
+                      {donor.first_name} {donor.last_name}
                     </TableCell>
                     <TableCell align='center'>
-                      {doner.donation_amount}
+                      {donor.donation_amount}
                     </TableCell>
                     <TableCell align='center'>
-                      {doner.createdAt.slice(0, 10)}
+                      {donor.createdAt.slice(0, 10)}
                     </TableCell>
                   </TableRow>
                 ))
@@ -116,6 +116,8 @@ export default function CauseFocusedCash(props) {
                 <span>{receivedError}</span>
               ) : received.length === 0 ? (
                 <span>No data Found</span>
+              ) : received.length === 0 ? (
+                <span>0</span>
               ) : (
                 <CircularProgress />
               )}
@@ -178,6 +180,8 @@ export default function CauseFocusedCash(props) {
                     </TableCell>
                   </TableRow>
                 ))
+              ) : spent.length === 0 ? (
+                <span>0</span>
               ) : (
                 <CircularProgress />
               )}
