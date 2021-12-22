@@ -12,7 +12,7 @@ const CivilRightTabs = () => {
   const [cards, setCards] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get(baseURL + "/civilrights");
+      const res = await axios.get(baseURL + "/civilrights?limit=100000");
       setCards(res.data.data);
     };
     fetchData();
@@ -28,7 +28,7 @@ const CivilRightTabs = () => {
           <>
             <div className='CivilRightMoments_content_listing'>
               <div className='CivilRightMoments_content'>
-                <img src={v.photos[0]} alt='' />
+                <img src={v.photos[0]} alt='civirights' />
                 <p>
                   {v.introduction.slice(0, 300)}....
                   <br />

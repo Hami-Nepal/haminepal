@@ -135,22 +135,21 @@
   }
 }
 .CivilRightMoments_content_listing {
-  margin: 4rem 11rem;
+  margin-top: 4rem;
+  margin-left: 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
+  align-items: flex-start;
+  gap: 1rem;
   .CivilRightMoments_content {
     display: flex;
     gap: 2rem;
-    justify-content: center;
     align-items: center;
   }
   img {
-    max-height: 300px;
-    border-radius: 32px;
-    border: 2px solid black;
+    max-height: 250px;
+    border-radius: 10px;
+    border: 1px solid black;
   }
   p {
     text-align: justify;
