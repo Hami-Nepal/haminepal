@@ -117,7 +117,9 @@ export default function CauseFocusedCash(props) {
               ) : received.length === 0 ? (
                 <span>No data Found</span>
               ) : received.length === 0 ? (
-                <span>0</span>
+                <span style={{ color: "#bf5050", margin: "1rem" }}>
+                  No Data Found
+                </span>
               ) : (
                 <CircularProgress />
               )}
@@ -181,7 +183,9 @@ export default function CauseFocusedCash(props) {
                   </TableRow>
                 ))
               ) : spent.length === 0 ? (
-                <span>0</span>
+                <span style={{ color: "#bf5050", margin: "1rem" }}>
+                  No Data Found
+                </span>
               ) : (
                 <CircularProgress />
               )}

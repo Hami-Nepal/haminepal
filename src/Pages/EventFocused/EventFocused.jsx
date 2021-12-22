@@ -325,7 +325,9 @@ export default function EventFocused() {
                           </TableRow>
                         ))
                       ) : kReceived.length === 0 ? (
-                        <span>0</span>
+                        <span style={{ color: "#bf5050", margin: "1rem" }}>
+                          No Data Found
+                        </span>
                       ) : (
                         <CircularProgress />
                       )}
@@ -429,7 +431,9 @@ export default function EventFocused() {
                           </TableRow>
                         ))
                       ) : kSpent.length === 0 ? (
-                        <span>0</span>
+                        <span style={{ color: "#bf5050", margin: "1rem" }}>
+                          No Data Found
+                        </span>
                       ) : (
                         <CircularProgress />
                       )}

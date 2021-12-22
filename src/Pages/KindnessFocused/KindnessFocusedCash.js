@@ -18,7 +18,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Carousel from "react-elastic-carousel";
 import TablePagination from "@mui/material/TablePagination";
 
-export default function EventFocusedCash(props) {
+export default function CauseFocusedCash(props) {
   //Transparency
   const [modalPhoto, setModalPhoto] = useState([]);
 
@@ -41,7 +41,7 @@ export default function EventFocusedCash(props) {
   useEffect(() => {
     fetch(
       baseURL +
-        `/donations?event=${window.location.pathname
+        `/donations?kindness=${window.location.pathname
           .split("/")
           .pop()}&limit=5&page=${donPage}&sort=-createdAt`
     )
@@ -57,7 +57,7 @@ export default function EventFocusedCash(props) {
   useEffect(() => {
     fetch(
       baseURL +
-        `/transparency?event_name=${props.eventName}&limit=5&page=${transPage}&sort=-createdAt`
+        `/transparency?kindness=${props.kindnessName}&limit=5&page=${transPage}&sort=-createdAt`
     )
       .then((data) => data.json())
       .then((data) => {
@@ -67,18 +67,18 @@ export default function EventFocusedCash(props) {
         // console.log(data);
       })
       .catch(({ response }) => console.log(response));
-  }, [props.causeName, transPage]);
+  }, [props.kindnessName, transPage]);
 
   const clearPhoto = () => {
     setModalPhoto([]);
   };
 
   return (
-    <div className='eventFocused__container'>
-      <div className='eventFocused__container__transparency'>
-        <h2>Received</h2>
+    <div className='kindnessFocused__container'>
+      <div className='kindnessFocused__container__transparency'>
+        <h3>Received</h3>
       </div>
-      <div className='side__by__side__event'>
+      <div className='side__by__side__kindness'>
         <TableContainer
           component={Paper}
           sx={{ width: "100%", marginLeft: "4rem" }}
@@ -132,8 +132,8 @@ export default function EventFocusedCash(props) {
           />
         </TableContainer>
       </div>
-      <div className='eventFocused__container__transparency'>
-        <h2 style={{ marginTop: "2rem" }}>Spent</h2>
+      <div className='kindnessFocused__container__transparency'>
+        <h3 style={{ marginTop: "2rem" }}>Spent</h3>
         {modalPhoto.length != 0 ? (
           <Button className='clear__photo__cash' onClick={clearPhoto}>
             Hide
@@ -142,7 +142,7 @@ export default function EventFocusedCash(props) {
           ""
         )}
       </div>
-      <div className='side__by__side__event'>
+      <div className='side__by__side__kindness'>
         <TableContainer
           component={Paper}
           sx={{ width: "100%", marginLeft: "4rem" }}
