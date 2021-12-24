@@ -29,9 +29,6 @@ export default function NewsTabs() {
   const [totalData, setTotalData] = React.useState(0)
   const [count, setCount] = React.useState(0)
   const [newsType, setnewsType] = React.useState("national")
-  console.log(newsType)
-
-  console.log(posts)
 
   const handleChange = (event) => {
     setnewsType(event.target.value)
@@ -76,8 +73,8 @@ export default function NewsTabs() {
         <h3>{count} results</h3>
 
         <FormControl sx={{ m: 1, minWidth: 80 }}>
-          <InputLabel id="demo-simple-select-label">Sort by</InputLabel>
           <Select
+            style={{ fontWeight: "bolder" }}
             labelId="demo-simple-select-autowidth-label"
             value={newsType}
             onChange={handleChange}
