@@ -96,7 +96,6 @@
 
       @media (max-width: 768px) {
         padding: 65px 30px;
-
         h1 {
           font-size: 2em;
         }
@@ -108,7 +107,7 @@
           }
 
           &.home__container__landing__footer__ourWork {
-            display: none;
+            display: block;
           }
         }
       }
