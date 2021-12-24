@@ -15,7 +15,11 @@ export default function OurWork() {
   const [causes, setCauses] = React.useState([])
   const [events, setEvents] = React.useState([])
   const [kindness, setKindness] = React.useState([])
-  const [status, setStatus] = React.useState("past")
+  const [causesAll, setCausesAll] = React.useState([])
+
+  console.log(causes)
+
+  // for down and up content of photos
   const [more, setMore] = React.useState(true)
   const [more1, setMore1] = React.useState(true)
   const [more2, setMore2] = React.useState(true)
@@ -30,15 +34,16 @@ export default function OurWork() {
 
   React.useEffect(() => {
     const posts = async () => {
-      const res = await axios.get(baseURL + `/causes?status=${status}`)
-      setCauses(res.data.data)
+      const res = await axios.get(baseURL + `/causes?status=past`)
+      setCausesAll(res.data.data)
+      setCauses(res.data.data.slice(0, 3))
     }
     posts()
   }, [])
 
   React.useEffect(() => {
     const posts = async () => {
-      const res = await axios.get(baseURL + `/events?status=${status}`)
+      const res = await axios.get(baseURL + `/events?status=past`)
       setEvents(res.data.data)
     }
     posts()
@@ -54,6 +59,7 @@ export default function OurWork() {
         <div className="our_work_act_of_kindness">
           <div className="kindnessContents">
             <h1>Act Of Kindness</h1>
+
             <p>
               Kindness generates empathy and compassion, which leads to a
               feeling of connection with others. It releases happiness when we
@@ -72,7 +78,7 @@ export default function OurWork() {
               fast.
               <br />
               <br />
-              <Link to="/act-of-kindness">
+              <Link to="/act-of-kindness" style={{ textDecoration: "none" }}>
                 <span>See our all kindness</span>
               </Link>
             </p>
@@ -85,46 +91,21 @@ export default function OurWork() {
         </div>
         {/* @section Image Cards */}
         <div className="image">
-          {/* {kindness.map((data) => (
-            <img
-              src={data.photos[0]}
-              alt={data._id}
-              key={data._id}
-              className="images"
-            />
-          ))} */}
           {more ? (
             <>
-              <div className="image-container">
-                <img
-                  src="https://informnepal.com/wp-content/uploads/2021/05/hami-1.jpeg"
-                  alt=""
-                  className="images"
-                />
-                <div className="image-container-content">
-                  <p>Iam kishor</p>
+              {kindness.map((data) => (
+                <div className="image-container">
+                  <img
+                    src={data.photos[0]}
+                    alt={data._id}
+                    key={data._id}
+                    className="images"
+                  />
+                  <div className="image-container-content">
+                    <p>Iam kishor</p>
+                  </div>
                 </div>
-              </div>
-              <div className="image-container">
-                <img
-                  src="https://lexlimbu.com/wp-content/uploads/Hami-Nepal-Event.jpg"
-                  alt=""
-                  className="images"
-                />
-                <div className="image-container-content">
-                  <p>Iam kishor</p>
-                </div>
-              </div>
-              <div className="image-container">
-                <img
-                  src="https://d2g8igdw686xgo.cloudfront.net/56738917_1620896632893297_r.jpeg"
-                  alt=""
-                  className="images"
-                />
-                <div className="image-container-content">
-                  <p>Iam kishor</p>
-                </div>
-              </div>
+              ))}
             </>
           ) : (
             <>
@@ -243,46 +224,21 @@ export default function OurWork() {
           />
         </div>
         <div className="image">
-          {/* {events.map((data) => (
-            <img
-              src={data.photos[0]}
-              alt=""
-              key={data._id}
-              className="images"
-            />
-          ))} */}
           {more1 ? (
             <>
-              <div className="image-container">
-                <img
-                  src="https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/258742149_3019038991702460_9148728427194035544_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=a26aad&_nc_ohc=2_JF3s2hA3QAX97D6mm&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT-uWcqEWTgizbPmQlJDDkpSdcorEuB5CXNlkWtccB9E3A&oe=61BCCC38"
-                  alt=""
-                  className="images"
-                />
-                <div className="image-container-content">
-                  <p>Iam kishor</p>
+              {events.map((data) => (
+                <div className="image-container">
+                  <img
+                    src={data.photos[0]}
+                    alt=""
+                    key={data._id}
+                    className="images"
+                  />
+                  <div className="image-container-content">
+                    <p>Iam kishor</p>
+                  </div>
                 </div>
-              </div>
-              <div className="image-container">
-                <img
-                  src="https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/259076183_3019832114956481_5903953620629405277_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=a26aad&_nc_ohc=-yHkHcTE2XEAX9ZIZK2&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT8ypPE9-xfFLXTsud4MkhYPM4iBkjJVWZSzOSUaEZBIJQ&oe=61BD68B5"
-                  alt=""
-                  className="images"
-                />
-                <div className="image-container-content">
-                  <p>Iam kishor</p>
-                </div>
-              </div>
-              <div className="image-container">
-                <img
-                  src="https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/259411600_5551090894923658_7942012540538885755_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=UhjmPWtJqpUAX_xXfeV&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT8GVsH8ms_1pNZr2vnNq2WaP46QHzoIGQM9AfqZApoSnA&oe=61BDE961"
-                  alt=""
-                  className="images"
-                />
-                <div className="image-container-content">
-                  <p>Iam kishor</p>
-                </div>
-              </div>
+              ))}
             </>
           ) : (
             <>
@@ -397,99 +353,35 @@ export default function OurWork() {
           ))} */}
           {more2 ? (
             <>
-              <div className="image-container">
-                <img
-                  src="https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/243161640_2980553242217702_4522272028565600526_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=-gfMyINpSHMAX9lxNxa&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT_uX9WT6J4HV5EvxaFi2OQNAvmeXgsCbBoKyniEYLs5Tg&oe=61BD582E"
-                  alt=""
-                  className="images"
-                />
-                <div className="image-container-content">
-                  <p>Iam kishor</p>
+              {causes.map((data) => (
+                <div className="image-container">
+                  <img
+                    src={data.photos[0]}
+                    alt={data.name}
+                    key={data._id}
+                    className="images"
+                  />
+                  <div className="image-container-content">
+                    <p>Iam kishor</p>
+                  </div>
                 </div>
-              </div>
-              <div className="image-container">
-                <img
-                  src="https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/242051886_2969963959943297_4729821977316993864_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=a26aad&_nc_ohc=uAQyzBeTeXMAX88-AsQ&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT8oVjCoAxqWDtBP7v1piW3HDvG33-dWsJ8SSZnhzeRpGQ&oe=61BE2E29"
-                  alt=""
-                  className="images"
-                />
-                <div className="image-container-content">
-                  <p>Iam kishor</p>
-                </div>
-              </div>
-              <div className="image-container">
-                <img
-                  src="https://scontent.fbir5-1.fna.fbcdn.net/v/t39.30808-6/227791804_2934703173469376_5173695614863709473_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=a26aad&_nc_ohc=3o8dRgEJ0l0AX_Ii7Yi&_nc_ht=scontent.fbir5-1.fna&oh=00_AT_xx-K6pk4LiORMhECN1VYnVuGWoSLlWn2K6SMY8r3twg&oe=61C12B12"
-                  alt=""
-                  className="images"
-                />
-                <div className="image-container-content">
-                  <p>Iam kishor</p>
-                </div>
-              </div>
+              ))}
             </>
           ) : (
             <>
-              <div className="image-container">
-                <img
-                  src="https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/241555069_3017536698519356_4334511696752422973_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=a26aad&_nc_ohc=1xHuY1Vi6D4AX9lEB1i&tn=4_erZh-erYt0bmEm&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT_0WBRz1DzKMJNrYRoGvkqO6UYKd1fce2q-OGTJUavvOg&oe=61BE24C0"
-                  alt=""
-                  className="images"
-                />
-                <div className="image-container-content">
-                  <p>Iam kishor</p>
+              {causesAll.map((data) => (
+                <div className="image-container">
+                  <img
+                    src={data.photos[0]}
+                    alt={data.name}
+                    key={data._id}
+                    className="images"
+                  />
+                  <div className="image-container-content">
+                    <p>Iam kishor</p>
+                  </div>
                 </div>
-              </div>
-              <div className="image-container">
-                <img
-                  src="https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/245330154_2993543850918641_6303468742778844546_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=a26aad&_nc_ohc=_7kjm8vGayMAX8peSXi&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT9qvZG8hkrKy62Lie46gkkZWZn8AuSHvi8Yq40kfipvmw&oe=61BE5696"
-                  alt=""
-                  className="images"
-                />
-                <div className="image-container-content">
-                  <p>Iam kishor</p>
-                </div>
-              </div>
-              <div className="image-container">
-                <img
-                  src="https://scontent.fbir5-1.fna.fbcdn.net/v/t39.30808-6/227791804_2934703173469376_5173695614863709473_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=a26aad&_nc_ohc=3o8dRgEJ0l0AX_Ii7Yi&_nc_ht=scontent.fbir5-1.fna&oh=00_AT_xx-K6pk4LiORMhECN1VYnVuGWoSLlWn2K6SMY8r3twg&oe=61C12B12"
-                  alt=""
-                  className="images"
-                />
-                <div className="image-container-content">
-                  <p>Iam kishor</p>
-                </div>
-              </div>
-              <div className="image-container">
-                <img
-                  src="https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/243161640_2980553242217702_4522272028565600526_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=-gfMyINpSHMAX9lxNxa&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT_uX9WT6J4HV5EvxaFi2OQNAvmeXgsCbBoKyniEYLs5Tg&oe=61BD582E"
-                  alt=""
-                  className="images"
-                />
-                <div className="image-container-content">
-                  <p>Iam kishor</p>
-                </div>
-              </div>
-              <div className="image-container">
-                <img
-                  src="https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/242051886_2969963959943297_4729821977316993864_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=a26aad&_nc_ohc=uAQyzBeTeXMAX88-AsQ&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT8oVjCoAxqWDtBP7v1piW3HDvG33-dWsJ8SSZnhzeRpGQ&oe=61BE2E29"
-                  alt=""
-                  className="images"
-                />
-                <div className="image-container-content">
-                  <p>Iam kishor</p>
-                </div>
-              </div>
-              <div className="image-container">
-                <img
-                  src="https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/240982442_2959375981002095_3668533278399770633_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=a26aad&_nc_ohc=izIqfNdHJx0AX9mhjXE&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT8glOgImOGy6SJeD7NsvDX2u0sx4VuSwC_XHZ-5MMYgqA&oe=61BCE866"
-                  alt=""
-                  className="images"
-                />
-                <div className="image-container-content">
-                  <p>Iam kishor</p>
-                </div>
-              </div>
+              ))}
             </>
           )}
         </div>

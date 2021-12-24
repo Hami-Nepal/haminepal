@@ -1,20 +1,20 @@
-import React from 'react';
-import './style.scss';
+import React from "react"
+import "./style.scss"
 
-import Switch from '@mui/material/Switch';
+import Switch from "@mui/material/Switch"
 
-import Logo from '../../Assets/logo.png';
-import { Link } from 'react-location';
-import { Button } from '@mui/material';
+import Logo from "../../Assets/logo.png"
+import { Link } from "react-location"
+import { Button } from "@mui/material"
 
-const label = { inputProps: { 'aria-label': 'Switch demo' } };
+const label = { inputProps: { "aria-label": "Switch demo" } }
 
 export default function Donate({
   setIsDonationFormOpen,
   donation_type,
   donation_name,
 }) {
-  const [anonymousDonation, setAnonymousDonation] = React.useState(false);
+  const [anonymousDonation, setAnonymousDonation] = React.useState(false)
   return (
     <div className="donate__container">
       <div className="donate__container__topbar">
@@ -31,7 +31,7 @@ export default function Donate({
             checked={anonymousDonation}
             onClick={() => setAnonymousDonation(!anonymousDonation)}
             {...label}
-          />{' '}
+          />{" "}
           Donate Anonymously
         </div>
 
@@ -87,7 +87,11 @@ export default function Donate({
               value="ESEWA"
             />
             <label for="esewa">
-              <img src="" alt="esewa" />
+              <img
+                src="/esewa_logo.png"
+                style={{ width: "140px" }}
+                alt="esewa"
+              />
             </label>
           </li>
           <li>
@@ -98,25 +102,31 @@ export default function Donate({
               id="esewa"
               value="ESEWA"
             />
-            <label for="esewa">
-              <img src="" alt="esewa" />
+            <label for="khalti">
+              <img
+                src="/khalti_logo.png"
+                style={{ width: "140px" }}
+                alt="khalti"
+              />
             </label>
           </li>
         </ul>
 
         <hr />
-        <span style={{ marginTop: '30px' }}>Outside Nepal</span>
+        <span style={{ marginTop: "30px" }}>Outside Nepal</span>
         <ul>
           <li>
-            <Link to="/">gofundme</Link>
+            <Link to="/">
+              <img src="/gofundme.png" style={{ width: "140px" }} />
+            </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/">gofundme</Link>
-          </li>
+          </li> */}
         </ul>
 
         <Button>Donate</Button>
       </div>
     </div>
-  );
+  )
 }
