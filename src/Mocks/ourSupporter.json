@@ -1,3 +1,4 @@
+
 {
   "supporters": [
     {
@@ -72,6 +73,14 @@
     {
       "photo": "https://scontent.fbir5-1.fna.fbcdn.net/v/t1.6435-9/90994954_2849582118428944_3973634520271290368_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=973b4a&_nc_ohc=SyM3d_giw8gAX_aNVEE&_nc_ht=scontent.fbir5-1.fna&oh=00_AT9X2-HxmK9SI1marYwUT0BkgRqXPJVtdmhDpCGunW-X_w&oe=61DEC091",
       "link": "https://www.facebook.com/yaknyetifashion/"
+    },
+    {
+      "photo": "smartqr.jpeg",
+      "link": "http://www.smartqr.com.np/"
+    },
+    {
+      "photo": "sct.jpeg",
+      "link": "https://www.sct.com.np/"
     }
   ]
 }
