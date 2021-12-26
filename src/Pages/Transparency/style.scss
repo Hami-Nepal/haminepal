@@ -120,39 +120,6 @@
         max-width: 90vw;
       }
     }
-
-    ul {
-      margin-top: 80px;
-      list-style: none;
-      color: #fff;
-      display: flex;
-      justify-content: space-around;
-      text-align: center;
-
-      @media (max-width: 768px) {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      h3 {
-        line-height: 1.7;
-      }
-
-      i {
-        font-size: 45px;
-      }
-
-      p {
-        margin-bottom: 50px;
-        font-size: 22px;
-        color: #59d057;
-        font-weight: 600;
-
-        @media (max-width: 768px) {
-          margin-bottom: 30px;
-        }
-      }
-    }
   }
 
   // @section => content
@@ -203,114 +170,12 @@
       width: 95%;
     }
   }
-
-  .tabs__title {
-    margin-left: 5vw;
-  }
-
-  .tabs__divider {
-    margin-top: 10px;
-    width: 80px;
-    height: 5px;
-    margin-bottom: 30px;
-    background: #9f1718;
-    margin-left: 5vw;
-  }
-}
-
-.causesTabs__meroTabs {
-  width: max-content;
-  margin: 2rem auto;
-
-  .btn__fund {
-    margin-right: 1rem;
-    color: white;
-    background-color: gray;
-
-    &:hover {
-      background-color: #9f1718;
-    }
-
-    &:focus {
-      background-color: #9f1718;
-      color: white;
-    }
-  }
-}
-
-.tab-pane {
-  max-width: 700px;
-  width: 90%;
-  margin: 2rem auto 5rem;
-}
-
-.b10 {
-  background-color: #9f1718;
-  color: white;
-  font-weight: 600;
-  margin-left: 1rem;
-
-  &:hover {
-    color: white;
-  }
 }
 
 .causes__container .causes__container__landing p {
   width: 90vw;
 }
 
-.jRFJkP {
-  background-color: #9f1718 !important;
-}
-
-.lcUbOd {
-  background-color: white !important;
-  box-shadow: 0 0 1px 3px #9f1718 !important;
-}
-.tab-content {
-  display: grid;
-  grid-template-columns: auto auto;
-}
-.billCarousel__container {
-  text-align: center;
-
-  .sc-bdvvtL,
-  .cNNJIt,
-  .rec,
-  .rec-arrow,
-  .rec,
-  .jRFJkP {
-    background: transparent !important;
-    box-shadow: none !important;
-
-    &:disabled {
-      cursor: not-allowed;
-      background: transparent !important;
-      box-shadow: none !important;
-    }
-  }
-
-  .billCarousel__container__item {
-    img {
-      width: 300px;
-      height: auto;
-      object-fit: cover;
-      margin-bottom: 10px;
-    }
-  }
-}
-// .divider {
-//   margin-top: 10px;
-//   width: 80px;
-//   height: 5px;
-//   margin-bottom: 30px;
-//   background: #9f1718;
-// }
-// h1 {
-//   font-family: "Playfair Display", serif;
-//   font-size: 50px;
-//   font-weight: 700;
-// }
 .tarnsparenc__kind__Ko,
 .transparency__cash__ko {
   width: 90%;
@@ -325,7 +190,8 @@
   }
 
   h2 {
-    margin-bottom: 2rem;
+    font-family: "Playfair Display", serif;
+    font-size: 40px;
     font-weight: 600;
   }
 
@@ -364,16 +230,6 @@
       }
     }
   }
-
-  button {
-    background-color: #9f1718;
-    color: white;
-
-    &:hover {
-      opacity: 0.9;
-      background-color: #9f1718;
-    }
-  }
 }
 
 .transparency__cash__ko {
@@ -389,5 +245,46 @@
 
   .admin-expenses-ko-column {
     margin-top: 2rem;
+  }
+}
+
+.maintable-ko-section {
+  width: 90%;
+  margin: 0 auto 2rem;
+
+  .button__main {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    button {
+      background-color: gray;
+      color: white;
+      padding: 5px 50px 5px 50px;
+
+      &:hover {
+        opacity: 0.9;
+        background-color: #9f1718;
+      }
+      &:focus {
+        background-color: #9f1718;
+      }
+    }
+  }
+  h2 {
+    font-weight: 600;
+  }
+
+  .maintable-ko-column {
+    margin-top: 2rem;
+    .received__table,
+    .spent__table {
+      h3 {
+        font-family: "Playfair Display", serif;
+        font-weight: 500;
+        font-size: 30px;
+        margin-bottom: 20px;
+        margin-top: 10px;
+      }
+    }
   }
 }

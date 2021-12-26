@@ -19,7 +19,7 @@ import InfluenerCarousel from "../../Components/Influencers/InfluencersCarousel"
 import KindnessCard from "../../Components/Act of Kindness/KindnessCard"
 import BoardMembersCarousel from "../../Components/BoardMembers/BoardMembersCarousel"
 import Footer from "../../Components/Footer/Footer"
-import Donate from "../../Components/Donate/Donate"
+import Donate from "../../Components/Donate/DonateMainPage"
 
 import baseURL from "../../api/baseURL"
 
@@ -171,10 +171,7 @@ export default function Home() {
           style={{ display: isDonationFormOpen ? "block" : "none" }}
           className="home__container__landing__donationForm"
         >
-          <Donate
-            setIsDonationFormOpen={setIsDonationFormOpen}
-            donation_type={"Administrator"}
-          />
+          <Donate setIsDonationFormOpen={setIsDonationFormOpen} />
         </div>
 
         <div

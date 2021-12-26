@@ -6,6 +6,9 @@ import Switch from "@mui/material/Switch"
 import Logo from "../../Assets/logo.png"
 import { Link } from "react-location"
 import { Button } from "@mui/material"
+import KHALTI from "../../Assets/khalti.png"
+import ESEWA from "../../Assets/esewa.png"
+import GOFUNDME from "../../Assets/gofundme.png"
 
 const label = { inputProps: { "aria-label": "Switch demo" } }
 
@@ -15,6 +18,7 @@ export default function Donate({
   donation_name,
 }) {
   const [anonymousDonation, setAnonymousDonation] = React.useState(false)
+  const [donationOption, setDonationOption] = React.useState("Nepal")
   return (
     <div className="donate__container">
       <div className="donate__container__topbar">
@@ -37,7 +41,7 @@ export default function Donate({
 
         {!anonymousDonation && (
           <>
-            <h3>User Details</h3>
+            <h4>User Details</h4>
             <div>
               <input type="text" placeholder="First Name" required />
               <input type="text" placeholder="Last Name" required />
@@ -58,7 +62,7 @@ export default function Donate({
           </>
         )}
 
-        <h3>Donation Details</h3>
+        <h4>Donation Details</h4>
         <div>
           <label className="donation__type">
             <h3>Donation for {donation_type}</h3>
@@ -67,64 +71,74 @@ export default function Donate({
           <input type="number" placeholder="Amount" />
         </div>
         <textarea
-          name=""
-          id=""
+          name="message"
+          id="message"
           cols="30"
-          rows="10"
+          rows="2"
           placeholder="Message"
-        ></textarea>
+        />
 
-        <h3>Pay with</h3>
-        <span>Inside Nepal</span>
-        {/** @dev add images here instead of texts */}
-        <ul>
-          <li>
-            <input
-              type="radio"
-              className="form-check"
-              name="payment_type"
-              id="esewa"
-              value="ESEWA"
-            />
-            <label for="esewa">
+        <h4>Pay with</h4>
+        <select
+          name="Type"
+          id="select"
+          value={donationOption}
+          onChange={(e) => setDonationOption(e.target.value)}
+        >
+          <option value="Nepal">National</option>
+          <option value="International">International</option>
+        </select>
+        {donationOption === "Nepal" ? (
+          <ul>
+            <li>
+              <input
+                type="radio"
+                className="form-check"
+                name="payment_type"
+                id="esewa"
+                value="ESEWA"
+              />
               <img
-                src="/esewa_logo.png"
-                style={{ width: "140px" }}
+                src={ESEWA}
                 alt="esewa"
+                style={{ height: "40px", width: "120px" }}
               />
-            </label>
-          </li>
-          <li>
-            <input
-              type="radio"
-              className="form-check"
-              name="payment_type"
-              id="esewa"
-              value="ESEWA"
-            />
-            <label for="khalti">
+            </li>
+            <li>
+              <input
+                type="radio"
+                className="form-check"
+                name="payment_type"
+                id="khalti"
+                value="khalti"
+              />
               <img
-                src="/khalti_logo.png"
-                style={{ width: "140px" }}
+                src={KHALTI}
                 alt="khalti"
+                style={{ height: "45px", width: "120px" }}
               />
-            </label>
-          </li>
-        </ul>
-
-        <hr />
-        <span style={{ marginTop: "30px" }}>Outside Nepal</span>
-        <ul>
-          <li>
-            <Link to="/">
-              <img src="/gofundme.png" style={{ width: "140px" }} />
-            </Link>
-          </li>
-          {/* <li>
-            <Link to="/">gofundme</Link>
-          </li> */}
-        </ul>
-
+            </li>
+          </ul>
+        ) : donationOption === "International" ? (
+          <ul>
+            <li>
+              <input
+                type="radio"
+                className="form-check"
+                name="payment_type"
+                id="gofund"
+                value="gofundme"
+              />
+              <img
+                src={GOFUNDME}
+                alt="gofundme"
+                style={{ height: "35px", width: "80px", marginTop: "-0.9rem" }}
+              />
+            </li>
+          </ul>
+        ) : (
+          ""
+        )}
         <Button>Donate</Button>
       </div>
     </div>

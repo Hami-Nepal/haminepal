@@ -49,7 +49,6 @@ export default function EventFocusedCash(props) {
       .then((data) => {
         setReceived(data.data);
         setRCount(data.total_data);
-        // console.log(slug);
       })
       .catch((error) => setReceivedError(error.message));
   }, [donPage]);

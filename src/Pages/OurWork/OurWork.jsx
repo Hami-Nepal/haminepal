@@ -187,11 +187,11 @@ export default function OurWork() {
           <div onClick={() => setMore(!more)}>
             {more ? (
               <>
-                <img src={downArrow} />
+                <img src={downArrow} alt="arrrow" />
               </>
             ) : (
               <>
-                <img src={upArrow} />
+                <img src={upArrow} alt="arrrow" />
               </>
             )}
           </div>
@@ -309,11 +309,11 @@ export default function OurWork() {
           <div onClick={() => setMore1(!more1)}>
             {more1 ? (
               <>
-                <img src={downArrow} />
+                <img src={downArrow} alt="arr" />
               </>
             ) : (
               <>
-                <img src={upArrow} />
+                <img src={upArrow} alt="arr" />
               </>
             )}
           </div>
@@ -389,11 +389,11 @@ export default function OurWork() {
           <div onClick={() => setMore2(!more2)}>
             {more2 ? (
               <>
-                <img src={downArrow} />
+                <img src={downArrow} alt="arr" />
               </>
             ) : (
               <>
-                <img src={upArrow} />
+                <img src={upArrow} alt="arr" />
               </>
             )}
           </div>

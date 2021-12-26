@@ -79,7 +79,6 @@ export default function KindnessFocused() {
       .then((data) => {
         setKReceived(data.data);
         setKRCount(data.total_data);
-        // console.log(slug);
       })
       .catch((error) => console.log(error));
   }, [data.title, donPage]);
