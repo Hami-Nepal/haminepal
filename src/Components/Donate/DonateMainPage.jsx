@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./style.scss";
 
 import Switch from "@mui/material/Switch";
@@ -9,16 +9,25 @@ import { Button } from "@mui/material";
 import KHALTI from "../../Assets/khalti.png";
 import ESEWA from "../../Assets/esewa.png";
 import GOFUNDME from "../../Assets/gofundme.png";
+import axios from "axios";
+import baseURL from "../../api/baseURL";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
-export default function Donate({
-  setIsDonationFormOpen,
-  donation_type,
-  donation_name,
-}) {
+export default function Donate({ setIsDonationFormOpen }) {
   const [anonymousDonation, setAnonymousDonation] = React.useState(false);
   const [donationOption, setDonationOption] = React.useState("Nepal");
+  const [donationFor, setDonationFor] = React.useState("causes");
+  const [list, setList] = React.useState([]);
+  const [currentDonation, setCurrentDonation] = React.useState("");
+
+  useEffect(() => {
+    if (donationFor !== "administration") {
+      axios
+        .get(baseURL + "/" + donationFor + "?limit=100000")
+        .then(({ data }) => setList(data.data));
+    }
+  }, [donationFor]);
   return (
     <div className='donate__container'>
       <div className='donate__container__topbar'>
@@ -63,10 +72,47 @@ export default function Donate({
         )}
 
         <h4>Donation Details</h4>
-        <div>
+        <div className='donation-details-ko-section'>
           <label className='donation__type'>
-            <h3>Donation for {donation_type}</h3>
-            <p>{donation_name}</p>
+            <h3>
+              Donation for{" "}
+              <select
+                name='Type'
+                id='donation for'
+                value={donationFor}
+                onChange={(e) => setDonationFor(e.target.value)}
+              >
+                <option value='causes'>Cause</option>
+                <option value='events'>Event</option>
+                <option value='kindness'>Act of Kindness</option>
+                <option value='administration'>Administration</option>
+                <option value='volunteers'>Volunteers</option>
+              </select>
+            </h3>
+            {donationFor !== "administration" ? (
+              <select
+                name='Type'
+                id='donation for'
+                value={currentDonation}
+                onChange={(e) => setCurrentDonation(e.target.value)}
+              >
+                {donationFor === "causes" || donationFor === "events"
+                  ? list.map((data) => (
+                      <option value={data.id}>{data.name}</option>
+                    ))
+                  : donationFor === "kindness"
+                  ? list.map((data) => (
+                      <option value={data.id}>{data.title}</option>
+                    ))
+                  : list.map((data) => (
+                      <option
+                        value={data.id}
+                      >{`${data.first_name} ${data.last_name}`}</option>
+                    ))}
+              </select>
+            ) : (
+              ""
+            )}
           </label>
           <input type='number' placeholder='Amount' />
         </div>

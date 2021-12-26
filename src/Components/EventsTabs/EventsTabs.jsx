@@ -76,7 +76,7 @@ export default function EventTabs() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(baseURL + "/event_type")
+    fetch(baseURL + "/event_type?limit=1000")
       .then((data) => data.json())
       .then(({ data }) => setEventTypes(data))
       .catch(({ response }) => console.log(response));
@@ -88,7 +88,7 @@ export default function EventTabs() {
   useEffect(() => {
     fetch(
       baseURL +
-        `/events?type=${eventTypes[value]?.event_type}&status=${activeEventStatus}`
+        `/events?type=${eventTypes[value]?.event_type}&status=${activeEventStatus}&limit=10000`
     )
       .then((data) => data.json())
       .then(({ data }) => EventCards(data))

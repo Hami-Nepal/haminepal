@@ -117,7 +117,12 @@ export default function EventFocused() {
 
   useEffect(() => {
     // specific cause or events ko ako total amount herna ko lagi jugad
-    fetch(baseURL + "/donations/?slug=" + data.slug)
+    fetch(
+      baseURL +
+        "/donations?event=" +
+        window.location.pathname.split("/").pop() +
+        "&limit=1000000"
+    )
       .then((data) => data.json())
       .then(({ data }) =>
         setTotalDonationAmount(
