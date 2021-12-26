@@ -3,10 +3,10 @@ import * as React from "react"
 // import mui lib
 import Pagination from "@mui/material/Pagination"
 import Stack from "@mui/material/Stack"
-import InputLabel from "@mui/material/InputLabel"
 import MenuItem from "@mui/material/MenuItem"
 import FormControl from "@mui/material/FormControl"
 import Select from "@mui/material/Select"
+import CircularProgress from "@mui/material/CircularProgress"
 
 // scss import
 import "./style.scss"
@@ -61,9 +61,7 @@ export default function NewsTabs() {
   if (loading) {
     return (
       <div class="text-center">
-        <div class="spinner-border text-danger" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
+        <CircularProgress />
       </div>
     )
   }
