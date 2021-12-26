@@ -9,10 +9,11 @@
 .news_card {
   display: grid;
   gap: 1.5rem;
+  justify-content: center;
   // margin: 20px 150px 80px 10px;
-  padding: 0px 30px;
+  padding: 0px 40px;
 
-  max-width: 1200px;
+  width: 100vw;
   // margin: auto;
 
   @media (max-width: 600px) {
