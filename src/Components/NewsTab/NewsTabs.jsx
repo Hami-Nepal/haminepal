@@ -86,7 +86,7 @@ export default function NewsTabs() {
         </FormControl>
       </div>
       {/* @section=>main-loaded */}
-      <div className="row">
+      <div className="news_card">
         {posts.map((news) => {
           let options = {
             weekday: "long",
