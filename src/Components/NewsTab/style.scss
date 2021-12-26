@@ -4,14 +4,15 @@
   justify-content: space-around;
   margin-bottom: 10px;
   align-items: center;
+  width: 100vw;
 }
 .row {
   display: grid;
   gap: 1.5rem;
-  margin: 20px 0 80px;
+  margin: 20px 150px 80px;
   padding: news-header30px 40px;
   max-width: 1200px;
-  margin: auto;
+  // margin: auto;
 
   @media (min-width: 900px) {
     grid-template-columns: repeat(2, 1fr);

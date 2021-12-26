@@ -72,15 +72,15 @@ export default function NewsTabs() {
       <div className="news-header">
         <h3>{count} results</h3>
 
-        <FormControl sx={{ m: 1, minWidth: 80 }}>
+        <FormControl sx={{ m: 1, minWidth: 90 }}>
           <Select
             style={{ fontWeight: "bolder" }}
-            labelId="demo-simple-select-autowidth-label"
+            // labelId="demo-simple-select-autowidth-label"
             value={newsType}
             onChange={handleChange}
-            displayEmpty
-            autoWidth
-            inputProps={{ "aria-label": "Without label" }}
+            // displayEmpty
+            // autoWidth
+            // inputProps={{ "aria-label": "Without label" }}
           >
             <MenuItem value="national">National</MenuItem>
             <MenuItem value="international">International</MenuItem>
@@ -154,7 +154,7 @@ export default function NewsTabs() {
       </div>
 
       {/* @sextion=>Pagination */}
-      <div style={{ margin: "50px 0px 50px 0px" }}>
+      <div style={{ margin: "50px 0px 50px 0px", width: "100vw" }}>
         <Stack justifyContent="center" alignItems="center">
           <Pagination
             count={page}

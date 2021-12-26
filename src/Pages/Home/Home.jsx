@@ -411,7 +411,7 @@ export default function Home() {
         </div>
       </div>
       {/** @section => our mentor */}
-      <div className="home__container__ourPartner">
+      <div className="home__container__ourMentor">
         <h1>Our Mentor</h1>
         <div className="Mentor">
           <img
@@ -452,9 +452,10 @@ export default function Home() {
           ))}
         </ul> */}
 
-        <div className="Supporters">
+        {/* @section Our-Allies */}
+        <div className="allies">
           {OurPartners.partners.map((partner) => (
-            <div className="ourSupporters__container">
+            <div className="ourAllies__container">
               <a href={partner.link} target="_blank" rel="noreferrer">
                 <img src={partner.photo} alt="" />
               </a>
@@ -463,7 +464,7 @@ export default function Home() {
         </div>
 
         <div className="infuencer__heading">
-          <h1 style={{ marginTop: "3rem" }}>Social Supporters</h1>
+          <h1>Social Supporters</h1>
           <InfluenerCarousel />
         </div>
         <div className="supporter_heading">
