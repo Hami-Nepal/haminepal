@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-location";
 import "./style.scss";
 import { Button } from "@mui/material";
 import Footer from "../../Components/Footer/Footer";
@@ -57,7 +58,7 @@ export default function SignUp() {
 
       {/* @section => form */}
       <div className='signup__container__form'>
-        <h1>Signup</h1>
+        <h1>User Signup</h1>
         <div className='divider'></div>
 
         {/* @section => form container */}
@@ -84,7 +85,6 @@ export default function SignUp() {
                   }}
                 />
               </div>
-
               <div>
                 <input
                   className='full'
@@ -102,7 +102,6 @@ export default function SignUp() {
                   }}
                 />
               </div>
-
               <div>
                 <input
                   className='full'
@@ -127,7 +126,10 @@ export default function SignUp() {
               </div>
               <Button onClick={register}>
                 {sending ? "Sending..." : "Register"}
-              </Button>
+              </Button>{" "}
+              <Link to='/new-volunteer'>
+                <h6>Or Signup as a Volunteer?</h6>
+              </Link>
               {error && (
                 <div className='form-group'>
                   <div

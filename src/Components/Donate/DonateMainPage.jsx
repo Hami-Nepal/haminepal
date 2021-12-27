@@ -177,6 +177,12 @@ export default function Donate({ setIsDonationFormOpen }) {
               />
               <img
                 src={GOFUNDME}
+                onClick={(_) =>
+                  window.open(
+                    "https://www.gofundme.com/f/help-nepal-stop-covid19-human-castastrophe/donate",
+                    "_blank"
+                  )
+                }
                 alt='gofundme'
                 style={{ height: "35px", width: "80px", marginTop: "-0.9rem" }}
               />

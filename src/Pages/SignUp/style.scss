@@ -178,5 +178,14 @@
       padding: 10px 35px;
       margin-top: 10px;
     }
+    h6 {
+      margin-top: 1rem;
+      color: #d12519;
+      text-decoration: underline;
+      &:hover {
+        color: #971910;
+        cursor: pointer;
+      }
+    }
   }
 }

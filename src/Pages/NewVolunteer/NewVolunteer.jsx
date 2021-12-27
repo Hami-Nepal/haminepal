@@ -9,6 +9,7 @@ import Footer from "../../Components/Footer/Footer";
 import baseURL from "../../api/baseURL";
 
 import NavBar from "../../Components/NavBar/Nav";
+import volunteerPicture from "../../Assets/volunteer.png";
 
 const fileReader = new FileReader();
 
@@ -329,6 +330,11 @@ export default function NewVolunteer() {
           </form>
 
           <div className='newVolunteer__container__form__inputs__input right'>
+            <img
+              src={volunteerPicture}
+              alt='banner'
+              style={{ height: "500px", width: "500px" }}
+            />
             {/* <MapContainer
               apiKey="AIzaSyC9ygizb1G5HWBnHPE9UWOM23fPiuWZAiw"
               center={center || {}}
