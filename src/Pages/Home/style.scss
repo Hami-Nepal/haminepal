@@ -348,9 +348,7 @@
     }
 
     .home__container__actOfKindness__items {
-      display: grid;
-      grid-template-columns: auto auto auto auto auto;
-      gap: 2rem;
+      display: flex;
 
       & > * {
         flex: 250px 1 1;

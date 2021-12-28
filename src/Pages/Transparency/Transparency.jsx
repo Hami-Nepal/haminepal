@@ -29,6 +29,8 @@ import TablePagination from "@mui/material/TablePagination";
 
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 
 const style = {
   position: "absolute",
@@ -60,6 +62,7 @@ export default function Transparency() {
   const [spentTableIds, setSpentTableIds] = useState([]);
   const [receivedTableIds, setReceivedTableIds] = useState([]);
   const [fetchDataError, setFetchDataError] = useState(null);
+
   //carousel
   const [donPhotos, setDonPhotos] = useState([]);
   const [transPhotos, setTransPhotos] = useState([]);
@@ -434,6 +437,16 @@ export default function Transparency() {
                               </MenuItem>
                             </Select>
                           </FormControl>
+                          <Autocomplete
+                            id='free-solo-demo'
+                            freeSolo
+                            options={receivedData.map(
+                              (option) => option.cause_name
+                            )}
+                            renderInput={(params) => (
+                              <TextField {...params} label='freeSolo' />
+                            )}
+                          />
                         </TableCell>
                         <TableCell align='left' style={{ fontWeight: "bold" }}>
                           Quantity
