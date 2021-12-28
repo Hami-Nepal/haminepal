@@ -349,6 +349,8 @@
 
     .home__container__actOfKindness__items {
       display: flex;
+      justify-content: center;
+      gap: 1rem;
 
       & > * {
         flex: 250px 1 1;
