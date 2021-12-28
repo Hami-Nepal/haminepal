@@ -440,7 +440,7 @@ export default function Home() {
 
       <div className='home__container__ourAlies'>
         <h1>Our Allies</h1>
-        <div className='Supporters'>
+        <div className='allies'>
           {OurPartners.partners.map((partner) => (
             <div className='ourSupporters__container'>
               <a href={partner.link} target='_blank' rel='noreferrer'>

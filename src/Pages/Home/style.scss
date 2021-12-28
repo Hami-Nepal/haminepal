@@ -510,7 +510,14 @@
     @media (min-width: 756px) {
       padding: 8rem 4rem;
     }
-
+    .allies {
+      display: flex;
+      gap: 2rem;
+      img {
+        width: 130px;
+        height: 130px;
+      }
+    }
     background: rgb(245, 245, 245);
     border-bottom: 1px solid grey;
     padding-top: 10px;
@@ -520,16 +527,6 @@
       font-weight: 700;
       font-size: 50px;
       margin-bottom: 20px;
-    }
-
-    ul {
-      list-style: none;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      gap: 40px;
-      flex-wrap: wrap;
-      align-items: center;
     }
     .infuencer__heading {
       margin-top: 4rem;
