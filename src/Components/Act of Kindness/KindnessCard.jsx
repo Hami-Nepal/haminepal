@@ -12,6 +12,7 @@ export default function KindnessCard(props) {
         <div className='kindnessCard__container__description'>
           {props.summary}
         </div>
+        <span>See More..</span>
       </Link>
     </div>
   );

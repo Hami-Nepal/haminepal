@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./style.scss";
 import Carousel from "react-elastic-carousel";
 import Logo from "../../Assets/logo.png";
+import Marquee from "react-fast-marquee";
 
 import BannerVideo from "../../Assets/banner.mp4";
 import BannerVideoWebm from "../../Assets/banner.webm";
@@ -151,6 +152,13 @@ export default function Home() {
               }}
             >
               Donate
+            </Link>
+
+            <Link
+              className='home__container__landing__footer__smallOurWork'
+              to='/our-work'
+            >
+              Our Work
             </Link>
           </div>
 
@@ -344,7 +352,7 @@ export default function Home() {
       {/** @section => act of kindness */}
       <div className='home__container__actOfKindness'>
         <h1>
-          Act of Kindness <span style={{ color: "red" }}>Featured</span>
+          Act of Kindness <span>Featured</span>
         </h1>
 
         <div className='home__container__actOfKindness__items'>
@@ -403,11 +411,10 @@ export default function Home() {
         </div>
       </div>
       {/** @section => our mentor */}
-      <div className='home__container__ourPartner'>
+      <div className='home__container__mentor'>
         <h1>Our Mentor</h1>
         <div className='Mentor'>
           <img
-            style={{ width: 450, height: 400, borderRadius: "4%" }}
             src='https://www.abc.net.au/cm/rimage/9966990-1x1-large.jpg?v=3'
             alt='Sandukh Ruit'
           />
@@ -431,19 +438,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='home__container__ourPartner'>
+      <div className='home__container__ourAlies'>
         <h1>Our Allies</h1>
-
-        {/* <ul>
-          {Partners.partners.map((partner) => (
-            <li key={partner.photo}>
-              <a href={partner.link} target="_blank" rel="noreferrer">
-                <img src={partner.photo} alt="" />
-              </a>
-            </li>
-          ))}
-        </ul> */}
-
         <div className='Supporters'>
           {OurPartners.partners.map((partner) => (
             <div className='ourSupporters__container'>
@@ -455,45 +451,31 @@ export default function Home() {
         </div>
 
         <div className='infuencer__heading'>
-          <h1 style={{ marginTop: "3rem" }}>Social Supporters</h1>
+          <h1>Social Supporters</h1>
           <InfluenerCarousel />
         </div>
         <div className='supporter_heading'>
-          <h1 style={{ marginTop: "3rem" }}>Our Supporters</h1>
+          <h1>Our Supporters</h1>
         </div>
 
         <div className='influencersCarousel__container'>
-          <Carousel
-            className='influencersCarousel__container__carourel'
-            ref={carouselRef}
-            enableAutoPlay
-            autoPlaySpeed={1000} // same time
-            onNextEnd={({ index }) => {
-              clearTimeout(resetTimeout);
-              if (index + 1 === 11) {
-                resetTimeout = setTimeout(() => {
-                  carouselRef.current.goTo(0);
-                }, 1000); // same time
-              }
-            }}
-            itemsToShow={8}
+          <Marquee
+            pauseOnHover='true'
+            speed='60'
+            gradient='true'
+            gradientWidth='20'
           >
-            {OurSupporters.supporters.map((supporter, index) => (
-              <div className='home__ourPartners__scroll__child'>
-                <a href={supporter.link} target='_blank' rel='noreferrer'>
-                  <img src={supporter.photo} alt='' />
-                </a>
-              </div>
-            ))}
-          </Carousel>
+            <div className='home__ourPartners__scroll'>
+              {OurSupporters.supporters.map((supporter, index) => (
+                <div className='home__ourPartners__scroll__child'>
+                  <a href={supporter.link} target='_blank' rel='noreferrer'>
+                    <img src={supporter.photo} alt='' />
+                  </a>
+                </div>
+              ))}
+            </div>
+          </Marquee>
         </div>
-        {/* {OurSupporters.supporters.map((supporter) => (
-              <div className="home__ourPartners__scroll__child">
-                <a href={supporter.link} target="_blank" rel="noreferrer">
-                  <img src={supporter.photo} alt="" />
-                </a>
-              </div>
-            ))} */}
       </div>
       <Footer />
     </div>
