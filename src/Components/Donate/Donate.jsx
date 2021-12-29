@@ -98,11 +98,7 @@ export default function Donate({
                 id='esewa'
                 value='ESEWA'
               />
-              <img
-                src={ESEWA}
-                alt='esewa'
-                style={{ height: "40px", width: "120px" }}
-              />
+              <img src={ESEWA} alt='esewa' />
             </li>
             <li>
               <input
@@ -112,11 +108,7 @@ export default function Donate({
                 id='khalti'
                 value='khalti'
               />
-              <img
-                src={KHALTI}
-                alt='khalti'
-                style={{ height: "45px", width: "120px" }}
-              />
+              <img src={KHALTI} alt='khalti' />
             </li>
           </ul>
         ) : donationOption === "International" ? (
@@ -132,7 +124,7 @@ export default function Donate({
               <img
                 src={GOFUNDME}
                 alt='gofundme'
-                style={{ height: "35px", width: "80px", marginTop: "-0.9rem" }}
+                style={{ cursor: "pointer" }}
               />
             </li>
           </ul>

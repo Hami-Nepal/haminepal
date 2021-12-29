@@ -21,13 +21,13 @@
     .kindnessFocused__container__landing__info {
       padding-left: 20px;
       h1 {
-        margin-top: 6rem;
+        margin-top: 4rem;
         font-family: "Playfair Display", serif;
-        font-size: 45px;
+        font-size: 50px;
         font-weight: 700;
         margin-bottom: 20px;
         @media (max-width: 786px) {
-          font-size: 25px;
+          font-size: 40px;
         }
       }
 
@@ -59,7 +59,8 @@
   .kindnessFocused__container__challenges,
   .kindnessFocused__container__difficulties,
   .kindnessFocused__container__results {
-    padding: 0 6vw;
+    padding: 50px 5vw 1px 5vw;
+    background: rgb(245, 245, 245);
 
     h2 {
       font-family: "Playfair Display", serif;
@@ -82,6 +83,7 @@
 
   .kindnessFocused__container__transparency {
     padding: 50px 5vw 1px 5vw;
+    background: rgb(245, 245, 245);
 
     .clear__photo {
       position: relative;
@@ -166,6 +168,7 @@
   .side__by__side__kindness {
     display: grid;
     grid-template-columns: auto auto;
+    background: rgb(245, 245, 245);
     @media (max-width: 900px) {
       display: flex;
       flex-direction: column;
@@ -209,13 +212,13 @@
 
   .kindnessFocused__container__volunteers {
     padding: 50px 5vw 70px 5vw;
-    margin-top: 60px;
+    background: rgb(245, 245, 245);
 
-    h2 {
+    h1 {
       font-family: "Playfair Display", serif;
-      font-size: 40px;
       font-weight: 700;
-      margin-bottom: 20px;
+      font-size: 50px;
+      margin-bottom: 10px;
     }
 
     .kindnessFocused__container__volunteers__items {
@@ -277,24 +280,29 @@
       }
     }
   }
-  .side__by__side {
+  .side__by__side__kindness {
     display: grid;
     grid-template-columns: auto auto;
-    background: rgb(245, 245, 245);
     @media (max-width: 900px) {
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-    .kbillCarousel__container {
-      .kbillCarousel__container__carourel__spent {
-        height: 500px;
-        width: 500px;
-        margin-left: 10rem;
+    .Table__container {
+      width: 88%;
+      margin-left: 4rem;
+      @media (max-width: 900px) {
+        margin-left: 1rem;
       }
+    }
+    .kbillCarousel__container {
       .kbillCarousel__container__carourel {
-        height: 500px;
-        width: 500px;
+        height: 550px;
+        width: 600px;
+        @media (max-width: 900px) {
+          height: 310px;
+          width: 350px;
+        }
       }
       .sc-bdvvtL,
       .cNNJIt,
@@ -311,51 +319,66 @@
           box-shadow: none !important;
         }
       }
+      .kbillCarousel__container__item__received {
+        img {
+          width: 450px;
+          height: 450px;
+
+          @media (max-width: 900px) {
+            height: 200px;
+            width: 200px;
+            margin-bottom: none;
+          }
+        }
+      }
       .kbillCarousel__container__item {
         img {
-          width: 400px;
-          height: 500px;
-          object-fit: cover;
-          margin-bottom: 10px;
+          width: 375px;
+          height: 511px;
+
+          @media (max-width: 900px) {
+            height: 250px;
+            width: 200px;
+            margin-bottom: none;
+          }
         }
       }
     }
   }
 
   .kindnessFocused__container__gallery {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 40px 5vw;
-    margin: 0px 0px 30px 35px;
-    @media (max-width: 1346px) {
-      --auto-grid-min-size: 16rem;
-      display: grid;
-      grid-template-columns: repeat(
-        auto-fill,
-        minmax(var(--auto-grid-min-size), 1fr)
-      );
-      grid-gap: 1rem;
+    padding: 50px 5vw 70px 5vw;
+    background: rgb(245, 245, 245);
+
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 50px;
+      margin-bottom: 10px;
     }
 
-    img {
-      width: 25vw;
-      height: 20vw;
-      object-fit: cover;
-      margin: 50px 50px 0px 0px;
+    &__container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
 
-      @media (max-width: 992px) {
-        width: 100%;
-        height: 100%;
-      }
-      @media (max-width: 768px) {
-        width: 100%;
-        height: 100%;
-      }
-      @media (max-width: 1346px) {
-        width: 100%;
+      img {
+        width: 25vw;
+        height: 25vw;
+        object-fit: cover;
+        margin-top: 50px;
+
+        @media (max-width: 992px) {
+          width: 48%;
+          height: 48%;
+        }
+        @media (max-width: 768px) {
+          width: 100%;
+          height: 100%;
+        }
       }
     }
   }

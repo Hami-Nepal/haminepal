@@ -239,10 +239,7 @@ export default function CauseFocused() {
                 )}
               </div>
               <div className='side__by__side'>
-                <TableContainer
-                  component={Paper}
-                  sx={{ width: "88%", marginLeft: "4rem" }}
-                >
+                <TableContainer component={Paper} className='Table__container'>
                   <Table sx={{ width: "100%" }} aria-label='simple table'>
                     <TableHead>
                       <TableRow>
@@ -318,7 +315,7 @@ export default function CauseFocused() {
                         ))
                       ) : kReceived.length === 0 ? (
                         <span style={{ color: "#bf5050", margin: "1rem" }}>
-                          Np Data Found
+                          No Data Found
                         </span>
                       ) : (
                         <CircularProgress />
@@ -338,7 +335,7 @@ export default function CauseFocused() {
                     <Carousel className='kbillCarousel__container__carourel'>
                       {modalKindPhoto.map((photo, index) => (
                         <div
-                          className='kbillCarousel__container__item'
+                          className='kbillCarousel__container__item__received'
                           key={index}
                         >
                           <img
@@ -357,7 +354,7 @@ export default function CauseFocused() {
                 </div>
               </div>
               <div className='causeFocused__container__transparency'>
-                <h2 style={{ marginTop: "1rem" }}>Spent</h2>
+                <h2>Spent</h2>
                 {modalPhoto.length != 0 ? (
                   <Button className='clear__photo2' onClick={clearPhoto2}>
                     Hide
@@ -367,10 +364,7 @@ export default function CauseFocused() {
                 )}
               </div>
               <div className='side__by__side'>
-                <TableContainer
-                  component={Paper}
-                  sx={{ width: "100%", marginLeft: "4rem" }}
-                >
+                <TableContainer component={Paper} className='Table__container'>
                   <Table sx={{ width: "100%" }} aria-label='simple table'>
                     <TableHead>
                       <TableRow>
@@ -441,7 +435,7 @@ export default function CauseFocused() {
                 </TableContainer>
                 <div className='kbillCarousel__container'>
                   {kindActive && kSpent && modalPhoto.length !== 0 ? (
-                    <Carousel className='kbillCarousel__container__carourel__spent'>
+                    <Carousel className='kbillCarousel__container__carourel'>
                       {modalPhoto.map((bill, index) => (
                         <div
                           className='kbillCarousel__container__item'

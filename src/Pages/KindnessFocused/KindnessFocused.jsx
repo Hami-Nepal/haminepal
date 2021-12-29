@@ -170,10 +170,7 @@ export default function KindnessFocused() {
             )}
           </div>
           <div className='side__by__side__kindness'>
-            <TableContainer
-              component={Paper}
-              sx={{ width: "91%", marginLeft: "4rem" }}
-            >
+            <TableContainer component={Paper} className='Table__container'>
               <Table sx={{ width: "100%" }} aria-label='simple table'>
                 <TableHead>
                   <TableRow>
@@ -246,7 +243,10 @@ export default function KindnessFocused() {
               {kindActive && kReceived && modalKindPhoto.length !== 0 ? (
                 <Carousel className='kbillCarousel__container__carourel'>
                   {modalKindPhoto.map((photo, index) => (
-                    <div className='kbillCarousel__container__item' key={index}>
+                    <div
+                      className='kbillCarousel__container__item__received'
+                      key={index}
+                    >
                       <img
                         src={photo}
                         alt='photo'
@@ -263,7 +263,7 @@ export default function KindnessFocused() {
             </div>
           </div>
           <div className='kindnessFocused__container__transparency'>
-            <h3 style={{ marginTop: "1rem" }}>Spent</h3>
+            <h3>Spent</h3>
             {modalPhoto.length != 0 ? (
               <Button className='clear__photo2' onClick={clearPhoto2}>
                 Hide
@@ -273,10 +273,7 @@ export default function KindnessFocused() {
             )}
           </div>
           <div className='side__by__side__kindness'>
-            <TableContainer
-              component={Paper}
-              sx={{ width: "100%", marginLeft: "4rem" }}
-            >
+            <TableContainer component={Paper} className='Table__container'>
               <Table sx={{ width: "100%" }} aria-label='simple table'>
                 <TableHead>
                   <TableRow>
@@ -333,7 +330,7 @@ export default function KindnessFocused() {
             </TableContainer>
             <div className='kbillCarousel__container'>
               {kindActive && kSpent && modalPhoto.length !== 0 ? (
-                <Carousel className='kbillCarousel__container__carourel__spent'>
+                <Carousel className='kbillCarousel__container__carourel'>
                   {modalPhoto.map((bill, index) => (
                     <div className='kbillCarousel__container__item' key={index}>
                       <img
@@ -360,7 +357,7 @@ export default function KindnessFocused() {
       {/* end of act of kindness Transparency */}
       {/* @section => volunteers */}
       <div className='kindnessFocused__container__volunteers'>
-        <h2>Volunteers</h2>
+        <h1>Volunteers</h1>
         <div className='kindnessFocused__container__volunteers__items'>
           {volunteers.map((data) => (
             <div
@@ -380,11 +377,13 @@ export default function KindnessFocused() {
       </div>
       {/* @section => gallery */}
       <div className='kindnessFocused__container__gallery'>
-        {data.photos?.map((url) => (
-          <img key={url} src={url} alt='' />
-        ))}
+        <h1>Cause photos</h1>
+        <div className='kindnessFocused__container__gallery__container'>
+          {data.photos?.map((url) => (
+            <img key={url} src={url} alt='' />
+          ))}
+        </div>
       </div>
-
       <Footer />
     </div>
   );

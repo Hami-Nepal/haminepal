@@ -98,9 +98,6 @@ export default function Home() {
     localStorage.getItem("user") || localStorage.getItem("vinfo")
   );
 
-  const carouselRef = React.useRef(null);
-  let resetTimeout;
-
   return (
     <div className='home__container'>
       <Helmet>
@@ -461,7 +458,7 @@ export default function Home() {
         <div className='influencersCarousel__container'>
           <Marquee
             pauseOnHover='true'
-            speed='60'
+            speed='40'
             gradient='true'
             gradientWidth='20'
           >

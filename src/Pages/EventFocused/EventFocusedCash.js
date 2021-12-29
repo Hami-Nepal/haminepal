@@ -78,10 +78,7 @@ export default function EventFocusedCash(props) {
         <h2>Received</h2>
       </div>
       <div className='side__by__side__event'>
-        <TableContainer
-          component={Paper}
-          sx={{ width: "100%", marginLeft: "4rem" }}
-        >
+        <TableContainer component={Paper} className='Table__container'>
           <Table sx={{ width: "100%" }} aria-label='simple table'>
             <TableHead>
               <TableRow>
@@ -142,10 +139,7 @@ export default function EventFocusedCash(props) {
         )}
       </div>
       <div className='side__by__side__event'>
-        <TableContainer
-          component={Paper}
-          sx={{ width: "100%", marginLeft: "4rem" }}
-        >
+        <TableContainer component={Paper} className='Table__container'>
           <Table sx={{ width: "100%" }} aria-label='simple table'>
             <TableHead>
               <TableRow>
@@ -198,7 +192,7 @@ export default function EventFocusedCash(props) {
         </TableContainer>
         <div className='kbillCarousel__container'>
           {spent && modalPhoto.length !== 0 ? (
-            <Carousel className='kbillCarousel__container__carourel__spent'>
+            <Carousel className='kbillCarousel__container__carourel'>
               {modalPhoto.map((bill, index) => (
                 <div className='kbillCarousel__container__item' key={index}>
                   <img
