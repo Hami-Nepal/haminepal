@@ -30,10 +30,9 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "60%",
+  width: "90%",
   height: "auto",
   bgcolor: "background.paper",
-  border: "1px solid #000",
   boxShadow: 24,
   p: 4,
 };
@@ -339,7 +338,11 @@ export default function Transparency() {
                     {transPhotos.map((pic, index) => (
                       <div key={index}>
                         <img
-                          style={{ height: "500px", width: "450px" }}
+                          style={{
+                            height: "auto",
+                            maxWidth: "450px",
+                            width: "100%",
+                          }}
                           src={pic}
                           alt='mybill'
                         />
