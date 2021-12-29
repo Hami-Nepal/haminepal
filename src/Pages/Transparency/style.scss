@@ -181,14 +181,6 @@
   width: 90%;
   margin: auto;
 
-  .divider {
-    margin-top: -1rem;
-    width: 210px;
-    height: 2px;
-    margin-bottom: 30px;
-    background: #9f1718;
-  }
-
   h2 {
     font-family: "Playfair Display", serif;
     font-size: 40px;
@@ -204,6 +196,9 @@
     margin-bottom: 20px;
     flex-direction: column;
 
+    @media (max-width: 768px) {
+      align-items: flex-start;
+    }
     hr {
       height: 1px;
       width: 100%;
@@ -287,4 +282,11 @@
       }
     }
   }
+}
+
+#carousel-ko-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin: auto;
 }

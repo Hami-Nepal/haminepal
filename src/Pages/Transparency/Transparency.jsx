@@ -37,12 +37,11 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "60%",
+  width: "90%",
   height: "auto",
-  bgcolor: "background.paper",
-  border: "1px solid #000",
   boxShadow: 24,
   p: 4,
+  bgcolor: "background.paper",
 };
 
 export default function Transparency() {
@@ -241,7 +240,7 @@ export default function Transparency() {
       <div className='transparency__horizontal'>
         <div className='tarnsparenc__kind__Ko'>
           <h2>Kind donation</h2>
-          <div className='divider'></div>
+
           <ul>
             <li>
               <h5>Received</h5>
@@ -273,7 +272,7 @@ export default function Transparency() {
         </div>
         <div className='transparency__cash__ko'>
           <h2>Cash donation</h2>
-          <div className='divider'></div>
+
           <ul>
             <li>
               <h5>Received</h5>
@@ -316,7 +315,7 @@ export default function Transparency() {
         <div className='admin-expenses-ko-column'>
           <TableContainer
             component={Paper}
-            sx={{ minWidth: 650, width: "50%" }}
+            sx={{ minWidth: 350, width: "100vw" }}
           >
             <Table aria-label='simple table'>
               <TableHead>
@@ -437,16 +436,6 @@ export default function Transparency() {
                               </MenuItem>
                             </Select>
                           </FormControl>
-                          <Autocomplete
-                            id='free-solo-demo'
-                            freeSolo
-                            options={receivedData.map(
-                              (option) => option.cause_name
-                            )}
-                            renderInput={(params) => (
-                              <TextField {...params} label='freeSolo' />
-                            )}
-                          />
                         </TableCell>
                         <TableCell align='left' style={{ fontWeight: "bold" }}>
                           Quantity
@@ -526,6 +515,7 @@ export default function Transparency() {
                   />
                 </TableContainer>
                 <Modal
+                  className='transparency__modal'
                   open={openReceived}
                   onClose={handleReceivedClose}
                   aria-labelledby='modal-modal-title'
@@ -535,11 +525,11 @@ export default function Transparency() {
                     <div className='influencersCarousel__container'>
                       <Carousel ref={carouselRef} itemsToShow={1}>
                         {donPhotos.map((pic, index) => (
-                          <div key={index}>
+                          <div key={index} className='carousel__image'>
                             <img
-                              style={{ height: "500px", width: "600px" }}
                               src={pic}
                               alt='mydonation'
+                              id='carousel-ko-image'
                             />
                           </div>
                         ))}
@@ -663,9 +653,13 @@ export default function Transparency() {
                     <div className='influencersCarousel__container'>
                       <Carousel ref={carouselRef} itemsToShow={1}>
                         {transPhotos.map((pic, index) => (
-                          <div key={index}>
+                          <div key={index} className='carousel__image'>
                             <img
-                              style={{ height: "500px", width: "450px" }}
+                              style={{
+                                height: "auto",
+                                width: "100%",
+                                maxWidth: "450px",
+                              }}
                               src={pic}
                               alt='mybill'
                             />
