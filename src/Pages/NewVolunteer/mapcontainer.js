@@ -3,13 +3,13 @@ import GoogleMapReact from "google-map-react";
 import "./mapcontainer.css";
 
 const MapContainer = (props) => {
-  const { center, handleMyLocationChange, apiKey } = props;
+  const { center, apiKey } = props;
   const defaultProps = {
     center: {
       lat: 26.45505,
       lng: 87.27007,
     },
-    zoom: 10,
+    zoom: 20,
   };
   const [centerCoords, setCenterCoords] = useState(defaultProps.center);
   const [myLocation, setMyLocation] = useState(null);
@@ -21,7 +21,7 @@ const MapContainer = (props) => {
 
   const handleMapClick = ({ lat, lng }) => {
     setMyLocation({ lat, lng });
-    handleMyLocationChange({ lat, lng });
+    // handleMyLocationChange({ lat, lng });
   };
 
   return (
@@ -35,7 +35,9 @@ const MapContainer = (props) => {
         defaultZoom={defaultProps.zoom}
       >
         {myLocation && JSON.stringify(center) !== "{}" ? (
-          <Marker lat={myLocation.lat} lng={myLocation.lng} />
+          <>
+            <Marker lat={myLocation.lat} lng={myLocation.lng} />
+          </>
         ) : (
           ""
         )}
@@ -47,13 +49,13 @@ const Marker = () => {
   return (
     <div>
       <img
-        src='https://cdn-icons.flaticon.com/png/512/2776/premium/2776067.png?token=exp=1638518740~hmac=8e304028f9a9122e9b6cac6796856636'
+        src='https://www.pngall.com/wp-content/uploads/2017/05/Map-Marker-PNG-HD.png'
         height='30px'
         width='30px'
         alt=''
         class='img-fluid'
       ></img>{" "}
-      My Location
+      pawan
     </div>
   );
 };

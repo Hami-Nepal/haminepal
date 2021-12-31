@@ -83,20 +83,20 @@ export default function NewVolunteer() {
     console.log(hasGeolocation, string);
   };
 
-  // const fetchMyLocation = (e) => {
-  //   e.preventDefault();
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(function (position) {
-  //       setCenter({
-  //         lat: position.coords.latitude,
-  //         lng: position.coords.longitude,
-  //       });
-  //     });
-  //   } else {
-  //     // Browser doesn't support Geolocation
-  //     handleLocationError(false, 'Browser doesnt Support');
-  //   }
-  // };
+  const fetchMyLocation = (e) => {
+    e.preventDefault();
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        setCenter({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, "Browser doesnt Support");
+    }
+  };
 
   React.useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -124,12 +124,12 @@ export default function NewVolunteer() {
             accept='image/*'
             onChange={onSelectImage}
           />
-          {/* <Button
+          <Button
             // className='btn btn-primary mb-4'
             onClick={fetchMyLocation}
           >
             Fetch my Location
-          </Button> */}
+          </Button>
         </div>
 
         {/* @section => form container */}
@@ -330,18 +330,18 @@ export default function NewVolunteer() {
           </form>
 
           <div className='newVolunteer__container__form__inputs__input right'>
-            <img
+            {/* <img
               src={volunteerPicture}
               alt='banner'
               style={{ height: "500px", width: "500px" }}
-            />
-            {/* <MapContainer
-              apiKey="AIzaSyC9ygizb1G5HWBnHPE9UWOM23fPiuWZAiw"
-              center={center || {}}
-              handleMyLocationChange={(coords) => {
-                // console.log(coords);
-              }}
             /> */}
+            <MapContainer
+              apiKey='AIzaSyC9ygizb1G5HWBnHPE9UWOM23fPiuWZAiw'
+              center={center || {}}
+              // handleMyLocationChange={(coords) => {
+              //   console.log(coords);
+              // }}
+            />
           </div>
         </div>
       </div>

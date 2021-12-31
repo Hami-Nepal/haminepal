@@ -23,6 +23,7 @@ import Footer from "../../Components/Footer/Footer";
 import Donate from "../../Components/Donate/DonateMainPage";
 
 import baseURL from "../../api/baseURL";
+import mapbanner from "../../Assets/mapbanner.png";
 
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
@@ -116,8 +117,6 @@ export default function Home() {
           poster={BannerPoster}
         >
           <source src={BannerVideo} type='video/mp4' />
-          <source src={BannerVideoWebm} type='video/webm' />
-          <source src={BannerVideoOgm} type='video/ogg' />
         </video>
 
         <div className='home__container__landing__topbar'>
@@ -334,7 +333,7 @@ export default function Home() {
           muted='true'
           loop='loop'
           playsInline='true'
-          poster={BannerPoster}
+          poster={mapbanner}
         />
         <div className='home_container_mapVideo_right'>
           <h1>Places Reached</h1>
