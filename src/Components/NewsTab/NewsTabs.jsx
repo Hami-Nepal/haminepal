@@ -157,7 +157,7 @@ export default function NewsTabs() {
       </div>
 
       {/* @sextion=>Pagination */}
-      <div style={{ margin: "50px 0px 50px 0px" }}>
+      <div style={{ margin: "50px 0px 50px 0px", width: "100vw" }}>
         <Stack justifyContent="center" alignItems="center">
           <Pagination
             count={page}
