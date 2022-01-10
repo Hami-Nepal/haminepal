@@ -16,7 +16,12 @@ export default function News() {
           <h1>News</h1>
           <p>Hami Nepal News</p>
         </div>
-        <h5 style={{ textAlign: "center", margin: "50px 0px 50px 0px" }}>
+        <h5
+          style={{
+            textAlign: "center",
+            margin: "50px 0px 50px 0px",
+          }}
+        >
           Get all of our latest news, blogs and analysis, updated daily.
         </h5>
       </div>
