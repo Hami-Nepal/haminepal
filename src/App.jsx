@@ -30,6 +30,8 @@ import ActOfKindness from "./Pages/ActOfKinadness/ActOfKindness";
 import KindnessFocused from "./Pages/KindnessFocused/KindnessFocused";
 
 import CivilRightsFocused from "./Pages/CivilRightsFocused/CivilRightsFocused";
+import SuccessPage from "./Components/Donate/success";
+import ErrorPage from "./Components/Donate/errror";
 
 const location = new ReactLocation();
 
@@ -118,6 +120,14 @@ export default function App() {
           {
             path: "/civil-focused",
             element: <CivilRightsFocused />,
+          },
+          {
+            path: "/donation/success",
+            element: <SuccessPage />,
+          },
+          {
+            path: "/donation/error",
+            element: <ErrorPage />,
           },
         ]}
       />

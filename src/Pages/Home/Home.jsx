@@ -27,6 +27,8 @@ import mapbanner from "../../Assets/mapbanner.png";
 
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
+import Modal from "@mui/material/Modal";
+import Button from "@mui/material/Button";
 
 export default function Home() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);
@@ -141,7 +143,6 @@ export default function Home() {
             <Link
               onClick={() => setIsDonationFormOpen(true)}
               className='home__container__landing__footer__donate'
-              to='/'
               style={{
                 color: homeHero?.color || "white",
                 borderColor: homeHero?.color || "white",
@@ -175,7 +176,21 @@ export default function Home() {
           style={{ display: isDonationFormOpen ? "block" : "none" }}
           className='home__container__landing__donationForm'
         >
-          <Donate setIsDonationFormOpen={setIsDonationFormOpen} />
+          <Modal
+            open={isDonationFormOpen}
+            onClose={() => setIsDonationFormOpen(false)}
+            aria-labelledby='modal-modal-title'
+            aria-describedby='modal-modal-description'
+            style={{
+              overflow: "scroll",
+              display: "flex",
+              flex: 1,
+              justifyContent: "center",
+              marginTop: "1rem",
+            }}
+          >
+            <Donate setIsDonationFormOpen={setIsDonationFormOpen} />
+          </Modal>
         </div>
 
         <div

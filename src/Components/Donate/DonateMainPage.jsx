@@ -38,7 +38,32 @@ export default function Donate({ setIsDonationFormOpen }) {
     paymentTypeError: "",
   });
 
-  const validate = () => {
+  useEffect(() => {
+    if (donationFor !== "administration") {
+      axios
+        .get(baseURL + "/" + donationFor + "?limit=100000")
+        .then(({ data }) => setList(data.data));
+    }
+  }, [donationFor]);
+
+  const [fields, setFields] = React.useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone_number: "",
+    street_address: "",
+    city: "",
+    state: "",
+    zip_code: "",
+    country: "",
+    donation_amount: "",
+    donation_message: "",
+    isVerified: false,
+  });
+  const onFieldChange = (field) => (event) =>
+    setFields((prev) => ({ ...prev, [field]: event.target.value }));
+
+  const validateAll = () => {
     let firstnameError = "";
     let lastnameError = "";
     let emailError = "";
@@ -56,7 +81,7 @@ export default function Donate({ setIsDonationFormOpen }) {
     if (fields.last_name === "") {
       lastnameError = "Last Name is Required!";
     }
-    if (fields.email === "" || validator.isEmail(fields.email)) {
+    if (fields.email === "" || !validator.isEmail(fields.email)) {
       emailError = "Please Enter a valid email!";
     }
     if (fields.phone_number === "" || fields.phone_number.length < 10) {
@@ -114,31 +139,75 @@ export default function Donate({ setIsDonationFormOpen }) {
     return true;
   };
 
-  useEffect(() => {
-    if (donationFor !== "administration") {
-      axios
-        .get(baseURL + "/" + donationFor + "?limit=100000")
-        .then(({ data }) => setList(data.data));
+  const validateFew = () => {
+    let amountError = "";
+    let messageError = "";
+    let paymentTypeError = "";
+    if (fields.donation_amount === "") {
+      amountError = "Amount is Required!";
     }
-  }, [donationFor]);
+    if (fields.donation_message === "") {
+      messageError = "Donation Message is Required!";
+    }
+    if (paymentType === "") {
+      paymentTypeError = "Payment Type is Required!";
+    }
+    if (amountError || messageError || paymentTypeError) {
+      setErrorState({
+        amountError,
+        messageError,
+        paymentTypeError,
+      });
+      return false;
+    }
+    return true;
+  };
 
-  const [fields, setFields] = React.useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    phone_number: "",
-    street_address: "",
-    city: "",
-    state: "",
-    zip_code: "",
-    country: "",
-    donation_amount: "",
-    donation_message: "",
-    isVerified: false,
-  });
+  const makeRandomString = (length) => {
+    let result = "";
+    let characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  };
 
-  const onFieldChange = (field) => (event) =>
-    setFields((prev) => ({ ...prev, [field]: event.target.value }));
+  const handlePayWithEsewa = () => {
+    let path = "https://esewa.com.np/epay/main";
+
+    let params = {
+      tAmt: fields.donation_amount,
+      amt: fields.donation_amount,
+      txAmt: 0,
+      psc: 0,
+      pdc: 0,
+      scd: "NP-ES-NEPALI",
+      pid: makeRandomString(20),
+      su: "https://haminepal.org/donation/success",
+      fu: "https://haminepal.org/donation/error",
+    };
+
+    let form = document.createElement("form");
+    form.setAttribute("method", "POST");
+    form.setAttribute("action", path);
+
+    for (let key in params) {
+      let hiddenField = document.createElement("input");
+      hiddenField.setAttribute("type", "hidden");
+      hiddenField.setAttribute("name", key);
+      hiddenField.setAttribute("value", params[key]);
+      form.appendChild(hiddenField);
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+  };
+
+  const handlePayWithKhalti = () => {
+    console.log("khalti");
+  };
 
   const handleDonate = (e) => {
     e.preventDefault();
@@ -163,20 +232,7 @@ export default function Donate({ setIsDonationFormOpen }) {
       is_anonymous: anonymousDonation,
     };
 
-    if (anonymousDonation) {
-      data.first_name = undefined;
-      data.last_name = undefined;
-      data.email = undefined;
-      data.phone_number = undefined;
-      data.street_address = undefined;
-      data.city = undefined;
-      data.state = undefined;
-      data.zip_code = undefined;
-      data.country = undefined;
-    }
-
-    if (!anonymousDonation && validate()) {
-      console.log(data);
+    if (!anonymousDonation && validateAll()) {
       setErrorState({
         firstnameError: "",
         lastnameError: "",
@@ -192,8 +248,42 @@ export default function Donate({ setIsDonationFormOpen }) {
         messageError: "",
         paymentTypeError: "",
       });
-    } else if (anonymousDonation) {
+
+      try {
+        localStorage.setItem(
+          "donation",
+          JSON.stringify({ ...data, time: new Date().getTime() })
+        );
+        switch (paymentType) {
+          case "ESEWA":
+            handlePayWithEsewa();
+            break;
+          case "KHALTI":
+            handlePayWithKhalti();
+            break;
+          default:
+            break;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    } else if (anonymousDonation && validateFew()) {
+      data.first_name = undefined;
+      data.last_name = undefined;
+      data.email = undefined;
+      data.phone_number = undefined;
+      data.street_address = undefined;
+      data.city = undefined;
+      data.state = undefined;
+      data.zip_code = undefined;
+      data.country = undefined;
+
       console.log(data);
+      setErrorState({
+        amountError: "",
+        messageError: "",
+        paymentTypeError: "",
+      });
     }
   };
 
@@ -437,29 +527,32 @@ export default function Donate({ setIsDonationFormOpen }) {
             <span>{errorState.paymentTypeError}</span>
           </div>
         ) : donationOption === "International" ? (
-          <ul>
-            <li>
-              <input
-                type='radio'
-                className='form-check'
-                name='payment_type'
-                id='gofund'
-                value='GoFundMe'
-                onClick={() => setPaymentType("GoFundMe")}
-              />
-              <img
-                src={GOFUNDME}
-                onClick={(_) =>
-                  window.open(
-                    "https://www.gofundme.com/f/help-nepal-stop-covid19-human-castastrophe/donate",
-                    "_blank"
-                  )
-                }
-                alt='gofundme'
-                style={{ cursor: "pointer" }}
-              />
-            </li>
-          </ul>
+          <div className='ul__span'>
+            <ul>
+              <li>
+                <input
+                  type='radio'
+                  className='form-check'
+                  name='payment_type'
+                  id='gofund'
+                  value='GoFundMe'
+                  onClick={() => setPaymentType("GoFundMe")}
+                />
+                <img
+                  src={GOFUNDME}
+                  onClick={(_) =>
+                    window.open(
+                      "https://www.gofundme.com/f/help-nepal-stop-covid19-human-castastrophe/donate",
+                      "_blank"
+                    )
+                  }
+                  alt='gofundme'
+                  style={{ cursor: "pointer" }}
+                />
+              </li>
+            </ul>
+            <span>{errorState.paymentTypeError}</span>
+          </div>
         ) : (
           ""
         )}
