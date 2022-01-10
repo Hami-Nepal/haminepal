@@ -4,13 +4,13 @@ import "./style.scss";
 import Switch from "@mui/material/Switch";
 
 import Logo from "../../Assets/logo.png";
-import { Link } from "react-location";
 import { Button } from "@mui/material";
 import KHALTI from "../../Assets/khalti.png";
 import ESEWA from "../../Assets/esewa.png";
 import GOFUNDME from "../../Assets/gofundme.png";
 import axios from "axios";
 import baseURL from "../../api/baseURL";
+import validator from "validator";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 
@@ -20,6 +20,99 @@ export default function Donate({ setIsDonationFormOpen }) {
   const [donationFor, setDonationFor] = React.useState("causes");
   const [list, setList] = React.useState([]);
   const [currentDonation, setCurrentDonation] = React.useState("");
+  const [paymentType, setPaymentType] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+  const [errorState, setErrorState] = React.useState({
+    firstnameError: "",
+    lastnameError: "",
+    emailError: "",
+    phoneError: "",
+    streetError: "",
+    cityError: "",
+    cityError: "",
+    stateError: "",
+    zipError: "",
+    countryErrror: "",
+    amountError: "",
+    messageError: "",
+    paymentTypeError: "",
+  });
+
+  const validate = () => {
+    let firstnameError = "";
+    let lastnameError = "";
+    let emailError = "";
+    let phoneError = "";
+    let streetError = "";
+    let cityError = "";
+    let stateError = "";
+    let countryErrror = "";
+    let amountError = "";
+    let messageError = "";
+    let paymentTypeError = "";
+    if (fields.first_name === "") {
+      firstnameError = "First Name is Required!";
+    }
+    if (fields.last_name === "") {
+      lastnameError = "Last Name is Required!";
+    }
+    if (fields.email === "" || validator.isEmail(fields.email)) {
+      emailError = "Please Enter a valid email!";
+    }
+    if (fields.phone_number === "" || fields.phone_number.length < 10) {
+      phoneError = "Please Enter a valid Phone Number!";
+    }
+    if (fields.street_address === "") {
+      streetError = "Street Address is Required!";
+    }
+    if (fields.city === "") {
+      cityError = "City is Required!";
+    }
+    if (fields.state === "") {
+      stateError = "state is Required!";
+    }
+    if (fields.country === "") {
+      countryErrror = "Country Name is Required!";
+    }
+    if (fields.donation_amount === "") {
+      amountError = "Amount is Required!";
+    }
+    if (fields.donation_message === "") {
+      messageError = "Donation Message is Required!";
+    }
+    if (paymentType === "") {
+      paymentTypeError = "Payment Type is Required!";
+    }
+    if (
+      firstnameError ||
+      lastnameError ||
+      emailError ||
+      phoneError ||
+      streetError ||
+      cityError ||
+      stateError ||
+      countryErrror ||
+      amountError ||
+      messageError ||
+      paymentTypeError
+    ) {
+      setErrorState({
+        firstnameError,
+        lastnameError,
+        emailError,
+        phoneError,
+        streetError,
+        cityError,
+        stateError,
+        countryErrror,
+        amountError,
+        messageError,
+        paymentTypeError,
+      });
+      return false;
+    }
+    return true;
+  };
 
   useEffect(() => {
     if (donationFor !== "administration") {
@@ -28,6 +121,82 @@ export default function Donate({ setIsDonationFormOpen }) {
         .then(({ data }) => setList(data.data));
     }
   }, [donationFor]);
+
+  const [fields, setFields] = React.useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone_number: "",
+    street_address: "",
+    city: "",
+    state: "",
+    zip_code: "",
+    country: "",
+    donation_amount: "",
+    donation_message: "",
+    isVerified: false,
+  });
+
+  const onFieldChange = (field) => (event) =>
+    setFields((prev) => ({ ...prev, [field]: event.target.value }));
+
+  const handleDonate = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    let type =
+      donationFor === "causes"
+        ? "cause"
+        : donationFor === "events"
+        ? "event"
+        : donationFor === "kindness"
+        ? "kindness"
+        : donationFor === "volunteers"
+        ? "volunteer"
+        : "";
+
+    const data = {
+      ...fields,
+      category: donationFor,
+      [type]: currentDonation,
+      payment_type: paymentType,
+      is_anonymous: anonymousDonation,
+    };
+
+    if (anonymousDonation) {
+      data.first_name = undefined;
+      data.last_name = undefined;
+      data.email = undefined;
+      data.phone_number = undefined;
+      data.street_address = undefined;
+      data.city = undefined;
+      data.state = undefined;
+      data.zip_code = undefined;
+      data.country = undefined;
+    }
+
+    if (!anonymousDonation && validate()) {
+      console.log(data);
+      setErrorState({
+        firstnameError: "",
+        lastnameError: "",
+        emailError: "",
+        phoneError: "",
+        streetError: "",
+        cityError: "",
+        cityError: "",
+        stateError: "",
+        zipError: "",
+        countryErrror: "",
+        amountError: "",
+        messageError: "",
+        paymentTypeError: "",
+      });
+    } else if (anonymousDonation) {
+      console.log(data);
+    }
+  };
+
   return (
     <div className='donate__container'>
       <div className='donate__container__topbar'>
@@ -52,21 +221,113 @@ export default function Donate({ setIsDonationFormOpen }) {
           <>
             <h4>User Details</h4>
             <div>
-              <input type='text' placeholder='First Name' required />
-              <input type='text' placeholder='Last Name' required />
+              <input
+                className={
+                  errorState.firstnameError ? "input__field__error" : ""
+                }
+                type='text'
+                placeholder={
+                  errorState.firstnameError
+                    ? errorState.firstnameError
+                    : "First Name"
+                }
+                value={fields.first_name}
+                onChange={onFieldChange("first_name")}
+                required
+              />
+              <input
+                className={
+                  errorState.lastnameError ? "input__field__error" : ""
+                }
+                type='text'
+                placeholder={
+                  errorState.lastnameError
+                    ? errorState.lastnameError
+                    : "Last Name"
+                }
+                value={fields.last_name}
+                onChange={onFieldChange("last_name")}
+                required
+              />
             </div>
             <div>
-              <input type='email' placeholder='Email Address' required />
-              <input type='number' placeholder='Phone Number' required />
+              <input
+                className={errorState.emailError ? "input__field__error" : ""}
+                type='email'
+                placeholder={
+                  errorState.emailError ? errorState.emailError : "Email "
+                }
+                value={fields.email}
+                onChange={onFieldChange("email")}
+                required
+              />
+              <input
+                className={errorState.phoneError ? "input__field__error" : ""}
+                type='number'
+                placeholder={
+                  errorState.phoneError ? errorState.phoneError : "Phone Number"
+                }
+                value={fields.phone_number}
+                onChange={onFieldChange("phone_number")}
+                required
+              />
             </div>
-            <input type='text' placeholder='Street Address' required />
+            <input
+              className={errorState.streetError ? "input__field__error" : ""}
+              type='text'
+              placeholder={
+                errorState.stateError ? errorState.stateError : "Street Address"
+              }
+              value={fields.street_address}
+              onChange={onFieldChange("street_address")}
+              required
+            />
             <div>
-              <input type='text' placeholder='City' required />
-              <input type='text' placeholder='State/Province/Region' required />
+              <input
+                className={errorState.cityError ? "input__field__error" : ""}
+                type='text'
+                placeholder={
+                  errorState.cityError ? errorState.cityError : "City"
+                }
+                value={fields.city}
+                onChange={onFieldChange("city")}
+                required
+              />
+              <input
+                className={errorState.stateError ? "input__field__error" : ""}
+                type='text'
+                placeholder={
+                  errorState.stateError
+                    ? errorState.stateError
+                    : "State/Province/Region"
+                }
+                value={fields.state}
+                onChange={onFieldChange("state")}
+                required
+              />
             </div>
             <div>
-              <input type='number' placeholder='Zip Postal Code' required />
-              <input type='text' placeholder='Country' required />
+              <input
+                type='number'
+                placeholder='Zip Postal Code'
+                value={fields.zip_code}
+                onChange={onFieldChange("zip_code")}
+                required
+              />
+              <input
+                className={
+                  errorState.countryErrror ? "input__field__error" : ""
+                }
+                type='text'
+                placeholder={
+                  errorState.countryErrror
+                    ? errorState.countryErrror
+                    : "Country"
+                }
+                value={fields.country}
+                onChange={onFieldChange("country")}
+                required
+              />
             </div>
           </>
         )}
@@ -98,15 +359,15 @@ export default function Donate({ setIsDonationFormOpen }) {
               >
                 {donationFor === "causes" || donationFor === "events"
                   ? list.map((data) => (
-                      <option value={data.id}>{data.name}</option>
+                      <option value={data._id}>{data.name}</option>
                     ))
                   : donationFor === "kindness"
                   ? list.map((data) => (
-                      <option value={data.id}>{data.title}</option>
+                      <option value={data._id}>{data.title}</option>
                     ))
                   : list.map((data) => (
                       <option
-                        value={data.id}
+                        value={data._id}
                       >{`${data.first_name} ${data.last_name}`}</option>
                     ))}
               </select>
@@ -114,16 +375,29 @@ export default function Donate({ setIsDonationFormOpen }) {
               ""
             )}
           </label>
-          <input type='number' placeholder='Amount' />
+          <input
+            className={errorState.amountError ? "input__field__error" : ""}
+            type='number'
+            placeholder={
+              errorState.amountError ? errorState.amountError : "Amount"
+            }
+            value={fields.donation_amount}
+            onChange={onFieldChange("donation_amount")}
+            required
+          />
         </div>
         <textarea
+          className={errorState.messageError ? "input__field__error" : ""}
           name='message'
           id='message'
           cols='30'
           rows='2'
-          placeholder='Message'
+          placeholder={
+            errorState.messageError ? errorState.messageError : "Message"
+          }
+          value={fields.donation_message}
+          onChange={onFieldChange("donation_message")}
         />
-
         <h4>Pay with</h4>
         <select
           name='Type'
@@ -135,28 +409,33 @@ export default function Donate({ setIsDonationFormOpen }) {
           <option value='International'>International</option>
         </select>
         {donationOption === "Nepal" ? (
-          <ul>
-            <li>
-              <input
-                type='radio'
-                className='form-check'
-                name='payment_type'
-                id='esewa'
-                value='ESEWA'
-              />
-              <img src={ESEWA} alt='esewa' />
-            </li>
-            <li>
-              <input
-                type='radio'
-                className='form-check'
-                name='payment_type'
-                id='khalti'
-                value='khalti'
-              />
-              <img src={KHALTI} alt='khalti' />
-            </li>
-          </ul>
+          <div className='ul__span'>
+            <ul>
+              <li>
+                <input
+                  type='radio'
+                  className='form-check'
+                  name='payment_type'
+                  id='esewa'
+                  value='ESEWA'
+                  onClick={() => setPaymentType("ESEWA")}
+                />
+                <img src={ESEWA} alt='esewa' />
+              </li>
+              <li>
+                <input
+                  type='radio'
+                  className='form-check'
+                  name='payment_type'
+                  id='khalti'
+                  value='KHALTI'
+                  onClick={() => setPaymentType("KHALTI")}
+                />
+                <img src={KHALTI} alt='khalti' />
+              </li>
+            </ul>
+            <span>{errorState.paymentTypeError}</span>
+          </div>
         ) : donationOption === "International" ? (
           <ul>
             <li>
@@ -165,7 +444,8 @@ export default function Donate({ setIsDonationFormOpen }) {
                 className='form-check'
                 name='payment_type'
                 id='gofund'
-                value='gofundme'
+                value='GoFundMe'
+                onClick={() => setPaymentType("GoFundMe")}
               />
               <img
                 src={GOFUNDME}
@@ -183,7 +463,7 @@ export default function Donate({ setIsDonationFormOpen }) {
         ) : (
           ""
         )}
-        <Button>Donate</Button>
+        <Button onClick={handleDonate}>Donate</Button>
       </div>
     </div>
   );
