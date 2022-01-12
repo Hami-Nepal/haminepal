@@ -377,7 +377,7 @@ export default function KindnessFocused() {
       </div>
       {/* @section => gallery */}
       <div className='kindnessFocused__container__gallery'>
-        <h1>Cause photos</h1>
+        <h1>photos</h1>
         <div className='kindnessFocused__container__gallery__container'>
           {data.photos?.map((url) => (
             <img key={url} src={url} alt='' />

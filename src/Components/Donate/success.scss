@@ -1,0 +1,138 @@
+.certificate_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .certificate__border {
+    width: 800px;
+    height: 600px;
+    border: 5px solid #800000;
+    outline: 5px solid #800000;
+    outline-offset: -18px;
+    position: relative;
+    margin-top: 1rem;
+    @media (max-width: 768px) {
+      width: 100vw;
+      height: 80vw;
+      outline-offset: -15px;
+    }
+    .background__img {
+      width: inherit;
+      height: inherit;
+      opacity: 0.1;
+      position: absolute;
+    }
+    .details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .span__title {
+        margin-top: 1rem;
+        font-size: 40px;
+        font-weight: bold;
+        color: #800000;
+        @media (max-width: 768px) {
+          font-size: 20px;
+          margin-top: 0.7rem;
+        }
+      }
+      .span__tocertify {
+        margin-top: 1rem;
+        font-size: 30px;
+        color: #800000;
+        @media (max-width: 768px) {
+          font-size: 15px;
+          margin-top: none;
+        }
+      }
+      .span__name {
+        font-size: 28px;
+        @media (max-width: 768px) {
+          font-size: 12px;
+        }
+      }
+      .span_amount {
+        font-size: 30px;
+        color: #800000;
+        @media (max-width: 768px) {
+          font-size: 15px;
+        }
+      }
+      .span__amount__value {
+        font-size: 30px;
+        @media (max-width: 768px) {
+          font-size: 12px;
+        }
+      }
+      .span__for {
+        font-size: 30px;
+        color: #800000;
+        @media (max-width: 768px) {
+          font-size: 15px;
+        }
+      }
+      .span_dated {
+        font-size: 25px;
+        color: #800000;
+        @media (max-width: 768px) {
+          font-size: 12px;
+        }
+      }
+      .date__value {
+        font-size: 30px;
+        @media (max-width: 768px) {
+          font-size: 12px;
+        }
+      }
+      .thankyou {
+        margin-top: 1rem;
+        font-size: 30px;
+        color: #800000;
+        @media (max-width: 768px) {
+          font-size: 15px;
+          margin-top: none;
+        }
+      }
+      .logo__img {
+        @media (max-width: 768px) {
+          width: 40px;
+          height: auto;
+        }
+      }
+    }
+  }
+  button {
+    margin-top: 1rem;
+    background-color: #800000;
+    border: 1px solid #800000;
+    border-radius: 6px;
+    padding: 8px 10px;
+    color: white;
+    @media (max-width: 768px) {
+      margin-top: 1rem;
+      padding: 3px 5px;
+      font-size: 15px;
+    }
+    &:hover {
+      box-shadow: rgba(114, 37, 37, 0.945) 0px 8px 24px;
+    }
+  }
+  .loading {
+    font-size: 20px;
+    color: #800000;
+  }
+  .message {
+    color: white;
+    margin-top: 1rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background-color: rgb(60, 143, 97);
+  }
+  .failed {
+    color: white;
+    margin-top: 1rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background-color: rgb(226, 120, 120);
+  }
+}

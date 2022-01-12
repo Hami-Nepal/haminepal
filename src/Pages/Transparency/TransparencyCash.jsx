@@ -46,7 +46,6 @@ export default function Transparency() {
   const [spentData, setSpentData] = useState([]);
   const [receivedData, setReceivedData] = useState([]);
   const [spentTableIds, setSpentTableIds] = useState([]);
-  const [receivedTableIds, setReceivedTableIds] = useState([]);
   const [fetchDataError, setFetchDataError] = useState(null);
   //carousel
   const [transPhotos, setTransPhotos] = useState([]);

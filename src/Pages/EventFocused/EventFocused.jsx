@@ -243,7 +243,7 @@ export default function EventFocused() {
             <>
               <div className='eventFocused__container__transparency'>
                 <h2 style={{ marginTop: "-2rem" }}>Received</h2>
-                {modalKindPhoto.length != 0 ? (
+                {modalKindPhoto.length !== 0 ? (
                   <Button className='clear__photo' onClick={clearPhoto}>
                     Hide
                   </Button>

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./style.scss";
-import Carousel from "react-elastic-carousel";
+// import Carousel from "react-elastic-carousel";
 import Logo from "../../Assets/logo.png";
 import Marquee from "react-fast-marquee";
 
 import BannerVideo from "../../Assets/banner.mp4";
-import BannerVideoWebm from "../../Assets/banner.webm";
-import BannerVideoOgm from "../../Assets/banner.ogm";
+// import BannerVideoWebm from "../../Assets/banner.webm";
+// import BannerVideoOgm from "../../Assets/banner.ogm";
 import BannerPoster from "../../Assets/poster-banner.png";
 import MapVideo from "../../Assets/nepalMap.mp4";
 
@@ -25,10 +25,10 @@ import Donate from "../../Components/Donate/DonateMainPage";
 import baseURL from "../../api/baseURL";
 import mapbanner from "../../Assets/mapbanner.png";
 
-import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
-import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
+// import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+// import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import Modal from "@mui/material/Modal";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 
 export default function Home() {
   const [isActiveMenu, setIsActiveMenu] = React.useState(false);

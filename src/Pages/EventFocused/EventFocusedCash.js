@@ -130,7 +130,7 @@ export default function EventFocusedCash(props) {
       </div>
       <div className='eventFocused__container__transparency'>
         <h2 style={{ marginTop: "2rem" }}>Spent</h2>
-        {modalPhoto.length != 0 ? (
+        {modalPhoto.length !== 0 ? (
           <Button className='clear__photo__cash' onClick={clearPhoto}>
             Hide
           </Button>

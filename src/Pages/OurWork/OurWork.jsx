@@ -5,51 +5,51 @@ import upArrow from "../../../src/Assets/up.svg";
 import downArrow from "../../../src/Assets/down.svg";
 
 import { Link } from "react-location";
-import baseURL from "../../api/baseURL";
+// import baseURL from "../../api/baseURL";
 
 import Footer from "../../Components/Footer/Footer";
 import NavBar from "../../Components/NavBar/Nav";
-import axios from "axios";
+// import axios from "axios";
 
 export default function OurWork() {
-  const [causes, setCauses] = React.useState([]);
-  const [events, setEvents] = React.useState([]);
-  const [kindness, setKindness] = React.useState([]);
-  const [status, setStatus] = React.useState("past");
+  // const [causes, setCauses] = React.useState([]);
+  // const [events, setEvents] = React.useState([]);
+  // const [kindness, setKindness] = React.useState([]);
+  // const [status, setStatus] = React.useState("past");
   const [more, setMore] = React.useState(true);
   const [more1, setMore1] = React.useState(true);
   const [more2, setMore2] = React.useState(true);
 
-  React.useEffect(() => {
-    const posts = async () => {
-      const res = await axios.get(baseURL + `/kindness`);
-      setKindness(res.data.data);
-    };
-    posts();
-  }, []);
+  // React.useEffect(() => {
+  //   const posts = async () => {
+  //     const res = await axios.get(baseURL + `/kindness`);
+  //     setKindness(res.data.data);
+  //   };
+  //   posts();
+  // }, []);
 
-  React.useEffect(() => {
-    const posts = async () => {
-      const res = await axios.get(baseURL + `/causes?status=${status}`);
-      setCauses(res.data.data);
-    };
-    posts();
-  }, []);
+  // React.useEffect(() => {
+  //   const posts = async () => {
+  //     const res = await axios.get(baseURL + `/causes?status=${status}`);
+  //     setCauses(res.data.data);
+  //   };
+  //   posts();
+  // }, []);
 
-  React.useEffect(() => {
-    const posts = async () => {
-      const res = await axios.get(baseURL + `/events?status=${status}`);
-      setEvents(res.data.data);
-    };
-    posts();
-  }, []);
+  // React.useEffect(() => {
+  //   const posts = async () => {
+  //     const res = await axios.get(baseURL + `/events?status=${status}`);
+  //     setEvents(res.data.data);
+  //   };
+  //   posts();
+  // }, []);
 
   return (
     <>
       <NavBar />
 
       <div className='our_work_container'>
-        <h1 className='title'>Our Work</h1>
+        <h1 className='title'>Our Works</h1>
         {/* @kindness-section */}
         <div className='our_work_act_of_kindness'>
           <div className='kindnessContents'>
@@ -101,9 +101,9 @@ export default function OurWork() {
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
               <div className='image-container'>
                 <img
@@ -111,9 +111,9 @@ export default function OurWork() {
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
               <div className='image-container'>
                 <img
@@ -121,9 +121,9 @@ export default function OurWork() {
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
             </>
           ) : (
@@ -145,9 +145,9 @@ export default function OurWork() {
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
               <div className='image-container'>
                 <img
@@ -155,9 +155,9 @@ export default function OurWork() {
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
               <div className='image-container'>
                 <img
@@ -165,9 +165,9 @@ export default function OurWork() {
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
               <div className='image-container'>
                 <img
@@ -175,9 +175,9 @@ export default function OurWork() {
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
               <div className='image-container'>
                 <img
@@ -185,9 +185,9 @@ export default function OurWork() {
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
               <div className='image-container'>
                 <img
@@ -195,9 +195,9 @@ export default function OurWork() {
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
             </>
           )}
@@ -255,86 +255,86 @@ export default function OurWork() {
             <>
               <div className='image-container'>
                 <img
-                  src='https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/258742149_3019038991702460_9148728427194035544_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=a26aad&_nc_ohc=2_JF3s2hA3QAX97D6mm&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT-uWcqEWTgizbPmQlJDDkpSdcorEuB5CXNlkWtccB9E3A&oe=61BCCC38'
+                  src='http://api.haminepal.org/img/events/event-5%20(2)-1640500436375.jpeg'
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
               <div className='image-container'>
                 <img
-                  src='https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/259076183_3019832114956481_5903953620629405277_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=a26aad&_nc_ohc=-yHkHcTE2XEAX9ZIZK2&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT8ypPE9-xfFLXTsud4MkhYPM4iBkjJVWZSzOSUaEZBIJQ&oe=61BD68B5'
+                  src='http://api.haminepal.org/img/events/event-5%20(0)-1640500436367.jpeg'
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
               <div className='image-container'>
                 <img
-                  src='https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/259411600_5551090894923658_7942012540538885755_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=UhjmPWtJqpUAX_xXfeV&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT8GVsH8ms_1pNZr2vnNq2WaP46QHzoIGQM9AfqZApoSnA&oe=61BDE961'
+                  src='http://api.haminepal.org/img/events/event-6O7A0452-1640500436378.jpeg'
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
             </>
           ) : (
             <>
               <div className='image-container'>
                 <img
-                  src='https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/258742149_3019038991702460_9148728427194035544_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=a26aad&_nc_ohc=2_JF3s2hA3QAX97D6mm&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT-uWcqEWTgizbPmQlJDDkpSdcorEuB5CXNlkWtccB9E3A&oe=61BCCC38'
+                  src='http://api.haminepal.org/img/events/event-6O7A0564-1640500436378.jpeg'
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
               <div className='image-container'>
                 <img
-                  src='https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/259076183_3019832114956481_5903953620629405277_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=a26aad&_nc_ohc=-yHkHcTE2XEAX9ZIZK2&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT8ypPE9-xfFLXTsud4MkhYPM4iBkjJVWZSzOSUaEZBIJQ&oe=61BD68B5'
+                  src='http://api.haminepal.org/img/events/event-6O7A0560-1640500436378.jpeg'
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
               <div className='image-container'>
                 <img
-                  src='https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/259411600_5551090894923658_7942012540538885755_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=UhjmPWtJqpUAX_xXfeV&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT8GVsH8ms_1pNZr2vnNq2WaP46QHzoIGQM9AfqZApoSnA&oe=61BDE961'
+                  src='http://api.haminepal.org/img/events/event-6O7A0804-1640500436400.jpeg'
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
               <div className='image-container'>
                 <img
-                  src='https://scontent.fbir5-1.fna.fbcdn.net/v/t39.30808-6/238588729_2947820812157612_8460444827422169673_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=0debeb&_nc_ohc=6Jh1PDk3oSoAX_9UqmE&_nc_ht=scontent.fbir5-1.fna&oh=00_AT9Cvs4MJmU_u_e217ziEZa5-kCVvWZ3qDu0znHlblj52A&oe=61C1DB4B'
+                  src='http://api.haminepal.org/img/events/event-6O7A0977-1640500436400.jpeg'
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
               <div className='image-container'>
                 <img
-                  src='https://media-exp1.licdn.com/dms/image/C4D22AQEQ4891_OnKBQ/feedshare-shrink_800/0/1621956055893?e=1640217600&v=beta&t=xmP3kHz5dzgc9R16jjUEF8Mdsqs3_weRvwdPeaWN2oE'
+                  src='http://api.haminepal.org/img/events/event-6O7A0994%20-%20Copy%20(2)-1640500436400.jpeg'
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
               <div className='image-container'>
                 <img
@@ -342,9 +342,9 @@ export default function OurWork() {
                   alt=''
                   className='images'
                 />
-                <div className='image-container-content'>
+                {/* <div className='image-container-content'>
                   <p>Iam kishor</p>
-                </div>
+                </div> */}
               </div>
             </>
           )}
@@ -399,7 +399,7 @@ export default function OurWork() {
             <>
               <div className='image-container'>
                 <img
-                  src='https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/243161640_2980553242217702_4522272028565600526_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=-gfMyINpSHMAX9lxNxa&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT_uX9WT6J4HV5EvxaFi2OQNAvmeXgsCbBoKyniEYLs5Tg&oe=61BD582E'
+                  src='http://api.haminepal.org/img/causes/cause-1-1640499376088.jpeg'
                   alt=''
                   className='images'
                 />
@@ -409,7 +409,7 @@ export default function OurWork() {
               </div>
               <div className='image-container'>
                 <img
-                  src='https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/242051886_2969963959943297_4729821977316993864_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=a26aad&_nc_ohc=uAQyzBeTeXMAX88-AsQ&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT8oVjCoAxqWDtBP7v1piW3HDvG33-dWsJ8SSZnhzeRpGQ&oe=61BE2E29'
+                  src='http://api.haminepal.org/img/causes/cause-Hami%20Nepal%20(232)-1640499376088.jpeg'
                   alt=''
                   className='images'
                 />
@@ -419,7 +419,7 @@ export default function OurWork() {
               </div>
               <div className='image-container'>
                 <img
-                  src='https://scontent.fbir5-1.fna.fbcdn.net/v/t39.30808-6/227791804_2934703173469376_5173695614863709473_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=a26aad&_nc_ohc=3o8dRgEJ0l0AX_Ii7Yi&_nc_ht=scontent.fbir5-1.fna&oh=00_AT_xx-K6pk4LiORMhECN1VYnVuGWoSLlWn2K6SMY8r3twg&oe=61C12B12'
+                  src='http://api.haminepal.org/img/causes/cause-DSC08980-1640078733278.jpeg'
                   alt=''
                   className='images'
                 />
@@ -432,7 +432,7 @@ export default function OurWork() {
             <>
               <div className='image-container'>
                 <img
-                  src='https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/241555069_3017536698519356_4334511696752422973_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=a26aad&_nc_ohc=1xHuY1Vi6D4AX9lEB1i&tn=4_erZh-erYt0bmEm&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT_0WBRz1DzKMJNrYRoGvkqO6UYKd1fce2q-OGTJUavvOg&oe=61BE24C0'
+                  src='http://api.haminepal.org/img/causes/cause-DSC09087-1640078733279.jpeg'
                   alt=''
                   className='images'
                 />
@@ -442,7 +442,7 @@ export default function OurWork() {
               </div>
               <div className='image-container'>
                 <img
-                  src='https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/245330154_2993543850918641_6303468742778844546_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=a26aad&_nc_ohc=_7kjm8vGayMAX8peSXi&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT9qvZG8hkrKy62Lie46gkkZWZn8AuSHvi8Yq40kfipvmw&oe=61BE5696'
+                  src='http://api.haminepal.org/img/causes/cause-DSC05958-1640079414723.jpeg'
                   alt=''
                   className='images'
                 />
@@ -452,7 +452,7 @@ export default function OurWork() {
               </div>
               <div className='image-container'>
                 <img
-                  src='https://scontent.fbir5-1.fna.fbcdn.net/v/t39.30808-6/227791804_2934703173469376_5173695614863709473_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=a26aad&_nc_ohc=3o8dRgEJ0l0AX_Ii7Yi&_nc_ht=scontent.fbir5-1.fna&oh=00_AT_xx-K6pk4LiORMhECN1VYnVuGWoSLlWn2K6SMY8r3twg&oe=61C12B12'
+                  src='http://api.haminepal.org/img/causes/cause-DSC06070-1640079414724.jpeg'
                   alt=''
                   className='images'
                 />
@@ -462,7 +462,7 @@ export default function OurWork() {
               </div>
               <div className='image-container'>
                 <img
-                  src='https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/243161640_2980553242217702_4522272028565600526_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=-gfMyINpSHMAX9lxNxa&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT_uX9WT6J4HV5EvxaFi2OQNAvmeXgsCbBoKyniEYLs5Tg&oe=61BD582E'
+                  src='http://api.haminepal.org/img/causes/cause-Hami%20Nepal%20(73)-1639767069588.jpeg'
                   alt=''
                   className='images'
                 />
@@ -472,7 +472,7 @@ export default function OurWork() {
               </div>
               <div className='image-container'>
                 <img
-                  src='https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/242051886_2969963959943297_4729821977316993864_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=a26aad&_nc_ohc=uAQyzBeTeXMAX88-AsQ&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT8oVjCoAxqWDtBP7v1piW3HDvG33-dWsJ8SSZnhzeRpGQ&oe=61BE2E29'
+                  src='http://api.haminepal.org/img/causes/cause-3-1639767069597.jpeg'
                   alt=''
                   className='images'
                 />
@@ -482,7 +482,7 @@ export default function OurWork() {
               </div>
               <div className='image-container'>
                 <img
-                  src='https://scontent.fbdp1-1.fna.fbcdn.net/v/t39.30808-6/240982442_2959375981002095_3668533278399770633_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=a26aad&_nc_ohc=izIqfNdHJx0AX9mhjXE&_nc_ht=scontent.fbdp1-1.fna&oh=00_AT8glOgImOGy6SJeD7NsvDX2u0sx4VuSwC_XHZ-5MMYgqA&oe=61BCE866'
+                  src='http://api.haminepal.org/img/causes/cause-3-1639767069597.jpeg'
                   alt=''
                   className='images'
                 />

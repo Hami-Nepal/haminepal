@@ -223,10 +223,19 @@ export default function Donate({ setIsDonationFormOpen }) {
         : donationFor === "volunteers"
         ? "volunteer"
         : "";
-
+    let donationforNew =
+      donationFor === "causes"
+        ? "cause"
+        : donationFor === "events"
+        ? "event"
+        : donationFor === "kindness"
+        ? "kindness"
+        : donationFor === "volunteers"
+        ? "volunteer"
+        : donationFor;
     const data = {
       ...fields,
-      category: donationFor,
+      category: donationforNew,
       [type]: currentDonation,
       payment_type: paymentType,
       is_anonymous: anonymousDonation,
@@ -250,10 +259,17 @@ export default function Donate({ setIsDonationFormOpen }) {
       });
 
       try {
-        localStorage.setItem(
-          "donation",
-          JSON.stringify({ ...data, time: new Date().getTime() })
-        );
+        localStorage.setItem("donation", JSON.stringify({ ...data }));
+        // const dbname = "donation";
+        // const requestDB = window.indexedDB.open(dbname);
+        // requestDB.onupgradeneeded = () => {
+        //   let db = requestDB.result;
+        //   let store = db.createObjectStore("donation", {
+        //     autoIncrement: true,
+        //   });
+        //   store.put(data);
+        // };
+
         switch (paymentType) {
           case "ESEWA":
             handlePayWithEsewa();
@@ -278,12 +294,36 @@ export default function Donate({ setIsDonationFormOpen }) {
       data.zip_code = undefined;
       data.country = undefined;
 
-      console.log(data);
       setErrorState({
         amountError: "",
         messageError: "",
         paymentTypeError: "",
       });
+      try {
+        localStorage.setItem("donation", JSON.stringify({ ...data }));
+        // const dbname = "donation";
+        // const requestDB = window.indexedDB.open(dbname);
+        // requestDB.onupgradeneeded = () => {
+        //   let db = requestDB.result;
+        //   let store = db.createObjectStore("donation", {
+        //     autoIncrement: true,
+        //   });
+        //   store.put(data);
+        // };
+
+        switch (paymentType) {
+          case "ESEWA":
+            handlePayWithEsewa();
+            break;
+          case "KHALTI":
+            handlePayWithKhalti();
+            break;
+          default:
+            break;
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -366,7 +406,9 @@ export default function Donate({ setIsDonationFormOpen }) {
               className={errorState.streetError ? "input__field__error" : ""}
               type='text'
               placeholder={
-                errorState.stateError ? errorState.stateError : "Street Address"
+                errorState.streetError
+                  ? errorState.streetError
+                  : "Street Address"
               }
               value={fields.street_address}
               onChange={onFieldChange("street_address")}
@@ -516,6 +558,7 @@ export default function Donate({ setIsDonationFormOpen }) {
                 <input
                   type='radio'
                   className='form-check'
+                  disabled='true'
                   name='payment_type'
                   id='khalti'
                   value='KHALTI'
@@ -557,6 +600,17 @@ export default function Donate({ setIsDonationFormOpen }) {
           ""
         )}
         <Button onClick={handleDonate}>Donate</Button>
+        {errorState.firstnameError ||
+          errorState.lastnameError ||
+          errorState.messageError ||
+          errorState.paymentTypeError ||
+          errorState.phoneError ||
+          errorState.stateError ||
+          errorState.streetError ||
+          errorState.amountError ||
+          errorState.cityError ||
+          errorState.emailError ||
+          errorState.countryErrror}
       </div>
     </div>
   );

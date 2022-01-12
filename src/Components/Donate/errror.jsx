@@ -2,9 +2,16 @@ import React from "react";
 
 function Error() {
   return (
-    <div>
-      <h3>Donation Error!</h3>
-      <a href='https://haminepal.org'>Home</a>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        marginTop: "2rem",
+        flexDirection: "column",
+      }}
+    >
+      <h3 style={{ color: "red" }}>Donation Error!</h3>
+      <a href='/'>Navigate to Home</a>
     </div>
   );
 }
