@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-location";
 import "./style.scss";
-
+import { Link } from "react-location";
 import LoginPicture from "../../Assets/login.png";
 import Switch from "@mui/material/Switch";
 import { Button } from "@mui/material";
@@ -125,7 +125,15 @@ export default function Login() {
                 ? "User Login"
                 : "Volunteer Login"}
             </Button>
-
+            <h6>Not a Member yet?</h6>
+            <div className='link__signup'>
+              <Link to='/signup'>
+                <h6>Signup as a User</h6>
+              </Link>
+              <Link to='/new-volunteer'>
+                <h6>Signup as a Volunteer</h6>
+              </Link>
+            </div>
             {error && (
               <div className='form-group'>
                 <div
