@@ -17,6 +17,7 @@ import axios from "axios";
 import baseURL from "../../api/baseURL";
 import { useNavigate } from "react-location";
 import Donate from "../../Components/Donate/Donate";
+import Modal from "@mui/material/Modal";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -235,11 +236,25 @@ export default function EventTabs() {
         style={{ display: isDonationFormOpen ? "block" : "none" }}
         className='home__container__landing__donationForm'
       >
-        <Donate
-          setIsDonationFormOpen={setIsDonationFormOpen}
-          donation_type={"Event"}
-          donation_name={"> " + eventName}
-        />
+        <Modal
+          open={isDonationFormOpen}
+          onClose={() => setIsDonationFormOpen(false)}
+          aria-labelledby='modal-modal-title'
+          aria-describedby='modal-modal-description'
+          style={{
+            overflow: "scroll",
+            display: "flex",
+            flex: 1,
+            justifyContent: "center",
+            marginTop: "1rem",
+          }}
+        >
+          <Donate
+            setIsDonationFormOpen={setIsDonationFormOpen}
+            donation_type={"Event"}
+            donation_name={"> " + eventName}
+          />
+        </Modal>
       </div>
     </div>
   );

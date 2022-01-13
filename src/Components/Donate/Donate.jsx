@@ -89,28 +89,30 @@ export default function Donate({
           <option value='International'>International</option>
         </select>
         {donationOption === "Nepal" ? (
-          <ul>
-            <li>
-              <input
-                type='radio'
-                className='form-check'
-                name='payment_type'
-                id='esewa'
-                value='ESEWA'
-              />
-              <img src={ESEWA} alt='esewa' />
-            </li>
-            <li>
-              <input
-                type='radio'
-                className='form-check'
-                name='payment_type'
-                id='khalti'
-                value='khalti'
-              />
-              <img src={KHALTI} alt='khalti' />
-            </li>
-          </ul>
+          <div className='ul__span'>
+            <ul>
+              <li>
+                <input
+                  type='radio'
+                  className='form-check'
+                  name='payment_type'
+                  id='esewa'
+                  value='ESEWA'
+                />
+                <img src={ESEWA} alt='esewa' />
+              </li>
+              <li>
+                <input
+                  type='radio'
+                  className='form-check'
+                  name='payment_type'
+                  id='khalti'
+                  value='khalti'
+                />
+                <img src={KHALTI} alt='khalti' />
+              </li>
+            </ul>
+          </div>
         ) : donationOption === "International" ? (
           <ul>
             <li>

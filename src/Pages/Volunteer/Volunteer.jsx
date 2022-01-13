@@ -9,6 +9,7 @@ import Footer from "../../Components/Footer/Footer";
 import baseURL from "../../api/baseURL";
 import NavBar from "../../Components/NavBar/Nav";
 import Donate from "../../Components/Donate/Donate";
+import Modal from "@mui/material/Modal";
 
 export default function Volunteer() {
   const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
@@ -74,11 +75,25 @@ export default function Volunteer() {
         style={{ display: isDonationFormOpen ? "block" : "none" }}
         className='home__container__landing__donationForm'
       >
-        <Donate
-          setIsDonationFormOpen={setIsDonationFormOpen}
-          donation_type={"Volunteer"}
-          donation_name={"> " + volunteerName}
-        />
+        <Modal
+          open={isDonationFormOpen}
+          onClose={() => setIsDonationFormOpen(false)}
+          aria-labelledby='modal-modal-title'
+          aria-describedby='modal-modal-description'
+          style={{
+            overflow: "scroll",
+            display: "flex",
+            flex: 1,
+            justifyContent: "center",
+            marginTop: "1rem",
+          }}
+        >
+          <Donate
+            setIsDonationFormOpen={setIsDonationFormOpen}
+            donation_type={"Volunteer"}
+            donation_name={"> " + volunteerName}
+          />
+        </Modal>
       </div>
 
       <Footer />
