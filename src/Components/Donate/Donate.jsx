@@ -165,7 +165,7 @@ export default function Donate({
   };
 
   const handlePayWithEsewa = () => {
-    let path = "https://uat.esewa.com.np/epay/main";
+    let path = "https://esewa.com.np/epay/main";
 
     let params = {
       tAmt: fields.donation_amount,
@@ -175,8 +175,8 @@ export default function Donate({
       pdc: 0,
       scd: "EPAYTEST",
       pid: makeRandomString(20),
-      su: "http://localhost:3000/donation/success",
-      fu: "http://localhost:3000/donation/error",
+      su: "https://haminepal.org/donation/success",
+      fu: "https://haminepal.org/donation/error",
     };
 
     let form = document.createElement("form");
