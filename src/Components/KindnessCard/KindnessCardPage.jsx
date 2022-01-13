@@ -128,7 +128,7 @@ export default function KindnessCardPage(props) {
                 <div className='item__info'>{data.summary}</div>
                 {token ? (
                   buttonForVolunteer(data)
-                ) : data.status === "past" ? (
+                ) : data.type === "past" ? (
                   ""
                 ) : (
                   <Button
