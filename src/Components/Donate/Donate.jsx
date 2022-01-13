@@ -114,22 +114,24 @@ export default function Donate({
             </ul>
           </div>
         ) : donationOption === "International" ? (
-          <ul>
-            <li>
-              <input
-                type='radio'
-                className='form-check'
-                name='payment_type'
-                id='gofund'
-                value='gofundme'
-              />
-              <img
-                src={GOFUNDME}
-                alt='gofundme'
-                style={{ cursor: "pointer" }}
-              />
-            </li>
-          </ul>
+          <div className='ul__span'>
+            <ul>
+              <li>
+                <input
+                  type='radio'
+                  className='form-check'
+                  name='payment_type'
+                  id='gofund'
+                  value='gofundme'
+                />
+                <img
+                  src={GOFUNDME}
+                  alt='gofundme'
+                  style={{ cursor: "pointer" }}
+                />
+              </li>
+            </ul>
+          </div>
         ) : (
           ""
         )}
