@@ -14,6 +14,7 @@ import Modal from "@mui/material/Modal";
 export default function Volunteer() {
   const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
   const [volunteerName, setVolunteerName] = React.useState("");
+  const [volunteerNameID, setvolunteerNameID] = React.useState("");
 
   const [volunteers, setVolunteers] = React.useState([]);
 
@@ -65,6 +66,7 @@ export default function Volunteer() {
               setVolunteerName(
                 volunteer.first_name + " " + volunteer.last_name
               );
+              setvolunteerNameID(volunteer._id);
             }}
           />
         ))}
@@ -90,8 +92,9 @@ export default function Volunteer() {
         >
           <Donate
             setIsDonationFormOpen={setIsDonationFormOpen}
-            donation_type={"Volunteer"}
+            donation_type={"volunteer"}
             donation_name={"> " + volunteerName}
+            donation_name_ID={volunteerNameID}
           />
         </Modal>
       </div>

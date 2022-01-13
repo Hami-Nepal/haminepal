@@ -57,6 +57,7 @@ export default function CausesTabs() {
   const [value, setValue] = React.useState(0);
   const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
   const [causeName, setCauseName] = React.useState("");
+  const [causeNameID, setCauseNameID] = React.useState("");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -221,6 +222,7 @@ export default function CausesTabs() {
                     e.preventDefault();
                     setIsDonationFormOpen(true);
                     setCauseName(card.name);
+                    setCauseNameID(card._id);
                   }}
                   style={{ marginTop: "auto" }}
                 >
@@ -252,8 +254,9 @@ export default function CausesTabs() {
         >
           <Donate
             setIsDonationFormOpen={setIsDonationFormOpen}
-            donation_type={"Cause"}
+            donation_type={"cause"}
             donation_name={"> " + causeName}
+            donation_name_ID={causeNameID}
           />
         </Modal>
       </div>

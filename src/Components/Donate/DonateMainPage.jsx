@@ -58,7 +58,7 @@ export default function Donate({ setIsDonationFormOpen }) {
     country: "",
     donation_amount: "",
     donation_message: "",
-    isVerified: false,
+    isVerified: true,
   });
   const onFieldChange = (field) => (event) =>
     setFields((prev) => ({ ...prev, [field]: event.target.value }));

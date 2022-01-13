@@ -35,6 +35,7 @@ function Success2() {
       setError(response);
       setLoading(false);
       setUploaded(false);
+      localStorage.removeItem("donation");
     }
   };
   useEffect(() => {
@@ -113,15 +114,13 @@ function Success2() {
           </button>
           {loading ? (
             <span className='loading'>Uploading Data.. Please Wait..</span>
-          ) : (
-            ""
-          )}
-          {uploaded ? (
+          ) : uploaded ? (
             <span className='message'>Data Uploaded Successfully</span>
-          ) : uploaded === false ? (
-            <span className='failed'>Failed to Uplaod. Contact us </span>
           ) : (
-            ""
+            <span className='failed'>
+              Donated Successfully but Failed to Uplaod to our Database. Please
+              Contact us{" "}
+            </span>
           )}
         </div>
       ) : (

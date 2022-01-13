@@ -11,6 +11,8 @@ import baseURL from "../../api/baseURL";
 import NavBar from "../../Components/NavBar/Nav";
 import axios from "axios";
 import EventFocusedCash from "../EventFocused/EventFocusedCash";
+import Donate from "../../Components/Donate/Donate";
+import Modal from "@mui/material/Modal";
 
 //table for bills
 import Table from "@mui/material/Table";
@@ -42,6 +44,7 @@ export default function EventFocused() {
   const [data, setData] = useState({});
   const [totalDonationAmount, setTotalDonationAmount] = useState(0);
   const [volunteers, setVolunteers] = useState([]);
+  const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
 
   //Transparency
   const [kindActive, setKindActive] = useState(null);
@@ -182,7 +185,36 @@ export default function EventFocused() {
             <span>Rs. {totalDonationAmount}</span> of Rs.{data.balance}
           </div>
 
-          {data.status === "past" ? "" : <Button>Donate</Button>}
+          {data.status === "past" ? (
+            ""
+          ) : (
+            <Button onClick={() => setIsDonationFormOpen(true)}>Donate</Button>
+          )}
+        </div>
+        <div
+          style={{ display: isDonationFormOpen ? "block" : "none" }}
+          className='home__container__landing__donationForm'
+        >
+          <Modal
+            open={isDonationFormOpen}
+            onClose={() => setIsDonationFormOpen(false)}
+            aria-labelledby='modal-modal-title'
+            aria-describedby='modal-modal-description'
+            style={{
+              overflow: "scroll",
+              display: "flex",
+              flex: 1,
+              justifyContent: "center",
+              marginTop: "1rem",
+            }}
+          >
+            <Donate
+              setIsDonationFormOpen={setIsDonationFormOpen}
+              donation_type={"event"}
+              donation_name={"> " + data.name}
+              donation_name_ID={data._id}
+            />
+          </Modal>
         </div>
 
         <img src={data?.photos?.length ? data.photos[0] : ""} alt='event' />

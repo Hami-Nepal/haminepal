@@ -55,6 +55,7 @@ function a11yProps(index) {
 export default function EventTabs() {
   const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
   const [eventName, setEventName] = React.useState("");
+  const [eventNameID, setEventNameID] = React.useState("");
 
   const [value, setValue] = React.useState(0);
 
@@ -220,6 +221,7 @@ export default function EventTabs() {
                     e.preventDefault();
                     setIsDonationFormOpen(true);
                     setEventName(card.name);
+                    setEventNameID(card._id);
                   }}
                   style={{ marginTop: "auto" }}
                 >
@@ -251,8 +253,9 @@ export default function EventTabs() {
         >
           <Donate
             setIsDonationFormOpen={setIsDonationFormOpen}
-            donation_type={"Event"}
+            donation_type={"event"}
             donation_name={"> " + eventName}
+            donation_name_ID={eventNameID}
           />
         </Modal>
       </div>

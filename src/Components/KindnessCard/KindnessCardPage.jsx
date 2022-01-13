@@ -40,6 +40,7 @@ export default function KindnessCardPage(props) {
 
   const [requestStatus, setRequestStatus] = React.useState(null);
   const [activeCause, setActiveCause] = React.useState(null);
+  const [activeCauseID, setActiveCauseID] = React.useState(null);
   const navigate = useNavigate();
   const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
 
@@ -136,6 +137,7 @@ export default function KindnessCardPage(props) {
                       e.preventDefault();
                       setIsDonationFormOpen(true);
                       setActiveCause(data.title);
+                      setActiveCauseID(data._id);
                     }}
                     style={{ marginTop: "auto" }}
                   >
@@ -180,8 +182,9 @@ export default function KindnessCardPage(props) {
         >
           <Donate
             setIsDonationFormOpen={setIsDonationFormOpen}
-            donation_type={"Act of Kindness"}
+            donation_type={"kindness"}
             donation_name={"> " + activeCause}
+            donation_name_ID={activeCauseID}
           />
         </Modal>
       </div>

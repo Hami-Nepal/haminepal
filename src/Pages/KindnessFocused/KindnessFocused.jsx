@@ -7,6 +7,8 @@ import Nav from "../../Components/NavBar/Nav";
 import Footer from "../../Components/Footer/Footer";
 import baseURL from "../../api/baseURL";
 import KindnessFocusedCash from "./KindnessFocusedCash";
+import Donate from "../../Components/Donate/Donate";
+import Modal from "@mui/material/Modal";
 
 //table for bills
 import Table from "@mui/material/Table";
@@ -25,6 +27,7 @@ import { Button } from "@mui/material";
 export default function KindnessFocused() {
   const [data, setData] = useState({});
   const [volunteers, setVolunteers] = useState([]);
+  const [isDonationFormOpen, setIsDonationFormOpen] = React.useState(false);
 
   //Transparency
   const [kindActive, setKindActive] = useState(null);
@@ -113,6 +116,36 @@ export default function KindnessFocused() {
         <div className='kindnessFocused__container__landing__info'>
           <h1>{data.title}</h1>
           <p>{data.summary}</p>
+          {data.type === "past" ? (
+            ""
+          ) : (
+            <Button onClick={() => setIsDonationFormOpen(true)}>Donate</Button>
+          )}
+        </div>
+        <div
+          style={{ display: isDonationFormOpen ? "block" : "none" }}
+          className='home__container__landing__donationForm'
+        >
+          <Modal
+            open={isDonationFormOpen}
+            onClose={() => setIsDonationFormOpen(false)}
+            aria-labelledby='modal-modal-title'
+            aria-describedby='modal-modal-description'
+            style={{
+              overflow: "scroll",
+              display: "flex",
+              flex: 1,
+              justifyContent: "center",
+              marginTop: "1rem",
+            }}
+          >
+            <Donate
+              setIsDonationFormOpen={setIsDonationFormOpen}
+              donation_type={"kindness"}
+              donation_name={"> " + data.title}
+              donation_name_ID={data._id}
+            />
+          </Modal>
         </div>
 
         <img
