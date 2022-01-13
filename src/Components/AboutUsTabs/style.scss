@@ -24,6 +24,10 @@
       margin-bottom: 20px;
       margin-top: 30px;
     }
+    .youtube {
+      text-align: center;
+      background-color: rgb(245, 245, 245);
+    }
   }
   .aboutUsTabs__container__howWeWork {
     width: 60vw;
@@ -53,7 +57,7 @@
       margin-top: 30px;
     }
 
-    h2 {
+    h1 {
       font-family: "Playfair Display", serif;
       font-weight: 700;
       margin-top: 30px;
@@ -108,4 +112,11 @@
 
 P {
   text-align: justify;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

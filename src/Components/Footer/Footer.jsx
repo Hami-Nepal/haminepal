@@ -31,6 +31,7 @@ export default function Footer() {
         </div>
       </div>
       <div className='footer__container__copyrightInfo'>
+        {/* <hr style={{ height: "1.5px", width: "100%" }}></hr> */}
         <div className='copyright'>&copy; Hami Nepal. All Rights Reserved</div>
         <div style={{ fontWeight: "bold" }}>
           {" "}
