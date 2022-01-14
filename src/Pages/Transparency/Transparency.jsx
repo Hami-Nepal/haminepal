@@ -237,7 +237,7 @@ export default function Transparency() {
       </div>
       <div className='transparency__horizontal'>
         <div className='tarnsparenc__kind__Ko'>
-          <h2>Kind donation</h2>
+          <h1>Kind donation</h1>
 
           <ul>
             <li>
@@ -269,7 +269,7 @@ export default function Transparency() {
           </ul>
         </div>
         <div className='transparency__cash__ko'>
-          <h2>Cash donation</h2>
+          <h1>Cash donation</h1>
 
           <ul>
             <li>
@@ -309,7 +309,7 @@ export default function Transparency() {
       {/* admin expenses */}
 
       <div className='admin-expenses-ko-section'>
-        <h2>Admin Expenses</h2>
+        <h3>Admin Expenses</h3>
         <div className='admin-expenses-ko-column'>
           <TableContainer component={Paper} sx={{ minWidth: 350 }}>
             <Table aria-label='simple table'>
