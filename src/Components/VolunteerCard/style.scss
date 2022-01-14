@@ -42,10 +42,9 @@
     margin-top: 15px;
     margin-bottom: 15px;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-align: justify;
   }
 
   .MuiButton-root {
