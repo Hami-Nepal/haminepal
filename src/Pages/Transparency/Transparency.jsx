@@ -311,10 +311,7 @@ export default function Transparency() {
       <div className='admin-expenses-ko-section'>
         <h2>Admin Expenses</h2>
         <div className='admin-expenses-ko-column'>
-          <TableContainer
-            component={Paper}
-            sx={{ minWidth: 350, width: "100vw" }}
-          >
+          <TableContainer component={Paper} sx={{ minWidth: 350 }}>
             <Table aria-label='simple table'>
               <TableHead>
                 <TableRow>

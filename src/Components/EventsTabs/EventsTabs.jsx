@@ -90,7 +90,7 @@ export default function EventTabs() {
   useEffect(() => {
     fetch(
       baseURL +
-        `/events?type=${eventTypes[value]?.event_type}&status=${activeEventStatus}&limit=10000`
+        `/events?type=${eventTypes[value]?.event_type}&status=${activeEventStatus}&isVerified=true&limit=10000`
     )
       .then((data) => data.json())
       .then(({ data }) => EventCards(data))

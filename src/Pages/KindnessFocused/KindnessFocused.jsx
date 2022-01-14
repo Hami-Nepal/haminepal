@@ -115,6 +115,16 @@ export default function KindnessFocused() {
       <div className='kindnessFocused__container__landing'>
         <div className='kindnessFocused__container__landing__info'>
           <h1>{data.title}</h1>
+          <span
+            style={{
+              color: data.type === "past" ? "#800000" : "green",
+              fontWeight: "bold",
+            }}
+          >
+            Status: {data.type === "past" ? "Past" : "Ongoing"}
+          </span>
+          <br />
+          <br />
           <p>{data.summary}</p>
           {data.type === "past" ? (
             ""

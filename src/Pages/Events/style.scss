@@ -1,5 +1,5 @@
-.events__container{
-    .events__container__topbar,
+.events__container {
+  .events__container__topbar,
   .events__container__landing__hiddenMenu__topbar {
     width: 100%;
     padding: 25px 35px 25px 25px;
@@ -126,6 +126,9 @@
       border: 1px solid #fff;
       padding: 15px 25px;
       font-size: 20px;
+      @media (max-width: 992px) {
+        font-size: 12px;
+      }
 
       &:hover {
         background: #fff;

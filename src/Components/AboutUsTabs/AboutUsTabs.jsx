@@ -134,8 +134,6 @@ export default function AboutUsTabs() {
           </p>
           <div className='youtube'>
             <iframe
-              width='100%'
-              height='500'
               src='https://www.youtube.com/embed/GNDLB7hrGzE?rel=0&autoplay=1'
               title='YouTube video player'
               frameborder='0'
