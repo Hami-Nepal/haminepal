@@ -10,13 +10,17 @@ import baseURL from "../../api/baseURL";
 
 import NavBar from "../../Components/NavBar/Nav";
 import volunteerPicture from "../../Assets/volunteer.png";
+import axios from "axios";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
 
 const fileReader = new FileReader();
 
 export default function NewVolunteer() {
   const [volunteerImg, setVolunteerImg] = React.useState(null);
   const [volunteerImgUrl, setVolunteerImgUrl] = React.useState("");
-  const [center, setCenter] = React.useState(null);
+  const [modalopen, setModalOpen] = React.useState(false);
+  // const [center, setCenter] = React.useState(null);
   const [fields, setFields] = React.useState({
     first_name: "",
     last_name: "",
@@ -65,38 +69,55 @@ export default function NewVolunteer() {
     }
     formData.append("photo", volunteerImg);
 
-    fetch(baseURL + "/volunteers", {
-      method: "post",
-      body: formData,
-    })
-      .then((data) => data.json())
-      .then((data) => {
+    axios
+      .post(baseURL + "/volunteers", formData)
+      .then((response) => {
         setRequestState("success");
+        setModalOpen(true);
       })
-      .catch(({ response }) => {
+      .catch((error) => {
         setRequestState("failed");
-        setErrorMsg(response?.message || "");
+        setErrorMsg(error.response.data.reason);
       });
   };
-
-  const handleLocationError = (hasGeolocation, string) => {
-    console.log(hasGeolocation, string);
+  const modalOkFunction = () => {
+    setModalOpen(false);
+    setFields({
+      first_name: "",
+      last_name: "",
+      phone: "",
+      email: "",
+      password: "",
+      cPassword: "",
+      age: "",
+      bloodGroup: "",
+      field_of_expertise: "",
+      bio: "",
+      motivation: "",
+      country: "",
+      state: "",
+      city: "",
+      street_address: "",
+    });
   };
+  // const handleLocationError = (hasGeolocation, string) => {
+  //   console.log(hasGeolocation, string);
+  // };
 
-  const fetchMyLocation = (e) => {
-    e.preventDefault();
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        setCenter({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });
-      });
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, "Browser doesnt Support");
-    }
-  };
+  // const fetchMyLocation = (e) => {
+  //   e.preventDefault();
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(function (position) {
+  //       setCenter({
+  //         lat: position.coords.latitude,
+  //         lng: position.coords.longitude,
+  //       });
+  //     });
+  //   } else {
+  //     // Browser doesn't support Geolocation
+  //     handleLocationError(false, "Browser doesnt Support");
+  //   }
+  // };
 
   React.useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -124,12 +145,12 @@ export default function NewVolunteer() {
             accept='image/*'
             onChange={onSelectImage}
           />
-          <Button
+          {/* <Button
             // className='btn btn-primary mb-4'
             onClick={fetchMyLocation}
           >
             Fetch my Location
-          </Button>
+          </Button> */}
         </div>
 
         {/* @section => form container */}
@@ -312,13 +333,26 @@ export default function NewVolunteer() {
             </div>
 
             {requestState === "success" ? (
-              <p className={"volunteer volunteer__" + requestState}>
-                Request sent successfully! Please wait while admins verify's
-                your data.
-              </p>
+              <Modal
+                open={modalopen}
+                onClose={() => setModalOpen(false)}
+                aria-labelledby='child-modal-title'
+                aria-describedby='child-modal-description'
+              >
+                <Box className='Modal__box'>
+                  <h2>Successful !!</h2>
+                  <p className={"volunteer volunteer__" + requestState}>
+                    Request sent successfully! Please wait for the admin to
+                    verify your data.
+                  </p>
+                  <button className='btn__modal' onClick={modalOkFunction}>
+                    OK
+                  </button>
+                </Box>
+              </Modal>
             ) : requestState === "failed" ? (
               <p className={"volunteer volunteer__" + requestState}>
-                Something went wrong! {errorMsg}
+                Something went wrong!-- {errorMsg}
               </p>
             ) : (
               ""
@@ -330,18 +364,18 @@ export default function NewVolunteer() {
           </form>
 
           <div className='newVolunteer__container__form__inputs__input right'>
-            {/* <img
+            <img
               src={volunteerPicture}
               alt='banner'
               style={{ height: "500px", width: "500px" }}
-            /> */}
-            <MapContainer
+            />
+            {/* <MapContainer
               apiKey='AIzaSyC9ygizb1G5HWBnHPE9UWOM23fPiuWZAiw'
               center={center || {}}
               // handleMyLocationChange={(coords) => {
               //   console.log(coords);
               // }}
-            />
+            /> */}
           </div>
         </div>
       </div>
