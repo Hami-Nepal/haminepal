@@ -173,7 +173,7 @@ export default function Donate({
       txAmt: 0,
       psc: 0,
       pdc: 0,
-      scd: "EPAYTEST",
+      scd: "NP-ES-NEPALI",
       pid: makeRandomString(20),
       su: "https://haminepal.org/donation/success",
       fu: "https://haminepal.org/donation/error",
