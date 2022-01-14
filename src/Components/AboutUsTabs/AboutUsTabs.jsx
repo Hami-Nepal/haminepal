@@ -99,7 +99,7 @@ export default function AboutUsTabs() {
             order to save the administrative expense.
           </p>
           <br />
-          <h1>HISTORY OF THE ORGANISATION</h1>
+          <h1>HISTORY OF THE ORGANIZATION</h1>
           <p>
             On 25 April, 2015 an earthquake with a magnitude of 7.8 Richter
             scale struck Nepal along with continued aftershocks occurring

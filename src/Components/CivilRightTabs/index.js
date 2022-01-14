@@ -29,13 +29,19 @@ const CivilRightTabs = () => {
             <div className='CivilRightMoments_content_listing'>
               <div className='CivilRightMoments_content'>
                 <img src={v.photos[0]} alt='civirights' />
-                <p>
-                  {v.introduction.slice(0, 300)}....
-                  <br />
-                  <Link to={"/civil-focused/" + v._id} className='SeeMoreText'>
-                    See More
-                  </Link>
-                </p>
+                <div className='CivilRightMoments_content__details'>
+                  <h4>{v.title}</h4>
+                  <p>
+                    {v.introduction.slice(0, 300)}....
+                    <br />
+                    <Link
+                      to={"/civil-focused/" + v._id}
+                      className='SeeMoreText'
+                    >
+                      See More
+                    </Link>
+                  </p>
+                </div>
               </div>
               <div className='underline'></div>
             </div>
