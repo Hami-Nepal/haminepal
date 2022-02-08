@@ -10,11 +10,12 @@ import Stack from "@mui/material/Stack";
 
 const CivilRightTabs = () => {
   const [cards, setCards] = useState([]);
+
+  const fetchData = async () => {
+    const res = await axios.get(baseURL + "/civilrights?limit=100000");
+    setCards(res.data.data);
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await axios.get(baseURL + "/civilrights?limit=100000");
-      setCards(res.data.data);
-    };
     fetchData();
   }, []);
   // const handleChange = (e, number) => {

@@ -237,7 +237,7 @@ export default function Transparency() {
       </div>
       <div className='transparency__horizontal'>
         <div className='tarnsparenc__kind__Ko'>
-          <h1>Kind donation</h1>
+          <h2>Kind donation</h2>
 
           <ul>
             <li>
@@ -269,7 +269,7 @@ export default function Transparency() {
           </ul>
         </div>
         <div className='transparency__cash__ko'>
-          <h1>Cash donation</h1>
+          <h2>Cash donation</h2>
 
           <ul>
             <li>

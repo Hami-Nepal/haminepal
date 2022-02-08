@@ -214,7 +214,9 @@ export default function EventTabs() {
               {token ? (
                 buttonForVolunteer(card)
               ) : card.status === "past" ? (
-                ""
+                <Button disabled style={{ backgroundColor: "gray" }}>
+                  Donate
+                </Button>
               ) : (
                 <Button
                   onClick={(e) => {

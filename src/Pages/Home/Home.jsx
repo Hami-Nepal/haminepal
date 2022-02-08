@@ -274,7 +274,7 @@ export default function Home() {
         </Link>
 
         <div className='home__container__transparency__column'>
-          <div className='home__container__transparency__info home__container__transparency__kindness'>
+          <div className='home__container__transparency__info '>
             <h2>Kinds</h2>
             <div className='home__container__transparency__info__item'>
               <h3 style={{ fontFamily: "sans-serif" }}>
@@ -459,6 +459,17 @@ export default function Home() {
               </a>
             </div>
           ))}
+          <a
+            href='http://barbarafoundation.org/'
+            target='_blank'
+            rel='noreferrer'
+          >
+            <img
+              src='http://barbarafoundation.org/wp-content/themes/barbara_foundation/images/logo.png'
+              alt=''
+              className='barbara__logo'
+            />
+          </a>
         </div>
 
         <div className='infuencer__heading'>

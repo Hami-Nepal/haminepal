@@ -22,20 +22,20 @@ export default function KindnessCardPage(props) {
     setCurrentPage(number);
   };
 
+  const fetchPosts = async () => {
+    setLoading(true);
+    const res = await axios.get(
+      baseURL + `/kindness?page=${currentPage}&limit=12`
+    );
+    setPosts(res.data.data);
+    setTotalData(res.data.total_data);
+    setLoading(false);
+  };
   React.useEffect(() => {
-    const fetchPosts = async () => {
-      setLoading(true);
-      const res = await axios.get(
-        baseURL + `/kindness?page=${currentPage}&limit=9`
-      );
-      setPosts(res.data.data);
-      setTotalData(res.data.total_data);
-      setLoading(false);
-    };
     fetchPosts();
   }, [currentPage]);
 
-  const page = Math.ceil(totalData / 10);
+  const page = Math.ceil(totalData / 12);
   const token = localStorage.getItem("vinfo");
 
   const [requestStatus, setRequestStatus] = React.useState(null);
@@ -130,7 +130,9 @@ export default function KindnessCardPage(props) {
                 {token ? (
                   buttonForVolunteer(data)
                 ) : data.type === "past" ? (
-                  ""
+                  <Button disabled style={{ backgroundColor: "gray" }}>
+                    Donate
+                  </Button>
                 ) : (
                   <Button
                     onClick={(e) => {

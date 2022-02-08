@@ -242,7 +242,6 @@
         padding: 25px 0;
         display: flex;
         flex-direction: column;
-        align-items: center;
 
         &.center {
           border-top: 0.5px solid #7e7e7e;
@@ -253,6 +252,7 @@
           font-size: 35px;
           color: #4a4a4a;
           margin-bottom: 5px;
+          text-align: start;
         }
         .home__container__transparency__info__item__title {
           color: #7a7a7a;
@@ -528,6 +528,14 @@
         @media (max-width: 768px) {
           width: 80px;
           height: 70px;
+        }
+      }
+      .barbara__logo {
+        width: 165px;
+        height: auto;
+        @media (max-width: 768px) {
+          width: 100px;
+          height: auto;
         }
       }
     }

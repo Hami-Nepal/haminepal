@@ -41,14 +41,26 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    margin-bottom: 5px;
   }
-  span {
+  .see__more {
     font-weight: bold;
     transition: 0.3s ease-in-out;
     color: brown;
     &:hover {
       padding-left: 15px;
       border-left: 3px solid #000;
+    }
+  }
+  .MuiButton-root {
+    display: block;
+    margin-top: 1rem;
+    width: 90%;
+    color: #fff;
+    background: #a11a1c;
+    margin-bottom: 35px;
+    &:hover {
+      background: #bb2325;
     }
   }
 }

@@ -118,6 +118,11 @@ export default function Login() {
                 setPassword(e.target.value);
               }}
             />
+            {!userLogin && (
+              <Link to='/forgotpassword'>
+                <span>Forgot Password?</span>
+              </Link>
+            )}
             <Button onClick={handleVLogin}>
               {sending
                 ? "Sending..."

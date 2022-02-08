@@ -8,6 +8,7 @@ import { Button } from "@mui/material";
 import KHALTI from "../../Assets/khalti.png";
 import ESEWA from "../../Assets/esewa.png";
 import GOFUNDME from "../../Assets/gofundme.png";
+// import PAYPAL from "../../Assets/Paypal.png";
 import axios from "axios";
 import baseURL from "../../api/baseURL";
 import validator from "validator";
@@ -208,6 +209,12 @@ export default function Donate({ setIsDonationFormOpen }) {
   const handlePayWithKhalti = () => {
     console.log("khalti");
   };
+  // const handlePayWithPaypal = (_) => {
+  //   console.log(paymentType);
+  //   window.open(
+  //     "https://www.paypal.com/donate/?hosted_button_id=WPKYMY6KG8S3U"
+  //   );
+  // };
 
   const handleDonate = (e) => {
     e.preventDefault();
@@ -277,6 +284,9 @@ export default function Donate({ setIsDonationFormOpen }) {
           case "KHALTI":
             handlePayWithKhalti();
             break;
+          // case "PAYPAL":
+          //   handlePayWithPaypal();
+          //   break;
           default:
             break;
         }
@@ -318,6 +328,9 @@ export default function Donate({ setIsDonationFormOpen }) {
           case "KHALTI":
             handlePayWithKhalti();
             break;
+          // case "PAYPAL":
+          //   handlePayWithPaypal();
+          //   break;
           default:
             break;
         }
@@ -577,9 +590,10 @@ export default function Donate({ setIsDonationFormOpen }) {
                   type='radio'
                   className='form-check'
                   name='payment_type'
-                  id='gofund'
-                  value='GoFundMe'
-                  onClick={() => setPaymentType("GoFundMe")}
+                  id='Paypal'
+                  value='PAYPAL'
+                  disabled='true'
+                  onClick={() => setPaymentType("PAYPAL")}
                 />
                 <img
                   src={GOFUNDME}
@@ -589,7 +603,7 @@ export default function Donate({ setIsDonationFormOpen }) {
                       "_blank"
                     )
                   }
-                  alt='gofundme'
+                  alt='Paypal'
                   style={{ cursor: "pointer" }}
                 />
               </li>

@@ -190,16 +190,6 @@
   }
 }
 
-h2 {
-  text-align: center;
-  font-size: 30px;
-  font-weight: bold;
-  font-family: "Playfair Display", serif;
-  margin-bottom: 1rem;
-  @media (max-width: 768px) {
-    font-size: 25px;
-  }
-}
 .btn__modal {
   background: #9f1718;
   color: #fff;
@@ -227,6 +217,16 @@ h2 {
   align-items: center;
   @media (max-width: 768px) {
     width: 300px;
+  }
+  h2 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Playfair Display", serif;
+    margin-bottom: 1rem;
+    @media (max-width: 768px) {
+      font-size: 25px;
+    }
   }
   .alert-success {
     height: 120px;

@@ -31,7 +31,7 @@ export default function Volunteer() {
 
       {/* @section => landing */}
       <div className='volunteer__container__landing'>
-        <h1>Volunteer</h1>
+        <h1>Volunteers</h1>
 
         <p>
           Life's Most Persistent And Urgent Question Is, What Are You Doing For
@@ -44,7 +44,7 @@ export default function Volunteer() {
       {/* @section => definition */}
       <div className='volunteer__container__definition'>
         <h1 className='volunteer__container__definition__title'>
-          Our Volunteer
+          Our Volunteers
         </h1>
         <div className='volunteer__container__definition__content'>
           Volunteering has been a part of our network since we were founded six

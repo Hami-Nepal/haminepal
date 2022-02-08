@@ -32,6 +32,9 @@ import KindnessFocused from "./Pages/KindnessFocused/KindnessFocused";
 import CivilRightsFocused from "./Pages/CivilRightsFocused/CivilRightsFocused";
 import SuccessPage from "./Components/Donate/success";
 import ErrorPage from "./Components/Donate/errror";
+import ForgotPasswordPage from "./Pages/ForgotPassword/ForgotPassword";
+import ResetPasswordPage from "./Pages/ResetPassword/ResetPassword";
+// import Paypalpage from "./Components/Donate/PaypalPage";
 
 const location = new ReactLocation();
 
@@ -129,6 +132,18 @@ export default function App() {
             path: "/donation/error",
             element: <ErrorPage />,
           },
+          {
+            path: "/forgotpassword",
+            element: <ForgotPasswordPage />,
+          },
+          {
+            path: "/resetPassword/:token",
+            element: <ResetPasswordPage />,
+          },
+          // {
+          //   path: "/donation/paypal",
+          //   element: <Paypalpage />,
+          // },
         ]}
       />
     </>
