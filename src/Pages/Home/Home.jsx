@@ -3,6 +3,7 @@ import "./style.scss";
 // import Carousel from "react-elastic-carousel";
 import Logo from "../../Assets/logo.png";
 import Marquee from "react-fast-marquee";
+import barbara from "../../Assets/barbara.png";
 
 import BannerVideo from "../../Assets/banner.mp4";
 // import BannerVideoWebm from "../../Assets/banner.webm";
@@ -464,11 +465,7 @@ export default function Home() {
             target='_blank'
             rel='noreferrer'
           >
-            <img
-              src='http://barbarafoundation.org/wp-content/themes/barbara_foundation/images/logo.png'
-              alt='barbara'
-              className='barbara__logo'
-            />
+            <img src={barbara} alt='barbara' className='barbara__logo' />
           </a>
         </div>
 
