@@ -466,7 +466,7 @@ export default function Home() {
           >
             <img
               src='http://barbarafoundation.org/wp-content/themes/barbara_foundation/images/logo.png'
-              alt=''
+              alt='barbara'
               className='barbara__logo'
             />
           </a>
