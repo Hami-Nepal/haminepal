@@ -24,7 +24,7 @@ import Carousel from "react-elastic-carousel";
 import TablePagination from "@mui/material/TablePagination";
 import { Button } from "@mui/material";
 
-import { Helmet } from "react-helmet";
+// import { Helmet } from "react-helmet";
 
 export default function KindnessFocused() {
   const [data, setData] = useState({});
@@ -113,36 +113,6 @@ export default function KindnessFocused() {
   return (
     <div className='kindnessFocused__container'>
       <Nav />
-      <Helmet>
-        <meta property='og:locale' content='en_US' />
-        <meta
-          name='description'
-          content='Hami Nepal is a non-profit organisation, established in 2015 A.D. and registered in 2020 A.D. (Regd.no. 609789065), which directly connects the donors and the recipients. Our main objective is to help anyone in need without any hesitations and expectation of payback. The organisation doesn’t spend any of the received donations on administration cost as we believe that 100% of the donation should reach the recipient in order to establish effective helping. All of our volunteers, mobilised for the authentication of the problem, logistics and delivery, cover their own expenses in order to save the administrative expense.'
-        />
-        <meta
-          property='og:description'
-          content='Hami Nepal is a non-profit organisation, established in 2015 A.D. and registered in 2020 A.D. (Regd.no. 609789065), which directly connects the donors and the recipients. Our main objective is to help anyone in need without any hesitations and expectation of payback. The organisation doesn’t spend any of the received donations on administration cost as we believe that 100% of the donation should reach the recipient in order to establish effective helping. All of our volunteers, mobilised for the authentication of the problem, logistics and delivery, cover their own expenses in order to save the administrative expense.'
-        />
-        <meta property='og:url' content='https://haminepal.org/' />
-        <meta
-          property='og:image'
-          content='https://haminepal.org/static/media/banner1.2d822de2.jpg'
-        />
-
-        <meta property='og:image:width' content='500' />
-        <meta property='og:image:height' content='500' />
-
-        <meta name='twitter:card' content='summary' />
-        <meta name='twitter:title' content='Act of Kindness' />
-        <meta
-          name='twitter:description'
-          content='Hami Nepal is a non-profit organisation, established in 2015 A.D. and registered in 2020 A.D. (Regd.no. 609789065), which directly connects the donors and the recipients. Our main objective is to help anyone in need without any hesitations and expectation of payback. The organisation doesn’t spend any of the received donations on administration cost as we believe that 100% of the donation should reach the recipient in order to establish effective helping. All of our volunteers, mobilised for the authentication of the problem, logistics and delivery, cover their own expenses in order to save the administrative expense.'
-        />
-        <meta
-          name='twitter:image'
-          content='https://haminepal.org/static/media/banner1.2d822de2.jpg'
-        />
-      </Helmet>
       {/* @section => landing */}
       <div className='kindnessFocused__container__landing'>
         <div className='kindnessFocused__container__landing__info'>
