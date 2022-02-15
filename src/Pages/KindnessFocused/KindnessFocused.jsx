@@ -126,7 +126,7 @@ export default function KindnessFocused() {
         <meta property='og:url' content='https://haminepal.org/' />
         <meta
           property='og:image'
-          content={data?.photos?.length ? data.photos[0] : ""}
+          content='https://haminepal.org/static/media/banner1.2d822de2.jpg'
         />
 
         <meta property='og:image:width' content='500' />
@@ -140,7 +140,7 @@ export default function KindnessFocused() {
         />
         <meta
           name='twitter:image'
-          content={data?.photos?.length ? data.photos[0] : ""}
+          content='https://haminepal.org/static/media/banner1.2d822de2.jpg'
         />
       </Helmet>
       {/* @section => landing */}
