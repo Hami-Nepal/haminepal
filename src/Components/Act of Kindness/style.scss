@@ -22,6 +22,26 @@
     margin-bottom: 10px;
     border-radius: 10px;
   }
+  // .share__button {
+  //   color: white;
+  //   margin-right: 30px;
+  //   background-color: #a11a1c;
+  //   padding: 5px 10px;
+  //   font-style: italic;
+  //   cursor: pointer;
+  //   border-radius: 5px;
+  //   &:hover {
+  //     opacity: 0.7;
+  //   }
+  // }
+  .ri-share-fill {
+    margin-right: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
 
   .kindnessCard__container__title {
     font-weight: 600;
@@ -58,9 +78,17 @@
     width: 90%;
     color: #fff;
     background: #a11a1c;
-    margin-bottom: 35px;
+    // margin-bottom: 35px;
     &:hover {
       background: #bb2325;
     }
+  }
+}
+.share__img {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+  .ri-3x {
+    cursor: pointer;
   }
 }
