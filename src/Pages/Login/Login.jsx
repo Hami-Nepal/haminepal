@@ -23,6 +23,8 @@ export default function Login() {
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
   const [userLogin, setUserLogin] = React.useState(false);
+  const [passwordType, setPasswordType] = React.useState("password");
+  const [eyeState, setEyeState] = React.useState("far fa-eye-slash");
 
   const handleVLogin = (e) => {
     e.preventDefault();
@@ -92,6 +94,7 @@ export default function Login() {
             </div>
             <h1>{userLogin ? "User" : "Volunteer"} Login</h1>
             <div className='divider'></div>
+
             <input
               type='email'
               placeholder='Email Address'
@@ -109,15 +112,33 @@ export default function Login() {
                 }
               }}
             />
-            <input
-              className='full'
-              type='password'
-              placeholder='Password'
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
+            <div className='input__password'>
+              <input
+                className='full'
+                name='password'
+                type={passwordType}
+                id='id_password'
+                placeholder='Password'
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+                style={{ position: "relative" }}
+              />
+              <i
+                class={eyeState}
+                id='togglePassword'
+                onClick={() => {
+                  passwordType === "password"
+                    ? setPasswordType("text")
+                    : setPasswordType("password");
+                  eyeState === "far fa-eye-slash"
+                    ? setEyeState("far fa-eye")
+                    : setEyeState("far fa-eye-slash");
+                }}
+              ></i>
+            </div>
+
             {!userLogin && (
               <Link to='/forgotpassword'>
                 <span>Forgot Password?</span>
