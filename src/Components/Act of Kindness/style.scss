@@ -34,14 +34,35 @@
   //     opacity: 0.7;
   //   }
   // }
-  .ri-share-fill {
-    margin-right: 10px;
-    margin-top: 5px;
+  .share {
+    width: 70px;
+    background-color: #a11a1c;
+    // background-color: black;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 5px;
     cursor: pointer;
     &:hover {
       opacity: 0.7;
     }
+    @media (max-width: 768px) {
+      width: 100px;
+    }
   }
+  .display__text {
+    display: none;
+  }
+  // .ri-share-fill {
+  //   margin-right: 10px;
+  //   margin-top: 5px;
+  //   cursor: pointer;
+  //   background-color: #bb2325;
+  //   border-radius: 5px;
+  //   &:hover {
+  //     opacity: 0.7;
+  //   }
+  // }
 
   .kindnessCard__container__title {
     font-weight: 600;

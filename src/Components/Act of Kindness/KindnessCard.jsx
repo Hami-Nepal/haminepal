@@ -65,7 +65,13 @@ export default function KindnessCard(props) {
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div className='kindnessCard__container__title'>{props.title}</div>
         {/* <span className='share__button'>Share</span> */}
-        <i class='ri-share-fill ri-xl' onClick={() => setModalOpen(true)}></i>
+      </div>
+      <div className='share' onClick={() => setModalOpen(true)}>
+        <i className='ri-share-forward-fill'></i>
+        {/* <i
+          className='ri-share-fill ri-xl'
+          onClick={() => setModalOpen(true)}
+        ></i> */}
       </div>
 
       <div className='kindnessCard__container__description'>
@@ -99,6 +105,7 @@ export default function KindnessCard(props) {
       >
         Donate
       </Button>
+
       <br />
       <Link to={"/kindness-focused/" + props._id}>
         <span className='see__more'>See More..</span>
