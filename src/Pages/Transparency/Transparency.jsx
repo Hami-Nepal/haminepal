@@ -241,7 +241,12 @@ export default function Transparency() {
 
           <ul>
             <li>
-              <h5>Received</h5>
+              <h5
+                style={{ cursor: "pointer" }}
+                onClick={() => window.scrollTo(0, 2300)}
+              >
+                Received
+              </h5>
               <p>
                 Rs.
                 {new Intl.NumberFormat("en-IN").format(totalKindDonations)}
@@ -249,7 +254,12 @@ export default function Transparency() {
             </li>
             <hr />
             <li>
-              <h5>Spent</h5>
+              <h5
+                style={{ cursor: "pointer" }}
+                onClick={() => window.scrollTo(0, 3200)}
+              >
+                Spent
+              </h5>
 
               <p>
                 Rs.
@@ -273,7 +283,15 @@ export default function Transparency() {
 
           <ul>
             <li>
-              <h5>Received</h5>
+              <h5
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  setKindActive(false);
+                  window.scrollTo(0, 2300);
+                }}
+              >
+                Received
+              </h5>
 
               <p>{new Intl.NumberFormat("en-IN").format(totalDonations)}</p>
             </li>

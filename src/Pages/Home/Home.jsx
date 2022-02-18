@@ -372,6 +372,9 @@ export default function Home() {
             <KindnessCard {...card} key={card._id} />
           ))}
         </div>
+        <Link to='/act-of-kindness'>
+          <p className='see__all__button'>See all Act of Kindness</p>
+        </Link>
       </div>
 
       {/** @section => how we work */}

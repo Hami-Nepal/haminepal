@@ -9,7 +9,7 @@
         rgba(148, 144, 144, 0.52),
         rgba(20, 16, 16, 0.644)
       ),
-      url('../../Assets/banner2.jpg');
+      url("../../Assets/banner2.jpg");
     background-size: cover;
 
     padding: 0 5vw;
@@ -31,6 +31,22 @@
         color: white;
         font-size: 18px;
         margin-top: 2rem;
+      }
+      a {
+        color: #ffff;
+        text-decoration: none;
+        font-size: 32px;
+        line-height: 1.8;
+        transition: all 0.3s ease-in-out;
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 5px 15px;
+
+        &:hover {
+          border-left: 2px solid #fff;
+          padding-left: 25px;
+          background-color: rgb(105, 105, 105);
+        }
       }
     }
   }

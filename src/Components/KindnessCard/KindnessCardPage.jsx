@@ -27,7 +27,7 @@ export default function KindnessCardPage(props) {
     const res = await axios.get(
       baseURL + `/kindness?page=${currentPage}&limit=12`
     );
-    setPosts(res.data.data);
+    setPosts(res.data.data.filter((kindnes) => kindnes.isVerified === true));
     setTotalData(res.data.total_data);
     setLoading(false);
   };

@@ -8,7 +8,6 @@ import EventTabs from "../../Components/EventsTabs/EventsTabs";
 import NavBar from "../../Components/NavBar/Nav";
 export default function Events() {
   const token = localStorage.getItem("vinfo") || localStorage.getItem("user");
-  console.log(token);
   return (
     <div className='events__container'>
       <NavBar />

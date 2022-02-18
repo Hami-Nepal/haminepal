@@ -40,6 +40,11 @@
           font-size: 14px;
         }
       }
+      .border__line__progress {
+        span {
+          font-weight: bold;
+        }
+      }
       @media (max-width: 786px) {
         padding: 10px;
         max-width: 100%;

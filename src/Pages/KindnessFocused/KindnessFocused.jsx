@@ -9,6 +9,10 @@ import baseURL from "../../api/baseURL";
 import KindnessFocusedCash from "./KindnessFocusedCash";
 import Donate from "../../Components/Donate/Donate";
 import Modal from "@mui/material/Modal";
+import LinearProgress, {
+  linearProgressClasses,
+} from "@mui/material/LinearProgress";
+import { styled } from "@mui/material/styles";
 
 //table for bills
 import Table from "@mui/material/Table";
@@ -23,6 +27,18 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Carousel from "react-elastic-carousel";
 import TablePagination from "@mui/material/TablePagination";
 import { Button } from "@mui/material";
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 10,
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor:
+      theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: theme.palette.mode === "light" ? "#23CE34" : "#308fe8",
+  },
+}));
 
 // import { Helmet } from "react-helmet";
 
@@ -40,6 +56,7 @@ export default function KindnessFocused() {
   const [kReceived, setKReceived] = useState([]);
   const [kSCount, setKSCount] = useState(0);
   const [kRCount, setKRCount] = useState(0);
+  const [totalDonationAmount, setTotalDonationAmount] = useState(0);
 
   //pagination
   const [transPage, setTransPage] = React.useState(0);
@@ -50,6 +67,23 @@ export default function KindnessFocused() {
   const handleDonChange = (event, value) => {
     setDonPage(value);
   };
+
+  useEffect(() => {
+    // specific cause or events ko ako total amount herna ko lagi jugad
+    fetch(
+      baseURL +
+        "/donations?kindness=" +
+        window.location.pathname.split("/").pop() +
+        "&limit=1000000"
+    )
+      .then((data) => data.json())
+      .then(({ data }) =>
+        setTotalDonationAmount(
+          data.reduce((acc, val) => acc + val.donation_amount, 0)
+        )
+      )
+      .catch(({ response }) => console.log(response));
+  }, [data]);
 
   useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -128,6 +162,17 @@ export default function KindnessFocused() {
           <br />
           <br />
           <p>{data.summary}</p>
+          <div className='border__line__progress'>
+            <BorderLinearProgress
+              variant='determinate'
+              value={(totalDonationAmount / data?.balance) * 100}
+              style={{ maxWidth: "80%", marginBottom: "1rem" }}
+            />
+            <span>
+              Rs.{totalDonationAmount} of Rs.{data?.balance} fund raised
+            </span>
+          </div>
+
           {data.type === "past" ? (
             ""
           ) : (

@@ -34,6 +34,7 @@ import SuccessPage from "./Components/Donate/success";
 import ErrorPage from "./Components/Donate/errror";
 import ForgotPasswordPage from "./Pages/ForgotPassword/ForgotPassword";
 import ResetPasswordPage from "./Pages/ResetPassword/ResetPassword";
+import CreateKindness from "./Pages/Create Kindness/CreateKindness";
 // import Paypalpage from "./Components/Donate/PaypalPage";
 
 const location = new ReactLocation();
@@ -139,6 +140,10 @@ export default function App() {
           {
             path: "/resetPassword/:token",
             element: <ResetPasswordPage />,
+          },
+          {
+            path: "/create-kindness",
+            element: <CreateKindness />,
           },
           // {
           //   path: "/donation/paypal",
